@@ -1,0 +1,49 @@
+<form
+	ng-cloak
+	ng-controller="AmhContentWorkbenchMetasCtrl as ctrl">
+	<md-toolbar 
+		class="content-sidenavs-toolbar wb-layer-tool-bottom"
+		layout="row"
+		layout-align="space-around center"> 
+		<span translate flex>Meta Fields</span>
+		<md-button
+			class="md-icon-button"
+			ng-click="ctrl.addMetadatum($event)">
+			<wb-icon>add</wb-icon>
+		</md-button>
+		<md-button 
+			class="md-icon-button" 
+			ng-click="cancel()">
+			<wb-icon aria-label="Close dialog">close</wb-icon>
+		</md-button>
+	</md-toolbar>
+	<md-dialog-content 
+		layout="row" 
+		flex>
+		<md-content
+			flex>
+                <md-input-container 
+                    ng-repeat="meta in ctrl.contentMetadata track by meta.id"
+                    class="md-icon-float md-icon-right md-block">
+                    <label>{{meta.key}}</label>
+                    <wb-icon
+                        ng-click="ctrl.editMetadatum(meta, $event)">edit</wb-icon>
+                    <input 
+                        ng-model="meta.value" 
+                        type="text"
+                        disabled>
+                    <wb-icon
+                        ng-click="ctrl.deleteMetadatum(meta, $event)">delete</wb-icon>
+                </md-input-container>
+                <div
+                    layout="row">
+                    <span flex></span>
+                    <md-button
+                        class="md-icon-button"
+                        ng-click="ctrl.addMetadatum($event)">
+                        <wb-icon>add</wb-icon>
+                    </md-button>
+                </div>
+        </md-content>
+    </md-dialog-content>
+</form>

@@ -1,0 +1,143 @@
+/**************************************************************************************
+                                     Group layout
+
+A group is wrapped in several dive to instruct a view. Here is the hierarchical structure
+of a widget:
+
+-> group
+***************************************************************************************/
+.wb-group {
+	min-width: 32px;
+	min-height: 32px;
+	/* Position must be relative to support locators */
+	position: relative;
+}
+
+/*
+ * Added to a group if is the root element
+ */
+.wb-group-root {
+	overflow: auto !important;
+	min-height: 32px;
+}
+
+/**************************************************************************************
+                                     Widget layout
+
+A widget is wrapped in several dive to instruct a view. Here is the hierarchical structure
+of a widget:
+
+-> widget
+***************************************************************************************/
+.wb-widget {
+	overflow: hidden;
+	position: relative;
+	min-width: 32px;
+	min-height: 32px;
+}
+
+a.wb-widget>p {
+	margin: '0px';
+	padding: '0px';
+	margin-block-start: 0px;
+	margin-block-end: 0px;
+}
+
+/*
+ * Body of a widget to fill
+ */
+.wb-widget-fill {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+/**************************************************************************************
+                                     Widget locators
+Locators are used to display area of a widget or attache some extra meta information on
+in the edit mode. This part of the the CSS fix basic settings of the widgets.
+***************************************************************************************/
+.wb-widget-locator {
+	display: block;
+	position: fixed;
+/* 	transition: all 0.3s ease; */
+}
+
+/*
+ * Bound
+ */
+.wb-widget-locator.bound {
+	background: #888a85;
+	z-index: 58;
+}
+
+.wb-widget-locator.bound.mouseover {
+	background: #555753 !important;
+}
+
+.wb-widget-locator.bound.selected {
+	display: none !important;
+}
+
+#top.wb-widget-locator.bound, #buttom.wb-widget-locator.bound {
+	height: 2px;
+}
+
+#top.wb-widget-locator.bound.mouseover, #buttom.wb-widget-locator.bound.mouseover
+	{
+	height: 2px !important;
+}
+
+#right.wb-widget-locator.bound, #left.wb-widget-locator.bound {
+	width: 2px;
+}
+
+#right.wb-widget-locator.bound.mouseover, #left.wb-widget-locator.bound.mouseover
+	{
+	width: 2px !important;
+}
+
+/*
+ * Selection
+ */
+.wb-widget-locator.selection {
+	background: black;
+	color: white;
+	font-size: 10px;
+	z-index: 59;
+}
+
+#header.wb-widget-locator.selection {
+	padding: 0px 8px;
+	margin: 0px;
+}
+
+#top.wb-widget-locator.selection {
+	height: 2px;
+}
+
+#right.wb-widget-locator.selection {
+	width: 2px;
+}
+
+#buttom.wb-widget-locator.selection {
+	height: 2px;
+}
+
+#left.wb-widget-locator.selection {
+	width: 2px;
+}
+
+#size.wb-widget-locator.selection {
+	height: 10px;
+	width: 10px;
+	/*border-radius: 100%;*/
+	background: none;
+	cursor: se-resize;
+}

@@ -28,7 +28,7 @@
  * @description UI utilities management
  * 
  */
-angular.module('am-wb-core')
+angular.module('vwStudio')
 .factory('$WbProviderTimeout', function($timeout) {
 
     var promisses = [];

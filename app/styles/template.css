@@ -1,0 +1,11 @@
+
+.amh-core-themplate-card {
+	width: 350px;
+	height: 400px;
+}
+
+.amh-core-themplate-card-image { 
+	width: 334px;
+	height: 350px;
+	cursor: pointer;
+}

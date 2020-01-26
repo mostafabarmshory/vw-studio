@@ -23,7 +23,7 @@
  */
 
 
-angular.module('am-wb-core')
+angular.module('vwStudio')
 
 /**
  * Load widgets

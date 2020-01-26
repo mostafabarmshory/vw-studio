@@ -1,65 +1,54 @@
-/*
-Rules for sizing the icon.
-*/
-.md-18 {
-	font-size: 18px;
+.amh-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
-.md-24 {
-	font-size: 24px;
+.amh-content-fill {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
 }
 
-.md-36 {
-	font-size: 36px;
-}
 
-.md-48 {
-	font-size: 48px;
-}
 
-/*
-Rules for using icons as black on a light background.
-*/
-.md-dark {
-	color: rgba(0, 0, 0, 0.54);
-}
-
-.md-dark.md-inactive {
-	color: rgba(0, 0, 0, 0.26);
-}
-
-/*
-Rules for using icons as white on a dark background.
-*/
-.md-light {
-	color: rgba(255, 255, 255, 1);
-}
-
-.md-light.md-inactive {
-	color: rgba(255, 255, 255, 0.3);
-}
-
-.s24 {
-	width: 24px;
-	height: 24px;
-}
-
-.s36 {
-	width: 36px;
-	height: 36px;
-}
-
-.s48 {
-	width: 48px;
-	height: 48px;
-}
-
-.s64 {
-	width: 64px;
-	height: 64px;
-}
-
-.s128 {
-	width: 128px;
-	height: 128px;
-}
+.whiteframedemoDirectiveAttributeUsage {
+  /* For breakpoint `-xs` */
+  /* For breakpoint `-sm` */
+  /* For breakpoint `-md` */
+  /* For breakpoint `-gt-md` */ }
+  .whiteframedemoDirectiveAttributeUsage md-whiteframe, .whiteframedemoDirectiveAttributeUsage div.padded {
+    background: #fff;
+    margin: 30px;
+    height: 100px; }
+  @media (max-width: 599px) {
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe, .whiteframedemoDirectiveAttributeUsage div.padded {
+      margin: 7px;
+      height: 50px;
+      background-color: #c8e4fa; }
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe > span, .whiteframedemoDirectiveAttributeUsage div.padded > span {
+      font-size: 0.4em; } }
+  @media (min-width: 600px) and (max-width: 959px) {
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe, .whiteframedemoDirectiveAttributeUsage div.padded {
+      margin: 20px;
+      height: 75px; }
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe > span, .whiteframedemoDirectiveAttributeUsage div.padded > span {
+      font-size: 0.6em; } }
+  @media (min-width: 960px) and (max-width: 1279px) {
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe, .whiteframedemoDirectiveAttributeUsage div.padded {
+      margin: 20px;
+      height: 90px;
+      background-color: #fcddde; }
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe > span, .whiteframedemoDirectiveAttributeUsage div.padded > span {
+      font-size: 0.9em; } }
+  @media (min-width: 1280px) {
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe, .whiteframedemoDirectiveAttributeUsage div.padded {
+      margin: 25px;
+      height: 100px;
+      background-color: #F2FCE2; }
+    .whiteframedemoDirectiveAttributeUsage md-whiteframe > span, .whiteframedemoDirectiveAttributeUsage div.padded > span {
+      font-size: 1.0em; } }

@@ -1,0 +1,38 @@
+<md-dialog 
+    layout="column"
+    ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <wb-icon>file</wb-icon>
+            <h2 translate>Metadata</h2>
+            <span flex></span>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="answer(ctrl.data)">
+                <wb-icon aria-label="Done">done</wb-icon>
+            </md-button>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="cancel()">
+                <wb-icon aria-label="Close dialog">close</wb-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-content 
+            layout="column" 
+            layout-padding>
+            <span flex="10"></span>
+            <md-input-container 
+            	class="md-icon-float md-icon-right md-block"
+            	required>
+                <label translate>Key</label>
+                <input ng-model="ctrl.data.key" required="true">
+            </md-input-container>
+            <md-input-container>
+                <label translate>Value</label>
+                <input ng-model="ctrl.data.value">
+            </md-input-container>
+        </md-content>
+    </md-dialog-content>
+</md-dialog>

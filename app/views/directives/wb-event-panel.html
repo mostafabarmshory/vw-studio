@@ -1,0 +1,31 @@
+<table
+	class="mb-table"
+	style="font-size: 10px;">
+	<thead>
+		<tr
+			md-colors="{color: 'primary-700'}">
+			<td translate="">Name</td>
+			<td translate="">Code</td>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr
+			ng-click="ctrl.editEvent(event, $event)"
+			ng-repeat="event in events track by $index"
+			style="cursor: pointer;">
+			<td translate>{{event.title}}</td>
+			<td style="cursor: pointer;">{{event.code| limitTo:13 }} ...</td>
+			<td align="center" style="cursor: pointer;min-height: 22px;">
+				<md-button
+					style="min-height: 20px;height: 20px;margin: 0px;line-height: 20px;padding: 0px;"
+					ng-if="event.code"
+					ng-click="ctrl.deleteEvent(event, $event)"
+					class="md-icon-button"
+					aria-label="delete script">
+					<wb-icon size="16px">delete</wb-icon>
+				</md-button>
+			</td>
+		</tr>
+	</tbody>
+</table>

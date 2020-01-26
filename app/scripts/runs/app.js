@@ -21,7 +21,7 @@
  */
 
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 /**
  * دریچه‌های محاوره‌ای
  */
@@ -210,8 +210,8 @@ angular.module('ngMaterialHome')
 				ctrl.workbench = workbench;
 				if(ctrl.workbench){
 					ctrl.workbench.on('activeEditorChanged', activeEditorChanged);
+					activeEditorChanged();
 				}
-				activeEditorChanged();
 			}
 
 			function handleWorkbench(event){

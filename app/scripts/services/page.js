@@ -22,7 +22,7 @@
 //
 //
 //// TODO: hadi: move it to new module angular-material-home-seo
-//angular.module('ngMaterialHome')
+//angular.module('vwStudio')
 //
 ///**
 // * @ngdoc service

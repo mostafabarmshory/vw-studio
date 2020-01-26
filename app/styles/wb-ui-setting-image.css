@@ -1,0 +1,68 @@
+
+.wb-ui-setting-image {
+/*  */
+}
+
+.wb-ui-setting-image-container {
+	position: relative;
+}
+
+.wb-ui-setting-image-container .wb-ui-setting-image-input::-ms-clear {
+	display: none;
+}
+
+
+.wb-ui-setting-image-container .wb-ui-setting-image-preview {
+/* 	cursor: pointer;
+	border-radius: 50%;
+	border-width: 2px;
+	width: 32px;
+	height: 32px;
+	margin-right: 8px;
+	 */
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+  position: relative;
+  top: 22px;
+  overflow: hidden;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), -webkit-linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+.wb-ui-setting-image-container .wb-ui-setting-image-preview .wb-ui-setting-image-result {
+  position: absolute;
+  height: 100%;
+  opacity: 1;
+  background: #ff0000;
+}
+
+
+
+.wb-ui-setting-image-container .wb-ui-setting-image-clear {
+  position: absolute;
+  bottom: 42px;
+  right: -16px;
+  left: auto;
+}
+
+[dir=rtl] .wb-ui-setting-image-container .wb-ui-setting-image-clear {
+  right: auto;
+  left: -16px;
+}
+
+/* 
+.wb-ui-setting-image-preview>img {
+	border-size: 1px; 
+	border-style: solid;
+}
+
+.wb-ui-setting-image-preview[dir='rtl'] {
+	margin-left: 8px;
+} */

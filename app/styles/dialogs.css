@@ -1,0 +1,12 @@
+/*
+ * in fullscreen mode in dialog, this css class in large screen, 
+ * makes dialog width about 60% of screen.
+ */
+@media ( min-width : 959px) {
+	md-dialog.md-dialog-fullscreen {
+		min-height: 80%;
+		min-width: 60%;
+		border-radius: 0;
+	}
+}
+

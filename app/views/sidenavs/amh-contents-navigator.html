@@ -1,0 +1,30 @@
+<md-toolbar>
+
+</md-toolbar>
+<md-content
+	ng-if="workbenchEditorLoaded"
+	layout-padding>
+	<div 
+		ui-tree="treeOptions"
+		data-nodrop-enabled="false"
+		data-dropzone-enabled="false"
+		data-clone-enabled="false"
+		data-drag-enabled="false"
+		data-max-depth="0"
+		data-drag-delay="0"
+		data-empty-placeholder-enabled="true">
+		<ol 
+			ui-tree-nodes=""
+			data-nodrop-enabled
+			data-max-depth="0"
+			ng-model="ctrl.widgets" 
+			id="tree-root">
+			<li 
+				ui-tree-node
+				data-nodrag
+				data-expand-on-hover="false"
+				ng-repeat="widget in ctrl.widgets" 
+				ng-include="'views/templates/nodes_renderer.html'"></li>
+		</ol>
+	</div>
+</md-content>

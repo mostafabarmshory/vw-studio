@@ -1,0 +1,48 @@
+<md-dialog 
+    layout="column"
+    ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <wb-icon>file</wb-icon>
+            <h2 translate>Content</h2>
+            <span flex></span>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="answer(ctrl.data)">
+                <wb-icon aria-label="Done">done</wb-icon>
+            </md-button>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="cancel()">
+                <wb-icon aria-label="Close dialog">close</wb-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-content 
+            layout="column" 
+            layout-padding>
+            <span flex="10"></span>
+            <md-input-container 
+            	class="md-icon-float md-icon-right md-block"
+            	required>
+                <label translate>Name</label>
+                <input ng-model="ctrl.data.name" required="true">
+                <wb-icon ng-click="ctrl.generateRandomName()">autorenew</wb-icon>
+            </md-input-container>
+            <md-input-container>
+                <label translate>Title</label>
+                <input ng-model="ctrl.data.title">
+            </md-input-container>
+            <md-input-container>
+                <label translate>Description</label>
+                <textarea ng-model="ctrl.data.description"></textarea>
+            </md-input-container>
+			<md-checkbox
+				ng-model="ctrl.data.openPage"
+				aria-label="redirect to the new page">
+			    <span translate>Redirect to the page</span>
+			</md-checkbox>
+        </md-content>
+    </md-dialog-content>
+</md-dialog>

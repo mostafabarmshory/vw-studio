@@ -1,0 +1,64 @@
+.color-picker-hide-textbox{
+    direction: rtl;
+    margin: 0px;
+    padding: 0px;
+}
+
+.color-picker-hide-textbox md-input-container {
+    visibility: hidden;
+    width: 10px !important;
+    height: 32px;
+}
+
+field, field > field-description, field > input{
+	font: inherit;
+	font-size: inherit;
+	background: inherit;
+	color: inherit;
+}
+
+field {
+	max-width: 100%;
+}
+
+field-description {
+/* 	min-width: 100px; */
+/* 	width: auto; */
+	overflow: hidden;
+	width: 5em;
+}
+
+
+field .color input,
+field .length input,
+field .number input,
+field .select input,
+field .text input,
+field input
+{
+	border-radius: 0.5em;
+	border-width: 1px;
+}
+
+/**********************************************
+ * Color
+ **********************************************/
+field input {
+	border-radius: 0.5em 0 0 0.5em;
+}
+
+field .preview {
+	width: 2em;
+	border-radius: 0 0.5em 0.5em 0;
+	background: red;
+}
+
+/**********************************************
+ * length
+ **********************************************/
+ 
+ 
+ 
+/**********************************************
+ * text
+ **********************************************/

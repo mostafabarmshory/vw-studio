@@ -1,0 +1,23 @@
+<div
+	layout="column"
+	layout-gt-sm="row"
+	layout-align="space-around"
+	layout-wrap>
+	<div 
+		class="wb-widgets-module md-whiteframe-1dp"
+		ng-repeat="widget in widgets"
+		flex="none"
+		flex-gt-sm="30"
+		layout="column"
+		layout-align="start center"
+		layout-padding
+		wb-on-dragstart="putDragdata($event, widget)"
+		draggable="true">
+		<wb-icon 
+			size="32px"
+			wb-icon-name="{{widget.icon}}"></wb-icon>
+		<p flex class="wb-text-truncate" translate="">{{widget.title}}</p>
+           <md-tooltip 
+           	md-delay="1500">{{widget.description | translate}}</md-tooltip>
+	</div>
+</div>

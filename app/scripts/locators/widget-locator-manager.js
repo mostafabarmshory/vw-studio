@@ -23,7 +23,7 @@
  */
 
 angular
-.module('am-wb-core')
+.module('vwStudio')
 
 
 /**

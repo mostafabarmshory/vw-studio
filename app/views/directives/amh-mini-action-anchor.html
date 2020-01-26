@@ -1,0 +1,15 @@
+<div>
+	<md-button
+	    ng-repeat="item in ctrl.group.items | orderBy:['-priority']"
+		aria-label="{{::item.title}}"
+	    ng-if="item.visible()"
+	    ng-click="item.exec($event)"
+	    class="md-icon-button md-mini">
+	    <md-tooltip 
+	    	md-delay="1500">
+	    	<span translate>{{::item.title}}</span>
+	    </md-tooltip>
+	    <wb-icon size="{{mbSize || 16}}">{{::item.icon}}</wb-icon>
+	</md-button>
+	<md-divider ng-if="mbDivider && ctrl.group.items.length"></md-divider>
+</div>

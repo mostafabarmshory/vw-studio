@@ -21,7 +21,7 @@
  */
 
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 	/*
 	 * State machine of the system
 	 * 

@@ -1,0 +1,77 @@
+<md-toolbar
+	class="wb-layer-tool-top amh-mini-toolbar"
+	md-theme="{{app.setting.theme || app.config.theme || 'default'}}"
+	md-theme-watch
+	ng-show="_visible()"
+	layout="row">
+	<!-- location menu -->
+	<mb-mini-action-anchor
+		mb-action-group="mb.toolbar.menu"
+		layout="row">
+	</mb-mini-action-anchor>
+	<!-- User menu -->
+	<md-menu 
+		id="account"
+		md-offset="0 20">
+		<div
+			style="cursor: pointer;"
+			layout="row"
+			layout-align="center center"
+			ng-click="$mdOpenMenu()">
+			<img 
+				class="avatar"
+				ng-src="/api/v2/user/accounts/{{app.user.current.id}}/avatar"
+				ng-src-error="https://www.gravatar.com/avatar/{{app.user.current.id|wbmd5}}?d=identicon&size=22">
+			<small 
+				style="margin-left: 3px; margin-right: 3px;">
+				{{app.user.profile.first_name}} {{app.user.profile.last_name}}
+			</small>
+		</div>
+		<md-menu-content width="3">
+			<md-menu-item
+				ng-repeat="menu in userMenu.items | orderBy:['-priority']">
+				<md-button 
+					ng-if="menu.visible()"
+					ng-click="menu.exec($event)">
+					<wb-icon ng-if="menu.icon">{{::menu.icon}}</wb-icon>
+					<span translate>{{::menu.title}}</span>
+				</md-button>
+			</md-menu-item>
+			<md-menu-divider></md-menu-divider>
+			<md-menu-item>
+				<md-button
+					ng-click="ctrl.showLocalSettings()">
+					<span translate>Settings</span>
+				</md-button>
+			</md-menu-item>
+			<md-menu-item>
+				<md-button 
+					ng-click="ctrl.logout();">
+					<span translate>Logout</span>
+				</md-button>
+			</md-menu-item>
+		</md-menu-content>
+	</md-menu>
+	<md-button
+		aria-label="messages"
+		ng-show="ctrl.messageCount"
+		ng-click="ctrl.toggleMessageSidenav()" 
+		style="overflow: visible;"
+		class="md-icon-button md-mini">
+		<md-tooltip md-delay="1500">
+			<span translate>Display list of messages</span>
+		</md-tooltip>
+		<wb-icon size="16">notifications</wb-icon>{{ctrl.messageCount}}
+	</md-button>
+	<span flex></span>
+	<mb-mini-action-anchor
+		mb-action-group="amh.owner-toolbar.scope"
+		mb-divider="true"
+		layout="row">
+	</mb-mini-action-anchor>
+	<mb-mini-action-anchor
+		mb-action-group="amh.owner-toolbar.public"
+		mb-divider="true"
+		layout="row">
+	</mb-mini-action-anchor>
+</md-toolbar>

@@ -23,7 +23,7 @@
  */
 'use strict';
 
-angular.module('myDashboardApp')
+angular.module('vwStudio')
 /**
  * Icon configuration.
  */

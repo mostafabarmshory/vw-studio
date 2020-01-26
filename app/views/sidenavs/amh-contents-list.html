@@ -1,0 +1,104 @@
+<div 
+	layout="column"
+	flex>
+	<md-nav-bar
+		md-no-ink-bar="disableInkBar"
+		md-selected-nav-item="currentNavItem"
+		nav-bar-aria-label="navigation links">
+		<md-nav-item 
+			md-nav-click="goto('pages')" 
+			name="pages">
+			<span translate>Pages</span>
+		</md-nav-item>
+		<md-nav-item
+			md-nav-click="goto('mypages')" 
+			name="mypages">
+			<span translate>My Pages</span>
+		</md-nav-item>
+	</md-nav-bar>
+	<div
+		ng-show="pageId === 'pages'"
+		ng-controller="AmhContentPagesCtrl as ctrl"
+		ng-init="ctrl.setDataQuery('{id, title, name, description, status, author{id, login}, metas{key, value}}')"
+		layout="column">
+		<mb-pagination-bar
+			mb-model="ctrl.queryParameter"
+			mb-properties="ctrl.properties"
+			mb-reload="ctrl.reload()"
+			mb-more-actions="ctrl.getActions()">
+		</mb-pagination-bar>
+		<md-content 
+			mb-infinate-scroll="ctrl.loadNextPage()"
+			mb-preloading="ctrl.state !== 'ideal'"
+			flex>
+			<md-list flex>
+				<md-list-item 
+					itemscope
+					8itemtype="http://schema.org/WebPage"
+					class="md-2-line" 
+					ng-repeat="page in ctrl.items" 
+					ng-href="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
+					<meta itemprop="url" content="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
+					<img 
+						itemprop="image"
+						ng-src="{{page.metasMap.link_cover || 'resources/images/am-wb-common-broken-photo.svg'}}" 
+						ng-src-error="resources/images/am-wb-common-broken-photo.svg"
+						class="md-avatar" 
+						alt="{{page.title}}"/>
+					<div 
+						class="md-list-item-text" 
+						layout="column">
+						<h3 itemprop="name">{{page.title}}</h3>
+						<meta itemprop="description" content="{{page.description}}">
+						<p
+							itemscope
+							itemtype="http://schema.org/Person"
+							itemprop="author">
+							<span translate>Author</span> : 
+							<span itemprop="name">{{page.author.login}}</span>
+						</p>
+					</div>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+	<div
+		ng-show="pageId === 'mypages'"
+		ng-controller="AmhContentMyPagesCtrl as ctrl"
+		ng-init="ctrl.setDataQuery('{id, name, title, description, status, metas{key, value}}')"
+		layout="column">
+		<mb-pagination-bar
+			mb-model="ctrl.queryParameter"
+			mb-properties="ctrl.properties"
+			mb-reload="ctrl.reload()"
+			mb-more-actions="ctrl.getActions()">
+		</mb-pagination-bar>
+		<md-content 
+			mb-infinate-scroll="ctrl.loadNextPage()"
+			mb-preloading="ctrl.state !== 'ideal'"
+			flex>
+			<md-list flex>
+				<md-list-item 
+					itemscope
+					itemtype="http://schema.org/WebPage"
+					class="md-2-line" 
+					ng-repeat="page in ctrl.items" 
+					ng-href="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
+					<meta itemprop="url" content="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
+					<img 
+						itemprop="image"
+						ng-src="{{page.metasMap.link_cover || 'resources/images/am-wb-common-broken-photo.svg'}}" 
+						ng-src-error="resources/images/am-wb-common-broken-photo.svg"
+						class="md-avatar" 
+						alt="{{page.title}}"/>
+					<div 
+						class="md-list-item-text" 
+						layout="column">
+						<h3 itemprop="name">{{page.title}}</h3>
+						<meta itemprop="description" content="{{page.description}}">
+					</div>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+</div>

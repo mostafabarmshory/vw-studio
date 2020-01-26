@@ -1,0 +1,12 @@
+
+/*
+ * Hidde overflow on content
+ */
+.jsPanel-content {
+	overflow: hidden;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    
+    display: flex;
+    flex-direction: row;
+}

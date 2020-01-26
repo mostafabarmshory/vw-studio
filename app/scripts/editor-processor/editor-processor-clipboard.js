@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 /**
  * 
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/copy_event

@@ -1,0 +1,364 @@
+<fieldset
+	layout="column">
+	<legend translate>Layout</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.display"
+		ng-change="ctrl.setStyle('display', ctrl.stylesValue.display)"
+		wb-title="display"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.order"
+		ng-change="ctrl.setStyle('order', ctrl.stylesValue.order)"
+		wb-title="order"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.zIndex"
+		ng-change="ctrl.setStyle('zIndex', ctrl.stylesValue.zIndex)"
+		wb-title="zIndex"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.clear"
+		ng-change="ctrl.setStyle('clear', ctrl.stylesValue.clear)"
+		wb-title="clear"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.float"
+		ng-change="ctrl.setStyle('float', ctrl.stylesValue.float)"
+		wb-title="float"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+
+<fieldset
+	layout="column">
+	<legend translate>Position</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.position"
+		ng-change="ctrl.setStyle('position', ctrl.stylesValue.position)"
+		wb-title="position"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.bottom"
+		ng-change="ctrl.setStyle('bottom', ctrl.stylesValue.bottom)"
+		wb-title="bottom"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.left"
+		ng-change="ctrl.setStyle('left', ctrl.stylesValue.left)"
+		wb-title="left"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.right"
+		ng-change="ctrl.setStyle('right', ctrl.stylesValue.right)"
+		wb-title="right"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.top"
+		ng-change="ctrl.setStyle('top', ctrl.stylesValue.top)"
+		wb-title="top"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+
+<fieldset
+	layout="column">
+	<legend translate>overflow</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.overflow"
+		ng-change="ctrl.setStyle('overflow', ctrl.stylesValue.overflow)"
+		wb-title="overflow"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.overflowX"
+		ng-change="ctrl.setStyle('overflowX', ctrl.stylesValue.overflowX)"
+		wb-title="overflowX"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.overflowY"
+		ng-change="ctrl.setStyle('overflowY', ctrl.stylesValue.overflowY)"
+		wb-title="overflowY"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.scrollBehavior"
+		ng-change="ctrl.setStyle('scrollBehavior', ctrl.stylesValue.scrollBehavior)"
+		wb-title="scrollBehavior"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Print</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.pageBreakAfter"
+		ng-change="ctrl.setStyle('pageBreakAfter', ctrl.stylesValue.pageBreakAfter)"
+		wb-title="pageBreakAfter"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.pageBreakBefore"
+		ng-change="ctrl.setStyle('pageBreakBefore', ctrl.stylesValue.pageBreakBefore)"
+		wb-title="pageBreakBefore"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.pageBreakInside"
+		ng-change="ctrl.setStyle('pageBreakInside', ctrl.stylesValue.pageBreakInside)"
+		wb-title="pageBreakInside"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Flex</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.alignContent"
+		ng-change="ctrl.setStyle('alignContent', ctrl.stylesValue.alignContent)"
+		wb-title="alignContent"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.alignItems"
+		ng-change="ctrl.setStyle('alignItems', ctrl.stylesValue.alignItems)"
+		wb-title="alignItems"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.alignSelf"
+		ng-change="ctrl.setStyle('alignSelf', ctrl.stylesValue.alignSelf)"
+		wb-title="alignSelf"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.justifyContent"
+		ng-change="ctrl.setStyle('justifyContent', ctrl.stylesValue.justifyContent)"
+		wb-title="justifyContent"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.flex"
+		ng-change="ctrl.setStyle('flex', ctrl.stylesValue.flex)"
+		wb-title="flex"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.flexBasis"
+		ng-change="ctrl.setStyle('flexBasis', ctrl.stylesValue.flexBasis)"
+		wb-title="flexBasis"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.flexDirection"
+		ng-change="ctrl.setStyle('flexDirection', ctrl.stylesValue.flexDirection)"
+		wb-title="flexDirection"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.flexGrow"
+		ng-change="ctrl.setStyle('flexGrow', ctrl.stylesValue.flexGrow)"
+		wb-title="flexGrow"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.flexShrink"
+		ng-change="ctrl.setStyle('flexShrink', ctrl.stylesValue.flexShrink)"
+		wb-title="flexShrink"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.flexWrap"
+		ng-change="ctrl.setStyle('flexWrap', ctrl.stylesValue.flexWrap)"
+		wb-title="flexWrap"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Grid</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.grid"
+		ng-change="ctrl.setStyle('grid', ctrl.stylesValue.grid)"
+		wb-title="grid"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridArea"
+		ng-change="ctrl.setStyle('gridArea', ctrl.stylesValue.gridArea)"
+		wb-title="gridArea"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridAutoColumns"
+		ng-change="ctrl.setStyle('gridAutoColumns', ctrl.stylesValue.gridAutoColumns)"
+		wb-title="gridAutoColumns"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridAutoFlow"
+		ng-change="ctrl.setStyle('gridAutoFlow', ctrl.stylesValue.gridAutoFlow)"
+		wb-title="gridAutoFlow"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridAutoRows"
+		ng-change="ctrl.setStyle('gridAutoRows', ctrl.stylesValue.gridAutoRows)"
+		wb-title="gridAutoRows"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridColumn"
+		ng-change="ctrl.setStyle('gridColumn', ctrl.stylesValue.gridColumn)"
+		wb-title="gridColumn"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridColumnEnd"
+		ng-change="ctrl.setStyle('gridColumnEnd', ctrl.stylesValue.gridColumnEnd)"
+		wb-title="gridColumnEnd"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridColumnGap"
+		ng-change="ctrl.setStyle('gridColumnGap', ctrl.stylesValue.gridColumnGap)"
+		wb-title="gridColumnGap"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridColumnStart"
+		ng-change="ctrl.setStyle('gridColumnStart', ctrl.stylesValue.gridColumnStart)"
+		wb-title="gridColumnStart"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridGap"
+		ng-change="ctrl.setStyle('gridGap', ctrl.stylesValue.gridGap)"
+		wb-title="gridGap"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridRow"
+		ng-change="ctrl.setStyle('gridRow', ctrl.stylesValue.gridRow)"
+		wb-title="gridRow"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridRowEnd"
+		ng-change="ctrl.setStyle('gridRowEnd', ctrl.stylesValue.gridRowEnd)"
+		wb-title="gridRowEnd"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridRowGap"
+		ng-change="ctrl.setStyle('gridRowGap', ctrl.stylesValue.gridRowGap)"
+		wb-title="gridRowGap"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridRowStart"
+		ng-change="ctrl.setStyle('gridRowStart', ctrl.stylesValue.gridRowStart)"
+		wb-title="gridRowStart"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridTemplate"
+		ng-change="ctrl.setStyle('gridTemplate', ctrl.stylesValue.gridTemplate)"
+		wb-title="gridTemplate"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridTemplateAreas"
+		ng-change="ctrl.setStyle('gridTemplateAreas', ctrl.stylesValue.gridTemplateAreas)"
+		wb-title="gridTemplateAreas"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridTemplateColumns"
+		ng-change="ctrl.setStyle('gridTemplateColumns', ctrl.stylesValue.gridTemplateColumns)"
+		wb-title="gridTemplateColumns"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.gridTemplateRows"
+		ng-change="ctrl.setStyle('gridTemplateRows', ctrl.stylesValue.gridTemplateRows)"
+		wb-title="gridTemplateRows"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Column</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columns"
+		ng-change="ctrl.setStyle('columns', ctrl.stylesValue.columns)"
+		wb-title="columns"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnWidth"
+		ng-change="ctrl.setStyle('columnWidth', ctrl.stylesValue.columnWidth)"
+		wb-title="columnWidth"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnCount"
+		ng-change="ctrl.setStyle('columnCount', ctrl.stylesValue.columnCount)"
+		wb-title="columnCount"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnSpan"
+		ng-change="ctrl.setStyle('columnSpan', ctrl.stylesValue.columnSpan)"
+		wb-title="columnSpan"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnFill"
+		ng-change="ctrl.setStyle('columnFill', ctrl.stylesValue.columnFill)"
+		wb-title="columnFill"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnGap"
+		ng-change="ctrl.setStyle('columnGap', ctrl.stylesValue.columnGap)"
+		wb-title="columnGap"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnRule"
+		ng-change="ctrl.setStyle('columnRule', ctrl.stylesValue.columnRule)"
+		wb-title="columnRule"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-color
+		ng-model="ctrl.stylesValue.columnRuleColor"
+		ng-change="ctrl.setStyle('columnRuleColor', ctrl.stylesValue.columnRuleColor)"
+		wb-title="columnRuleColor"
+		wb-description="">
+	</wb-ui-setting-color>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnRuleStyle"
+		ng-change="ctrl.setStyle('columnRuleStyle', ctrl.stylesValue.columnRuleStyle)"
+		wb-title="columnRuleStyle"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.columnRuleWidth"
+		ng-change="ctrl.setStyle('columnRuleWidth', ctrl.stylesValue.columnRuleWidth)"
+		wb-title="columnRuleWidth"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+
+
+
+ 

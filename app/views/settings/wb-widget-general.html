@@ -1,0 +1,145 @@
+<fieldset
+	layout="column">
+	<legend translate>Access</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.id"
+		ng-change="ctrl.setAttribute('id', ctrl.attributesValue.id)"
+		wb-title="ID"
+		wb-description="Specifies a unique id for an element"
+		wb-action-clean
+		wb-action-more="ctrl.generateRandomId()">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.accesskey"
+		ng-change="ctrl.setAttribute('accesskey', ctrl.attributesValue.accesskey)"
+		wb-title="Accesskey"
+		wb-icon=""
+		wb-description="Specifies a shortcut key to activate/focus an element"
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.title"
+		ng-change="ctrl.setAttribute('title', ctrl.attributesValue.title)"
+		wb-title="Title"
+		wb-description="Specifies extra information about an element"
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.name"
+		ng-change="ctrl.setAttribute('name', ctrl.attributesValue.name)"
+		wb-title="Name"
+		wb-description="Specifies a unique id for an element"
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-number
+		ng-model="ctrl.attributesValue.tabindex"
+		ng-change="ctrl.setAttribute('tabindex', ctrl.attributesValue.tabindex)"
+		wb-title="Tab Index"
+		wb-description="Specifies the tabbing order of an element"
+		wb-action-clean
+		wb-min="1">
+	</wb-ui-setting-number>
+</fieldset>
+
+<fieldset
+	layout="column">
+	<legend translate>Edit</legend>
+	<wb-ui-setting-boolean
+		ng-model="ctrl.attributesValue.contenteditable"
+		ng-change="ctrl.setAttribute('contenteditable', ctrl.attributesValue.contenteditable)"
+		wb-title="Content Is Editable"
+		wb-description="Specifies whether the content of an element is editable or not"
+		wb-action-clean>
+	</wb-ui-setting-boolean>
+	<wb-ui-setting-boolean
+		ng-model="ctrl.attributesValue.draggable"
+		ng-change="ctrl.setAttribute('draggable', ctrl.attributesValue.draggable)"
+		wb-title="Content Is Editable"
+		wb-description="Specifies whether an element is draggable or not"
+		wb-action-clean>
+	</wb-ui-setting-boolean>
+	<wb-ui-setting-select
+		ng-model="ctrl.attributesValue.dropzone"
+		ng-change="ctrl.setAttribute('dropzone', ctrl.attributesValue.dropzone)"
+		wb-title="Drop Zone"
+		wb-description="Specifies whether the dragged data is copied, moved, or linked, when dropped"
+		wb-action-clean
+		wb-items="[{
+			value: 'copy',
+			title: 'Copy',
+			icon: 'copy'
+		}, {
+			value: 'move',
+			title: 'Move',
+			icon: 'move'
+		}, {
+			value: 'link',
+			title: 'Link',
+			icon: 'link'
+		}]">
+	</wb-ui-setting-select>
+</fieldset>
+
+<fieldset
+	layout="column">
+	<legend translate>Local</legend>
+	<wb-ui-setting-select
+		ng-model="ctrl.attributesValue.dir"
+		ng-change="ctrl.setAttribute('dropzone', ctrl.attributesValue.dropzone)"
+		wb-title="Text Direction"
+		wb-description="Specifies the text direction for the content in an element"
+		wb-action-clean
+		wb-items="[{
+			value: 'ltr',
+			title: 'Default. Left-to-right text direction',
+			icon: 'ltr'
+		}, {
+			value: 'rtl',
+			title: 'Right-to-left text direction',
+			icon: 'rtl'
+		}, {
+			value: 'auto',
+			title: 'Let the browser figure out the text direction, based on the content',
+		}]">
+	</wb-ui-setting-select>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.lang"
+		ng-change="ctrl.setAttribute('lang', ctrl.attributesValue.lang)"
+		wb-title="Language"
+		wb-description="Specifies the language of the element's content"
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-boolean
+		ng-model="ctrl.attributesValue.spellcheck"
+		ng-change="ctrl.setAttribute('spellcheck', ctrl.attributesValue.spellcheck)"
+		wb-title="Spellcheck"
+		wb-description="Specifies whether the element is to have its spelling and grammar checked or not"
+		wb-action-clean>
+	</wb-ui-setting-boolean>
+	<wb-ui-setting-boolean
+		ng-model="ctrl.attributesValue.translate"
+		ng-change="ctrl.setAttribute('translate', ctrl.attributesValue.translate)"
+		wb-title="Translate"
+		wb-description="Specifies whether the content of an element should be translated or not"
+		wb-action-clean>
+	</wb-ui-setting-boolean>
+</fieldset>
+
+<fieldset
+	layout="column">
+	<legend translate>View</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.class"
+		ng-change="ctrl.setAttribute('class', ctrl.attributesValue.class)"
+		wb-title="Class"
+		wb-description="Specifies one or more classnames for an element (refers to a class in a style sheet)"
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-boolean
+		ng-model="ctrl.attributesValue.hidden"
+		ng-change="ctrl.setAttribute('hidden', ctrl.attributesValue.hidden)"
+		wb-title="Hidden"
+		wb-description="Specifies that an element is not yet, or is no longer, relevant"
+		wb-action-clean>
+	</wb-ui-setting-boolean>
+</fieldset>

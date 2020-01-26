@@ -1,0 +1,38 @@
+<md-dialog 
+    layout="column"
+    ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <wb-icon>file</wb-icon>
+            <h2 translate>Content</h2>
+            <span flex></span>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="answer(config.options)">
+                <wb-icon aria-label="Done">done</wb-icon>
+            </md-button>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="cancel()">
+                <wb-icon aria-label="Close dialog">close</wb-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content 
+        layout="column" 
+        layout-padding
+        flex>
+        <span flex="10"></span>
+        <md-input-container>
+            <label translate>File name</label>
+            <input 
+            	ng-model="config.options.fileName"
+            	aria-label="File name">
+        </md-input-container>
+		<md-checkbox 
+			aria-label="Disabled checkbox" 
+			ng-model="config.options.embeddedImage">
+			<span translate>Embedded image</span>
+		</md-checkbox>
+    </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,110 @@
+<md-toolbar
+	id="amh-widget-path"
+	class="md-primary md-hue-2 wb-layer-tool-bottom"
+	layout="row"
+	layout-align="start center">
+	<div 
+		layout="row"
+		ng-repeat="widget in widgets">
+		<!-- widget -->
+		<md-menu 
+			mb-context-menu>
+			<md-button 
+				aria-label="{{widget.getType()}}"
+				class="path-segment"
+				ng-class="{'path-segment-active' : $index >= prefixIndex}" 
+				ng-mouseover="widget.setUnderCursor(widget)"
+				ng-click="widget.setSelected(true)">
+				{{widget.getTitle() || widget.getId() || widget.getType()}}
+			</md-button>
+			<md-menu-content
+				width="4">
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.setSelected(true)">
+						<span translate>Select</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button 
+						ng-click="ctrl.selectChildren(widget, $event)">
+						<span translate>Select Children</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.clone()">
+						<span translate>Clone</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.delete()">
+						<span translate>Delete</span>
+					</md-button>
+				</md-menu-item>
+				<md-divider></md-divider>
+				<!--arrow keys-->
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.moveFirst()">
+						<span translate>Move first</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.moveBefore()">
+						<span translate>Move before</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.moveNext()">
+						<span translate>Move next</span>
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button 
+						ng-click="widget.moveLast()">
+						<span translate>Move last</span>
+					</md-button>
+				</md-menu-item>
+				<md-divider></md-divider>
+				<md-menu-item>
+					<md-button 
+						ng-click="ctrl.openHelp(widget)">
+						<span translate>Widget help</span>
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+	
+		<!-- 	child -->
+		<md-menu>
+			<md-button
+				aria-label="childs"
+				class="path-segment"
+				ng-click="$mdMenu.open($event)"
+				aria-label="Open phone interactions menu">
+				&gt;
+			</md-button>
+			<md-menu-content>
+				<md-menu-item
+					ng-repeat="child in widget.getChildren()">
+					<md-button 
+						ng-click="child.setSelected(true)">
+						{{child.getTitle() || child.getId() || child.getType()}}
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+	</div>
+	<span flex></span>
+	<mb-mini-action-anchor
+		class="path-segment"
+		mb-action-group="amh.workbench.footer"
+		mb-divider="false"
+		layout="row">
+	</mb-mini-action-anchor>
+</md-toolbar>
+

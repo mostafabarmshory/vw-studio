@@ -1,0 +1,40 @@
+<div
+    layout="row"
+    layout-align="center start"
+    layout-wrap
+    layout-padding
+    mb-preloading="loadingTemplatePreview || savingContent">
+    <md-card
+        ng-repeat="template in templates track by template.name"
+        flex-xs flex-gt-xs="none" 
+        layout="column"
+        class="amh-core-themplate-card">
+        <!-- Thumbnail -->
+        <img 
+            ng-click="ctrl.showPreviewOf(template)"
+            ng-src="{{template.thumbnail}}" 
+            class="amh-core-themplate-card-image" 
+            alt="{{template.name}}"> 
+        <!-- Descriptions -->
+        <md-card-content
+            ng-show="false">
+            <p>{{template.description}}</p>
+        </md-card-content>
+
+        <!-- Actions -->
+        <md-card-actions 
+            layout="row" 
+            layout-align="end center">
+            <md-button 
+                ng-click="ctrl.showPreviewOf(template)"
+                aria-label="Show preview">
+                <span translate="">Preview</span>
+            </md-button>
+            <md-button 
+                ng-click="ctrl.setTemplate(template)"
+                aria-label="Apply the template">
+                <span translate="">Apply</span>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>

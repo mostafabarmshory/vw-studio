@@ -1,0 +1,23 @@
+<div 
+    id="am-wb-widget-setting">
+    <md-tabs
+        md-dynamic-height
+        md-border-bottom>
+        <md-tab 
+            ng-repeat="setting in settings| orderBy:priority track by setting.type"
+            ng-disabled="!setting.visible"
+            id="{{setting.key}}">
+            <md-tab-label>
+                <span ng-if="!setting.icon" translate="">{{setting.label}}</span>
+                <wb-icon ng-if="setting.icon">{{setting.icon}}</wb-icon>
+            </md-tab-label>
+            <md-tab-body
+                layout-margin>
+                <wb-setting-page
+                    ng-model="wbModel"
+                    wb-type="{{setting.type}}">
+                </wb-setting-page>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

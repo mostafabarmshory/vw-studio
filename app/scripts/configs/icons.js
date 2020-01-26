@@ -29,7 +29,7 @@
  * @description Defines icons to use every where.
  *
  */
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .config(function(wbIconServiceProvider) {
 	wbIconServiceProvider
 	// widget move icon

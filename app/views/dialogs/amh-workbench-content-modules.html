@@ -1,0 +1,48 @@
+<form
+	ng-cloak
+	ng-controller="AmhContentWorkbenchModuleCtrl as ctrl">
+	<md-toolbar 
+		class="content-sidenavs-toolbar wb-layer-tool-bottom"
+		layout="row"
+		layout-align="space-around center"> 
+		<span translate flex>Modules</span>
+		<md-button
+			class="md-icon-button"
+			ng-click="ctrl.addModule($event)">
+			<wb-icon>add</wb-icon>
+		</md-button>
+		<md-button 
+			class="md-icon-button" 
+			ng-click="cancel()">
+			<wb-icon aria-label="Close dialog">close</wb-icon>
+		</md-button>
+	</md-toolbar>
+	<md-dialog-content 
+		layout="row" 
+		flex>
+		<md-content
+			flex>
+			<md-list
+				style="width: 100%;">
+				<md-list-item 
+					class="md-3-line" 
+					ng-repeat="item in ctrl.modules" 
+					ng-click="ctrl.editModule(item, event)">
+					<wb-icon ng-if="item.type == 'css'">style</wb-icon>
+					<wb-icon ng-if="item.type == 'js'">tune</wb-icon>
+					<div 
+						class="md-list-item-text" 
+						layout="column">
+						<h3>{{ item.title }}</h3>
+						<h4>{{ item.url }}</h4>
+						<p> Load: {{ item.load }}</p>
+					</div>
+					<wb-icon
+						class="md-secondary md-icon-button" 
+						ng-click="ctrl.deleteModule(item, $event)"
+						id="action-delete">delete</wb-icon>
+				</md-list-item>
+			 </md-list>
+		</md-content>
+	</md-dialog-content>
+</form >

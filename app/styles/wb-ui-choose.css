@@ -1,0 +1,38 @@
+/**
+ * css for customizing angular-material-tabs as choose button for wb-ui-choose directive
+ *
+ * Created by mgh on 2/24/17.
+ */
+
+.wb-tab-as-choose-button .md-tab {
+    float: right;
+}
+
+.wb-tab-as-choose-button md-pagination-wrapper {
+    /*left: 0px;*/
+    /*right: 0px;*/
+    height: auto;
+}
+
+.wb-tab-as-choose-button md-tab-item{
+    padding: 6px;
+    margin-left: 4px;
+    margin-bottom: 1px;
+}
+
+.wb-tab-as-choose-button wb-icon {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.wb-tab-as-choose-button md-next-button{
+    display: none;
+}
+
+.wb-tab-as-choose-button md-prev-button{
+    display: none;
+}
+
+.wb-tab-as-choose-button md-tabs-canvas{
+    margin: 0px;
+}

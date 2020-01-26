@@ -1,0 +1,23 @@
+<div 
+	layout="column"
+	layout-padding>
+	
+	<md-input-container>
+		<label translate>Category</label>
+		<md-select 
+			ng-model="selectedCategory"
+			ng-change="ctrl.loadWidgets(selectedCategory)">
+			<md-option 
+				ng-repeat="category in ::categories"
+				ng-value="category">{{::category.title}}</md-option>
+		</md-select>
+	</md-input-container>
+	
+	
+	<md-content flex>
+		<wb-group
+		    wb-editable="selectedCategory"
+		    ng-model="widgets">
+		</wb-group>
+	</md-content>
+</div>

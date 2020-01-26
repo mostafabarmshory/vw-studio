@@ -1,0 +1,117 @@
+<!-- صفحه ثبت نام کاربر -->
+<md-content 
+	layout="column" 
+	layout-align="none"
+	layout-align-gt-sm="none center" 
+	flex>
+	<div md-whiteframe="3"
+		flex="none"
+		layout="column">
+		<!-- Toolbar -->
+		<md-toolbar 
+			layout-padding
+			layout="column"
+			layout-align="space-around center">
+			<img 
+				ng-src="{{app.config.brand.logo}}"
+				height="80px"
+				width="auto" />
+			<div>
+				<h3 style="font-weight:normal;">{{app.config.brand.title}}</h3>
+			</div>
+		</md-toolbar>
+		<!-- body -->
+		<form ng-show="app.user.anonymous" 
+			name="form"
+			ng-submit="signup(registerData)"
+			layout="column"
+			ayout-padding>
+			<div layout-padding> 
+				<h3 translate>sign up</h3>
+			</div>
+			<div layout="row" layout-padding>
+				<md-input-container layout-fill>
+					<label translate>username</label>
+					<input name="login" ng-model="registerData.login" type="text" required/>
+					<div ng-messages="form.login.$error">
+		              <div ng-message="required" translate>This is required.</div>
+		            </div>
+				</md-input-container>
+			</div>
+			
+			<div layout="row" layout-padding>
+				<md-input-container layout-fill>
+					<label translate>email</label>
+					<input name="email" ng-model="registerData.email" type="email" required/>
+					<div ng-messages="form.email.$error">
+		              	<div ng-message="required" translate>This is required.</div>
+		              	<div ng-message="email" translate>email is not valid</div>
+		            </div>
+				 </md-input-container>
+			</div>
+	
+			<div layout="row" layout-padding>
+				<md-input-container layout-fill>
+					<label translate>password</label>
+					<input name="password" ng-model="registerData.password" type="password" required/>
+					<div ng-messages="form.password.$error">
+		              <div ng-message="required" translate>This is required.</div>
+		            </div>
+			     </md-input-container>
+			</div>
+			<div layout="row" layout-padding>
+	        	<span md-colors="{color:'default-warn'}">{{signupMessage}}</span>
+	        </div>
+			<div layout="column" layout-align="none"
+	        	layout-gt-xs="row" layout-align-gt-xs="center center"
+	        	layout-padding>
+	        	<a 
+	        		href="users/login"
+	        		style="text-decoration: none;"  
+	        		ui-sref="forget" 
+	        		flex-order="1" 
+	        		flex-order-gt-xs="-1">{{'have you already account?' | translate}}</a>
+				<md-button 
+					flex-order="0" 
+					flex-order-gt-xs="0" 
+					class="md-raised" 
+					ng-href="users/login">{{'login' | translate}}</md-button>
+				<md-button 
+					ng-disabled="form.$invalid"
+					flex-order="-1" 
+					flex-order-gt-xs="1" 
+					type="submit" 
+					ng-click="signup(registerData)"
+					class="md-raised md-primary">{{ 'sign up' | translate }}</md-button>
+			</div>
+		</form>
+		<div layout-padding ng-show="!app.user.anonymous" 
+        	layout="column" layout-align="none center">
+        	<img
+		    	width="150px" height="150px" ng-show="!uploadAvatar"
+		    	ng-src="{{app.user.current.avatar}}" />
+		    <h3>{{app.user.current.login}}</h3>
+        	<p translate>you are signed in. go to one of the following options.</p>
+        </div>
+		<div ng-show="!app.user.anonymous" 
+        	layout="column" layout-align="none"
+        	layout-gt-xs="row" layout-align-gt-xs="center center"
+        	layout-padding>
+        	<md-button 
+        		ng-href=""
+        		flex-order="-1" 
+        		flex-order-gt-xs="1" 
+        		class="md-raised"><wb-icon>home</wb-icon> {{'main page' | translate}}</md-button>
+        	<md-button 
+        		ng-click="back()"
+        		flex-order="0" 
+        		flex-order-gt-xs="0" 
+        		class="md-raised"><wb-icon>settings_backup_restore</wb-icon> {{'back page' | translate}}</md-button>
+        	<md-button 
+        		ng-href="users/account"
+        		flex-order="1" 
+        		flex-order-gt-xs="-1" 
+        		class="md-raised"><wb-icon>account_circle</wb-icon> {{'user account' | translate}}</md-button>
+        </div>
+	</div>
+</md-content>

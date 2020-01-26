@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 
 /**
  * @ngdoc Controllers

@@ -1,0 +1,101 @@
+/*******************************************************************************
+ * Layer: Content
+ * Range: [0,40)
+ ******************************************************************************/
+/*
+ * Last layer of the content
+ */
+.wb-layer-content-bottom {
+	z-index: 0 !important;
+}
+
+/*
+ * Last layer of the content
+ */
+.wb-layer-content-top {
+	z-index: 39 !important;
+}
+/*******************************************************************************
+ * Layer: Editor
+ * Range: [40,50)
+ ******************************************************************************/
+/*
+ * First layer of the editor
+ */
+.wb-layer-editor-locator, .wb-layer-editor-bottom{
+	z-index: 40 !important;
+}
+
+.wb-layer-editor-selector{
+	z-index: 41 !important;
+}
+
+/*
+ * Last layer of the content
+ */
+.wb-layer-editor-top{
+	z-index: 49 !important;
+}
+
+
+ 
+/*******************************************************************************
+ * Layer: Menu
+ * Range: [50,60)
+ ******************************************************************************/
+.wb-layer-menu-bottom{
+	z-index: 50 !important;
+}
+
+/*
+ * Last layer of the content
+ */
+.wb-layer-menu-top{
+	z-index: 59 !important;
+}
+/*******************************************************************************
+ * Layer: Tool
+ * Range: [60,69)
+ ******************************************************************************/
+.wb-layer-tool-bottom{
+	z-index: 60 !important;
+}
+
+/*
+ * Last layer of the content
+ */
+.wb-layer-tool-top{
+	z-index: 69 !important;
+}
+/*******************************************************************************
+ * Layer: sidenav
+ * Range: [70,79)
+ ******************************************************************************/
+.wb-layer-sidenav-bottom {
+	z-index: 70 !important;
+}
+
+/*
+ * Last layer of the content
+ */
+.wb-layer-sidenav-top {
+	z-index: 79 !important;
+}
+/*******************************************************************************
+ * Layer: Dialog
+ * Range: [80,90)
+ ******************************************************************************/
+ .wb-layer-dialog-bottom {
+	z-index: 80 !important;
+}
+
+/*
+ * Last layer of the content
+ */
+.wb-layer-dialog-top {
+	z-index: 89 !important;
+}
+
+.md-dialog-container {
+	z-index: 89 !important;
+}

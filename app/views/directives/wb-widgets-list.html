@@ -1,0 +1,19 @@
+ <md-list 
+	flex>
+	<md-list-item 
+		class="md-2-line" 
+		ng-repeat="widget in widgets"
+		wb-on-dragstart="putDragdata($event, widget)"
+		draggable="true">
+		<wb-icon>{{widget.icon}}</wb-icon>
+		<div class="md-list-item-text" layout="column">
+			<h3 translate>{{widget.title}}</h3>
+			<p translate>{{widget.description}}</p>
+		</div>
+		<wb-icon 
+			ng-if="openHelp"
+			class="md-secondary" 
+			ng-click="openHelp(widget, $event)" 
+			aria-label="Show help">help</wb-icon>
+	</md-list-item>
+</md-list>

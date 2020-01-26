@@ -1,0 +1,22 @@
+
+.amh-content-new-type-item {
+	width: 256px;
+	height: 256px;
+/* 	border-radius: 8px; */
+/* 	border-color: #555753; */
+/* 	border-style: solid; */
+/* 	border-width: 1px; */
+/* 	background: #d3d7cf; */
+/* 	margin: 8px; */
+/* 	cursor: pointer; */
+}
+
+.amh-content-new-type-item.selected h3{
+	text-decoration: underline;
+}
+
+.amh-content-new-type-item>img{
+	width: 150px;
+	height: 150px;
+}
+

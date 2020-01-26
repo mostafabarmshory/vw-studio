@@ -1,0 +1,35 @@
+<fieldset
+	layout="column">
+	<legend translate>Source</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.src"
+		ng-change="ctrl.setAttribute('src', ctrl.attributesValue.src)"
+		wb-title="src"
+		wb-description="Path of the image"
+		wb-resource-type="image-url">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.srcset"
+		ng-change="ctrl.setAttribute('srcset', ctrl.attributesValue.srcset)"
+		wb-title="srcset"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.media"
+		ng-change="ctrl.setAttribute('media', ctrl.attributesValue.media)"
+		wb-title="media"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.sizes"
+		ng-change="ctrl.setAttribute('sizes', ctrl.attributesValue.sizes)"
+		wb-title="sizes"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.sourceType"
+		ng-change="ctrl.setAttribute('sourceType', ctrl.attributesValue.sourceType)"
+		wb-title="sourceType"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>

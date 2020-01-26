@@ -51,13 +51,15 @@ jQuery.fn.extend({
  * Main module of the application.
  */
 angular
-.module('myDashboardApp', [
+.module('vwStudio', [
 	'mblowfish-core',
 	'ui.tree'
 ])
 //  Load application
-.run(function($app, $window) {
-    $app.start('my-dashboard');
+.run(function($app, $window, $toolbar, $sidenav) {
+	$toolbar.setDefaultToolbars([ 'amh.owner-toolbar' ]);
+	$sidenav.setDefaultSidenavs([ 'amh.cms.pages.sidenav', ]);
+    $app.start('vm-studio');
 
     // load crisp
     $window.$crisp=[];
@@ -67,6 +69,25 @@ angular
 //.config(function($routeProvider) {
 //    $routeProvider.otherwise('/dashboard');
 //})
+/*
+ * Disabling AngularJS $http cache
+ * @see https://stackoverflow.com/questions/38196452/disabling-angularjs-http-cache
+ */
+.config(function($httpProvider) {
+    //initialize get if not there
+    if (!$httpProvider.defaults.headers.get) {
+        $httpProvider.defaults.headers.get = {};    
+    }    
+
+    // Answer edited to include suggestions from comments
+    // because previous version of code introduced browser-related errors
+
+    //disable IE ajax request caching
+    $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
+    // extra
+    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+    $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
+})
 .controller('MainCtrl', function(){});
 
 

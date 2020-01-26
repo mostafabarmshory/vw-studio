@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .factory('AmhWorkbenchProcessorClone', function(AmhWorkbenchProcessor, $actions, $app, $sidenav) {
 	
 

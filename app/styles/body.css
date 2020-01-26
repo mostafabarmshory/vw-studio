@@ -1,0 +1,34 @@
+html, body {
+    height: 100%;
+}
+
+body {
+	width: 100%;
+        overflow: hidden;
+}
+
+#content-editor-vertical-toolbar {
+    width: 48px;
+}
+
+#content-type-image {
+    border: solid 1px;
+    border-color:inherit;
+}
+
+#content-type-audio {
+    border: solid 1px;
+    border-color:inherit;
+}
+
+#content-type-video {
+    border: solid 1px;
+    border-color:inherit;
+}
+.content-sidenavs-toolbar {
+    padding-left: 8px;
+}
+.amh-editor-top-toolbar {
+    min-height: 48px;
+    max-height: 48px;
+}

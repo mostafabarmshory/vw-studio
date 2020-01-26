@@ -1,0 +1,213 @@
+<md-dialog 
+    layout="column"
+    ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <wb-icon>file</wb-icon>
+            <h2 translate>New page</h2>
+            <span flex></span>
+            <md-button 
+                class="md-icon-button" 
+                ng-click="cancel()">
+                <wb-icon aria-label="Close dialog">close</wb-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content
+        layout="row"
+        flex>
+        <md-stepper 
+            id="page-stepper" 
+            md-mobile-step-text="false" 
+            md-vertical="true" 
+            md-linear="true"
+            md-alternative="true"
+            flex>
+            <md-step
+                md-label="{{'Type'| translate}}"
+                id="page-type">
+                <md-step-body
+                    layout-padding
+                    layout="row" 
+                    layout-wrap 
+                    layout-align="center start">
+                    <md-button
+                        layout="column" 
+                        layout-align="center center"
+                        ng-repeat="item in ctrl.supportedPageTypes"
+                        class="amh-content-new-type-item"
+                        ng-class="{'selected': ctrl.contentModel.info.mime_type === item.mime_type}"
+                        ng-click="ctrl.setPageType(item)">
+                        <img ng-src="{{item.icon}}"/>
+                        <h3 translate="">{{item.title}}</h3>
+                    </md-button>
+                </md-step-body>
+            </md-step>
+            <md-step 
+                md-label="{{'Information'| translate}}"
+                id="page-info">
+                <md-step-body
+                    layout-padding
+                    layout="column">
+                    <md-input-container 
+                        class="md-icon-float md-block">
+                        <label translate>Name</label>
+                        <input 
+                            ng-model="ctrl.contentModel.info.name" 
+                            ng-change="ctrl.setPageInfo('name', ctrl.contentModel.info.name);"
+                            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}"
+                            required>
+                        <wb-icon ng-click="ctrl.generateRandomName()">autorenew</wb-icon>
+                    </md-input-container>
+                    <md-input-container 
+                        class="md-block">
+                        <label translate>Title</label>
+                        <input 
+                            ng-model="ctrl.contentModel.info.title" 
+                            ng-change="ctrl.setPageInfo('title', ctrl.contentModel.info.title);"
+                            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}">
+                    </md-input-container>
+                    <md-input-container 
+                        class="md-block">
+                        <label translate>Description</label>
+                        <textarea 
+                            ng-model="ctrl.contentModel.info.description" 
+                            ng-change="ctrl.setPageInfo('description', ctrl.contentModel.info.description);"
+                            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}"></textarea>
+                    </md-input-container>
+                    <md-input-container 
+                        class="md-block">
+                        <label translate>Language</label>
+                        <input 
+                            ng-model="ctrl.contentModel.info.language" 
+                            ng-change="ctrl.setPageMeta('language', ctrl.contentModel.info.language)"
+                            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}">
+                    </md-input-container>
+                    <md-input-container 
+                        class="md-block">
+                        <label translate>Keywords</label>
+                        <textarea 
+                            ng-model="ctrl.contentModel.info.keywords" 
+                            ng-change="ctrl.setPageMeta('meta.keywords', ctrl.contentModel.info.keywords)"
+                            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}">     
+                        </textarea>
+                    </md-input-container>
+                    <md-input-container 
+                        class="md-block md-icon-float">
+                        <label translate>Cover</label>
+                        <input 
+                            ng-model="ctrl.contentModel.info.cover" 
+                            ng-change="ctrl.pageMeta('link.cover', ctrl.contentModel.info.cover)"
+                            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}">
+                        <wb-icon ng-click="ctrl.selectCoverFromResources()">image</wb-icon>
+                    </md-input-container>
+                </md-step-body>
+                <md-step-actions
+                    layout="row">
+                    <span flex></span>
+                    <md-button 
+                        class="md-primary md-raised" 
+                        ng-click="ctrl.nextStep()"
+                        translate>Continue</md-button>
+                </md-step-actions>
+            </md-step>
+            <md-step 
+                md-label="{{'Template'| translate}}"
+                id="page-template">
+                <md-step-body
+                    layout-padding>
+                    <md-list flex>
+                        <md-list-item 
+                            class="md-2-line"
+                            ng-click="ctrl.setTemplate()">
+                            <div
+                                class="md-list-item-text" 
+                                layout="column">
+                                <h3 translate>Blank</h3>
+                                <p translate>Set page with empty content</p>
+                            </div>
+                        </md-list-item>
+                        <md-subheader 
+                            ng-repeat-start="termTax in ctrl.items"
+                            class="md-no-sticky">{{::termTax.term.name}}
+                        </md-subheader>
+                        <md-list-item 
+                            class="md-2-line" 
+                            ng-repeat="template in termTax.contents"
+                            ng-click="ctrl.setTemplate(template)">
+                            <div 
+                                class="md-list-item-text" 
+                                layout="column">
+                                <h3>{{::template.title}}</h3>
+                                <p>{{template.description}}</p>
+                            </div>
+                            <md-button
+                                class="md-secondary"
+                                ng-click="ctrl.showPreviewOf(template)"
+                                aria-label="Show preview">
+                                <wb-icon>pageview</wb-icon>
+                                <md-tooltip 
+                                    md-direction="{{app.dir==='rtl' ? 'right' : 'left'}}">
+                                    <span translate>Preview</span>
+                                </md-tooltip>
+                            </md-button>
+                        </md-list-item>
+                        <md-divider ng-repeat-end></md-divider>
+                    </md-list>
+                </md-step-body>
+            </md-step>
+            <md-step 
+                id="page-redirect"
+                md-label="{{'Creating'| translate}}">
+                <md-step-body
+                    layout-padding>
+                    <div 
+                        layout="row"
+                        layout-align="center center"
+                        ng-if="!ctrl.creatingContent && !ctrl.contentCreated">
+                        <md-button
+                            ng-click="ctrl.cancel()"
+                            aria-label="Cancel the action">
+                            <span translate>Cancel</span>
+                        </md-button>
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-click="ctrl.createModel(ctrl.contentModel)"
+                            aria-label="Creates the page">
+                            <span translate>Create</span>
+                        </md-button>
+                    </div>
+                    <div 
+                        layout="row"
+                        layout-align="center center"
+                        ng-if="!ctrl.creatingContent && ctrl.contentCreated">
+                    </div>
+                    <div 
+                        layout="column"
+                        layout-align="center center"
+                        ng-if="ctrl.creatingContent">
+                        <h2 translate="">Creating the page...</h2>
+                        <md-progress-linear 
+                            class="md-accent" 
+                            md-mode="indeterminate">
+                        </md-progress-linear>
+                    </div>
+                    <div 
+                        layout="column"
+                        layout-align="center center"
+                        ng-if="ctrl.contentCreated">
+                        <h2 translate>The page created successfully.</h2>
+                        <!--<a ng-href="{{ctrl.canonicalLink}}"><span translate="">Redirect to page</span></a>-->
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-href="{{ctrl.canonicalLink}}"
+                            ng-click="ctrl.goTo()"
+                            aria-label="Redirect to page">
+                            <span translate="">Redirect to the page</span>
+                        </md-button>
+                    </div>
+                </md-step-body>
+            </md-step>
+        </md-stepper>
+    </md-dialog-content>
+</md-dialog>

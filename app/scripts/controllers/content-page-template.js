@@ -24,7 +24,7 @@
 
 
 //Test controller
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .controller('AmhContentTemplatesCtrl', function ($scope, $controller, $cms, $http, $navigator, $wbUtil) {
 
     /*

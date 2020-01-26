@@ -1,0 +1,60 @@
+<!-- Microdata Specification Editor -->
+<!-- 
+ Widget Microdata Specification is an extension of HTML Microdata to add
+metadata into a document. These microdata are used to make a document readable
+for Search Engines.
+
+Some widgets need simple description in text. This is a setting to manage
+these attributes. Here is list of attributes:
+
+- {Text} id 
+- {Text} label
+- {URL} category SEE: schema.org
+- {Text} description 
+- {Text} keywords
+- {Text} property
+- {URL} cover
+
+These attributes are useful in SEO.
+SEE: document/widgets-microdata.md
+-->
+<fieldset
+	layout="column"
+	style="padding: 0px">
+	<legend translate="">Microdata</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.itemscope"
+		ng-change="ctrl.setAttribute('itemscope', ctrl.attributesValue.itemscope)"
+		wb-title="Scope"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.itemtype"
+		ng-change="ctrl.setAttribute('itemtype', ctrl.attributesValue.itemtype)"
+		wb-title="Type"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.itemprop"
+		ng-change="ctrl.setAttribute('itemprop', ctrl.attributesValue.itemprop)"
+		wb-title="Property"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.itemid"
+		ng-change="ctrl.setAttribute('itemid', ctrl.attributesValue.itemid)"
+		wb-title="ID"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.itemref"
+		ng-change="ctrl.setAttribute('itemref', ctrl.attributesValue.itemref)"
+		wb-title="Reference"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.value"
+		ng-change="ctrl.setAttribute('value', ctrl.attributesValue.value)"
+		wb-title="Value"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.content"
+		ng-change="ctrl.setAttribute('content', ctrl.attributesValue.content)"
+		wb-title="Content"
+		wb-description=""></wb-ui-setting-text>
+</fieldset>

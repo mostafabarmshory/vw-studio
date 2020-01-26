@@ -1,0 +1,33 @@
+<md-toolbar
+	class="md-primary md-hue-2 wb-layer-tool-bottom amh-mini-toolbar"
+	id="amh.workbench.editor.weburger.toolbar">
+	<div layout="row">
+		<span flex></span>
+		<mb-mini-action-anchor
+			mb-action-group="amh.workbench.editor.weburger.toolbar"
+			mb-size="16"
+			mb-divider="true"
+			layout="row">
+		</mb-mini-action-anchor>
+		<mb-mini-action-anchor
+			mb-action-group="amh.workbench.editor.weburger.toolbar#clipboard"
+			mb-size="16"
+			mb-divider="true"
+			layout="row">
+		</mb-mini-action-anchor>
+		<mb-mini-action-anchor
+			mb-action-group="amh.workbench.editor.weburger.toolbar#common"
+			mb-size="16"
+			mb-divider="true"
+			layout="row">
+		</mb-mini-action-anchor>
+		<span flex></span>
+		<md-button
+			aria-label="settings"
+			class="md-icon-button editor-action md-mini"
+			ng-click="ctrl.toggleSettingPanel()">
+			<wb-icon ng-if="!showWorkbenchSettingPanel" size="16">menu</wb-icon>
+			<wb-icon ng-if="showWorkbenchSettingPanel" size="16">close</wb-icon>
+		</md-button>
+	</div>
+</md-toolbar>

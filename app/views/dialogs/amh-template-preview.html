@@ -1,0 +1,33 @@
+<md-dialog ng-cloak>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<wb-icon>cms-pages</wb-icon>
+			<h2 translate>Template</h2>
+			<span flex></span>
+			<md-button 
+				class="md-icon-button" 
+				ng-click="answer(config.model)">
+				<wb-icon aria-label="Done">done</wb-icon>
+			</md-button>
+			<md-button 
+				class="md-icon-button" 
+				ng-click="cancel()">
+				<wb-icon aria-label="Close dialog">close</wb-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-dialog-content 
+		layout="column" 
+		flex>
+			<md-content 
+				flex>
+				<div 
+					wb-content
+					ng-model="config.model">
+				</wb-group>
+			</md-content>
+	</md-dialog-content>
+</md-dialog>
+
+
+		

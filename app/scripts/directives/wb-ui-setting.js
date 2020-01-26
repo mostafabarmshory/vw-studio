@@ -47,7 +47,7 @@ function wbUiSettingLinkFunction($scope, $element, $attrs, ctrls) {
 	}
 }
 
-angular.module('am-wb-core')
+angular.module('vwStudio')
 
 /**
  * @ngdoc Directives

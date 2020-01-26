@@ -1,0 +1,34 @@
+<div
+	layout="column">
+	<mb-pagination-bar
+		mb-title="Templates"
+		mb-model="ctrl.queryParameter"
+		mb-properties="ctrl.properties"
+		mb-reload="ctrl.reload()"
+		mb-more-actions="ctrl.getActions()">
+	</mb-pagination-bar>
+	<md-content
+	    layout="column"
+	    mb-infinate-scroll="ctrl.loadNextPage()"
+	    mb-preloading="ctrl.state !== 'ideal'">
+	     <md-list 
+			style="padding: 0px;"
+	     	flex>
+	     	<md-subheader 
+	     		ng-repeat-start="termTax in ctrl.items"
+	     		class="md-no-sticky">{{::termTax.term.name}}</md-subheader>
+	        <md-list-item
+	        	ng-click="ctrl.showPreviewOf(page)"
+	        	ng-repeat="page in termTax.contents"
+	            class="md-2-line">
+	            <div 
+	             	class="md-list-item-text" 
+	             	layout="column">
+	                 <h3>{{::page.title}}</h3>
+	                 <h4>{{::page.description}}</h4>
+	             </div>
+	         </md-list-item>
+	         <md-divider ng-repeat-end></md-divider>
+	     </md-list>
+	</md-content>
+</div>

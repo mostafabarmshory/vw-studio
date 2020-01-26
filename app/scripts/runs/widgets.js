@@ -24,7 +24,7 @@
  */
 
 
-angular.module('am-wb-core')
+angular.module('vwStudio')
 
 /***********************************************************************
  * Convertors
@@ -48,11 +48,11 @@ angular.module('am-wb-core')
 .run(function (
 		/* angularjs */ $location, $http, 
 		/* WB        */ $widget, $mdMedia, 
-		$wbWindow, $wbLocal, $WbProviderTimeout, 
+		$window, $wbLocal, $WbProviderTimeout, 
 		$dispatcher, $storage) {
 	$widget//
 	.setProvider('$http', $http)
-	.setProvider('$window', $wbWindow)
+	.setProvider('$window', $window)
 	.setProvider('$location', $location)
 	.setProvider('$dispatcher', $dispatcher)
 	.setProvider('$storage', $storage)

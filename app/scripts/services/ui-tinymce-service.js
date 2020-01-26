@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-angular.module('am-wb-core')
+angular.module('vwStudio')
 /**
  * A service is used to create unique ID's, this prevents duplicate ID's if there are multiple editors on screen.
  */

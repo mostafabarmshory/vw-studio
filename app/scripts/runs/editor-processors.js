@@ -21,7 +21,7 @@
  */
 
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 /*
  * load processor of workbench and editor
  */

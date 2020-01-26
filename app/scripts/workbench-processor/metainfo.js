@@ -19,11 +19,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .factory('AmhWorkbenchProcessorMetainfo', function(
 		AmhWorkbenchProcessor, 
 		/* mblowfish */ $page,
-		/* am-wb-core */ $wbWindow) {
+		/* vwStudio */ $window) {
 	
 
 	function Processor(editor, options) {
@@ -96,7 +96,7 @@ angular.module('ngMaterialHome')
 		// Set meta datas
 		_.forEach(this.info, function(value, key){
 			try{
-				$wbWindow.setMeta(key, value);
+				$window.setMeta(key, value);
 			} catch(ex){}
 		});
 	};

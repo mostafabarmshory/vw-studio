@@ -1,0 +1,24 @@
+<md-content
+    ng-controller="AmhContentPagesCtrl as ctrl"
+    mb-infinate-scroll="ctrl.loadNextPage()"
+    mb-preloading="ctrl.state !== 'ideal'"
+    flex>
+    <!--  Action bar -->
+    <mb-pagination-bar
+        mb-model="ctrl.queryParameter"
+        mb-reload="ctrl.reload()"
+        mb-sort-keys="ctrl.getProperties()"
+        mb-more-actions="ctrl.getActions()">
+    </mb-pagination-bar>
+    <md-list flex>
+        <md-list-item 
+            class="md-2-line" 
+            ng-repeat="page in ctrl.items" 
+            ng-click="setValue(page)">
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ page.title}}</h3>
+                <h4>{{ page.description}}</h4>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-content>

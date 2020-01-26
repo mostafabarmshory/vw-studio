@@ -1,0 +1,12 @@
+<div layout="row" flex layout-padding>
+    <md-content ng-controller="AmhContentCtrl"	    	
+                layout="column" flex>
+        <wb-group 
+            wb-on-model-select="loadSettings($model)"
+            wb-editable="editable"
+            ng-model="app.config.pageNotFound"
+            flex>
+        </wb-group>
+        
+    </md-content>
+</div>

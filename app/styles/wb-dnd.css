@@ -1,0 +1,14 @@
+
+/*
+ * When an element is dragged over the list, a new placeholder child element 
+ * will be added. This element is of type li and has the class dndPlaceholder 
+ * set. Alternatively, you can define your own placeholder by creating a 
+ * child element with dndPlaceholder class.
+ */
+.wbDndPlaceholder {
+	min-width: 2px;
+	min-height: 2px;
+	background: black;
+	margin: 0px;
+	padding: 0px;
+}

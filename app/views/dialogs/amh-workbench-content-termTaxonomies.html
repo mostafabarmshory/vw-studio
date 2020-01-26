@@ -1,0 +1,43 @@
+
+<form
+    ng-cloak
+    ng-controller="AmhContentWorkbenchTermTaxonomiesCtrl as ctrl">
+    <md-toolbar 
+        class="content-sidenavs-toolbar wb-layer-tool-bottom"
+        layout="row"
+        layout-align="space-around center"> 
+        <span translate>Labels and categories</span>
+        <md-button
+            class="md-icon-button"
+            ng-click="ctrl.addTermTaxonomies()">
+            <wb-icon>add</wb-icon>
+        </md-button>
+        <md-button 
+            class="md-icon-button" 
+            ng-click="cancel()">
+            <wb-icon aria-label="Close dialog">close</wb-icon>
+        </md-button>
+    </md-toolbar>
+    <md-dialog-content 
+        layout="row" 
+        flex>
+        <md-content
+            flex>
+            <fieldset
+                ng-repeat="(taxonomy, termTaxonomies) in ctrl.termTaxonomiesMap"
+                layout="column">
+                <legend>{{::taxonomy}}</legend>
+                <div 
+                    layout="row"
+                    ng-repeat="item in termTaxonomies track by item.id">
+                    <span flex>{{::item.term.name}}</span>
+                    <md-button
+                        class="md-icon-button"
+                        ng-click="ctrl.deleteTermTaxonomy(item, $event)">
+                        <wb-icon>delete</wb-icon>
+                    </md-button>
+                </div>
+            </fieldset>
+        </md-content>
+    </md-dialog-content>
+</form>

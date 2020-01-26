@@ -23,7 +23,7 @@
  */
 
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 /**
  * @ngdoc Directives
  * @name mb-mini-action-anchor

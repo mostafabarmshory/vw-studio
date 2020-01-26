@@ -21,7 +21,7 @@
  */
 
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 /**
  * Adds basic system settings
  * 

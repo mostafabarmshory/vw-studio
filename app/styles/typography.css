@@ -1,0 +1,10 @@
+/*
+Rules for align
+*/
+.wb-rtl {
+	direction: rtl;
+}
+
+.wb-ltr {
+	direction: ltr;
+}

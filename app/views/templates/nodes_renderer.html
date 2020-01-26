@@ -1,0 +1,80 @@
+<md-menu 
+	mb-context-menu>
+	<md-button
+		ui-tree-handle=""
+		class="md-raised"
+		ng-class="{'md-accent': widget.isSelected()}"
+		style="margin:1px; width: 100%;  text-align: left;"
+		ng-dblclick="dblclick(widget, this, $event)"
+		ng-click="click(widget, this, $event)"
+		layout="row">
+		<wb-icon
+			ng-show="widget.childWidgets && widget.childWidgets.length > 0"
+			class="md-icon-button launch" 
+			ng-click="toggleItem(this, $event)">{{ collapsed ? 'expand_more' : 'chevron_right'}}</wb-icon>
+    	<span flex>{{widget.getTitle() || widget.getId() || widget.getType()}}</span>
+	</md-button>
+	<md-menu-content
+		width="4">
+		<md-menu-item>
+			<md-button 
+				ng-click="selectChildren(widget, $event)">
+				<span translate>Select Children</span>
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button 
+				ng-click="widget.clone()">
+				<span translate>Clone</span>
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button 
+				ng-click="widget.delete()">
+				<span translate>Delete</span>
+			</md-button>
+		</md-menu-item>
+		<md-divider></md-divider>
+		<!--arrow keys-->
+		<md-menu-item>
+			<md-button 
+				ng-click="widget.moveFirst()">
+				<span translate>Move first</span>
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button 
+				ng-click="widget.moveBefore()">
+				<span translate>Move before</span>
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button 
+				ng-click="widget.moveNext()">
+				<span translate>Move next</span>
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button 
+				ng-click="widget.moveLast()">
+				<span translate>Move last</span>
+			</md-button>
+		</md-menu-item>
+		<md-divider></md-divider>
+		<md-menu-item>
+			<md-button 
+				ng-click="openHelp(widget)">
+				<span translate>Widget help</span>
+			</md-button>
+		</md-menu-item>
+	</md-menu-content>
+</md-menu>
+<ol 
+	ui-tree-nodes="" 
+	ng-model="widget.childWidgets"
+	ng-show="collapsed">
+	<li 
+		ng-repeat="widget in widget.childWidgets" 
+		ui-tree-node
+		ng-include="'views/templates/nodes_renderer.html'"></li>
+</ol>

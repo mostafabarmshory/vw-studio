@@ -1,0 +1,23 @@
+
+.wb-widgets-module {
+	padding: 8px;
+	margin: 4px;
+}
+
+.wb-widgets-module>* {
+    margin: 0;
+    padding: 0;
+}
+
+.wb-widgets-module> p {
+	font-size: 14px;
+}
+
+/*
+ * Hide if the tab is disabled. 
+ *
+ * This is replacement
+ */
+#am-wb-widget-setting .md-tab.md-disabled{
+	display: none;
+}

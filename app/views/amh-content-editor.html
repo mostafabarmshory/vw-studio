@@ -1,0 +1,48 @@
+<div 
+	ng-controller="AmhContentWorkbenchCtrl as workbench"
+	id="amh-content-workbench"
+	name="workbench"
+	layout="column" 
+	flex>
+	<md-progress-linear 
+		class="md-accent" 
+		ng-if="workbench.jobs.length" 
+		md-mode="indeterminate">
+	</md-progress-linear>
+	<amh-workbench-editor-toolbar
+		ng-if="workbench.isEditorLoaded()"
+		ng-show="workbench.state == 'edit'"
+		ng-model="workbench">
+	</amh-workbench-editor-toolbar>
+	<div 
+		ng-if="workbench.isEditorLoaded()"
+		ng-show="workbench.state == 'edit'"
+		id="demo-widget-editor-toolbar"></div>
+	<div
+		id="amh-content-editor-area"
+		layout="row"
+		flex>
+		<amh-workbench-navigator
+			ng-show="workbench.state == 'edit'"
+			ng-if="workbench.isEditorLoaded()"
+			ng-model="workbench"></amh-workbench-navigator>
+		<!-- main content: depends on the type of content -->
+		<md-content 
+			ng-controller="AmhContentEditorCtrl as editor"
+			ng-if="workbench.contentType === 'weburger'"
+			flex>
+			<div
+				wb-content
+				wb-on-load="editor.setRootWidget($data)"
+				wb-on-error="alert('fail to load the model')"
+				ng-model="workbench.contentValue"
+				ng-model-options="{ debounce: 100 }"
+				ng-change="editor.setDerty(true)"></div>
+		</md-content>
+	</div>
+	<amh-widget-path 
+		ng-if="workbench.isEditorLoaded()"
+		ng-show="workbench.state == 'edit'"
+		ng-model="workbench">
+	</amh-widget-path>
+</div>

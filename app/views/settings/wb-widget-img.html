@@ -1,0 +1,77 @@
+<fieldset
+	layout="column">
+	<legend translate>Image</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.alt"
+		ng-change="ctrl.setAttribute('alt', ctrl.attributesValue.alt)"
+		wb-title="Alternative"
+		wb-description="Defines an alternative text description of the image.">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.crossorigin"
+		ng-change="ctrl.setAttribute('crossorigin', ctrl.attributesValue.crossorigin)"
+		wb-title="Cross Oorigin"
+		wb-description="Indicates if the fetching of the image must be done using CORS.">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.longdesc"
+		ng-change="ctrl.setAttribute('longdesc', ctrl.attributesValue.longdesc)"
+		wb-title="Long Description"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Source</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.src"
+		ng-change="ctrl.setAttribute('src', ctrl.attributesValue.src)"
+		wb-title="Source"
+		wb-description="Path of the image"
+		wb-resource-type="image-url">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.srcset"
+		ng-change="ctrl.setAttribute('srcset', ctrl.attributesValue.srcset)"
+		wb-title="Source Set"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Map</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.ismap"
+		ng-change="ctrl.setAttribute('ismap', ctrl.attributesValue.ismap)"
+		wb-title="Is Map"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.usemap"
+		ng-change="ctrl.setAttribute('usemap', ctrl.attributesValue.usemap)"
+		wb-title="Use Map"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+<fieldset
+	layout="column">
+	<legend translate>Size</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.size"
+		ng-change="ctrl.setAttribute('size', ctrl.attributesValue.size)"
+		wb-title="Size"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.height"
+		ng-change="ctrl.setAttribute('height', ctrl.attributesValue.height)"
+		wb-title="Height"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.width"
+		ng-change="ctrl.setAttribute('width', ctrl.attributesValue.width)"
+		wb-title="Width"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>

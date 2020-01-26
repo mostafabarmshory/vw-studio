@@ -1,0 +1,17 @@
+<field
+	layout="row"
+	layout-align="start center">
+	<field-description flex>
+		<label translate>{{::title}}</label>
+		<wb-icon size="1em">info</wb-icon>
+	</field-description>
+	<div
+		class="number"
+		layout="row">
+		<input 
+			ng-model="value"
+			ng-change="setValue(value)"
+			aria-label="set {{::title}} true or false"
+			type="text">
+	</div>
+</field>

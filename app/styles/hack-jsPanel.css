@@ -1,0 +1,7 @@
+
+/*
+ * Set position ot the panel
+ */
+.jsPanel {
+	z-index: 70 !important;
+}

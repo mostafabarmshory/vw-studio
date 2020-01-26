@@ -1,0 +1,114 @@
+<fieldset
+    layout="column">
+    <legend translate>Type</legend>
+    <md-input-container>
+        <label translate>URL of collection: (Ex: /api/v2/cms/contents)</label>
+        <input 
+            ng-model="ctrl.attributesValue.url"
+            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}"
+            ng-change="ctrl.setAttribute('url', ctrl.attributesValue.url)">
+    </md-input-container>
+    <md-input-container>
+        <label translate>Properties</label>
+        <input 
+            ng-model="ctrl.attributesValue.properties" 
+            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}"
+            ng-change="ctrl.setAttribute('properties', ctrl.attributesValue.properties)">
+    </md-input-container>
+    <md-input-container>
+        <label translate>Query</label>
+        <input 
+            ng-model="ctrl.attributesValue.query" 
+            ng-model-options="{debounce: {'default': 500, 'blur': 0, '*': 1000}, updateOn: 'default blur click'}"
+            ng-change="ctrl.setAttribute('query', ctrl.attributesValue.query)">
+    </md-input-container>
+</fieldset>
+
+<fieldset
+    layout="column">
+    <legend translate>Filters</legend>
+    <div 
+        layout="row" 
+        ng-repeat="filter in ctrl.attributesValue.filters track by $index">
+        <md-input-container>
+            <label translate="">Key</label>
+            <input 
+                ng-model="filter.key" 
+                ng-model-options="{updateOn: 'change blur', debounce: 1000}"
+                ng-change="ctrl.filterChanged($index)">
+        </md-input-container>
+        <md-input-container>
+            <label translate="">Value</label>
+            <input 
+                ng-model="filter.value" 
+                ng-model-options="{updateOn: 'change blur', debounce: 1000}"
+                ng-change="ctrl.filterChanged($index)">
+        </md-input-container>
+        <md-button
+            ng-click="ctrl.removeFilter($index)"
+            class="md-icon-button">
+            <wb-icon>delete</wb-icon>
+        </md-button>
+    </div>
+    <div 
+        layout="row" 
+        layout-align="end center">
+        <md-button  
+            ng-click="ctrl.addFilter()"
+            class="md-icon-button">
+            <wb-icon>add</wb-icon>
+        </md-button>
+    </div>
+</fieldset>
+
+
+<fieldset
+    layout="column">
+    <legend translate>Sort</legend>
+    <div 
+        layout="row" 
+        ng-repeat="sort in ctrl.attributesValue.sorts track by $index">
+        <md-input-container flex="40">
+            <label translate="">Sort by</label>
+            <input
+                ng-model="sort.key" 
+                ng-model-options="{updateOn: 'change blur', debounce: 1000}" 
+                ng-change="ctrl.sortChanged($index)">
+        </md-input-container>
+        <md-input-container flex="40">
+            <label translate="">Sort order</label>
+            <md-select 
+                ng-model="sort.order" 
+                ng-model-options="{updateOn: 'change blur', debounce: 1000}" 
+                ng-change="ctrl.sortChanged($index)">
+                <md-option value="a" translate="">Ascending</md-option>
+                <md-option value="d" translate="">Descending</md-option>
+            </md-select>
+        </md-input-container>
+        <md-button
+            ng-click="ctrl.removeSort($index)"
+            class="md-icon-button">
+            <wb-icon>delete</wb-icon>
+        </md-button>
+    </div>
+    <div 
+        layout="row" 
+        layout-align="end center">
+        <md-button 
+            ng-click="ctrl.addSort()"
+            class="md-icon-button">
+            <wb-icon>add</wb-icon>
+        </md-button>
+    </div>
+</fieldset>
+
+
+<fieldset
+    layout="column">
+    <legend translate>Template</legend>
+    <textarea 
+        style="resize: vertical; width: 100%; max-width: 100%; min-width: 100%; padding: 0px; margin: 0px;"
+        ng-model="ctrl.attributesValue.template" 
+        ng-model-options="{updateOn: 'change blur', debounce: 1000}" 
+        ng-change="ctrl.setAttribute('template', ctrl.attributesValue.template)"></textarea>
+</div>

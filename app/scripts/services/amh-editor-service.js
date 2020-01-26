@@ -21,7 +21,7 @@
  */
 
 
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .service('$amhEditorService', function (WbObservableObject) {
 	
 

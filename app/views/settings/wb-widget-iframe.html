@@ -1,0 +1,29 @@
+<fieldset
+	layout="column">
+	<legend translate>Frame</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.name"
+		ng-change="ctrl.setAttribute('name', ctrl.attributesValue.name)"
+		wb-title="name"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.src"
+		ng-change="ctrl.setAttribute('src', ctrl.attributesValue.src)"
+		wb-title="src"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.srcdoc"
+		ng-change="ctrl.setAttribute('srcdoc', ctrl.attributesValue.srcdoc)"
+		wb-title="srcdoc"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.sandbox"
+		ng-change="ctrl.setAttribute('sandbox', ctrl.attributesValue.sandbox)"
+		wb-title="sandbox"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>
+

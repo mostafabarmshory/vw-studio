@@ -24,7 +24,7 @@
 
 
 //Test controller
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .controller('AmhContentMyPagesCtrl', function ($scope, $rootScope, $controller, $cms, $dispatcher, $q) {
 	// Extends Items controller
 	angular.extend(this, $controller('MbSeenCmsContentsCtrl',{

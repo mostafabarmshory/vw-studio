@@ -1,0 +1,15 @@
+/****************************************
+ * workbench-vertical-toolbar
+ ****************************************/
+.workbench-vertical-toolbar {
+	width: 32px;
+	padding: 2px;
+	margin: 0px;
+}
+
+.workbench-vertical-toolbar>.editor-action {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: auto;
+}

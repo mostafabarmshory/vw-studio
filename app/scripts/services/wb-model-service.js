@@ -197,7 +197,7 @@ WbModelService.prototype.pasteFromClipboard = function () {
 
 
 //TODO: hadi: move it to new module angular-material-home-seo
-angular.module('ngMaterialHome').service('$wbmodel', function ($q, $http, $wbUtil) {
+angular.module('vwStudio').service('$wbmodel', function ($q, $http, $wbUtil) {
     var service = new WbModelService($q, $http, $wbUtil);
     return service;
 });

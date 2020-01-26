@@ -1,0 +1,25 @@
+<fieldset
+	layout="column"
+	style="padding: 0px">
+	<legend translate="">Meta</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.name"
+		ng-change="ctrl.setAttribute('name', ctrl.attributesValue.name)"
+		wb-title="Name"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.content"
+		ng-change="ctrl.setAttribute('content', ctrl.attributesValue.content)"
+		wb-title="Content"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.charset"
+		ng-change="ctrl.setAttribute('charset', ctrl.attributesValue.charset)"
+		wb-title="Charset"
+		wb-description=""></wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.attributesValue.httpEquiv"
+		ng-change="ctrl.setAttribute('httpEquiv', ctrl.attributesValue.httpEquiv)"
+		wb-title="HTTP equiv"
+		wb-description=""></wb-ui-setting-text>
+</fieldset>

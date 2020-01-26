@@ -3,7 +3,7 @@
 	md-theme="{{app.test.theme || app.setting.theme || app.config.theme || 'default'}}"
 	md-theme-watch
 	dir="{{app.dir}}"
-	ng-app="myDashboardApp" 
+	ng-app="vwStudio" 
 	ng-controller="MainCtrl"
 	manifest="<!-- injector:base-path --><!-- endinjector -->manifest.appcache">
 <head>
@@ -20,21 +20,199 @@
 
 	<!-- build:css(.) styles/vendor.css -->
 	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+	<link rel="stylesheet" href="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.css" />
+	<link rel="stylesheet" href="bower_components/material-steppers/dist/material-steppers.css" />
+	<link rel="stylesheet" href="bower_components/jspanel4x/dist/jspanel.css" />
+	<link rel="stylesheet" href="bower_components/md-color-picker/dist/md-color-picker.css" />
+	<link rel="stylesheet" href="bower_components/mblowfish-core/dist/mblowfish-core.css" />
+	<link rel="stylesheet" href="bower_components/mblowfish-language/dist/mblowfish-language.css" />
+	<link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.css" />
 	<!-- endbower -->
 	<!-- endbuild -->
 	
     <!-- build:css(.tmp) styles/main.css -->
 	<!-- injector:css -->
+	<link rel="stylesheet" href="styles/amh-content-editor.css">
+	<link rel="stylesheet" href="styles/amh-content-new.css">
+	<link rel="stylesheet" href="styles/amh-mini-toolbar.css">
+	<link rel="stylesheet" href="styles/body.css">
+	<link rel="stylesheet" href="styles/dialogs.css">
+	<link rel="stylesheet" href="styles/directive-amh-widget-path.css">
+	<link rel="stylesheet" href="styles/font-icon.css">
+	<link rel="stylesheet" href="styles/font-svg.css">
+	<link rel="stylesheet" href="styles/fonts.css">
+	<link rel="stylesheet" href="styles/hack-jsPanel-content.css">
+	<link rel="stylesheet" href="styles/hack-jsPanel.css">
+	<link rel="stylesheet" href="styles/hack-old-wb1-a-padding.css">
+	<link rel="stylesheet" href="styles/hack-tinymce5-inline-toolbar.css">
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/md-expansion-panel.css">
+	<link rel="stylesheet" href="styles/preloader.css">
+	<link rel="stylesheet" href="styles/prism.css">
+	<link rel="stylesheet" href="styles/template.css">
+	<link rel="stylesheet" href="styles/test-preloader.css">
+	<link rel="stylesheet" href="styles/typography.css">
+	<link rel="stylesheet" href="styles/wb-dnd.css">
+	<link rel="stylesheet" href="styles/wb-icon.css">
+	<link rel="stylesheet" href="styles/wb-layers.css">
+	<link rel="stylesheet" href="styles/wb-text.css">
+	<link rel="stylesheet" href="styles/wb-ui-choose.css">
+	<link rel="stylesheet" href="styles/wb-ui-setting-image.css">
+	<link rel="stylesheet" href="styles/wb-ui-setting.css">
+	<link rel="stylesheet" href="styles/wb-widget.css">
+	<link rel="stylesheet" href="styles/wb-widgets-module.css">
+	<link rel="stylesheet" href="styles/widget-text.css">
 	<!-- endinjector -->
 	<!-- endbuild -->
 
 	<!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/mustache.js/mustache.js"></script>
+    <script src="bower_components/seen-core/dist/seen-core.js"></script>
+    <script src="bower_components/seen-user/dist/seen-user.js"></script>
+    <script src="bower_components/seen-bank/dist/seen-bank.js"></script>
+    <script src="bower_components/seen-tenant/dist/seen-tenant.js"></script>
+    <script src="bower_components/seen-cms/dist/seen-cms.js"></script>
+    <script src="bower_components/seen-monitor/dist/seen-monitor.js"></script>
+    <script src="bower_components/flux/dist/Flux.js"></script>
+    <script src="bower_components/am-wb-core/dist/am-wb-core.js"></script>
+    <script src="bower_components/ng-appcache/dist/appcache.js"></script>
+    <script src="bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.js"></script>
+    <script src="bower_components/angular-recaptcha/release/angular-recaptcha.js"></script>
+    <script src="bower_components/blob-polyfill/Blob.js"></script>
+    <script src="bower_components/file-saver.js/FileSaver.js"></script>
+    <script src="bower_components/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+    <script src="bower_components/material-steppers/dist/material-steppers.js"></script>
+    <script src="bower_components/angular-material-persian-datepicker/dist/datePicker.min.js"></script>
+    <script src="bower_components/jspanel4x/dist/jspanel.js"></script>
+    <script src="bower_components/tinymce/tinymce.js"></script>
+    <script src="bower_components/tinycolor/tinycolor.js"></script>
+    <script src="bower_components/md-color-picker/dist/md-color-picker.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/weakmap-polyfill/weakmap-polyfill.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/loglevel/dist/loglevel.min.js"></script>
+    <script src="bower_components/mblowfish-core/dist/mblowfish-core.js"></script>
+    <script src="bower_components/mblowfish-language/dist/mblowfish-language.js"></script>
+    <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
     <!-- endbower -->
 	<!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<!-- injector:js -->
+	<script src="scripts/app.js"></script>
+	<script src="scripts/configs/icon.js"></script>
+	<script src="scripts/configs/icons.js"></script>
+	<script src="scripts/configs/states.js"></script>
+	<script src="scripts/controllers-editor/content-editor.js"></script>
+	<script src="scripts/controllers-editor/content-workbench.js"></script>
+	<script src="scripts/controllers/content-my-pages.js"></script>
+	<script src="scripts/controllers/content-page-template.js"></script>
+	<script src="scripts/controllers/content-pages.js"></script>
+	<script src="scripts/controllers/owner-toolbar.js"></script>
+	<script src="scripts/controllers/page-new-dialog.js"></script>
+	<script src="scripts/controllers/select-pages.js"></script>
+	<script src="scripts/controllers/user-defind-widgts.js"></script>
+	<script src="scripts/controllers/workbench-content-metas.js"></script>
+	<script src="scripts/controllers/workbench-content-termTaxonomies.js"></script>
+	<script src="scripts/controllers/workbench-modules.js"></script>
+	<script src="scripts/converters/converter-abstract.js"></script>
+	<script src="scripts/converters/converter-dom.js"></script>
+	<script src="scripts/converters/converter-text.js"></script>
+	<script src="scripts/converters/converter-weburger.js"></script>
+	<script src="scripts/directives/amh-contents-setting.js"></script>
+	<script src="scripts/directives/amh-contents.js"></script>
+	<script src="scripts/directives/amh-mini-action-anchor.js"></script>
+	<script src="scripts/directives/amh-template-contents.js"></script>
+	<script src="scripts/directives/amh-user-widgets.js"></script>
+	<script src="scripts/directives/amh-widget-path.js"></script>
+	<script src="scripts/directives/amh-workbench-editor-toolbar.js"></script>
+	<script src="scripts/directives/amh-workbench-navigator.js"></script>
+	<script src="scripts/directives/tinymce.js"></script>
+	<script src="scripts/directives/wb-content.js"></script>
+	<script src="scripts/directives/wb-event-panel.js"></script>
+	<script src="scripts/directives/wb-setting-page.js"></script>
+	<script src="scripts/directives/wb-setting-panel-group.js"></script>
+	<script src="scripts/directives/wb-ui-setting.js"></script>
+	<script src="scripts/directives/wb-widgets-explorer.js"></script>
+	<script src="scripts/directives/wb-widgets-list.js"></script>
+	<script src="scripts/directives/wb-widgets-module.js"></script>
+	<script src="scripts/editor-processor/editor-processor-clipboard.js"></script>
+	<script src="scripts/editor-processor/editor-processor-common.js"></script>
+	<script src="scripts/editor-processor/editor-processor-utils.js"></script>
+	<script src="scripts/editor-processor/editor-processor.js"></script>
+	<script src="scripts/editors/widget-editor-code.js"></script>
+	<script src="scripts/editors/widget-editor-deprecated.js"></script>
+	<script src="scripts/editors/widget-editor-fake.js"></script>
+	<script src="scripts/editors/widget-editor-tinymce-section.js"></script>
+	<script src="scripts/editors/widget-editor-tinymce-singleLine.js"></script>
+	<script src="scripts/factories/dialog-window.js"></script>
+	<script src="scripts/factories/tinymce-plugin-codesample.js"></script>
+	<script src="scripts/factories/tinymce-plugin-imagetool.js"></script>
+	<script src="scripts/factories/tinymce-plugin-link.js"></script>
+	<script src="scripts/factories/workbench-content-type.js"></script>
+	<script src="scripts/factories/workbench-job.js"></script>
+	<script src="scripts/locators/widget-locator-abstract.js"></script>
+	<script src="scripts/locators/widget-locator-bound.js"></script>
+	<script src="scripts/locators/widget-locator-manager.js"></script>
+	<script src="scripts/locators/widget-locator-selection.js"></script>
+	<script src="scripts/providers/timeout.js"></script>
+	<script src="scripts/runs/app.js"></script>
+	<script src="scripts/runs/editor-processors.js"></script>
+	<script src="scripts/runs/preferences.js"></script>
+	<script src="scripts/runs/settings.js"></script>
+	<script src="scripts/runs/tinymc.js"></script>
+	<script src="scripts/runs/widget-editors.js"></script>
+	<script src="scripts/runs/widgets.js"></script>
+	<script src="scripts/services/amh-editor-service.js"></script>
+	<script src="scripts/services/page.js"></script>
+	<script src="scripts/services/settings.js"></script>
+	<script src="scripts/services/ui-tinymce-service.js"></script>
+	<script src="scripts/services/wb-model-service.js"></script>
+	<script src="scripts/services/wb-module-manager.js"></script>
+	<script src="scripts/settings/abstract-page.js"></script>
+	<script src="scripts/settings/collection.js"></script>
+	<script src="scripts/settings/import.js"></script>
+	<script src="scripts/settings/style-animation.js"></script>
+	<script src="scripts/settings/style-background.js"></script>
+	<script src="scripts/settings/style-border.js"></script>
+	<script src="scripts/settings/style-generall.js"></script>
+	<script src="scripts/settings/style-layout.js"></script>
+	<script src="scripts/settings/style-media.js"></script>
+	<script src="scripts/settings/style-size.js"></script>
+	<script src="scripts/settings/style-text.js"></script>
+	<script src="scripts/settings/widget-a.js"></script>
+	<script src="scripts/settings/widget-audio.js"></script>
+	<script src="scripts/settings/widget-form.js"></script>
+	<script src="scripts/settings/widget-general.js"></script>
+	<script src="scripts/settings/widget-iframe.js"></script>
+	<script src="scripts/settings/widget-img.js"></script>
+	<script src="scripts/settings/widget-input.js"></script>
+	<script src="scripts/settings/widget-meta.js"></script>
+	<script src="scripts/settings/widget-microdata.js"></script>
+	<script src="scripts/settings/widget-picture.js"></script>
+	<script src="scripts/settings/widget-source.js"></script>
+	<script src="scripts/settings/widget-video.js"></script>
+	<script src="scripts/widget-processors/processor-dnd.js"></script>
+	<script src="scripts/widget-processors/processor-locator.js"></script>
+	<script src="scripts/widget-processors/processor-select.js"></script>
+	<script src="scripts/workbench-processor/clone.js"></script>
+	<script src="scripts/workbench-processor/content-value.js"></script>
+	<script src="scripts/workbench-processor/content.js"></script>
+	<script src="scripts/workbench-processor/metainfo.js"></script>
+	<script src="scripts/workbench-processor/workbench-processor.js"></script>
 	<!-- endinjector -->
 	<!-- endbuild -->
 </head>

@@ -1,0 +1,67 @@
+<!-- Shadows setting -->
+
+<div layout="row" flex>
+    <md-button 
+    	class="md-raised md-primary"
+    	ng-click="ctrl.addShadow()">
+        <span translate>New shadow</span>
+    </md-button>
+</div>
+
+<!-- SECTION: Settings for shadows -->
+<fieldset
+    ng-repeat="shadow in ctrl.shadows track by $index" 
+    layout='column'>
+    <legend><span translate>Shadow</span>{{$index + 1}}</legend>
+	<wb-ui-setting-length
+	    title="Horizontal Shift"
+	    ng-model="shadow.hShift"
+	    ng-change="ctrl.updateShadows()">
+	</wb-ui-setting-length>
+	
+	<wb-ui-setting-length
+	    title="Vertical Shift"
+	    ng-model="shadow.vShift"
+	    ng-change="ctrl.updateShadows()">
+	</wb-ui-setting-length>
+	
+	<wb-ui-setting-length
+	    title="Blur"
+	    ng-model="shadow.blur"
+	    ng-change="ctrl.updateShadows()">
+	</wb-ui-setting-length>
+	
+	<wb-ui-setting-length
+	    title="Spread"
+	    ng-model="shadow.spread"
+	    ng-change="ctrl.updateShadows()">
+	</wb-ui-setting-length>
+	
+	<wb-ui-setting-color 
+	    title="Color" 
+	    wb-ui-setting-clear-button="true"
+	    wb-ui-setting-preview="true"
+	    ng-model="shadow.color"
+	    ng-change="ctrl.updateShadows()">
+	</wb-ui-setting-color>
+	
+	<md-checkbox 
+	    ng-model="shadow.inset"
+	    ng-change="ctrl.updateShadows()"
+	    aria-label="Inset">
+	    <span translate="">Inset</span>
+	</md-checkbox>
+	<div 
+		layout='row' 
+		layout-align='end center'>
+	    <p style="font-size: 14px" flex tab-index="0"></p>
+	    <md-button 
+	        class="md-raised md-accent" 
+	        aria-label="Delete shadow"
+	        ng-click="ctrl.remove($index)">
+	        <span translate>Delete</span>
+	    </md-button>
+	</div>
+</fieldset>
+
+

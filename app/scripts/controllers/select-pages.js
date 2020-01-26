@@ -26,7 +26,7 @@
 
 
 //Test controller
-angular.module('ngMaterialHome')
+angular.module('vwStudio')
 .controller('AmhSeenSelectPagesCtrl', function ($scope, $controller, $cms) {
 	// Extends Items controller
 	$scope.setValue = function (value) {

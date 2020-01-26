@@ -1,0 +1,17 @@
+<field
+	layout="row"
+	layout-align="start stretch">
+	<field-description>
+		<label translate>{{::title}}</label>
+		<wb-icon size="1em">info</wb-icon>
+	</field-description>
+	<input 
+		ng-model="value"
+		ng-change="setValue(value)"
+		aria-label="color of {{::title}}"
+		type="text"
+		flex>
+	<div
+		ng-click="selectColor($event)"
+		class="preview"></div>
+</div>

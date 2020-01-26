@@ -1,0 +1,34 @@
+<fieldset
+	layout="column">
+	<legend translate>Layout</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.clip"
+		ng-change="ctrl.setStyle('clip', ctrl.stylesValue.clip)"
+		wb-title="clip"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.clipPath"
+		ng-change="ctrl.setStyle('clipPath', ctrl.stylesValue.clipPath)"
+		wb-title="clipPath"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.filter"
+		ng-change="ctrl.setStyle('filter', ctrl.stylesValue.filter)"
+		wb-title="filter"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.objectFit"
+		ng-change="ctrl.setStyle('objectFit', ctrl.stylesValue.objectFit)"
+		wb-title="objectFit"
+		wb-description="">
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.objectPosition"
+		ng-change="ctrl.setStyle('objectPosition', ctrl.stylesValue.objectPosition)"
+		wb-title="objectPosition"
+		wb-description="">
+	</wb-ui-setting-text>
+</fieldset>

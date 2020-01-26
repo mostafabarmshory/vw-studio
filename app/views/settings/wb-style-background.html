@@ -1,0 +1,69 @@
+<fieldset
+	layout="column">
+	<legend translate>Background</legend>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.background"
+		ng-change="ctrl.setStyle('background', ctrl.stylesValue.background)"
+		wb-title="Background"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-color
+		ng-model="ctrl.stylesValue.backgroundColor"
+		ng-change="ctrl.setStyle('backgroundColor', ctrl.stylesValue.backgroundColor)"
+		wb-title="Color"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-color>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundImage"
+		ng-change="ctrl.setStyle('backgroundImage', ctrl.stylesValue.backgroundImage)"
+		wb-title="Image"
+		wb-description=""
+		wb-resource-type="image-url"
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundPosition"
+		ng-change="ctrl.setStyle('backgroundPosition', ctrl.stylesValue.backgroundPosition)"
+		wb-title="Position"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundSize"
+		ng-change="ctrl.setStyle('backgroundSize', ctrl.stylesValue.backgroundSize)"
+		wb-title="Size"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundRepeat"
+		ng-change="ctrl.setStyle('backgroundRepeat', ctrl.stylesValue.backgroundRepeat)"
+		wb-title="Repeat"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundOrigin"
+		ng-change="ctrl.setStyle('backgroundOrigin', ctrl.stylesValue.backgroundOrigin)"
+		wb-title="Origin"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundClip"
+		ng-change="ctrl.setStyle('backgroundClip', ctrl.stylesValue.backgroundClip)"
+		wb-title="Clip"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+	<wb-ui-setting-text
+		ng-model="ctrl.stylesValue.backgroundAttachment"
+		ng-change="ctrl.setStyle('backgroundAttachment', ctrl.stylesValue.backgroundAttachment)"
+		wb-title="Attachment"
+		wb-description=""
+		wb-action-clean>
+	</wb-ui-setting-text>
+</fieldset>
+
