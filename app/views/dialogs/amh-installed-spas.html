@@ -1,0 +1,23 @@
+<md-dialog 
+	ng-controller="AmhSpasCtrl as ctrl"
+	ng-cloak>
+	<md-dialog-content 
+		layout="row"
+		layout-align="start start"
+		layout-wrap
+		layout-padding
+		mb-infinate-scroll="ctrl.loadNextPage()"
+		flex>
+		<a
+			ng-repeat="spa in ctrl.items track by spa.id"
+			ng-href="/{{::spa.name}}/"
+			target="_blank"
+			style="display: block; text-decoration: none; font-size: 10px; color: inherit;"
+			layout="column">
+			<img 
+				width="64px"
+				ng-src="/{{::spa.name}}/images/logo.svg">
+			<h3 translate="">{{::spa.title}}</h3>
+		</a>
+	</md-dialog-content>
+</md-dialog>
