@@ -23,7 +23,7 @@ angular.module('vwStudio')
 .controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window){
 	
 	var ctrl = this;
-	var COTNTENT_CHANGE_EVENT = 'contentChanged';
+	var COTNTENT_MODUEL_CHANGE_EVENT = 'contentModulesChanged';
 	var WORKBENCH_CHANGE_EVENT = 'workbenchChanged';
 
 	function modulesChanged(){
@@ -32,11 +32,11 @@ angular.module('vwStudio')
 
 	function setWorkbench(workbenc){
 		if(ctrl.workbench){
-			ctrl.workbench.off(COTNTENT_CHANGE_EVENT, modulesChanged);
+			ctrl.workbench.off(COTNTENT_MODUEL_CHANGE_EVENT, modulesChanged);
 		}
 		ctrl.workbench = workbenc;
 		if(ctrl.workbench){
-			ctrl.workbench.on(COTNTENT_CHANGE_EVENT, modulesChanged);
+			ctrl.workbench.on(COTNTENT_MODUEL_CHANGE_EVENT, modulesChanged);
 		}
 		modulesChanged();
 	}
