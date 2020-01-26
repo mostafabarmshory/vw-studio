@@ -1,0 +1,22 @@
+# NodeJS
+/node_modules
+/package-lock.json
+
+# Project
+/dist
+/.tmp
+/bower_components
+/.sass-cache
+/coverage
+
+# KDE
+.directory
+
+# GNOME
+
+# Windows
+
+# Eclipse
+/.settings/
+/*.zip
+/nbproject/private/

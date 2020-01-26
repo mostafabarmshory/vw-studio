@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'IRANSansWeb';
+	src: url('fonts/IRANSansWeb.eot');
+	src: url('fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'),
+		url('fonts/IRANSansWeb.woff') format('woff'),
+		url('fonts/IRANSansWeb.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html, body {
+    font-family: IRANSansWeb, "Times New Roman", Times, serif;
+}

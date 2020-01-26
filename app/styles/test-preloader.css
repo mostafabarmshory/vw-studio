@@ -1,0 +1,18 @@
+.mb-preload {
+    pointer-events:none;
+}
+
+.mb-preload::before {
+    position: absolute;
+    z-index: 9999;
+    content: ' ';
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    background-image: url('../images/blocks.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.mb-preload-animate {}

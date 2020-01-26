@@ -1,0 +1,24 @@
+{
+	"name": "vw-studio",
+	"moduleName": "vwStudio",
+	"version": "0.1.0",
+	"title": "VW Studio",
+	"description": "General porpouse web page designer.",
+	"license": "MIT",
+	"homepage": "https://studio.viraweb123.ir",
+	"dependencies": {
+		"mblowfish-core": "https://gitlab.com/mblowfish/mblowfish-core.git#3.0.x",
+		"mblowfish-language": "https://gitlab.com/mblowfish/mblowfish-language.git#3.1.x",
+		"angular-ui-tree": "2.22.6"
+	},
+	"devDependencies": {
+		"angular-mocks": "1.7.x"
+	},
+	"resolutions": {
+		"angular": "1.7.x"
+	},
+	"appPath": "app",
+	"backend": {
+		"host": "test.viraweb123.ir"
+	}
+}

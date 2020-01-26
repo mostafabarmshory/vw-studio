@@ -1,0 +1,127 @@
+{
+    "contents": [{
+            "type": "Group",
+            "name": "Group",
+            "contents": [{
+                    "text": "<h2>How to edit or create this page?</h2>\n<p>There are two different states whenever you are in this page:</p>\n<ol>\n<li style=\"text-align: justify;\"><strong>STATE ONE:</strong> The page is designed before and you want to edit the page. In this case you need to click on the 'edit' symbol (pencil button) on the toolbar and go to the editable form.<br />&nbsp;</li>\n<li style=\"text-align: justify;\"><strong>STATE TWO:</strong> The page doesn't create before. In this case you need to create a blank page at first and then go to the created page and edit the page. If you are in this state, you will see a message like this:</li>\n</ol>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "style": {
+                        "borderColor": {
+                            "bottom": "none"
+                        },
+                        "margin": {},
+                        "borderRadius": {},
+                        "borderStyleColorWidth": {},
+                        "borderStyle": {},
+                        "borderWidth": {},
+                        "flexAlignItem": "wb-flex-item-auto"
+                    }
+                }, {
+                    "text": "<h2 style=\"text-align: left;\"><strong>Page not found.</strong></h2>\n<p style=\"text-align: left;\"><strong>This page doesn't exist.</strong></p>\n<p style=\"text-align: center;\">CREATE THIS PAGE</p>\n<p style=\"text-align: right;\">&nbsp;</p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "style": {
+                        "borderColor": {
+                            "bottom": "none"
+                        },
+                        "margin": {
+                            "left": "30px",
+                            "right": "30px"
+                        },
+                        "borderRadius": {},
+                        "borderStyleColorWidth": {},
+                        "borderStyle": {},
+                        "borderWidth": {},
+                        "flexAlignItem": "wb-flex-item-auto"
+                    }
+                }, {
+                    "text": "<p>Click on the 'CREATE THIS PAGE' button. Now you see a dialog box like this:</p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "style": {
+                        "borderColor": {
+                            "bottom": "none"
+                        },
+                        "margin": {
+                            "left": "30px",
+                            "right": "30px"
+                        },
+                        "borderRadius": {},
+                        "borderStyleColorWidth": {},
+                        "borderStyle": {},
+                        "borderWidth": {},
+                        "flexAlignItem": "wb-flex-item-auto"
+                    }
+                }, {
+                    "text": "<p style=\"text-align: center;\"><img src=\"data:image/png;base64,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\" /></p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "style": {
+                        "borderColor": {
+                            "bottom": "none"
+                        },
+                        "margin": {
+                            "left": "30px",
+                            "right": "30px"
+                        },
+                        "borderRadius": {},
+                        "borderStyleColorWidth": {},
+                        "borderStyle": {},
+                        "borderWidth": {},
+                        "flexAlignItem": "wb-flex-item-auto"
+                    }
+                }, {
+                    "text": "<p>Choose a title for your new page. Description is optional. Now click on 'ok' button in toolbar. You will go to a blank page which needs to be designed.</p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "style": {
+                        "borderColor": {
+                            "bottom": "none"
+                        },
+                        "margin": {
+                            "left": "30px",
+                            "right": "30px"
+                        },
+                        "borderRadius": {},
+                        "borderStyleColorWidth": {},
+                        "borderStyle": {},
+                        "borderWidth": {},
+                        "flexAlignItem": "wb-flex-item-auto"
+                    }
+                }, {
+                    "text": "<h2>Editing the page</h2>\n<p style=\"text-align: justify;\">From now on, the editing phase will be same for two state 1 and 2. Click on edit (pencil) button in toolbar. The page goes to editing mode.</p>\n<p style=\"text-align: justify;\">When your design finished, click on the 'save' button in toolbar to save the page. It's good to save the page every one or two minutes.</p>\n<p style=\"text-align: justify;\">&nbsp;</p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "style": {
+                        "borderColor": {
+                            "bottom": "none"
+                        },
+                        "margin": {},
+                        "borderRadius": {},
+                        "borderStyleColorWidth": {},
+                        "borderStyle": {},
+                        "borderWidth": {},
+                        "flexAlignItem": "wb-flex-item-auto"
+                    }
+                }],
+            "style": {
+                "borderColor": {
+                    "bottom": "none"
+                },
+                "margin": {
+                    "left": "10px",
+                    "right": "10px"
+                },
+                "borderRadius": {},
+                "borderStyleColorWidth": {},
+                "borderStyle": {},
+                "borderWidth": {},
+                "flexDirection": "wb-flex-column",
+                "alignItems": "wb-flex-align-items-stretch",
+                "justifyContent": "wb-flex-justify-content-start",
+                "flexAlignItem": "wb-flex-item-auto"
+            }
+        }],
+    "type": "Page"
+}

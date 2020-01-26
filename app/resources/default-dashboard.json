@@ -1,0 +1,260 @@
+{
+    "type": "Group",
+    "contents": [{
+            "type": "Group",
+            "name": "Group",
+            "event": {},
+            "style": {
+                "layout": {
+                    "direction": "column",
+                    "align": "stretch",
+                    "justify": "center",
+                    "align_self": "stretch"
+                },
+                "size": {},
+                "background": {},
+                "border": {
+                    "width": null,
+                    "style": "none"
+                },
+                "align": {}
+            },
+            "contents": [{
+                    "text": "<h2>Welcome to your dashboard<br></h2><p>Here you are in your dashboard. This page is editable and you are able to re-design the page as you like. If you are decided to re-design the page go to the editable mode. Some widgets are provided for your design.</p><p><br data-mce-bogus=\"1\"></p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "event": {},
+                    "style": {
+                        "layout": {
+                            "align_self": "stretch"
+                        },
+                        "size": {},
+                        "background": {},
+                        "border": {},
+                        "align": {}
+                    },
+                    "version": "wb1"
+                }, {
+                    "text": "<h2>Sidenav panel</h2><p>There are several groups of options in the sidenav. Those are management options. For example, you could manage your users in 'USER MANAGEMENT', content in 'CONTENT MANAGEMENT' and so on.</p><p><br data-mce-bogus=\"1\"></p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "event": {},
+                    "style": {
+                        "layout": {
+                            "align_self": "stretch"
+                        },
+                        "size": {},
+                        "background": {},
+                        "border": {},
+                        "align": {}
+                    },
+                    "version": "wb1"
+                }, {
+                    "text": "<h2>Sample diagrams</h2><p>As an example, some useful diagrams are shown in the following section.&nbsp;</p>",
+                    "type": "HtmlText",
+                    "name": "Text",
+                    "event": {},
+                    "style": {
+                        "layout": {
+                            "align_self": "stretch"
+                        },
+                        "size": {},
+                        "background": {},
+                        "border": {},
+                        "align": {}
+                    },
+                    "version": "wb1"
+                }, {
+                    "type": "Group",
+                    "name": "Group",
+                    "event": {},
+                    "style": {
+                        "layout": {
+                            "direction": "column",
+                            "align": "center",
+                            "justify": "start",
+                            "align_self": "start"
+                        },
+                        "size": {
+                            "width": "100%",
+                            "height": "NaN%",
+                            "min-width": "NaN%",
+                            "min-height": "NaN%",
+                            "max-width": "NaN%",
+                            "max-height": "NaN%"
+                        },
+                        "background": {},
+                        "border": {
+                            "radius": "unpx inpx x px efpx"
+                        },
+                        "align": {},
+                        "margin": "undefinedpx",
+                        "padding": "undefinedpx"
+                    },
+                    "contents": [{
+                            "text": "<h2 align=\"center\"><br></h2><p align=\"center\">Diagram no.1. Total, receive and send bandwidth</p>",
+                            "type": "HtmlText",
+                            "name": "Text",
+                            "event": {},
+                            "style": {
+                                "layout": {
+                                    "align_self": "center"
+                                },
+                                "size": {
+                                    "width": "70%"
+                                },
+                                "background": {},
+                                "border": {},
+                                "align": {}
+                            },
+                            "version": "wb1"
+                        }, {
+                            "style": {
+                                "layout": {
+                                    "align_self": "center"
+                                },
+                                "size": {
+                                    "width": "70%",
+                                    "height": "NaN%",
+                                    "min-width": "NaN%",
+                                    "min-height": "NaN%",
+                                    "max-width": "NaN%",
+                                    "max-height": "NaN%"
+                                },
+                                "background": {},
+                                "border": {
+                                    "radius": "unpx inpx x px efpx",
+                                    "width": 1,
+                                    "style": "solid"
+                                },
+                                "align": {},
+                                "margin": "undefinedpx",
+                                "padding": "undefinedpx"
+                            },
+                            "type": "SeenMonitorMetrics",
+                            "name": "Monitor metrics",
+                            "event": {},
+                            "version": "wb1",
+                            "metrics": [{
+                                    "name": "tenant.bandwidth",
+                                    "rightSide": false,
+                                    "color": "black"
+                                }, {
+                                    "name": "tenant.receive_bandwidth",
+                                    "rightSide": false,
+                                    "color": "red"
+                                }, {
+                                    "name": "tenant.send_bandwidth",
+                                    "rightSide": false,
+                                    "color": "green"
+                                }],
+                            "interval": "5"
+                        }],
+                    "version": "wb1"
+                }, {
+                    "type": "Group",
+                    "name": "Group",
+                    "event": {},
+                    "style": {
+                        "layout": {
+                            "direction": "column",
+                            "align": "center",
+                            "justify": "start",
+                            "align_self": "start"
+                        },
+                        "size": {
+                            "width": "100%",
+                            "height": "NaN%",
+                            "min-width": "NaN%",
+                            "min-height": "NaN%",
+                            "max-width": "NaN%",
+                            "max-height": "NaN%"
+                        },
+                        "background": {},
+                        "border": {
+                            "radius": "unpx inpx x px efpx"
+                        },
+                        "align": {},
+                        "margin": "undefinedpx",
+                        "padding": "undefinedpx"
+                    },
+                    "contents": [{
+                            "text": "<h2 align=\"center\"><br></h2><p align=\"center\">Diagram no.2.&nbsp;The storage size of the tenant</p>",
+                            "type": "HtmlText",
+                            "name": "Text",
+                            "event": {},
+                            "style": {
+                                "layout": {
+                                    "align_self": "center"
+                                },
+                                "size": {
+                                    "width": "70%"
+                                },
+                                "background": {},
+                                "border": {},
+                                "align": {}
+                            },
+                            "version": "wb1"
+                        }, {
+                            "style": {
+                                "layout": {
+                                    "align_self": "center"
+                                },
+                                "size": {
+                                    "width": "70%",
+                                    "height": "NaN%",
+                                    "min-width": "NaN%",
+                                    "min-height": "NaN%",
+                                    "max-width": "NaN%",
+                                    "max-height": "NaN%"
+                                },
+                                "background": {},
+                                "border": {
+                                    "radius": "unpx inpx x px efpx",
+                                    "width": 1,
+                                    "style": "solid"
+                                },
+                                "align": {},
+                                "margin": "undefinedpx",
+                                "padding": "undefinedpx"
+                            },
+                            "type": "SeenMonitorMetrics",
+                            "name": "Monitor metrics",
+                            "event": {},
+                            "version": "wb1",
+                            "metrics": [{
+                                    "name": "tenant.storage",
+                                    "rightSide": false,
+                                    "color": "black"
+                                }],
+                            "interval": "5"
+                        }],
+                    "version": "wb1"
+                }],
+            "version": "wb1"
+        }],
+    "style": {
+        "layout": {
+            "direction": "column",
+            "align": "stretch",
+            "justify": "start",
+            "align_self": "stretch"
+        },
+        "background": {
+            "color": ""
+        },
+        "border": {
+            "radius": "unpx inpx x px efpx"
+        },
+        "margin": "undefinedpx",
+        "padding": "8px",
+        "size": {
+            "width": "NaN%",
+            "height": "NaN%",
+            "min-width": "NaN%",
+            "min-height": "NaN%",
+            "max-width": "NaN%",
+            "max-height": "NaN%"
+        }
+    }
+}

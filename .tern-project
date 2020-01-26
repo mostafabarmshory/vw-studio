@@ -1,0 +1,19 @@
+{
+  "ecmaVersion": 5,
+  "ide": {
+    "scriptPaths": [
+      {
+        "type": "FOLDER",
+        "path": "app/scripts"
+      }
+    ]
+  },
+  "libs": [
+    "browser"
+  ],
+  "plugins": {
+    "angular1": {
+      
+    }
+  }
+}

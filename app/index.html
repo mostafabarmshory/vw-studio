@@ -1,0 +1,47 @@
+<!doctype html>
+<html 
+	md-theme="{{app.test.theme || app.setting.theme || app.config.theme || 'default'}}"
+	md-theme-watch
+	dir="{{app.dir}}"
+	ng-app="myDashboardApp" 
+	ng-controller="MainCtrl"
+	manifest="<!-- injector:base-path --><!-- endinjector -->manifest.appcache">
+<head>
+	<title>VW Studio</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Angular admin dashboard with material design">
+	<meta name="author" content="flatlogic.com">
+	<meta name="viewport" content="width=device-width">
+	<meta name="robots" content="noindex, nofollow">
+
+	<!--  injector:base-tag -->
+	<base href="/" >
+	<!--  endinjector  -->
+
+	<!-- build:css(.) styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+	
+    <!-- build:css(.tmp) styles/main.css -->
+	<!-- injector:css -->
+	<!-- endinjector -->
+	<!-- endbuild -->
+
+	<!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+	<!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<!-- injector:js -->
+	<!-- endinjector -->
+	<!-- endbuild -->
+</head>
+<body 
+	ng-class="{'mb-rtl-direction': app.dir=='rtl', 'mb-ltr-direction': app.dir!='rtl'}"
+	layout="column"
+	mb-view
+	style="height: 100vh; width: 100vw;">
+</body>
+</html>
