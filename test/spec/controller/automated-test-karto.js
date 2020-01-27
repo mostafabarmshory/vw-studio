@@ -33,23 +33,23 @@ describe('Automate test ', function() {
 	'use strict';
 
 	var $controller;
-	var locals ={
-			$scope : null,
-			$app : {
-				logout: function(){
-					//Logout function
-				},
-				session : function() {
-					return {
-						then : function() {
-							// TODO: call the fucntion
-						}
-					};
-				}
+	var locals = {
+		$scope: null,
+		$app: {
+			logout: function() {
+				//Logout function
 			},
-			// used in dialogs
-			config: {},
-			$element: angular.element('<div></div>'),
+			session: function() {
+				return {
+					then: function() {
+						// TODO: call the fucntion
+					}
+				};
+			}
+		},
+		// used in dialogs
+		config: {},
+		$element: angular.element('<div></div>'),
 	};
 
 	// load the controller's module
@@ -69,26 +69,26 @@ describe('Automate test ', function() {
 	/**
 	 * 
 	 */
-	function KoratObjectParser(){}
+	function KoratObjectParser() { }
 
 	/**
 	 * Applies finitization to the test space
 	 */
-	KoratObjectParser.prototype.getFinitization = function(testSpace){};
+	KoratObjectParser.prototype.getFinitization = function(/*testSpace*/) { };
 
 
-	var KoratObjectHolder = function(refrence){
+	var KoratObjectHolder = function(refrence) {
 		this.refrence = refrence;
-	}
+	};
 
-	KoratObjectHolder.prototype.invokePredicate = function(){
+	KoratObjectHolder.prototype.invokePredicate = function() {
 		// XXX: maso, 2019
-	}
+	};
 
 	/**
 	 * 
 	 */
-	function KoratControllerTestSpace(controllerName){
+	function KoratControllerTestSpace(controllerName) {
 		this.controllerName = controllerName;
 		this.loaded = false;
 	}
@@ -98,13 +98,13 @@ describe('Automate test ', function() {
 		this.mainInstance = $controller(this.controllerName, locals);
 		expect(this.mainInstance).not.toBe(null);
 
-		var objectParser = new KoratObjectParser();
+//		var objectParser = new KoratObjectParser();
 
-		var finitization = objectParser.getFinitization(this.mainInstance);
-//		var predicate = objectParser.getPredicate(this.mainInstance);
+//		var finitization = objectParser.getFinitization(this.mainInstance);
+		//		var predicate = objectParser.getPredicate(this.mainInstance);
 
 		// XXX: maso, 2019: build test space
-//		this.intialize(finitization);
+		//		this.intialize(finitization);
 
 
 		this.loaded = true;
@@ -112,16 +112,15 @@ describe('Automate test ', function() {
 
 	KoratControllerTestSpace.prototype.hasNextCandidate = function() {
 		this.checkPreconditions();
-
-		return false
+		return false;
 	};
 
 	KoratControllerTestSpace.prototype.nextCandidate = function() {
 		this.checkPreconditions();
 	};
 
-	KoratControllerTestSpace.prototype.checkPreconditions = function(){
-		if(!this.loaded) {
+	KoratControllerTestSpace.prototype.checkPreconditions = function() {
+		if (!this.loaded) {
 			throw "The test space must be load befor any test";
 		}
 	};
@@ -139,24 +138,24 @@ describe('Automate test ', function() {
 		'AmhOwnerToolbarCtrl',
 		'AmhPageNewDialogCtrl',
 		'AmhSeenSelectPagesCtrl',
-		];
+	];
 
-	angular.forEach(controllers, function(ctrlName){
-		var testSpace  = new KoratControllerTestSpace(ctrlName);
+	angular.forEach(controllers, function(ctrlName) {
+		var testSpace = new KoratControllerTestSpace(ctrlName);
 
 		it('of ' + ctrlName + ' should pass all test based on Korat', function() {
 			testSpace.load();
 			while (testSpace.hasNextCandidate()) {
 				var candidate = testSpace.nextCandidate();
 				try {
-					if (candidate.invokePredicate()){
-//						output(candidate);
+					if (candidate.invokePredicate()) {
+						//						output(candidate);
 						console.log("Hi");
 					}
 				} catch (error) {
 					// TODO: Report the problem??
 				}
-//				backtrack();
+				//				backtrack();
 			}
 		});
 	});

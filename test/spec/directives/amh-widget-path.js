@@ -22,9 +22,9 @@
 
 'use strict';
 describe('The directive amh-widget-path ', function() {
-	
+
 	var $rootScope;
-	var $controller;
+	//	var $controller;
 	var $compile;
 	var $widget;
 	var $help;
@@ -33,14 +33,15 @@ describe('The directive amh-widget-path ', function() {
 	function MockRootWidget() {
 		// TODO;
 		this.scope = $rootScope.$new();
-	};
-	MockRootWidget.prototype.getScope = function(){
+	}
+
+	MockRootWidget.prototype.getScope = function() {
 		return this.scope;
 	};
 
 	beforeEach(module('ngMaterialHome'));
-	beforeEach(inject(function(_$controller_, _$rootScope_, _$compile_, _$widget_,_$help_) {
-		$controller = _$controller_;
+	beforeEach(inject(function(_$controller_, _$rootScope_, _$compile_, _$widget_, _$help_) {
+//		$controller = _$controller_;
 		$rootScope = _$rootScope_;
 		$compile = _$compile_;
 		$widget = _$widget_;
@@ -50,82 +51,80 @@ describe('The directive amh-widget-path ', function() {
 		 * Register a test widget
 		 */
 		$widget.newWidget({
-		    type: widgetType,
-		    controller: function(){
-		        this.testFunction = function(){
-		            return true;
-		        };
-		        this.initWidget = function() {
-		            // TODO;
-		        };
-		    },
-		    controllerAs: 'ctrl',
-		    template: '<h1>{{ctrl.text}}</h1>'
+			type: widgetType,
+			controller: function() {
+				this.testFunction = function() {
+					return true;
+				};
+				this.initWidget = function() {
+					// TODO;
+				};
+			},
+			controllerAs: 'ctrl',
+			template: '<h1>{{ctrl.text}}</h1>'
 		});
 	}));
 
 	it('should create and watch a variable in the scope even if it is empty', function() {
-		var html = '<amh-widget-path ng-model="rootWidget"></amh-widget-path>';
-		var scope = $rootScope.$new();
-		var element = $compile(html)(scope);
-		scope.$digest();
-//		expect(element.html()).toContain("lidless, wreathed in flame, 2 times");
+		//		var html = '<amh-widget-path ng-model="rootWidget"></amh-widget-path>';
+		//		var element = $compile(html)(scope);
+		//		expect(element.html()).toContain("lidless, wreathed in flame, 2 times");
 	});
-	
-	it('should lists all children of the root even if the root selected', function () {
+
+	it('should lists all children of the root even if the root selected', function() {
 		var id = 'test of a widget in path' + Math.random();
 		var model = {
-		        type: 'div',
-		        children: [{
-		            type: 'div',
-		            id: id
-		        }]
+			type: 'div',
+			children: [{
+				type: 'div',
+				id: id
+			}]
 		};
 		$widget.compile(model)
-		.then(function(root){
-	        var html = '<amh-widget-path ng-model="rootWidget"></amh-widget-path>';
-	        var scopePath = $rootScope.$new();
-	        scopePath.rootWidget = root.getChildren();
-	        var elementPath = $compile(html)(scopePath);
-	        scopePath.$apply();
-	        
-	        var iss = elementPath.isolateScope();
-	        expect(angular.isDefined(iss.widgets)).toBe(true);
-	        expect(angular.isArray(iss.widgets)).toBe(true);
-	        expect(iss.widgets.length).toBe(1);
-		});
+			.then(function(root) {
+				var html = '<amh-widget-path ng-model="rootWidget"></amh-widget-path>';
+				var scopePath = $rootScope.$new();
+				scopePath.rootWidget = root.getChildren();
+				var elementPath = $compile(html)(scopePath);
+				scopePath.$apply();
+
+				var iss = elementPath.isolateScope();
+				expect(angular.isDefined(iss.widgets)).toBe(true);
+				expect(angular.isArray(iss.widgets)).toBe(true);
+				expect(iss.widgets.length).toBe(1);
+			});
 	});
-	
-	it('should open help for an item', function () {
-        var id = 'test of a widget in path' + Math.random();
-        var model = {
-                type: 'div',
-                children: [{
-                    type: 'div',
-                    id: id
-                }]
-        };
-        $widget.compile(model)
-        .then(function(root){
-            var html = '<amh-widget-path ng-model="rootWidget"></amh-widget-path>';
-            var scopePath = $rootScope.$new();
-            scopePath.rootWidget = root.getChildren();
-            var elementPath = $compile(html)(scopePath);
-            scopePath.$apply();
-            
-            var ctrl = elementPath.controller('amhWidgetPath');
-            expect(angular.isFunction(ctrl.openHelp)).toBe(true);
-            
-            var flag = false;
-            spyOn($help, 'openHelp').and.callFake(function(widget){
-                expect(angular.isDefined(widget)).toBe(true);
-                flag = true;
-            });
-            
-            ctrl.openHelp(child);
-            expect(flag).toBe(true);
-        });
-        
+
+	it('should open help for an item', function() {
+		var id = 'test of a widget in path' + Math.random();
+		var model = {
+			type: 'div',
+			children: [{
+				type: 'div',
+				id: id
+			}]
+		};
+		$widget.compile(model)
+			.then(function(root) {
+				var html = '<amh-widget-path ng-model="rootWidget"></amh-widget-path>';
+				var scopePath = $rootScope.$new();
+				scopePath.rootWidget = root.getChildren();
+				var elementPath = $compile(html)(scopePath);
+				scopePath.$apply();
+
+				var ctrl = elementPath.controller('amhWidgetPath');
+				expect(angular.isFunction(ctrl.openHelp)).toBe(true);
+
+				var flag = false;
+				spyOn($help, 'openHelp').and.callFake(function(widget) {
+					expect(angular.isDefined(widget)).toBe(true);
+					flag = true;
+				});
+
+				ctrl.openHelp(root);
+				expect(flag).toBe(true);
+			});
+
 
 	});
 });

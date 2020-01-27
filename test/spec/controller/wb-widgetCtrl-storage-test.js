@@ -31,7 +31,7 @@ describe('Storage test', function () {
     function MockRootWidget() {
         // TODO;
         this.scope = $rootScope.$new();
-    };
+    }
 
     MockRootWidget.prototype.getScope = function () {
         return this.scope;

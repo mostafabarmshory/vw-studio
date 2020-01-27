@@ -23,62 +23,62 @@
  */
 'use strict';
 
-describe('wb-ui-setting-ui directive ', function () {
+describe('wb-ui-setting-ui directive ', function() {
     /*
      * Service
      */
-    var $rootScope;
-    var $compile;
+	var $rootScope;
+	var $compile;
 
     /*
      * Element 
      */
-    var scope;
-    var directiveElem;
+	var scope;
+	var directiveElem;
 
 
 
-    // instantiate service
-    beforeEach(function(){
-        module('am-wb-core')
-        inject(function (_$rootScope_, _$compile_) {
-            $rootScope = _$rootScope_;
-            $compile = _$compile_;
+	// instantiate service
+	beforeEach(function() {
+		module('am-wb-core');
+		inject(function(_$rootScope_, _$compile_) {
+			$rootScope = _$rootScope_;
+			$compile = _$compile_;
 
-//          $widget = _$widget_;
-//          $httpBackend = _$httpBackend_;
-//          $timeout = _$timeout_;
-//          $settings = _$settings_;
+			//          $widget = _$widget_;
+			//          $httpBackend = _$httpBackend_;
+			//          $timeout = _$timeout_;
+			//          $settings = _$settings_;
 
-            scope = $rootScope.$new();
-            scope.title = 'title';
-            scope.description = 'description';
-            scope.value = 'true';
-            directiveElem = getCompiledElement();
-        });
-    });
+			scope = $rootScope.$new();
+			scope.title = 'title';
+			scope.description = 'description';
+			scope.value = 'true';
+			directiveElem = getCompiledElement();
+		});
+	});
 
 
-    function getCompiledElement(){
-        var element = angular.element('<wb-ui-setting-boolean '+
-                'wb-title="{{title}}" '+
-                'wb-description="{{description}}" '+
-                'ng-value="value"' + 
-        '></wb-ui-setting-boolean>');
-        var compiledElement = $compile(element)(scope);
-        $rootScope.$digest();
-        return compiledElement;
-    }
+	function getCompiledElement() {
+		var element = angular.element('<wb-ui-setting-boolean ' +
+			'wb-title="{{title}}" ' +
+			'wb-description="{{description}}" ' +
+			'ng-value="value"' +
+			'></wb-ui-setting-boolean>');
+		var compiledElement = $compile(element)(scope);
+		$rootScope.$digest();
+		return compiledElement;
+	}
 
     /**************************************************************************************
      *  Providers
      **************************************************************************************/
-    it('should applied template', function () {
-        expect(directiveElem.html()).not.toEqual('');
-    });
+	it('should applied template', function() {
+		expect(directiveElem.html()).not.toEqual('');
+	});
 
-    it('should have md-switch element', function () {
-        var inputElement = directiveElem.find('input');
-        expect(inputElement).toBeDefined();
-    });
+	it('should have md-switch element', function() {
+		var inputElement = directiveElem.find('input');
+		expect(inputElement).toBeDefined();
+	});
 });

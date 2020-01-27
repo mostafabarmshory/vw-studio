@@ -40,7 +40,8 @@ describe('WbWidget processor event ', function () {
 	beforeEach(module('am-wb-core'));
 	beforeEach(inject(function (_$widget_, _WbProcessorAttribute_, _$rootScope_, _$timeout_) {
 		$widget = _$widget_;
-		processor = new _WbProcessorAttribute_();
+		var WbProcessorAttribute = _WbProcessorAttribute_;
+		processor = new WbProcessorAttribute();
 		$rootScope = _$rootScope_;
 		$timeout = _$timeout_;
 	}));

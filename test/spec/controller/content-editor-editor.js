@@ -5,14 +5,6 @@ describe('Contnent edtiro controllr', function() {
 	// load the controller's module
 	var $rootScope;
 	var $controller;
-	var $mockCms = {};
-	var mockRouteParams = {
-		name : 'contentname'
-	};
-	var mockTranslate = {
-		use : function() {
-		}
-	};
 
 	// Initialize the controller and a mock scope
 	beforeEach(function(){

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 'use strict';
-describe('Timeout test', function () {
+describe('Timeout test', function() {
 	// instantiate service
 	var $rootScope;
 	var $widget;
@@ -32,15 +32,15 @@ describe('Timeout test', function () {
 	function MockRootWidget() {
 		// TODO;
 		this.scope = $rootScope.$new();
-	};
+	}
 
-	MockRootWidget.prototype.getScope = function () {
+	MockRootWidget.prototype.getScope = function() {
 		return this.scope;
 	};
 
 	// load the service's module
 	beforeEach(module('am-wb-core'));
-	beforeEach(inject(function (_$rootScope_, _$widget_, _$timeout_) {
+	beforeEach(inject(function(_$rootScope_, _$widget_, _$timeout_) {
 		$rootScope = _$rootScope_;
 		$widget = _$widget_;
 		$timeout = _$timeout_;
@@ -53,7 +53,7 @@ describe('Timeout test', function () {
 		});
 	}));
 
-	it('should define $timeout service', function (done) {
+	it('should define $timeout service', function(done) {
 		var root = new MockRootWidget();
 		// Create new instance
 		$widget.compile({
@@ -70,10 +70,10 @@ describe('Timeout test', function () {
 				init: 'if ($timeout) {$widget.setProperty(\'style.background\',\'red\')}'
 			}
 		}, root)
-		.then(function (widget) {
-			expect(widget.getProperty('style.background')).toBe('red');
-			done();
-		});
+			.then(function(widget) {
+				expect(widget.getProperty('style.background')).toBe('red');
+				done();
+			});
 		$rootScope.$apply();
 	});
 });

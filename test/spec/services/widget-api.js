@@ -206,7 +206,7 @@ describe('Service $widget', function () {
 	});
 
 	it('should support providers api ', function () {
-		function provider(){};
+		function provider(){}
 
 		var pks = $widget.getProvidersKey();
 
@@ -216,7 +216,7 @@ describe('Service $widget', function () {
 		$widget.removeProvider('xxx', provider);
 		expect($widget.getProvider('xxx')).toBe(undefined);
 
-		function provider2 (){};
+		function provider2 (){}
 		$widget.setProvider('xxx', provider);
 		expect($widget.getProvider('xxx')).toBe(provider);
 		$widget.setProvider('xxx', provider2);

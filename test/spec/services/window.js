@@ -23,9 +23,8 @@
  */
 'use strict';
 
-describe('Service $wbWindow ', function () {
-    var $wbWindow;
-    var $document;
+describe('Service $window ', function () {
+
     var $window;
     var $rootScope;
 
@@ -34,36 +33,34 @@ describe('Service $wbWindow ', function () {
     beforeEach(module('am-wb-core'));
 
     // instantiate service
-    beforeEach(inject(function (_$wbWindow_, _$window_, _$document_, _$rootScope_) {
-        $wbWindow = _$wbWindow_;
-        $document = _$document_;
+    beforeEach(inject(function ( _$window_, _$rootScope_) {
         $window = _$window_;
         $rootScope = _$rootScope_;
     }));
 
     it(' parent is the $window parent', function () {
-        expect($wbWindow.getParent()).toBe($window.parent);
+        expect($window.getParent()).toBe($window.parent);
     });
 
     it(' all widgets must have a window', function () {
         // create default window
         var title = 'new title:' + Math.random();
-        $wbWindow.setTitle(title);
-        expect($wbWindow.getTitle()).toBe(title);
+        $window.setTitle(title);
+        expect($window.getTitle()).toBe(title);
         expect($window.document.title).toBe(title);
     });
 
     it(' must be able to change language of the page', function () {
         // create default window
         var language = 'lang-' + Math.random();
-        $wbWindow.setLanguage(language);
+        $window.setLanguage(language);
         // Not works in test mode
-//        expect($wbWindow.getLanguage()).toBe(language);
+//        expect($window.getLanguage()).toBe(language);
     });
     
     it(' must open internal window', function () {
         // create default window
-        var window = $wbWindow.open('', 'name', {
+        var window = $window.open('', 'name', {
             internal: true,
         }, false);
         expect(angular.isDefined(window)).toBe(true);
@@ -95,7 +92,7 @@ describe('Service $wbWindow ', function () {
     
     it('must load library', function(done){
         var path = 'path/to/library';
-        $wbWindow.loadLibrary(path)
+        $window.loadLibrary(path)
         .then(function(){
             done();
         }, function(){
@@ -108,28 +105,28 @@ describe('Service $wbWindow ', function () {
         var key = 'key';
         var value = 'value:' + Math.random();
         
-        $wbWindow.setMeta(key, value);
-        $wbWindow.setMeta(key, value);
+        $window.setMeta(key, value);
+        $window.setMeta(key, value);
     });
 
     it('must remove meat', function(){
         var key = 'key';
         var value = 'value:' + Math.random();
         
-        $wbWindow.setMeta(key, value);
-        expect($wbWindow.getMeta(key)).toBe(value);
-        $wbWindow.setMeta(key);
-        expect($wbWindow.getMeta(key)).toBe(undefined);
+        $window.setMeta(key, value);
+        expect($window.getMeta(key)).toBe(value);
+        $window.setMeta(key);
+        expect($window.getMeta(key)).toBe(undefined);
     });
     
     it('must set link', function(){
         var key = 'key';
         var data = {
                value: 'value'
-        }
+        };
         
-        $wbWindow.setLink(key, data);
-        $wbWindow.setLink(key, data);
+        $window.setLink(key, data);
+        $window.setLink(key, data);
     });
 
     

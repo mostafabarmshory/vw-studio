@@ -23,56 +23,57 @@
  */
 'use strict';
 
-describe('WbWidget converter WbConverterText ', function () {
-    // instantiate service
-    var $widget;
-    var processor;
-    var $rootScope;
-    var WbConverterText;
+describe('WbWidget converter WbConverterText ', function() {
+	// instantiate service
+	var $widget;
+	var processor;
+	var $rootScope;
+	var WbConverterText;
 
-    // load the service's module
-    beforeEach(module('am-wb-core'));
-    beforeEach(inject(function (_$widget_, _WbProcessorAttribute_, _$rootScope_, _WbConverterText_) {
-        $widget = _$widget_;
-        processor = new _WbProcessorAttribute_();
-        $rootScope = _$rootScope_;
-        WbConverterText = _WbConverterText_;
-    }));
+	// load the service's module
+	beforeEach(module('am-wb-core'));
+	beforeEach(inject(function(_$widget_, _WbProcessorAttribute_, _$rootScope_, _WbConverterText_) {
+		$widget = _$widget_;
+		var WbProcessorAttribute = _WbProcessorAttribute_;
+		processor = new WbProcessorAttribute();
+		$rootScope = _$rootScope_;
+		WbConverterText = _WbConverterText_;
+	}));
 
-    it('should converte multi line text to paragraph', function () {
-        // Create new instance
-        var data = 'p1\np2\np3\n\n\np4';
-        var converter = new WbConverterText();
-        var result = converter.decode(data);
-        expect(result.length).toBe(4);
-        _.forEach(result, function(item){
-            expect(item.type).toBe('p');
-        });
-    });
+	it('should converte multi line text to paragraph', function() {
+		// Create new instance
+		var data = 'p1\np2\np3\n\n\np4';
+		var converter = new WbConverterText();
+		var result = converter.decode(data);
+		expect(result.length).toBe(4);
+		_.forEach(result, function(item) {
+			expect(item.type).toBe('p');
+		});
+	});
 
-    it('should encode lit of html widgets', function (done) {
-        // Create new instance
-        var model = {
-                type: 'div',
-                children: [{
-                    type: 'p',
-                    html: 'p1'
-                },{
-                    type: 'p',
-                    html: 'p2'
-                },{
-                    type: 'img',
-                    src: 'images/path.svg'
-                }]
-        };
-        $widget.compile(model)
-        .then(function(widget){
-            var converter = new WbConverterText();
-            var result = converter.encode(widget);
-            expect(result.match(/p1/).length).toBe(1);
-            expect(result.match(/p2/).length).toBe(1);
-            done();
-        });
-        $rootScope.$apply();
-    });
+	it('should encode lit of html widgets', function(done) {
+		// Create new instance
+		var model = {
+			type: 'div',
+			children: [{
+				type: 'p',
+				html: 'p1'
+			}, {
+				type: 'p',
+				html: 'p2'
+			}, {
+				type: 'img',
+				src: 'images/path.svg'
+			}]
+		};
+		$widget.compile(model)
+			.then(function(widget) {
+				var converter = new WbConverterText();
+				var result = converter.encode(widget);
+				expect(result.match(/p1/).length).toBe(1);
+				expect(result.match(/p2/).length).toBe(1);
+				done();
+			});
+		$rootScope.$apply();
+	});
 });

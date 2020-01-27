@@ -5,7 +5,7 @@ describe('Clon Workbench Processor ', function() {
 	// load the controller's module
 	var $rootScope;
 	var $controller;
-	var $mockCms = {};
+//	var $mockCms = {};
 	var CmsContent;
 	var CmsContentMetadata;
 	var CmsTermTaxonomy;
@@ -14,13 +14,13 @@ describe('Clon Workbench Processor ', function() {
 	var $q;
 	var $dispatcher;
 	var $wbWindow;
-	var mockRouteParams = {
-		name : 'contentname'
-	};
-	var mockTranslate = {
-		use : function() {
-		}
-	};
+//	var mockRouteParams = {
+//		name : 'contentname'
+//	};
+//	var mockTranslate = {
+//		use : function() {
+//		}
+//	};
 	var AmhWorkbenchProcessorMetainfo;
 
 	// Initialize the controller and a mock scope

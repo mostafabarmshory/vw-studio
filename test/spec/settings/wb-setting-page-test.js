@@ -23,230 +23,230 @@
  */
 'use strict';
 
-describe('Abstract WbSettingPageCtrl controller', function () {
+describe('Abstract WbSettingPageCtrl controller', function() {
 
-    // load the service's module
-    beforeEach(module('am-wb-core'));
+	// load the service's module
+	beforeEach(module('am-wb-core'));
 
-    var $rootScope;
-    var $controller;
-    var $widget;
-
-
-    // Store references to $rootScope and $compile
-    // so they are available to all tests in this describe block
-    beforeEach(inject(function(_$rootScope_, _$controller_, _$widget_){
-        // The injector unwraps the underscores (_) from around the parameter names when matching
-        $rootScope = _$rootScope_;
-        $controller = _$controller_;
-        $widget = _$widget_;
-    }));
+	var $rootScope;
+	var $controller;
+	var $widget;
 
 
-    it('should add api function', function () {
-        var scope = $rootScope.$new();
-        var element = angular.element('<div></div>');
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: scope,
-            $element: element
-        });
+	// Store references to $rootScope and $compile
+	// so they are available to all tests in this describe block
+	beforeEach(inject(function(_$rootScope_, _$controller_, _$widget_) {
+		// The injector unwraps the underscores (_) from around the parameter names when matching
+		$rootScope = _$rootScope_;
+		$controller = _$controller_;
+		$widget = _$widget_;
+	}));
 
-        expect(_.isFunction(controller.setWidget)).toBe(true);
-        expect(_.isFunction(controller.getWidgets)).toBe(true);
 
-        expect(_.isFunction(controller.off)).toBe(true);
-        expect(_.isFunction(controller.on)).toBe(true);
+	it('should add api function', function() {
+		var scope = $rootScope.$new();
+		var element = angular.element('<div></div>');
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: scope,
+			$element: element
+		});
 
-        expect(_.isFunction(controller.trackAttributes)).toBe(true);
-        expect(_.isFunction(controller.setAttribute)).toBe(true);
+		expect(_.isFunction(controller.setWidget)).toBe(true);
+		expect(_.isFunction(controller.getWidgets)).toBe(true);
 
-        expect(_.isFunction(controller.trackStyles)).toBe(true);
-        expect(_.isFunction(controller.setStyle)).toBe(true);
-    });
+		expect(_.isFunction(controller.off)).toBe(true);
+		expect(_.isFunction(controller.on)).toBe(true);
 
-    it('should load attributes at advance', function (done) {
-        var scope = $rootScope.$new();
-        var element = angular.element('<div></div>');
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: scope,
-            $element: element
-        });
-        controller.trackAttributes(['id', 'name', 'html']);
-        var model = {
-                type: 'a',
-                id: 'a',
-                name: 'a-test',
-                html: 'HTML Text In 4th group',
-        };
-        $widget.compile(model)
-        .then(function(widget){
-            controller.setWidget(widget);
-            expect(controller.attributesValue.id).toBe(model.id);
-            expect(controller.attributesValue.name).toBe(model.name);
-            expect(controller.attributesValue.html).toBe(model.html);
-            done();
-        });
-        $rootScope.$apply();
-    });
-    
-    it('should check if widget is root', function (done) {
-        var scope = $rootScope.$new();
-        var element = angular.element('<div></div>');
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: scope,
-            $element: element
-        });
-        controller.trackAttributes(['id', 'name', 'html']);
-        expect(controller.isContainerWidget()).toBe(false);
-        var model = {
-                type: 'div',
-                children: [{
-                    type: 'a'
-                }]
-        };
-        $widget.compile(model)
-        .then(function(widget){
-            controller.setWidget(widget);
-            expect(controller.isContainerWidget()).toBe(true);
-            
-            controller.setWidget(widget.getChildren()[0]);
-            expect(controller.isContainerWidget()).toBe(false);
-            
+		expect(_.isFunction(controller.trackAttributes)).toBe(true);
+		expect(_.isFunction(controller.setAttribute)).toBe(true);
 
-            controller.setWidget();
-            expect(controller.isContainerWidget()).toBe(false);
-            
-            done();
-        });
-        $rootScope.$apply();
-    });
-    
-    it('should load styles at advance', function (done) {
-        var scope = $rootScope.$new();
-        var element = angular.element('<div></div>');
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: scope,
-            $element: element
-        });
-        controller.trackAttributes(['id', 'name', 'html']);
-        controller.trackStyles(['background', 'color']);
-        var model = {
-                type: 'div',
-                style: {
-                    background: 'red',
-                    color: 'black'
-                },
-                children: [{
-                    type: 'a'
-                }]
-        };
-        $widget.compile(model)
-        .then(function(widget){
-            controller.setWidget(widget);
-            expect(controller.stylesValue.background).toBe(model.style.background);
-            expect(controller.stylesValue.color).toBe(model.style.color);
-            done();
-        });
-        $rootScope.$apply();
-    });
-    
-    it('should change the model', function (done) {
-        var scope = $rootScope.$new();
-        var element = angular.element('<div></div>');
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: scope,
-            $element: element
-        });
-        controller.trackAttributes(['id', 'name', 'html']);
-        controller.trackStyles(['background', 'color']);
-        var model = {
-                type: 'div',
-                style: {
-                    background: 'red',
-                    color: 'black'
-                },
-                children: [{
-                    type: 'a'
-                }]
-        };
-        $widget.compile(model)
-        .then(function(widget){
-            controller.setWidget(widget);
-            expect(controller.stylesValue.background).toBe(model.style.background);
-            expect(controller.stylesValue.color).toBe(model.style.color);
-            
-            controller.setStyle('background', 'black');
-            expect(controller.stylesValue.background).toBe('black');
-            expect(widget.getModelProperty('style.background')).toBe('black');
+		expect(_.isFunction(controller.trackStyles)).toBe(true);
+		expect(_.isFunction(controller.setStyle)).toBe(true);
+	});
 
-            controller.setAttribute('id', 'xxx');
-            expect(controller.attributesValue.id).toBe('xxx');
-            expect(widget.getModelProperty('id')).toBe('xxx');
-            
-            done();
-        });
-        $rootScope.$apply();
-    });
-    
-    it('should track model changesl', function (done) {
-        var scope = $rootScope.$new();
-        var element = angular.element('<div></div>');
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: scope,
-            $element: element
-        });
-        controller.trackAttributes(['id', 'name', 'html']);
-        controller.trackStyles(['background', 'color']);
-        var model = {
-                type: 'div',
-                id: 'test',
-                style: {
-                    color: 'black'
-                },
-                children: [{
-                    type: 'a'
-                }]
-        };
-        $widget.compile(model)
-        .then(function(widget){
-            controller.setStyle('color', 'a');
-            controller.setAttribute('id', 'yyy');
-            expect(controller.stylesValue['color']).toBe(undefined);
-            expect(controller.attributesValue['id']).toBe(undefined);
-            
-            controller.setWidget(widget);
-            expect(controller.stylesValue.color).toBe(model.style.color);
-            expect(controller.attributesValue.id).toBe(model.id);
-            
-            widget.setModelProperty('id', 'xxx');
-            widget.setModelProperty('style.color', 'red');
-            
-            expect(controller.stylesValue.color).toBe('red');
-            expect(controller.attributesValue.id).toBe('xxx');
-            
-            done();
-        });
-        $rootScope.$apply();
-    });
-    
-    it('should fire changes', function () {
-        var controller = $controller('WbSettingPageCtrl',{
-            $scope: {},
-            $element: {}
-        });
-        controller.trackAttributes(['id', 'name', 'html']);
-        controller.trackStyles(['background', 'color']);
-        var flag = false;
-        function listener(){
-            flag = true;
-        }
-        controller.on('widgetChanged', listener);
-        controller.setWidget();
-        expect(flag).toBe(true);
-        
-        flag = false;
-        controller.off('widgetChanged', listener);
-        controller.setWidget();
-        expect(flag).toBe(false);
-    });
+	it('should load attributes at advance', function(done) {
+		var scope = $rootScope.$new();
+		var element = angular.element('<div></div>');
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: scope,
+			$element: element
+		});
+		controller.trackAttributes(['id', 'name', 'html']);
+		var model = {
+			type: 'a',
+			id: 'a',
+			name: 'a-test',
+			html: 'HTML Text In 4th group',
+		};
+		$widget.compile(model)
+			.then(function(widget) {
+				controller.setWidget(widget);
+				expect(controller.attributesValue.id).toBe(model.id);
+				expect(controller.attributesValue.name).toBe(model.name);
+				expect(controller.attributesValue.html).toBe(model.html);
+				done();
+			});
+		$rootScope.$apply();
+	});
+
+	it('should check if widget is root', function(done) {
+		var scope = $rootScope.$new();
+		var element = angular.element('<div></div>');
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: scope,
+			$element: element
+		});
+		controller.trackAttributes(['id', 'name', 'html']);
+		expect(controller.isContainerWidget()).toBe(false);
+		var model = {
+			type: 'div',
+			children: [{
+				type: 'a'
+			}]
+		};
+		$widget.compile(model)
+			.then(function(widget) {
+				controller.setWidget(widget);
+				expect(controller.isContainerWidget()).toBe(true);
+
+				controller.setWidget(widget.getChildren()[0]);
+				expect(controller.isContainerWidget()).toBe(false);
+
+
+				controller.setWidget();
+				expect(controller.isContainerWidget()).toBe(false);
+
+				done();
+			});
+		$rootScope.$apply();
+	});
+
+	it('should load styles at advance', function(done) {
+		var scope = $rootScope.$new();
+		var element = angular.element('<div></div>');
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: scope,
+			$element: element
+		});
+		controller.trackAttributes(['id', 'name', 'html']);
+		controller.trackStyles(['background', 'color']);
+		var model = {
+			type: 'div',
+			style: {
+				background: 'red',
+				color: 'black'
+			},
+			children: [{
+				type: 'a'
+			}]
+		};
+		$widget.compile(model)
+			.then(function(widget) {
+				controller.setWidget(widget);
+				expect(controller.stylesValue.background).toBe(model.style.background);
+				expect(controller.stylesValue.color).toBe(model.style.color);
+				done();
+			});
+		$rootScope.$apply();
+	});
+
+	it('should change the model', function(done) {
+		var scope = $rootScope.$new();
+		var element = angular.element('<div></div>');
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: scope,
+			$element: element
+		});
+		controller.trackAttributes(['id', 'name', 'html']);
+		controller.trackStyles(['background', 'color']);
+		var model = {
+			type: 'div',
+			style: {
+				background: 'red',
+				color: 'black'
+			},
+			children: [{
+				type: 'a'
+			}]
+		};
+		$widget.compile(model)
+			.then(function(widget) {
+				controller.setWidget(widget);
+				expect(controller.stylesValue.background).toBe(model.style.background);
+				expect(controller.stylesValue.color).toBe(model.style.color);
+
+				controller.setStyle('background', 'black');
+				expect(controller.stylesValue.background).toBe('black');
+				expect(widget.getModelProperty('style.background')).toBe('black');
+
+				controller.setAttribute('id', 'xxx');
+				expect(controller.attributesValue.id).toBe('xxx');
+				expect(widget.getModelProperty('id')).toBe('xxx');
+
+				done();
+			});
+		$rootScope.$apply();
+	});
+
+	it('should track model changesl', function(done) {
+		var scope = $rootScope.$new();
+		var element = angular.element('<div></div>');
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: scope,
+			$element: element
+		});
+		controller.trackAttributes(['id', 'name', 'html']);
+		controller.trackStyles(['background', 'color']);
+		var model = {
+			type: 'div',
+			id: 'test',
+			style: {
+				color: 'black'
+			},
+			children: [{
+				type: 'a'
+			}]
+		};
+		$widget.compile(model)
+			.then(function(widget) {
+				controller.setStyle('color', 'a');
+				controller.setAttribute('id', 'yyy');
+				expect(controller.stylesValue.color).toBe(undefined);
+				expect(controller.attributesValue.id).toBe(undefined);
+
+				controller.setWidget(widget);
+				expect(controller.stylesValue.color).toBe(model.style.color);
+				expect(controller.attributesValue.id).toBe(model.id);
+
+				widget.setModelProperty('id', 'xxx');
+				widget.setModelProperty('style.color', 'red');
+
+				expect(controller.stylesValue.color).toBe('red');
+				expect(controller.attributesValue.id).toBe('xxx');
+
+				done();
+			});
+		$rootScope.$apply();
+	});
+
+	it('should fire changes', function() {
+		var controller = $controller('WbSettingPageCtrl', {
+			$scope: {},
+			$element: {}
+		});
+		controller.trackAttributes(['id', 'name', 'html']);
+		controller.trackStyles(['background', 'color']);
+		var flag = false;
+		function listener() {
+			flag = true;
+		}
+		controller.on('widgetChanged', listener);
+		controller.setWidget();
+		expect(flag).toBe(true);
+
+		flag = false;
+		controller.off('widgetChanged', listener);
+		controller.setWidget();
+		expect(flag).toBe(false);
+	});
 });

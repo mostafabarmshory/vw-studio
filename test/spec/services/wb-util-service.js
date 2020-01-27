@@ -117,8 +117,8 @@ var testDataW1 = {
 			"version" : "wb1"
 		} ]
 };
-var testDataW2 = {};
-var testDataW3 = {};
+//var testDataW2 = {};
+//var testDataW3 = {};
 
 
 describe('Service $wbUtil ', function () {

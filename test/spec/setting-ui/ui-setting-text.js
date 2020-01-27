@@ -40,7 +40,7 @@ describe('wb-ui-setting-text directive ', function () {
 
     // instantiate service
     beforeEach(function(){
-        module('am-wb-core')
+        module('am-wb-core');
         inject(function (_$rootScope_, _$compile_) {
             $rootScope = _$rootScope_;
             $compile = _$compile_;

@@ -23,64 +23,64 @@
  */
 'use strict';
 
-describe('AmhPageNewDialogCtrl ', function () {
-    // instantiate service
-    var $settings;
-    var $controller;
-    var $rootScope;
+describe('AmhPageNewDialogCtrl ', function() {
+	// instantiate service
+	var $settings;
+	var $controller;
+	var $rootScope;
 
 
-    // load the service's module
-    beforeEach(module('ngMaterialHome'));
-    beforeEach(inject(function (_$settings_, _$controller_, _$rootScope_) {
-        $settings = _$settings_;
-        $controller = _$controller_;
-        $rootScope = _$rootScope_;
-    }));
+	// load the service's module
+	beforeEach(module('ngMaterialHome'));
+	beforeEach(inject(function(_$settings_, _$controller_, _$rootScope_) {
+		$settings = _$settings_;
+		$controller = _$controller_;
+		$rootScope = _$rootScope_;
+	}));
 
 
-    it('should manage metas of the page', function () {
-    	var scope = $rootScope.$new();
-    	var window = {
-    			location:{
-    				href: 'http://localhost:9090/app/content/id-of-current-contetn'
-    			}
-    	};
-    	var config = {};
-    	var ctrl = $controller('AmhPageNewDialogCtrl', {
-    		$scope: scope,
-    		config: config,
-    		$window: window
-    	});
-    	
-    	var meta = ctrl.getPageMeta('test.meta');
-    	expect(angular.isDefined(meta)).toBe(false);
-    	
-    	ctrl.setPageMeta('test.meta', 'test');
-    	var meta = ctrl.getPageMeta('test.meta');
-    	expect(angular.isDefined(meta)).toBe(true);
-    	expect(meta.value).toBe('test');
-    });
-    
-    it('should change canonical link if name changed', function () {
-    	var scope = $rootScope.$new();
-    	var window = {
-    			location:{
-    				href: 'http://localhost:9090/app/content/id-of-current-contetn'
-    			}
-    	};
-    	var config = {};
-    	var ctrl = $controller('AmhPageNewDialogCtrl', {
-    		$scope: scope,
-    		config: config,
-    		$window: window
-    	});
-    	
-    	expect(angular.isDefined(ctrl)).toBe(true);
-    	
-    	ctrl.setPageInfo('name', 'test');
-    	var meta = ctrl.getPageMeta('link.canonical');
-    	expect(angular.isDefined(meta)).toBe(true);
-    	expect(meta.value).toBe('/content/test');
-    });
+	it('should manage metas of the page', function() {
+		var scope = $rootScope.$new();
+		var window = {
+			location: {
+				href: 'http://localhost:9090/app/content/id-of-current-contetn'
+			}
+		};
+		var config = {};
+		var ctrl = $controller('AmhPageNewDialogCtrl', {
+			$scope: scope,
+			config: config,
+			$window: window
+		});
+
+		var meta = ctrl.getPageMeta('test.meta');
+		expect(angular.isDefined(meta)).toBe(false);
+
+		ctrl.setPageMeta('test.meta', 'test');
+		meta = ctrl.getPageMeta('test.meta');
+		expect(angular.isDefined(meta)).toBe(true);
+		expect(meta.value).toBe('test');
+	});
+
+	it('should change canonical link if name changed', function() {
+		var scope = $rootScope.$new();
+		var window = {
+			location: {
+				href: 'http://localhost:9090/app/content/id-of-current-contetn'
+			}
+		};
+		var config = {};
+		var ctrl = $controller('AmhPageNewDialogCtrl', {
+			$scope: scope,
+			config: config,
+			$window: window
+		});
+
+		expect(angular.isDefined(ctrl)).toBe(true);
+
+		ctrl.setPageInfo('name', 'test');
+		var meta = ctrl.getPageMeta('link.canonical');
+		expect(angular.isDefined(meta)).toBe(true);
+		expect(meta.value).toBe('/content/test');
+	});
 });
