@@ -20,14 +20,13 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')
 /**
  * @ngdoc service
  * @name $wbModuleManager
  * @description Utility of a model
  * 
  */
-.service('$wbModuleManager', function (
+angular.module('vwStudio').service('$wbModuleManager', function (
 	/* AngularJS */ $q, $dispatcher,
 	/* MBlowfish */ $app) {
 	

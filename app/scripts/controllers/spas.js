@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-'use strict';
-angular.module('vwStudio')
 
 /**
  * @ngdoc controller
@@ -30,29 +28,29 @@ angular.module('vwStudio')
  * Manages list of all SPAS
  * 
  */
-.controller('AmhSpasCtrl', function($scope, $q, $tenant, $controller) {
+angular.module('vwStudio').controller('AmhSpasCtrl', function($scope, $q, $tenant, $controller) {
 	// Extends items controller
 	angular.extend(this, $controller('MbSeenAbstractCollectionCtrl', {
 		$scope: $scope
 	}));
 
 	// Overried the function
-	this.getModelSchema = function(){
+	this.getModelSchema = function() {
 		return $tenant.spaSchema();
 	};
 
 	// get accounts
-	this.getModels = function(parameterQuery){
+	this.getModels = function(parameterQuery) {
 		return $tenant.getSpas(parameterQuery);
 	};
 
 	// get an spa
-	this.getModel = function(id){
+	this.getModel = function(id) {
 		return $tenant.getSpa(id);
 	};
 
 	// delete spa
-	this.deleteModel = function(item){
+	this.deleteModel = function(item) {
 		return $tenant.deleteSpa(item.id);
 	};
 

@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-
-
 /**
  * @ngdoc Directives
  * @name amh-widget-path

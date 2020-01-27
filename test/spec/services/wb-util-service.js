@@ -23,98 +23,98 @@
  */
 'use strict';
 var testDataW1 = {
-		"type" : "Group",
-		"version" : "wb1",
-		"id" : "main",
-		"label" : "main",
-		"description" : "main",
-		"category" : "http://schema.org/ImageObject",
-		"event" : {
-			"init" : "var a = 10;",
-			"click" : "var a = 10;",
-			"dblclick" : "var a = 10;",
-			"mouseout" : "var a = 10;",
-			"mouseover" : "var a = 10;",
-			"mousedown" : "var a = 10;",
-			"mouseup" : "var a = 10;",
-			"mouseenter" : "var a = 10;",
-			"resize" : "var a = 10;",
-			"mouseleave" : "var a = 10;",
-			"intersection" : "var a = 10;",
-			"success" : "var a = 10;",
-			"failure" : "var a = 10;"
+		'type' : 'Group',
+		'version' : 'wb1',
+		'id' : 'main',
+		'label' : 'main',
+		'description' : 'main',
+		'category' : 'http://schema.org/ImageObject',
+		'event' : {
+			'init' : 'var a = 10;',
+			'click' : 'var a = 10;',
+			'dblclick' : 'var a = 10;',
+			'mouseout' : 'var a = 10;',
+			'mouseover' : 'var a = 10;',
+			'mousedown' : 'var a = 10;',
+			'mouseup' : 'var a = 10;',
+			'mouseenter' : 'var a = 10;',
+			'resize' : 'var a = 10;',
+			'mouseleave' : 'var a = 10;',
+			'intersection' : 'var a = 10;',
+			'success' : 'var a = 10;',
+			'failure' : 'var a = 10;'
 		},
-		"style" : {
-			"layout" : {
-				"direction" : "column",
-				"align" : "center",
-				"justify" : "space-around",
-				"wrap" : true,
-				"align_self" : "stretch",
-				"order" : 3,
-				"basis" : "0px",
-				"shrink" : 2,
-				"grow" : 2
+		'style' : {
+			'layout' : {
+				'direction' : 'column',
+				'align' : 'center',
+				'justify' : 'space-around',
+				'wrap' : true,
+				'align_self' : 'stretch',
+				'order' : 3,
+				'basis' : '0px',
+				'shrink' : 2,
+				'grow' : 2
 			},
-			"size" : {
-				"minHeight" : "1vh",
-				"width" : "2%",
-				"minWidth" : "3%",
-				"maxWidth" : "4%",
-				"height" : "5vh",
-				"maxHeight" : "6vh"
+			'size' : {
+				'minHeight' : '1vh',
+				'width' : '2%',
+				'minWidth' : '3%',
+				'maxWidth' : '4%',
+				'height' : '5vh',
+				'maxHeight' : '6vh'
 			},
-			"background" : {
-				"image" : "/api/v2/cms/contents/3437/content",
-				"color" : "#ad91e2",
-				"size" : "length",
-				"repeat" : "no-repeat",
-				"attachment" : "fixed",
-				"origin" : "border-box",
-				"position" : "left center"
+			'background' : {
+				'image' : '/api/v2/cms/contents/3437/content',
+				'color' : '#ad91e2',
+				'size' : 'length',
+				'repeat' : 'no-repeat',
+				'attachment' : 'fixed',
+				'origin' : 'border-box',
+				'position' : 'left center'
 			},
-			"border" : {
-				"style" : "solid",
-				"color" : "#f2a272",
-				"width" : "2px 2px 2px 2px",
-				"radius" : "11px 11px 11px 11px"
+			'border' : {
+				'style' : 'solid',
+				'color' : '#f2a272',
+				'width' : '2px 2px 2px 2px',
+				'radius' : '11px 11px 11px 11px'
 			},
-			"align" : {},
-			"direction" : "rtl",
-			"color" : "#1d7745",
-			"cursor" : "grab",
-			"opacity" : "0.8",
-			"overflow" : {
-				"x" : "hidden",
-				"y" : "hidden"
+			'align' : {},
+			'direction' : 'rtl',
+			'color' : '#1d7745',
+			'cursor' : 'grab',
+			'opacity' : '0.8',
+			'overflow' : {
+				'x' : 'hidden',
+				'y' : 'hidden'
 			},
-			"margin" : "1px 1px 1px 1px",
-			"padding" : "17px 17px 17px 17px",
-			"shadows" : [ {
-				"hShift" : "1px",
-				"vShift" : "2px",
-				"blur" : "3px",
-				"spread" : "4px",
-				"color" : "red",
-				"inset" : true
+			'margin' : '1px 1px 1px 1px',
+			'padding' : '17px 17px 17px 17px',
+			'shadows' : [ {
+				'hShift' : '1px',
+				'vShift' : '2px',
+				'blur' : '3px',
+				'spread' : '4px',
+				'color' : 'red',
+				'inset' : true
 			}, {
-				"hShift" : "5px",
-				"vShift" : "60px",
-				"blur" : "7px",
-				"spread" : "8px",
-				"color" : "black",
-				"inset" : false
+				'hShift' : '5px',
+				'vShift' : '60px',
+				'blur' : '7px',
+				'spread' : '8px',
+				'color' : 'black',
+				'inset' : false
 			} ]
 		},
-		"contents" : [ {
-			"name" : "Header-1",
-			"type" : "h1",
-			"version" : "wb1",
-			"html" : "Test Site"
+		'contents' : [ {
+			'name' : 'Header-1',
+			'type' : 'h1',
+			'version' : 'wb1',
+			'html' : 'Test Site'
 		}, {
-			"name" : "Pragraph",
-			"type" : "p",
-			"version" : "wb1"
+			'name' : 'Pragraph',
+			'type' : 'p',
+			'version' : 'wb1'
 		} ]
 };
 //var testDataW2 = {};
@@ -128,7 +128,7 @@ describe('Service $wbUtil ', function () {
 
 	// load the service's module
 	beforeEach(function(){
-		module('am-wb-core');
+		module('vwStudio');
 		inject(function (_$wbUtil_) {
 			$wbUtil = _$wbUtil_;
 		});
@@ -241,15 +241,15 @@ describe('Service $wbUtil ', function () {
 				}]
 		};
 
-		expect($wbUtil.findWidgetModelById(newModel, "xxx")).toBe(null);
+		expect($wbUtil.findWidgetModelById(newModel, 'xxx')).toBe(null);
 
-		expect($wbUtil.findWidgetModelById(newModel, "a")).not.toBe(null);
-		expect($wbUtil.findWidgetModelById(newModel, "b")).not.toBe(null);
-		expect($wbUtil.findWidgetModelById(newModel, "c")).not.toBe(null);
+		expect($wbUtil.findWidgetModelById(newModel, 'a')).not.toBe(null);
+		expect($wbUtil.findWidgetModelById(newModel, 'b')).not.toBe(null);
+		expect($wbUtil.findWidgetModelById(newModel, 'c')).not.toBe(null);
 
-		expect($wbUtil.findWidgetModelById(newModel, "a").key).toBe('a');
-		expect($wbUtil.findWidgetModelById(newModel, "b").key).toBe('b');
-		expect($wbUtil.findWidgetModelById(newModel, "c").key).toBe('c');
+		expect($wbUtil.findWidgetModelById(newModel, 'a').key).toBe('a');
+		expect($wbUtil.findWidgetModelById(newModel, 'b').key).toBe('b');
+		expect($wbUtil.findWidgetModelById(newModel, 'c').key).toBe('c');
 	});
 
 	it('should replace template with model', function(){
@@ -277,14 +277,14 @@ describe('Service $wbUtil ', function () {
 		
 		$wbUtil.replaceWidgetModelById(template, 'b', newModel);
 
-		expect($wbUtil.findWidgetModelById(template, "xxx")).toBe(null);
+		expect($wbUtil.findWidgetModelById(template, 'xxx')).toBe(null);
 
-		expect($wbUtil.findWidgetModelById(template, "a")).not.toBe(null);
-		expect($wbUtil.findWidgetModelById(template, "b")).not.toBe(null);
-		expect($wbUtil.findWidgetModelById(template, "c")).not.toBe(null);
+		expect($wbUtil.findWidgetModelById(template, 'a')).not.toBe(null);
+		expect($wbUtil.findWidgetModelById(template, 'b')).not.toBe(null);
+		expect($wbUtil.findWidgetModelById(template, 'c')).not.toBe(null);
 
-		expect($wbUtil.findWidgetModelById(template, "a").key).toBe('a');
-		expect($wbUtil.findWidgetModelById(template, "b").key).toBe('b');
-		expect($wbUtil.findWidgetModelById(template, "c").key).toBe('c');
+		expect($wbUtil.findWidgetModelById(template, 'a').key).toBe('a');
+		expect($wbUtil.findWidgetModelById(template, 'b').key).toBe('b');
+		expect($wbUtil.findWidgetModelById(template, 'c').key).toBe('c');
 	});
 });

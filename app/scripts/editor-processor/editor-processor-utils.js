@@ -19,21 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
+
 /**
  * @ngdoc Processor
  * @name AmhEditorProcessorUtils
  * 
  */
-.factory('AmhEditorProcessorUtils', function(
-		/* amh       */ AmhEditorProcessor, 
+angular.module('vwStudio').factory('AmhEditorProcessorUtils', function(
+		/* amh       */ AmhEditorProcessor,
 		/* weburger  */ $widget, WbProcessorLocator, WbProcessorSelect, WbProcessorDnd,
 		/* mblowfish */ $actions
 		/* angularjs */) {
-	
+
 
 	var COMMON_ACTION_GROUPS = ['amh.workbench.editor.weburger.toolbar#common'];
-	
+
 	function Processor(editor, options) {
 		options = options || {};
 		AmhEditorProcessor.apply(this, [editor, options]);
@@ -43,7 +43,7 @@ angular.module('vwStudio')
 		this.dndProcessor = new WbProcessorDnd();
 
 		var ctrl = this;
-		this.selectProcessor.on('selectionChange', function(){
+		this.selectProcessor.on('selectionChange', function() {
 			// XXX:
 			var selectedWidgets = ctrl.selectProcessor.getSelectedWidgets();
 			ctrl.editor.setSelectedWidgets(selectedWidgets || []);
@@ -53,29 +53,29 @@ angular.module('vwStudio')
 	Processor.prototype = new AmhEditorProcessor();
 
 
-	
+
 	/*
 	 * Connect to the editor
 	 * @see AmhEditorProcessor#connect
 	 */
-	Processor.prototype.connect = function(){
-		if(angular.isFunction(this.editModeListener)){
+	Processor.prototype.connect = function() {
+		if (angular.isFunction(this.editModeListener)) {
 			this.disconnect();
 		}
 		var ctrl = this;
 		var editor = ctrl.editor;
 		function singleContainerActionVisible() {
 			var widgets = editor.getSelectedWidgets();
-			return widgets.length === 1 && 
-			!widgets[0].isLeaf() &&
-			editor.isEditable();
+			return widgets.length === 1 &&
+				!widgets[0].isLeaf() &&
+				editor.isEditable();
 		}
-		
+
 		/*
 		 * Check editor state
 		 */
 		this.editModeListener = function() {
-			if(ctrl.editor.isEditable()){
+			if (ctrl.editor.isEditable()) {
 				ctrl.connectUtilities();
 			} else {
 				ctrl.disConnectUtilities();
@@ -83,7 +83,7 @@ angular.module('vwStudio')
 			editor.getRootWidget().setEditable(editor.isEditable());
 		};
 		this.editor.on('stateChanged', this.editModeListener);
-		
+
 		$actions.newAction({
 			id: 'amh.workbench.widget.selectChildren',
 			priority: 15,
@@ -94,7 +94,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.selectChildrenWidget($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -110,7 +110,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.clickWidget($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -126,7 +126,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.dblclickWidget($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -138,44 +138,44 @@ angular.module('vwStudio')
 	 * Disconnect form editor
 	 * @see AmhEditorProcessor#disconnect
 	 */
-	Processor.prototype.disconnect = function(){
+	Processor.prototype.disconnect = function() {
 		this.disConnectUtilities();
 	};
 
-	Processor.prototype.connectUtilities = function(){
+	Processor.prototype.connectUtilities = function() {
 		$widget.setProcessor('locator', this.locatorProcessor);
-		$widget.setProcessor ('select', this.selectProcessor);
+		$widget.setProcessor('select', this.selectProcessor);
 		$widget.setProcessor('dnd', this.dndProcessor);
 
 		this.locatorProcessor.setEnable(true);
 		this.selectProcessor.setEnable(true);
 	};
 
-	Processor.prototype.disConnectUtilities = function(){
+	Processor.prototype.disConnectUtilities = function() {
 		this.locatorProcessor.setEnable(false);
 		this.selectProcessor.setEnable(false);
 	};
 
-	Processor.prototype.selectChildrenWidget = function ($event) {
+	Processor.prototype.selectChildrenWidget = function($event) {
 		var widgets = [];
 		var items = $event.items || this.selectProcessor.getSelectedWidgets();
-		_.forEach(items || [] , function(item){
-			if(item.getChildren){
+		_.forEach(items || [], function(item) {
+			if (item.getChildren) {
 				widgets = _.concat(widgets, item.getChildren());
 			}
 		});
 		return this.selectProcessor.setSelectedWidgets(widgets);
 	};
-	
-	Processor.prototype.clickWidget = function ($event) {
+
+	Processor.prototype.clickWidget = function($event) {
 		$event.source = $event.items[0];
 		return this.selectProcessor.clickListener($event);
 	};
-	
-	Processor.prototype.dblclickWidget = function ($event) {
+
+	Processor.prototype.dblclickWidget = function($event) {
 		$event.source = $event.items[0];
 		return this.selectProcessor.dblclickListener($event);
 	};
-	
+
 	return Processor;
 });

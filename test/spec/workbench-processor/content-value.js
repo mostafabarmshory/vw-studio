@@ -13,7 +13,7 @@ describe('Clon Workbench Processor ', function() {
 	var $routeParams;
 	var $q;
 	var $dispatcher;
-	var $wbWindow;
+	var $window;
 //	var mockRouteParams = {
 //		name : 'contentname'
 //	};
@@ -25,12 +25,12 @@ describe('Clon Workbench Processor ', function() {
 
 	// Initialize the controller and a mock scope
 	beforeEach(function(){
-		module('ngMaterialHome');
+		module('vwStudio');
 		inject(function(_$controller_, _$rootScope_,
 				_CmsContent_, _CmsContentMetadata_, _CmsTermTaxonomy_,
 				_$rootElement_, _$q_, _$dispatcher_, _$routeParams_,
 				_AmhWorkbenchProcessorMetainfo_,
-				_$wbWindow_) {
+				_$window_) {
 			$controller = _$controller_;
 			$rootScope = _$rootScope_;
 			CmsContent = _CmsContent_;
@@ -41,11 +41,11 @@ describe('Clon Workbench Processor ', function() {
 			$dispatcher = _$dispatcher_;
 			$routeParams = _$routeParams_;
 			AmhWorkbenchProcessorMetainfo = _AmhWorkbenchProcessorMetainfo_;
-			$wbWindow = _$wbWindow_;
+			$window = _$window_;
 		});
 	});
 	
-	fit('should check clonable content', function() {
+	it('should check clonable content', function() {
 		var urlTest1 = new URL('/api/v2/cms/contnets/123/content#anchor', window.location.href);
 		expect(urlTest1.protocol).toBe('http:');
 		
@@ -60,8 +60,8 @@ describe('Clon Workbench Processor ', function() {
 		urlTest1 = new URL('mb://app/settings/key#test', window.location.href);
 		expect(urlTest1.protocol).toBe('mb:');
 		expect(urlTest1.hash).toBe('#test');
-		urlTest1.hash = "";
-		expect(urlTest1.hash).toBe("");
+		urlTest1.hash = '';
+		expect(urlTest1.hash).toBe('');
 		
 		expect(urlTest1.pathname.substring(2)).toBe('app/settings/key');
 		expect(urlTest1.pathname.substring(2).replace(/\//gi, '.')).toBe('app.settings.key');

@@ -23,8 +23,6 @@
  */
 
 
-angular.module('vwStudio')
-
 /**
  * @ngdoc Directives
  * @name wb-event-panel
@@ -33,155 +31,155 @@ angular.module('vwStudio')
  * Loads list of settings.
  * 
  */
-.directive('wbEventPanel', function () {
+angular.module('vwStudio').directive('wbEventPanel', function() {
     /**
      * Init settings
      */
-    function postLink($scope, $element, $attrs, $ctrls) {
-        // Load ngModel
-        var ngModelCtrl = $ctrls[0];
-        var widget = null;
-        var eventTypes = [{
-            key: 'init',
-            title: 'Initialization'
-        }, {
-            key: 'click',
-            title: 'Click'
-        }, {
-            key: 'dblclick',
-            title: 'Double click'
-        }, {
-            key: 'mouseout',
-            title: 'Mouse out'
-        }, {
-            key: 'mouseover',
-            title: 'Mouse over'
-        }, {
-            key: 'mousedown',
-            title: 'Mouse down'
-        }, {
-            key: 'mouseup',
-            title: 'Mouse up'
-        }, {
-            key: 'mouseenter',
-            title: 'Mouse enter'
-        }, {
-            key: 'mouseleave',
-            title: 'Mouse leave'
-        }, {
-            key: 'resize',
-            title: 'Resize'
-        }, {
-            key: 'intersection',
-            title: 'Intersection'
-        }, {
-            key: 'success',
-            title: 'Success'
-        }, {
-            key: 'error',
-            title: 'Failure'
-        }, {
-            key: 'load',
-            title: 'Load'
-        }, {
-            key: 'load',
-            title: 'Load'
-        }];
+	function postLink($scope, $element, $attrs, $ctrls) {
+		// Load ngModel
+		var ngModelCtrl = $ctrls[0];
+		var widget = null;
+		var eventTypes = [{
+			key: 'init',
+			title: 'Initialization'
+		}, {
+			key: 'click',
+			title: 'Click'
+		}, {
+			key: 'dblclick',
+			title: 'Double click'
+		}, {
+			key: 'mouseout',
+			title: 'Mouse out'
+		}, {
+			key: 'mouseover',
+			title: 'Mouse over'
+		}, {
+			key: 'mousedown',
+			title: 'Mouse down'
+		}, {
+			key: 'mouseup',
+			title: 'Mouse up'
+		}, {
+			key: 'mouseenter',
+			title: 'Mouse enter'
+		}, {
+			key: 'mouseleave',
+			title: 'Mouse leave'
+		}, {
+			key: 'resize',
+			title: 'Resize'
+		}, {
+			key: 'intersection',
+			title: 'Intersection'
+		}, {
+			key: 'success',
+			title: 'Success'
+		}, {
+			key: 'error',
+			title: 'Failure'
+		}, {
+			key: 'load',
+			title: 'Load'
+		}, {
+			key: 'load',
+			title: 'Load'
+		}];
 
-        ngModelCtrl.$render = function () {
-            if (ngModelCtrl.$viewValue) {
-                cleanEvents();
-                widget = ngModelCtrl.$viewValue;
-                if (angular.isArray(widget)) {
-                    if(widget.length > 0){
-                        widget = widget[0];
-                    }else {
-                        widget = null;
-                    }
-                }
-                loadEvents();
-            }
-        };
+		ngModelCtrl.$render = function() {
+			if (ngModelCtrl.$viewValue) {
+				cleanEvents();
+				widget = ngModelCtrl.$viewValue;
+				if (angular.isArray(widget)) {
+					if (widget.length > 0) {
+						widget = widget[0];
+					} else {
+						widget = null;
+					}
+				}
+				loadEvents();
+			}
+		};
 
-        function cleanEvents() {
-            $scope.events = [];
-        }
+		function cleanEvents() {
+			$scope.events = [];
+		}
 
-        function loadEvents() {
-            cleanEvents();
-            if(!widget){
-                return;
-            }
-            for (var i = 0; i < eventTypes.length; i++) {
-                var event = eventTypes[i];
-                event.code = widget.getModelProperty('on.' + event.key);
-                $scope.events.push(event);
-            }
-        }
+		function loadEvents() {
+			cleanEvents();
+			if (!widget) {
+				return;
+			}
+			for (var i = 0; i < eventTypes.length; i++) {
+				var event = eventTypes[i];
+				event.code = widget.getModelProperty('on.' + event.key);
+				$scope.events.push(event);
+			}
+		}
 
-        function saveEvents() {
-            if(!widget){
-                return;
-            }
-            for (var i = 0; i < $scope.events.length; i++) {
-                var event = $scope.events[i];
-                if (event.code) {
-                    widget.setModelProperty('on.' + event.key, event.code);
-                } else {
-                    widget.setModelProperty('on.' + event.key, undefined);
-                }
-            }
-        }
+		function saveEvents() {
+			if (!widget) {
+				return;
+			}
+			for (var i = 0; i < $scope.events.length; i++) {
+				var event = $scope.events[i];
+				if (event.code) {
+					widget.setModelProperty('on.' + event.key, event.code);
+				} else {
+					widget.setModelProperty('on.' + event.key, undefined);
+				}
+			}
+		}
 
         /**
          * Save events into the model
          */
-        $scope.saveEvents = saveEvents;
+		$scope.saveEvents = saveEvents;
 
-        $element.on('keypress keyup keydown paste copy', function(event){
-            event.stopPropagation();
-        });
-    }
+		$element.on('keypress keyup keydown paste copy', function(event) {
+			event.stopPropagation();
+		});
+	}
 
-    return {
-        restrict: 'E',
-        replace: true,
-        templateUrl: 'views/directives/wb-event-panel.html',
-        scope: {},
-        link: postLink,
-        require: ['ngModel'],
-        controllerAs: 'ctrl',
+	return {
+		restrict: 'E',
+		replace: true,
+		templateUrl: 'views/directives/wb-event-panel.html',
+		scope: {},
+		link: postLink,
+		require: ['ngModel'],
+		controllerAs: 'ctrl',
         /*
          * @ngInject
          */
-        controller: function ($scope, $resource) {
+		controller: function($scope, $resource) {
 
-            var defaultLanguages = [{
-                text: 'JavaScript',
-                value: 'javascript'
-            }];
-            this.editEvent = function (event, $evn) {
-                $evn.stopPropagation();
-                $resource.get('script', {
-                    data: {
-                        language: 'javascript',
-                        languages: defaultLanguages,
-                        code: event.code
-                    }
-                }).then(function (value) {
-                    event.code = value.code;
-                    if (!value) {
-                        delete event.code;
-                    }
-                    $scope.saveEvents();
-                });
-            };
+			var defaultLanguages = [{
+				text: 'JavaScript',
+				value: 'javascript'
+			}];
+			this.editEvent = function(event, $evn) {
+				$evn.stopPropagation();
+				$resource.get('script', {
+					data: {
+						language: 'javascript',
+						languages: defaultLanguages,
+						code: event.code
+					}
+				}).then(function(value) {
+					event.code = value.code;
+					if (!value) {
+						delete event.code;
+					}
+					$scope.saveEvents();
+				});
+			};
 
-            this.deleteEvent = function (event, $evn) {
-                $evn.stopPropagation();
-                delete event.code;
-                $scope.saveEvents();
-            };
-        }
-    };
+			this.deleteEvent = function(event, $evn) {
+				$evn.stopPropagation();
+				delete event.code;
+				$scope.saveEvents();
+			};
+		}
+	};
 });

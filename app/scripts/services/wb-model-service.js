@@ -110,10 +110,10 @@ WbModelService.prototype.urlToDataImage = function(url) {
 	return this.$http({
 		method: 'GET',
 		url: url,
-		responseType: "arraybuffer",
+		responseType: 'arraybuffer',
 		transformResponse: function(data) {
 			var uint8View = new Uint8Array(data);
-			return 'data:image/*;base64,' + btoa(uint8View.reduce((data, byte) => data + String.fromCharCode(byte), ''));
+			return 'data:image/*;base64,' + btoa(uint8View.reduce(function(data, byte) { return data + String.fromCharCode(byte); }, ''));
 		}
 	});
 };

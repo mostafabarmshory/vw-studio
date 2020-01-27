@@ -30,7 +30,7 @@ describe('WbWidget converter WbConverterDom ', function () {
     var WbConverterDom;
 
     // load the service's module
-    beforeEach(module('am-wb-core'));
+    beforeEach(module('vwStudio'));
     beforeEach(inject(function (_$widget_, _$rootScope_, _WbConverterDom_) {
         $widget = _$widget_;
         $rootScope = _$rootScope_;

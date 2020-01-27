@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Widget Editor
  * @name WidgetEditorTinymceSingleLine
@@ -38,7 +36,7 @@ angular.module('vwStudio')//
  * 
  */
 
-.factory('WidgetEditorTinymceSingleLine', function ($sce, WidgetEditor) {
+angular.module('vwStudio').factory('WidgetEditorTinymceSingleLine', function($sce, WidgetEditor) {
 
 	/**
 	 * TODO: maso, 2019: extends WidgetEditorFake
@@ -57,7 +55,7 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.destroy = function () {
+	Editor.prototype.destroy = function() {
 		this.hide();
 		WidgetEditor.prototype.destroy.call(this);
 	};
@@ -67,9 +65,9 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.hide = function () {
+	Editor.prototype.hide = function() {
 		// remove all tinymce editor
-		for (var i = tinymce.editors.length - 1 ; i > -1 ; i--) {
+		for (var i = tinymce.editors.length - 1; i > -1; i--) {
 			var ed_id = tinymce.editors[i].id;
 			tinymce.execCommand('mceRemoveEditor', true, ed_id);
 		}
@@ -80,7 +78,7 @@ angular.module('vwStudio')//
 		}
 		this._hide = true;
 		// TODO: fire state changed
-		if(this.tinyEditor){
+		if (this.tinyEditor) {
 			this.tinyEditor.remove();
 			delete this.tinyEditor;
 		}
@@ -91,32 +89,32 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.show = function () {
+	Editor.prototype.show = function() {
 		this._hide = false;
 		var ctrl = this;
 		var widget = this.getWidget();
 		var element = widget.getElement();
 		tinymce.init(_.merge(this.options, {
-			selector : element.getPath(),
-			themes : 'modern',
-			setup: function (editor) {
+			selector: element.getPath(),
+			themes: 'modern',
+			setup: function(editor) {
 				ctrl.tinyEditor = editor;
 				editor.on('keydown', function(e) {
 					if (e.keyCode === 27) { // escape
 						ctrl.closeWithoutSave();
 						return false;
 					}
-					if (e.keyCode === 13){
+					if (e.keyCode === 13) {
 						ctrl.saveAndClose();
 						return false;
 					}
 				});
 
-//				editor.on('focusout', function(){
-//				ctrl.closeWithoutSave();
-//				});
+				//				editor.on('focusout', function(){
+				//				ctrl.closeWithoutSave();
+				//				});
 
-				editor.on('KeyDown KeyUp KeyPress Paste Copy', function(event){
+				editor.on('KeyDown KeyUp KeyPress Paste Copy', function(event) {
 					event.stopPropagation();
 					editor.save();
 				});
@@ -136,7 +134,7 @@ angular.module('vwStudio')//
 				//
 				// Save button to save and close the editor
 				editor.ui.registry.addButton('save', {
-//					text: 'save',
+					//					text: 'save',
 					icon: 'save',
 					tooltip: 'Save current changes and close the editor',
 					onAction: function() {
@@ -145,7 +143,7 @@ angular.module('vwStudio')//
 				});
 				// close button
 				editor.ui.registry.addButton('close', {
-//					text: 'close',
+					//					text: 'close',
 					icon: 'close',
 					tooltip: 'Close and discards changes',
 					onAction: function() {
@@ -153,9 +151,9 @@ angular.module('vwStudio')//
 					}
 				});
 
-//				alignleft aligncenter alignjustify alignright alignfull
+				//				alignleft aligncenter alignjustify alignright alignfull
 				// style.textAlign: left, center, right, justify;
-				_.forEach(['widgetalignleft', 'widgetaligncenter', 'widgetalignjustify', 'widgetalignright'], function(action){
+				_.forEach(['widgetalignleft', 'widgetaligncenter', 'widgetalignjustify', 'widgetalignright'], function(action) {
 					editor.ui.registry.addButton(action, {
 						icon: 'align-' + action.substring(11),
 						onAction: function() {
@@ -165,9 +163,9 @@ angular.module('vwStudio')//
 				});
 			}
 		}))
-		.then(function () {
-			element.focus();
-		});
+			.then(function() {
+				element.focus();
+			});
 	};
 
 	/**
@@ -175,7 +173,7 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.isHidden = function () {
+	Editor.prototype.isHidden = function() {
 		return this._hide;
 	};
 
@@ -184,9 +182,9 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.updateView = function (editor) {
+	Editor.prototype.updateView = function(editor) {
 		var content = editor.getContent({
-			format : this.options.format || 'html'
+			format: this.options.format || 'html'
 		}).trim();
 		this._content = content;
 		this.setDirty(true);
@@ -197,7 +195,7 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.closeWithoutSave = function(){
+	Editor.prototype.closeWithoutSave = function() {
 		this.setDirty(false);
 		this.hide();
 		// reset old value
@@ -214,14 +212,14 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymceSingleLine
 	 */
-	Editor.prototype.saveAndClose = function(){
+	Editor.prototype.saveAndClose = function() {
 		// remove editor
-		if(this.isDirty()){
+		if (this.isDirty()) {
 			this.widget.setModelProperty(this.options.property, this._content);
 		}
 		this.hide();
 	};
 
-//	the editor type
+	//	the editor type
 	return Editor;
 });

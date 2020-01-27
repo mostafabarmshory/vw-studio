@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Editor
  * @name WidgetEditorTinymceSection
@@ -34,7 +32,7 @@ angular.module('vwStudio')//
  * common widgets and stored into the section.
  */
 
-.factory('WidgetEditorTinymceSection', function ($widget, WidgetEditor) {
+angular.module('vwStudio').factory('WidgetEditorTinymceSection', function($widget, WidgetEditor) {
 
 	/**
 	 * TODO: maso, 2019: extends WidgetEditorFake
@@ -53,7 +51,7 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WidgetEditorTinymce
 	 */
-	Editor.prototype.destroy = function () {
+	Editor.prototype.destroy = function() {
 		WidgetEditor.prototype.destroy.call(this);
 		this.hide();
 	};
@@ -61,9 +59,9 @@ angular.module('vwStudio')//
 	/**
 	 * Remove editor
 	 */
-	Editor.prototype.hide = function () {
+	Editor.prototype.hide = function() {
 		// remove all tinymce editor
-		for (var i = tinymce.editors.length - 1 ; i > -1 ; i--) {
+		for (var i = tinymce.editors.length - 1; i > -1; i--) {
 			var ed_id = tinymce.editors[i].id;
 			tinymce.execCommand('mceRemoveEditor', true, ed_id);
 		}
@@ -80,20 +78,20 @@ angular.module('vwStudio')//
 	/**
 	 * Run and display editor for the current widget
 	 */
-	Editor.prototype.show = function () {
+	Editor.prototype.show = function() {
 		this._hide = false;
 		var ctrl = this;
 		var widget = this.getWidget();
 		var element = widget.getElement();
 		var selectorPath = element.getPath();
 		tinymce.init(_.merge(this.options, {
-			selector : selectorPath,
-			themes : 'modern',
-			setup: function (editor) {
+			selector: selectorPath,
+			themes: 'modern',
+			setup: function(editor) {
 
 				// Save button to save and close the editor
 				editor.ui.registry.addButton('save', {
-//					text: 'save',
+					//					text: 'save',
 					icon: 'save',
 					tooltip: 'Save current changes and close the editor',
 					onAction: function() {
@@ -102,7 +100,7 @@ angular.module('vwStudio')//
 				});
 				// close button
 				editor.ui.registry.addButton('close', {
-//					text: 'close',
+					//					text: 'close',
 					icon: 'close',
 					tooltip: 'Close and discards changes',
 					onAction: function() {
@@ -110,9 +108,9 @@ angular.module('vwStudio')//
 					}
 				});
 
-//				editor.on('focusout', function(){
-//				ctrl.closeWithoutSave();
-//				});
+				//				editor.on('focusout', function(){
+				//				ctrl.closeWithoutSave();
+				//				});
 
 				editor.on('keydown', function(e) {
 					if (e.keyCode === 27) { // escape
@@ -121,7 +119,7 @@ angular.module('vwStudio')//
 					}
 				});
 
-				editor.on('KeyDown KeyUp KeyPress Paste Copy', function(event){
+				editor.on('KeyDown KeyUp KeyPress Paste Copy', function(event) {
 					event.stopPropagation();
 					editor.save();
 				});
@@ -137,28 +135,28 @@ angular.module('vwStudio')//
 				});
 			}
 		}))
-		.then(function () {
-			element.focus();
-		});
+			.then(function() {
+				element.focus();
+			});
 	};
 
-	Editor.prototype.isHidden = function () {
+	Editor.prototype.isHidden = function() {
 		return this._hide;
 	};
 
 	/**
 	 * Read value from element and set into the element
 	 */
-	Editor.prototype.updateView = function (editor) {
+	Editor.prototype.updateView = function(editor) {
 		var content = editor.getContent({
-			format : this.options.format || 'html'
+			format: this.options.format || 'html'
 		}).trim();
 		this._content = content;
 		this.setDirty(true);
 	};
 
 
-	Editor.prototype.closeWithoutSave = function(){
+	Editor.prototype.closeWithoutSave = function() {
 		this.setDirty(false);
 		this.hide();
 		// reset old value
@@ -166,9 +164,9 @@ angular.module('vwStudio')//
 		widget.loadWidgets();
 	};
 
-	Editor.prototype.saveAndClose = function(){
+	Editor.prototype.saveAndClose = function() {
 		this.hide();
-		if(this.isDirty()){
+		if (this.isDirty()) {
 			var widget = this.widget;
 			var converter = $widget.getConverter('text/html');
 			var widgets = converter.decode(this._content);
@@ -179,6 +177,6 @@ angular.module('vwStudio')//
 		}
 	};
 
-//	the editor type
+	//	the editor type
 	return Editor;
 });

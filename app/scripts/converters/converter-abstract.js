@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Converter
@@ -29,7 +28,7 @@ angular.module('vwStudio')//
  * A converter are responsible to encode and decode a widget.
  * 
  */
-.factory('WbConverterAbstract', function () {
+angular.module('vwStudio').factory('WbConverterAbstract', function () {
 
     /**
      * Creates new instance of the converter

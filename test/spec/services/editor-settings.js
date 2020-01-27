@@ -32,7 +32,7 @@ describe('Service $settings', function () {
     var $settings;
 
     // load the service's module
-    beforeEach(module('am-wb-core'));
+    beforeEach(module('vwStudio'));
 
     // instantiate service
     beforeEach(inject(function (_$rootScope_, _$widget_, _$httpBackend_, _$settings_,

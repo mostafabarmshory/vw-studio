@@ -23,7 +23,6 @@
  */
 
 
-angular.module('vwStudio')
 
 /**
  * @ngdoc Directives
@@ -32,9 +31,9 @@ angular.module('vwStudio')
  * 
  * It is used to design the page with pre designed items
  */
-.directive('amhUserWidgets', function(/*QueryParameter*/) {
+angular.module('vwStudio').directive('amhUserWidgets', function(/*QueryParameter*/) {
 	return {
-		restrict : 'E',
+		restrict: 'E',
 		replace: true,
 		templateUrl: 'views/directives/amh-user-widgets.html',
 		scope: {},

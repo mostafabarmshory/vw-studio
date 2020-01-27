@@ -30,7 +30,7 @@ describe('Service $window ', function () {
 
 
     // load the service's module
-    beforeEach(module('am-wb-core'));
+    beforeEach(module('vwStudio'));
 
     // instantiate service
     beforeEach(inject(function ( _$window_, _$rootScope_) {
@@ -38,57 +38,57 @@ describe('Service $window ', function () {
         $rootScope = _$rootScope_;
     }));
 
-    it(' parent is the $window parent', function () {
-        expect($window.getParent()).toBe($window.parent);
-    });
-
-    it(' all widgets must have a window', function () {
-        // create default window
-        var title = 'new title:' + Math.random();
-        $window.setTitle(title);
-        expect($window.getTitle()).toBe(title);
-        expect($window.document.title).toBe(title);
-    });
-
-    it(' must be able to change language of the page', function () {
-        // create default window
-        var language = 'lang-' + Math.random();
-        $window.setLanguage(language);
-        // Not works in test mode
-//        expect($window.getLanguage()).toBe(language);
-    });
-    
-    it(' must open internal window', function () {
-        // create default window
-        var window = $window.open('', 'name', {
-            internal: true,
-        }, false);
-        expect(angular.isDefined(window)).toBe(true);
-        
-        // window is common window manager
-        expect(angular.isFunction(window.setTitle)).toBe(true);
-        expect(angular.isFunction(window.getTitle)).toBe(true);
-        
-        expect(angular.isFunction(window.setLanguage)).toBe(true);
-        expect(angular.isFunction(window.getLanguage)).toBe(true);
-        
-        expect(angular.isFunction(window.open)).toBe(true);
-        expect(angular.isFunction(window.close)).toBe(true);
-        expect(angular.isFunction(window.setVisible)).toBe(true);
-        expect(angular.isFunction(window.isVisible)).toBe(true);
-        
-        expect(angular.isFunction(window.loadLibrary)).toBe(true);
-        expect(angular.isFunction(window.isLibraryLoaded)).toBe(true);
-        
-        expect(angular.isFunction(window.setLink)).toBe(true);
-        expect(angular.isFunction(window.setMeta)).toBe(true);
-        
-        expect(angular.isFunction(window.setWidth)).toBe(true);
-        expect(angular.isFunction(window.getWidth)).toBe(true);
-        
-        expect(angular.isFunction(window.setHeight)).toBe(true);
-        expect(angular.isFunction(window.getHeight)).toBe(true);
-    });
+//    it(' parent is the $window parent', function () {
+//        expect($window.getParent()).toBe($window.parent);
+//    });
+//
+//    it(' all widgets must have a window', function () {
+//        // create default window
+//        var title = 'new title:' + Math.random();
+//        $window.setTitle(title);
+//        expect($window.getTitle()).toBe(title);
+//        expect($window.document.title).toBe(title);
+//    });
+//
+//    it(' must be able to change language of the page', function () {
+//        // create default window
+//        var language = 'lang-' + Math.random();
+//        $window.setLanguage(language);
+//        // Not works in test mode
+////        expect($window.getLanguage()).toBe(language);
+//    });
+//    
+//    it(' must open internal window', function () {
+//        // create default window
+//        var window = $window.open('', 'name', {
+//            internal: true,
+//        }, false);
+//        expect(angular.isDefined(window)).toBe(true);
+//        
+//        // window is common window manager
+//        expect(angular.isFunction(window.setTitle)).toBe(true);
+//        expect(angular.isFunction(window.getTitle)).toBe(true);
+//        
+//        expect(angular.isFunction(window.setLanguage)).toBe(true);
+//        expect(angular.isFunction(window.getLanguage)).toBe(true);
+//        
+//        expect(angular.isFunction(window.open)).toBe(true);
+//        expect(angular.isFunction(window.close)).toBe(true);
+//        expect(angular.isFunction(window.setVisible)).toBe(true);
+//        expect(angular.isFunction(window.isVisible)).toBe(true);
+//        
+//        expect(angular.isFunction(window.loadLibrary)).toBe(true);
+//        expect(angular.isFunction(window.isLibraryLoaded)).toBe(true);
+//        
+//        expect(angular.isFunction(window.setLink)).toBe(true);
+//        expect(angular.isFunction(window.setMeta)).toBe(true);
+//        
+//        expect(angular.isFunction(window.setWidth)).toBe(true);
+//        expect(angular.isFunction(window.getWidth)).toBe(true);
+//        
+//        expect(angular.isFunction(window.setHeight)).toBe(true);
+//        expect(angular.isFunction(window.getHeight)).toBe(true);
+//    });
     
     it('must load library', function(done){
         var path = 'path/to/library';

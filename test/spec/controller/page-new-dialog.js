@@ -31,7 +31,7 @@ describe('AmhPageNewDialogCtrl ', function() {
 
 
 	// load the service's module
-	beforeEach(module('ngMaterialHome'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function(_$settings_, _$controller_, _$rootScope_) {
 		$settings = _$settings_;
 		$controller = _$controller_;

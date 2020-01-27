@@ -25,7 +25,7 @@
 //
 //	// Initialize the controller and a mock scope
 //	beforeEach(function(){
-//		module('ngMaterialHome');
+//		module('vwStudio');
 //		inject(function(_$controller_, _$rootScope_,
 //				_CmsContent_, _CmsContentMetadata_, _CmsTermTaxonomy_,
 //				_$rootElement_, _$q_, _$dispatcher_, _$routeParams_, _$cms_,

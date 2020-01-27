@@ -31,7 +31,7 @@ describe('WbWidget converter WbConverterText ', function() {
 	var WbConverterText;
 
 	// load the service's module
-	beforeEach(module('am-wb-core'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function(_$widget_, _WbProcessorAttribute_, _$rootScope_, _WbConverterText_) {
 		$widget = _$widget_;
 		var WbProcessorAttribute = _WbProcessorAttribute_;

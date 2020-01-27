@@ -21,13 +21,10 @@
  */
 
 
-angular.module('vwStudio')
-
-
 /***********************************************************************
  * Editors
  ***********************************************************************/
-.run(function ($widget, $resource) {
+angular.module('vwStudio').run(function ($widget, $resource) {
 
 	/*
 	 * 

@@ -23,8 +23,6 @@
  */
 
 
-angular.module('vwStudio')
-
 /**
  * @ngdoc Directives
  * @name wb-widgets-module
@@ -33,7 +31,7 @@ angular.module('vwStudio')
  * This is widgets explorer list.
  * 
  */
-.directive('wbWidgetsModule', function($window) {
+angular.module('vwStudio').directive('wbWidgetsModule', function($window) {
 
     return {
         templateUrl : 'views/directives/wb-widgets-module.html',

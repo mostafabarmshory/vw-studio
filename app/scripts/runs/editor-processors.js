@@ -20,12 +20,10 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
 /*
  * load processor of workbench and editor
  */
-.run(function($amhEditorService, 
+angular.module('vwStudio').run(function($amhEditorService, 
 		/* editor    */ AmhEditorProcessorClipboard, AmhEditorProcessorCommon, AmhEditorProcessorUtils,
 		/* workbench */ AmhWorkbenchProcessorClone, AmhWorkbenchProcessorContentValue, 
 		AmhWorkbenchProcessorMetainfo, AmhWorkbenchProcessorCrud) {

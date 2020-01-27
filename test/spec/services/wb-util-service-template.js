@@ -27,7 +27,7 @@ describe('Service $wbUtil', function() {
 	var $wbUtil;
 
 	// load the service's module
-	beforeEach(module('am-wb-core'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function(_$wbUtil_) {
 		$wbUtil = _$wbUtil_;
 	}));

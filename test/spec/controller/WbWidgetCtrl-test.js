@@ -40,7 +40,7 @@ describe('WbAbstractWidget ', function() {
 	};
 
 	// load the service's module
-	beforeEach(module('am-wb-core'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function(_$rootScope_, _$widget_, _$httpBackend_) {
 		$rootScope = _$rootScope_;
 		$widget = _$widget_;

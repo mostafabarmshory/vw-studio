@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Controllers
  * @name WbSettingPageCtrl
@@ -33,7 +31,7 @@ angular.module('vwStudio')//
  * utilities.
  * 
  */
-.controller('WbSettingPageCtrl', function (WbObservableObject) {
+angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservableObject) {
 	// extend from observable object
 	angular.extend(this, WbObservableObject.prototype);
 	WbObservableObject.apply(this);

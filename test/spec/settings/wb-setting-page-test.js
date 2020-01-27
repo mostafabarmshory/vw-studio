@@ -25,13 +25,11 @@
 
 describe('Abstract WbSettingPageCtrl controller', function() {
 
-	// load the service's module
-	beforeEach(module('am-wb-core'));
-
 	var $rootScope;
 	var $controller;
 	var $widget;
 
+	beforeEach(module('vwStudio'));
 
 	// Store references to $rootScope and $compile
 	// so they are available to all tests in this describe block

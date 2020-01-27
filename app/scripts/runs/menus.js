@@ -21,11 +21,10 @@
  */
 'use strict';
 
-angular.module('vwStudio')
 /*
  * Adds module menu
  */
-.run(function($actions, $navigator) {
+angular.module('vwStudio').run(function($actions, $navigator) {
 	$actions.newAction({
 		icon: 'apps',
 		title: 'Applications',

@@ -20,29 +20,27 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Processor
  * @name WbProcessorSelect
  * @description Widget processor
  * 
  */
-.factory('WbProcessorSelect', function (
+angular.module('vwStudio').factory('WbProcessorSelect', function(
 	/* AngularJS */ $rootScope, $log,
 	/* WB Core   */ $widget, WbProcessorAbstract) {
 	var EVENT_TYPE_SELECTION_CHANGE = 'selectionChange';
 
-	function Processor(){
+	function Processor() {
 		WbProcessorAbstract.apply(this, arguments);
 		this.selectedWidgets = [];
 
 		var ctrl = this;
-		this.clickListener = function($event){
-			try{
+		this.clickListener = function($event) {
+			try {
 				$event.preventDefault();
 				$event.stopPropagation();
-			} catch(ex){
+			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',
 					message: 'fail to stop event propagation (click)',
@@ -50,19 +48,19 @@ angular.module('vwStudio')//
 				});
 			}
 			var widget = $event.source;
-			if(ctrl.lock || widget.isSilent() || widget.isSelected()){
+			if (ctrl.lock || widget.isSilent() || widget.isSelected()) {
 				return;
 			}
 			ctrl.lock = true;
-			try{
-				if($event.shiftKey){
+			try {
+				if ($event.shiftKey) {
 					ctrl.addSelectedWidgets(widget);
 				} else {
 					ctrl.setSelectedWidgets(widget);
 				}
 
 				$rootScope.$digest();
-			} catch(ex){
+			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',
 					message: 'fail to selec a widget type:' + widget.getType(),
@@ -73,13 +71,13 @@ angular.module('vwStudio')//
 			}
 		};
 
-		this.dblclickListener = function($event){
+		this.dblclickListener = function($event) {
 			var widget = $event.source;
-			if(ctrl.lock || widget.isSilent()){
+			if (ctrl.lock || widget.isSilent()) {
 				return;
 			}
 			ctrl.lock = true;
-			try{
+			try {
 				ctrl.setSelectedWidgets(widget);
 				// Open an editor 
 				var editor = $widget.getEditor(widget);
@@ -89,7 +87,7 @@ angular.module('vwStudio')//
 				$event.stopPropagation();
 
 				$rootScope.$digest();
-			} catch(ex){
+			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',
 					message: 'fail to open editor for a widget of type:' + widget.getType(),
@@ -100,9 +98,9 @@ angular.module('vwStudio')//
 			}
 		};
 
-		this.selectionListener = function($event){
+		this.selectionListener = function($event) {
 			var widget = $event.source;
-			if(ctrl.lock || widget.isSilent()){
+			if (ctrl.lock || widget.isSilent()) {
 				return;
 			}
 			ctrl.setSelectedWidgets(widget);
@@ -115,11 +113,11 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WbProcessorSelect
 	 */
-	Processor.prototype.process = function(widget, event){
-		if(event.type !== 'stateChanged') {
+	Processor.prototype.process = function(widget, event) {
+		if (event.type !== 'stateChanged') {
 			return;
 		}
-		if(widget.state === 'edit') {
+		if (widget.state === 'edit') {
 			widget.on('click', this.clickListener);
 			widget.on('dblclick', this.dblclickListener);
 			widget.on('select', this.selectionListener);
@@ -135,7 +133,7 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WbProcessorSelect
 	 */
-	Processor.prototype.setEnable = function(enable){
+	Processor.prototype.setEnable = function(enable) {
 		this.enable = enable;
 	};
 
@@ -144,15 +142,16 @@ angular.module('vwStudio')//
 	 * 
 	 * @memberof WbProcessorSelect
 	 */
-	Processor.prototype.setSelectedWidgets = function(widgets){
-		if(!_.isArray(widgets)){
-			widgets = [...arguments];
+	Processor.prototype.setSelectedWidgets = function(widgets) {
+		if (!_.isArray(widgets)) {
+			//				widgets = [...arguments];
+			widgets = Array.prototype.slice.call(arguments);
 		}
 
-		try{
+		try {
 			this.lock = true;
-			_.forEach(this.selectedWidgets, function(widget){
-				if(!_.includes(widgets, widget)){
+			_.forEach(this.selectedWidgets, function(widget) {
+				if (!_.includes(widgets, widget)) {
 					widget.setSelected(false);
 				}
 			});
@@ -160,10 +159,10 @@ angular.module('vwStudio')//
 			// clear selection
 			// TODO: maso, 2019: check if shift key is hold
 			this.selectedWidgets = widgets;
-			_.forEach(this.selectedWidgets, function(widget){
+			_.forEach(this.selectedWidgets, function(widget) {
 				widget.setSelected(true);
 			});
-		} finally{
+		} finally {
 			this.lock = false;
 		}
 
@@ -172,14 +171,15 @@ angular.module('vwStudio')//
 		});
 	};
 
-	Processor.prototype.addSelectedWidgets = function(widgets){
-		if(!_.isArray(widgets)){
-			widgets = [...arguments];
+	Processor.prototype.addSelectedWidgets = function(widgets) {
+		if (!_.isArray(widgets)) {
+			//widgets = [...arguments];
+			widgets = Array.prototype.slice.call(arguments);
 		}
 		this.setSelectedWidgets(_.concat(this.selectedWidgets, widgets));
 	};
 
-	Processor.prototype.getSelectedWidgets = function(){
+	Processor.prototype.getSelectedWidgets = function() {
 		return _.clone(this.selectedWidgets || []);
 	};
 

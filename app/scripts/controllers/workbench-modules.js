@@ -19,8 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
-.controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window){
+angular.module('vwStudio').controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window){
 	
 	var ctrl = this;
 	var COTNTENT_MODUEL_CHANGE_EVENT = 'contentModulesChanged';

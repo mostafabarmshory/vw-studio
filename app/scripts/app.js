@@ -24,17 +24,17 @@
  */
 
 jQuery.fn.extend({
-	getPath: function () {
+	getPath: function() {
 		var path, node = this;
 		while (node.length) {
 			var realNode = node[0], name = realNode.localName;
-			if (!name) { 
+			if (!name) {
 				break;
 			}
 			name = name.toLowerCase();
 			var parent = node.parent();
 			var sameTagSiblings = parent.children(name);
-			if (sameTagSiblings.length > 1) { 
+			if (sameTagSiblings.length > 1) {
 				var allSiblings = parent.children();
 				var index = allSiblings.index(realNode) + 1;
 				if (index > 1) {
@@ -51,26 +51,27 @@ jQuery.fn.extend({
 /*
  * Main module of the application.
  */
-angular
-.module('vwStudio', [
+angular.module('vwStudio', [
 	'mblowfish-core',
 	'mblowfish-language',
 	'ui.tree'
-])
-//  Load application
-.run(function($app, $window, $toolbar, $sidenav) {
-	$toolbar.setDefaultToolbars([ 'amh.owner-toolbar' ]);
-	$sidenav.setDefaultSidenavs([ 'amh.cms.pages.sidenav', ]);
-    $app.start('vm-studio');
+]);
 
-    // load crisp
-    $window.$crisp=[];
-    $window.CRISP_WEBSITE_ID = '55019c32-37d1-46ab-b97e-1b524309deb1';
-    $window.loadLibrary('https://client.crisp.chat/l.js');
-})
+var app = angular.module('app', ['vwStudio']);
+//  Load application
+app.run(function($app, $window, $toolbar, $sidenav) {
+	$toolbar.setDefaultToolbars(['amh.owner-toolbar']);
+	$sidenav.setDefaultSidenavs(['amh.cms.pages.sidenav']);
+	$app.start('vm-studio');
+
+	// load crisp
+	$window.$crisp = [];
+	$window.CRISP_WEBSITE_ID = '55019c32-37d1-46ab-b97e-1b524309deb1';
+	$window.loadLibrary('https://client.crisp.chat/l.js');
+});
 //.config(function($routeProvider) {
 //    $routeProvider.otherwise('/dashboard');
 //})
-.controller('MainCtrl', function(){});
+app.controller('MainCtrl', function() { });
 
 

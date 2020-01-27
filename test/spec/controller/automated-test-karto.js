@@ -2,7 +2,7 @@
  * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
+ * of this software and associated documentation files (the 'Software'), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
@@ -11,7 +11,7 @@
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -53,7 +53,7 @@ describe('Automate test ', function() {
 	};
 
 	// load the controller's module
-	beforeEach(module('ngMaterialHome'));
+	beforeEach(module('vwStudio'));
 
 	// Initialize the controller and a mock scope
 	beforeEach(inject(function(_$controller_, $rootScope) {
@@ -121,7 +121,7 @@ describe('Automate test ', function() {
 
 	KoratControllerTestSpace.prototype.checkPreconditions = function() {
 		if (!this.loaded) {
-			throw "The test space must be load befor any test";
+			throw 'The test space must be load befor any test';
 		}
 	};
 
@@ -150,7 +150,7 @@ describe('Automate test ', function() {
 				try {
 					if (candidate.invokePredicate()) {
 						//						output(candidate);
-						console.log("Hi");
+						console.log('Hi');
 					}
 				} catch (error) {
 					// TODO: Report the problem??

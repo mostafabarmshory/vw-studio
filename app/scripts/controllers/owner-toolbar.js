@@ -23,7 +23,6 @@
  */
 
 
-angular.module('vwStudio')
 /**
  * @ngdoc controllers
  * @name AmhOwnerToolbarCtrl
@@ -36,27 +35,27 @@ angular.module('vwStudio')
  * - amh.owner-toolbar.scope
  * - mb.user
  */
-.controller("AmhOwnerToolbarCtrl", function ($scope, $actions, $app, $mdSidenav, $monitor) {
+angular.module('vwStudio').controller('AmhOwnerToolbarCtrl', function($scope, $actions, $app, $mdSidenav, $monitor) {
 	$scope.userMenu = $actions.group('mb.user');
 
-	this.logout = function () {
+	this.logout = function() {
 		$app.logout();
 	};
 
 
-	this.toggleMessageSidenav = function(){
+	this.toggleMessageSidenav = function() {
 		$mdSidenav('messages').toggle();
 	};
 
 	this.getMessageCount = function() {
 		var ctrl = this;
 		return $monitor.getMetric('message.count')
-		.then(function (metric) {
-			ctrl.messageCount = metric.value;
-		});
+			.then(function(metric) {
+				ctrl.messageCount = metric.value;
+			});
 	};
 
-	this.showLocalSettings = function(){
+	this.showLocalSettings = function() {
 		return $mdSidenav('settings').toggle();
 	};
 

@@ -20,15 +20,13 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Settings
  * @name WbSettingGeneralCtrl
  * @description Manage Widget general attributes
  * 
  */
-.controller('WbSettingGeneralCtrl', function () {
+angular.module('vwStudio').controller('WbSettingGeneralCtrl', function () {
     /*
      * Initial the setting editor
      */

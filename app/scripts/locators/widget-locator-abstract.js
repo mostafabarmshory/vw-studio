@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Factories
  * @name AbstractWidgetLocator
@@ -33,154 +31,154 @@ angular.module('vwStudio')//
  * example it is used to show widget actions on the fly.
  * 
  */
-.factory('AbstractWidgetLocator', function () {
+angular.module('vwStudio').factory('AbstractWidgetLocator', function() {
 
     /**
      * Creates new instance of the widget locator
      * 
      * @memberof AbstractWidgetLocator
      */
-    function Locator() {
-        this.callbacks = [];
-        this.elements = [];
-        this.observedWidgets = [];
+	function Locator() {
+		this.callbacks = [];
+		this.elements = [];
+		this.observedWidgets = [];
 
-        // Creates listeners
-        var ctrl = this;
-        this.widgetListeners = {
-                'select' : function (/*$event*/) {
-                    ctrl.addClass('selected');
-                    ctrl.removeClass('mouseover');
-                },
-                'unselect' : function (/*$event*/) {
-                    ctrl.removeClass('selected');
-                    if (ctrl.mouseover) {
-                        ctrl.addClass('mouseover');
-                    }
-                },
-                'mouseover' : function (/*$event*/) {
-                    ctrl.addClass('mouseover');
-                    ctrl.mouseover = true;
-                },
-                'mouseout' : function (/*$event*/) {
-                    ctrl.removeClass('mouseover');
-                    ctrl.mouseover = false;
-                },
-        };
-    }
+		// Creates listeners
+		var ctrl = this;
+		this.widgetListeners = {
+			'select': function(/*$event*/) {
+				ctrl.addClass('selected');
+				ctrl.removeClass('mouseover');
+			},
+			'unselect': function(/*$event*/) {
+				ctrl.removeClass('selected');
+				if (ctrl.mouseover) {
+					ctrl.addClass('mouseover');
+				}
+			},
+			'mouseover': function(/*$event*/) {
+				ctrl.addClass('mouseover');
+				ctrl.mouseover = true;
+			},
+			'mouseout': function(/*$event*/) {
+				ctrl.removeClass('mouseover');
+				ctrl.mouseover = false;
+			},
+		};
+	}
 
     /**
      * Defines anchor 
      */
-    Locator.prototype.setAnchor = function (anchor) {
-        this.anchor = anchor;
-    };
+	Locator.prototype.setAnchor = function(anchor) {
+		this.anchor = anchor;
+	};
 
     /**
      * Update the view
      */
-    Locator.prototype.setAnchor = function (anchor) {
-        this.anchor = anchor;
-    };
+	Locator.prototype.setAnchor = function(anchor) {
+		this.anchor = anchor;
+	};
 
-    Locator.prototype.getAnchor = function (/*auncher*/) {
-        // find custom anchor
-//        if(this.anchor){
-//            if(angular.isFunction(this.anchor)){
-//                return this.anchor();
-//            }
-//            if(angular.isString(this.anchor)){
-//                var list = $rootElement.find(this.anchor);
-//                if(list){
-//                    return list[0];
-//                }
-//            }
-//        }
-//        // find parent
-        var widget = this.getWidget();
-//        if(widget && widget.getParent()){
-//            return widget.getParent().getElement();
-//        }
-        // return root
-//        return $rootElement;
-      return widget.getRoot().getElement();
-    };
+	Locator.prototype.getAnchor = function(/*auncher*/) {
+		// find custom anchor
+		//        if(this.anchor){
+		//            if(angular.isFunction(this.anchor)){
+		//                return this.anchor();
+		//            }
+		//            if(angular.isString(this.anchor)){
+		//                var list = $rootElement.find(this.anchor);
+		//                if(list){
+		//                    return list[0];
+		//                }
+		//            }
+		//        }
+		//        // find parent
+		var widget = this.getWidget();
+		//        if(widget && widget.getParent()){
+		//            return widget.getParent().getElement();
+		//        }
+		// return root
+		//        return $rootElement;
+		return widget.getRoot().getElement();
+	};
 
 
     /**
      * Sets new widget
      */
-    Locator.prototype.setWidget = function (widget) {
-        this.widget = widget;
-    };
+	Locator.prototype.setWidget = function(widget) {
+		this.widget = widget;
+	};
 
-    Locator.prototype.getWidget = function () {
-        return this.widget;
-    };
+	Locator.prototype.getWidget = function() {
+		return this.widget;
+	};
 
-    Locator.prototype.setElements = function (elements) {
-        this.elements = elements;
-    };
+	Locator.prototype.setElements = function(elements) {
+		this.elements = elements;
+	};
 
-    Locator.prototype.getElements = function () {
-        return this.elements;
-    };
+	Locator.prototype.getElements = function() {
+		return this.elements;
+	};
 
-    Locator.prototype.addClass = function (value) {
-        var elements = this.getElements();
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].addClass(value);
-        }
-    };
+	Locator.prototype.addClass = function(value) {
+		var elements = this.getElements();
+		for (var i = 0; i < elements.length; i++) {
+			elements[i].addClass(value);
+		}
+	};
 
-    Locator.prototype.removeClass = function (value) {
-        var elements = this.getElements();
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].removeClass(value);
-        }
-    };
+	Locator.prototype.removeClass = function(value) {
+		var elements = this.getElements();
+		for (var i = 0; i < elements.length; i++) {
+			elements[i].removeClass(value);
+		}
+	};
 
     /**
      * Remove connection the the current widget
      */
-    Locator.prototype.disconnect = function () {
-        this.connect(null);
-        this.connected = false;
-    };
+	Locator.prototype.disconnect = function() {
+		this.connect(null);
+		this.connected = false;
+	};
 
-    Locator.prototype.connect = function (widget) {
-        this.connected = true;
-        if (this.widget !==  widget) {
-            var elements = this.getElements();
-            if(this.widget){
-                var oldWidget = this.widget;
-                angular.forEach(this.widgetListeners, function (listener, type) {
-                    oldWidget.off(type, listener);
-                });
-                for (var i = 0; i < elements.length; i++) {
-                    elements[i].detach();
-                }
-            }
-            this.setWidget(widget);
-            if(widget){
-                angular.forEach(this.widgetListeners, function (listener, type) {
-                    widget.on(type, listener);
-                });
-                var anchor = this.getAnchor();
-                angular.forEach(elements, function (element) {
-                    anchor.append(element);
-                });
-            }
-        }
-        if(this.getWidget()){
-            this.updateView();
-        }
-    };
+	Locator.prototype.connect = function(widget) {
+		this.connected = true;
+		if (this.widget !== widget) {
+			var elements = this.getElements();
+			if (this.widget) {
+				var oldWidget = this.widget;
+				angular.forEach(this.widgetListeners, function(listener, type) {
+					oldWidget.off(type, listener);
+				});
+				for (var i = 0; i < elements.length; i++) {
+					elements[i].detach();
+				}
+			}
+			this.setWidget(widget);
+			if (widget) {
+				angular.forEach(this.widgetListeners, function(listener, type) {
+					widget.on(type, listener);
+				});
+				var anchor = this.getAnchor();
+				angular.forEach(elements, function(element) {
+					anchor.append(element);
+				});
+			}
+		}
+		if (this.getWidget()) {
+			this.updateView();
+		}
+	};
 
 
-    Locator.prototype.isConnected = function () {
-        return this.connected;
-    };
+	Locator.prototype.isConnected = function() {
+		return this.connected;
+	};
 
-    return Locator;
+	return Locator;
 });

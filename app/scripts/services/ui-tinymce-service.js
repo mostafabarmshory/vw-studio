@@ -21,27 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-angular.module('vwStudio')
 /**
  * A service is used to create unique ID's, this prevents duplicate ID's if there are multiple editors on screen.
  */
-.service('uiTinymceService', function() {
-    
-    var UITinymceService = function() {
-        var ID_ATTR = 'ui-tinymce';
-        // uniqueId keeps track of the latest assigned ID
-        var uniqueId = 0;
-        // getUniqueId returns a unique ID
-        var getUniqueId = function() {
-            uniqueId ++;
-            return ID_ATTR + '-' + uniqueId;
-        };
-        // return the function as a public method of the service
-        return {
-            getUniqueId: getUniqueId
-        };
-    };
-    // return a new instance of the service
-    return new UITinymceService();
+angular.module('vwStudio').service('uiTinymceService', function() {
+
+	var UITinymceService = function() {
+		var ID_ATTR = 'ui-tinymce';
+		// uniqueId keeps track of the latest assigned ID
+		var uniqueId = 0;
+		// getUniqueId returns a unique ID
+		var getUniqueId = function() {
+			uniqueId++;
+			return ID_ATTR + '-' + uniqueId;
+		};
+		// return the function as a public method of the service
+		return {
+			getUniqueId: getUniqueId
+		};
+	};
+	// return a new instance of the service
+	return new UITinymceService();
 });

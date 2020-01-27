@@ -38,7 +38,7 @@ describe('Dispatcher test', function () {
 	};
 
 	// load the service's module
-	beforeEach(module('am-wb-core'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function (_$rootScope_, _$widget_) {
 		$rootScope = _$rootScope_;
 		$widget = _$widget_;

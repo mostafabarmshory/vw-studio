@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Settings
@@ -27,7 +26,7 @@ angular.module('vwStudio')//
  * @description Manage IFrame widget 
  * 
  */
-.controller('WbSettingWidgetVideoCtrl', function () {
+angular.module('vwStudio').controller('WbSettingWidgetVideoCtrl', function () {
 
     /*
      * Initial the setting editor

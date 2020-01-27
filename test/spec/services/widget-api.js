@@ -33,7 +33,7 @@ describe('Service $widget', function () {
 	// load the service's module
 	// instantiate service
 	beforeEach(function(){
-		module('am-wb-core');
+		module('vwStudio');
 		inject(function (_$rootScope_, _$widget_, _$timeout_) {
 			$rootScope = _$rootScope_;
 			$widget = _$widget_;

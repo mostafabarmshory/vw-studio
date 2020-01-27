@@ -40,7 +40,7 @@ describe('wb-ui-setting-number directive ', function () {
 
     // instantiate service
     beforeEach(function(){
-        module('am-wb-core');
+        module('vwStudio');
         inject(function (_$rootScope_, _$compile_) {
             $rootScope = _$rootScope_;
             $compile = _$compile_;

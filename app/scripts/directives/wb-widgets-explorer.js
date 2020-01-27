@@ -22,9 +22,6 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
-
 /**
  * @ngdoc Directives
  * @name wb-widgets-explorer
@@ -33,7 +30,7 @@ angular.module('vwStudio')
  * This is widgets explorer list.
  * 
  */
-.directive('wbWidgetsExplorer', function($widget, $rootScope) {
+angular.module('vwStudio').directive('wbWidgetsExplorer', function($widget, $rootScope) {
 	/*
 	 * link function
 	 */
@@ -42,9 +39,9 @@ angular.module('vwStudio')
 		var ngModel = ctrls[0];
 		var widgets = null;
 
-		if($rootScope.app && $rootScope.app.setting) {
+		if ($rootScope.app && $rootScope.app.setting) {
 			// save setting in root scope
-			if(!$rootScope.app.setting.wbWidgetExplorer){
+			if (!$rootScope.app.setting.wbWidgetExplorer) {
 				$rootScope.app.setting.wbWidgetExplorer = {};
 			}
 			scope.wbWidgetExplorer = $rootScope.app.setting.wbWidgetExplorer;
@@ -55,10 +52,10 @@ angular.module('vwStudio')
 		/*
 		 * Filter widgets width the query
 		 */
-		function _loadQuery(query, widgets){
-			if(query) {
+		function _loadQuery(query, widgets) {
+			if (query) {
 				var q = query.trim().toLowerCase();
-				return widgets.filter(function(w){
+				return widgets.filter(function(w) {
 					return w.title.toLowerCase().indexOf(q) > -1 || w.description.indexOf(q) > -1;
 				});
 			}
@@ -68,14 +65,14 @@ angular.module('vwStudio')
 		/*
 		 * Load widgets in groups
 		 */
-		function _loadGroups(widgets){
+		function _loadGroups(widgets) {
 			var groups = [];
 			var tmp = {};
-			for(var i = 0; i < widgets.length; i++){
+			for (var i = 0; i < widgets.length; i++) {
 				var gl = widgets[i].groups || [];
-				for(var j = 0; j < gl.length; j++){
+				for (var j = 0; j < gl.length; j++) {
 					var gid = gl[j];
-					if(!angular.isDefined(tmp[gid])){
+					if (!angular.isDefined(tmp[gid])) {
 						tmp[gid] = angular.copy($widget.group(gid));
 						tmp[gid].widgets = [];
 						groups.push(tmp[gid]);
@@ -86,13 +83,13 @@ angular.module('vwStudio')
 			return groups;
 		}
 
-		function _runQuery(/*query, $event*/){
+		function _runQuery(/*query, $event*/) {
 			scope.widgets = _loadQuery(scope.query, widgets);
 			scope.groups = _loadGroups(scope.widgets);
 		}
 
-		function _load(){
-			if(!widgets){
+		function _load() {
+			if (!widgets) {
 				scope.widgets = [];
 				return;
 			}
@@ -103,7 +100,7 @@ angular.module('vwStudio')
 		}
 
 		// Load models
-		ngModel.$render = function(){
+		ngModel.$render = function() {
 			widgets = ngModel.$modelValue;
 			_load();
 		};
@@ -112,11 +109,11 @@ angular.module('vwStudio')
 	}
 
 	return {
-		templateUrl : 'views/directives/wb-widgets-explorer.html',
-		restrict : 'E',
-		replace : true,
+		templateUrl: 'views/directives/wb-widgets-explorer.html',
+		restrict: 'E',
+		replace: true,
 		scope: {},
 		require: ['ngModel'],
-		link : postLink
+		link: postLink
 	};
 });

@@ -21,46 +21,45 @@
  */
 
 
-angular.module('vwStudio')
-.service('$amhEditorService', function (WbObservableObject) {
-	
+angular.module('vwStudio').service('$amhEditorService', function(WbObservableObject) {
+
 
 	// load observable
 	angular.extend(this, WbObservableObject.prototype);
 	WbObservableObject.apply(this);
 
 	var processors = {
-			editor:[],
-			workbench: []
+		editor: [],
+		workbench: []
 	};
 
-	function addProcessor(type, processor){
+	function addProcessor(type, processor) {
 		processors[type].push(processor);
 	}
 
-	function connect (type, ctrl){
+	function connect(type, ctrl) {
 		disconnect(ctrl);
 		ctrl.__processors = [];
 		// connect processors
-		_.forEach(processors[type], function(Processor){
-			try{
+		_.forEach(processors[type], function(Processor) {
+			try {
 				var processor = new Processor(ctrl);
 				ctrl.__processors.push(processor);
-			} catch(error){
+			} catch (error) {
 				// TODO:
 				console.log(error);
 			}
 		});
 	}
 
-	function disconnect(ctrl){
-		if(!_.isArray(ctrl.__processors)){
+	function disconnect(ctrl) {
+		if (!_.isArray(ctrl.__processors)) {
 			return;
 		}
-		_.forEach(ctrl.__processors, function(processor){
-			try{
+		_.forEach(ctrl.__processors, function(processor) {
+			try {
 				processor.destroy();
-			} catch(error){
+			} catch (error) {
 				// TODO:
 				console.log(error);
 			}
@@ -73,7 +72,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof $amhEditorService
 	 */
-	this.addEditorProcessor = function(processor){
+	this.addEditorProcessor = function(processor) {
 		addProcessor('editor', processor);
 	};
 
@@ -82,7 +81,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof $amhEditorService
 	 */
-	this.connectEditor = function(editor){
+	this.connectEditor = function(editor) {
 		return connect('editor', editor);
 	};
 
@@ -91,7 +90,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof $amhEditorService
 	 */
-	this.disconnectEditor = function(editor){
+	this.disconnectEditor = function(editor) {
 		return disconnect(editor);
 	};
 
@@ -100,7 +99,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof $amhEditorService
 	 */
-	this.addWorkbenchProcessor = function(processor){
+	this.addWorkbenchProcessor = function(processor) {
 		addProcessor('workbench', processor);
 	};
 
@@ -109,7 +108,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof $amhEditorService
 	 */
-	this.connectWorkbench= function(workbench){
+	this.connectWorkbench = function(workbench) {
 		var oldValue = this.currentWorkbench;
 		this.currentWorkbench = workbench;
 		this.fire('workbenchChanged', {
@@ -124,15 +123,15 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof $amhEditorService
 	 */
-	this.disconnectWorkbench = function(editor){
+	this.disconnectWorkbench = function(editor) {
 		return disconnect(editor);
 	};
-	
-	this.getWorkbench = function(){
+
+	this.getWorkbench = function() {
 		return this.currentWorkbench;
 	};
 
-	this.getEditors = function(){
+	this.getEditors = function() {
 		return this.currentWorkbench.editors;
 	};
 });

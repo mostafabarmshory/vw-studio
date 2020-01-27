@@ -31,7 +31,7 @@
 //
 //
 //	// load the service's module
-//	beforeEach(module('am-wb-core'));
+//	beforeEach(module('vwStudio'));
 //	beforeEach(inject(function (_$settings_, _$rootScope_, _$injector_) {
 //		$settings = _$settings_;
 //		$rootScope = _$rootScope_;

@@ -3,7 +3,7 @@
 describe('PageNewDialog', function() {
 
 	// load the controller's module
-	beforeEach(module('ngMaterialHome'));
+	beforeEach(module('vwStudio'));
 
 	var $rootScope;
 	var $controller;

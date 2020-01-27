@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')
-
 /**
  * @ngdoc Services
  * @name $settings
@@ -31,7 +29,7 @@ angular.module('vwStudio')
  * 
  * 
  */
-.service('$settings', function() {
+angular.module('vwStudio').service('$settings', function() {
 	
 	/**
 	 * Setting page storage

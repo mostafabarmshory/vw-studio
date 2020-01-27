@@ -31,13 +31,13 @@ describe('WbWidget processor event ', function () {
 	var $rootScope;
 
 
-	angular.module('am-wb-core')//
+	angular.module('vwStudio')//
 	.config(['$qProvider', function ($qProvider) {
 		$qProvider.errorOnUnhandledRejections(false);
 	}]);
 
 	// load the service's module
-	beforeEach(module('am-wb-core'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function (_$widget_, _WbProcessorAttribute_, _$rootScope_, _$timeout_) {
 		$widget = _$widget_;
 		var WbProcessorAttribute = _WbProcessorAttribute_;

@@ -39,7 +39,7 @@ describe('The directive amh-widget-path ', function() {
 		return this.scope;
 	};
 
-	beforeEach(module('ngMaterialHome'));
+	beforeEach(module('vwStudio'));
 	beforeEach(inject(function(_$controller_, _$rootScope_, _$compile_, _$widget_, _$help_) {
 //		$controller = _$controller_;
 		$rootScope = _$rootScope_;

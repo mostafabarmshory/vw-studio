@@ -20,12 +20,10 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
 /**
  * دریچه‌های محاوره‌ای
  */
-.run(function(
+angular.module('vwStudio').run(function(
 		/* mblowfish */ $app, $actions, $sidenav, $toolbar, $help,
 		/* angularjs */ $rootScope,
 		/* mateiral  */ $mdSidenav,
@@ -280,7 +278,7 @@ angular.module('vwStudio')
 		 */
 		controller: function(){
 			this.loadModelTemplate = function(template, $event){
-				$event = $event || jQuery.Event( "upload", { 
+				$event = $event || jQuery.Event( 'upload', { 
 					target: this
 				});
 				$event.template = [template];

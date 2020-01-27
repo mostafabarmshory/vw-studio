@@ -13,7 +13,7 @@ describe('Clon Workbench Processor ', function() {
 	var $routeParams;
 	var $q;
 	var $dispatcher;
-	var $wbWindow;
+	var $window;
 	var mockRouteParams = {
 		name : 'contentname'
 	};
@@ -25,12 +25,12 @@ describe('Clon Workbench Processor ', function() {
 
 	// Initialize the controller and a mock scope
 	beforeEach(function(){
-		module('ngMaterialHome');
+		module('vwStudio');
 		inject(function(_$controller_, _$rootScope_,
 				_CmsContent_, _CmsContentMetadata_, _CmsTermTaxonomy_,
 				_$rootElement_, _$q_, _$dispatcher_, _$routeParams_,
 				_AmhWorkbenchProcessorMetainfo_,
-				_$wbWindow_) {
+				_$window_) {
 			$controller = _$controller_;
 			$rootScope = _$rootScope_;
 			CmsContent = _CmsContent_;
@@ -41,7 +41,7 @@ describe('Clon Workbench Processor ', function() {
 			$dispatcher = _$dispatcher_;
 			$routeParams = _$routeParams_;
 			AmhWorkbenchProcessorMetainfo = _AmhWorkbenchProcessorMetainfo_;
-			$wbWindow = _$wbWindow_;
+			$window = _$window_;
 		});
 	});
 	
@@ -63,7 +63,7 @@ describe('Clon Workbench Processor ', function() {
 			value: 'b'
 		}];
 		workbench.setContentMetadata(metas);
-		expect($wbWindow.getMeta('a')).toBe('b');
+		expect($window.getMeta('a')).toBe('b');
 	});
 	
 });

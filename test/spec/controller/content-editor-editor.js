@@ -8,7 +8,7 @@ describe('Contnent edtiro controllr', function() {
 
 	// Initialize the controller and a mock scope
 	beforeEach(function(){
-		module('ngMaterialHome');
+		module('vwStudio');
 		inject(function(_$controller_, _$rootScope_) {
 			$controller = _$controller_;
 			$rootScope = _$rootScope_;

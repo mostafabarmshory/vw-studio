@@ -22,8 +22,6 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
 /**
  * @ngdoc Directives
  * @name wb-content
@@ -38,7 +36,7 @@ angular.module('vwStudio')
  * NOTE: The root widget will be passed as first selected item. The function
  * will be evaluated in non edit mode.
  */
-.directive('wbContent', function($widget) {
+angular.module('vwStudio').directive('wbContent', function($widget) {
 	/*
 	 * Link widget view
 	 */
@@ -54,7 +52,7 @@ angular.module('vwStudio')
 
 			// 0- remove old
 			var editable = false;
-			if(rootWidget){
+			if (rootWidget) {
 				editable = rootWidget.isEditable();
 				rootWidget.destroy();
 			}
@@ -62,20 +60,20 @@ angular.module('vwStudio')
 
 			// 1- create widget
 			$widget.compile(model, null, $element)
-			.then(function(widget){
-				rootWidget = widget;
-				rootWidget.setEditable(editable);
-				$element.trigger('load', widget);
-			}, function(error){
-				$element.error(error);
-			});
+				.then(function(widget) {
+					rootWidget = widget;
+					rootWidget.setEditable(editable);
+					$element.trigger('load', widget);
+				}, function(error) {
+					$element.error(error);
+				});
 		};
 	}
 
 	return {
-		restrict : 'EA',
-		scope : true,
-		link : wbGroupLink,
+		restrict: 'EA',
+		scope: true,
+		link: wbGroupLink,
 		require: ['?ngModel']
 	};
 });

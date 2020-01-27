@@ -23,13 +23,12 @@
  */
 
 
-angular.module('vwStudio')
 /**
  * @ngdoc Directives
  * @name mb-mini-action-anchor
  * @description produces top toolbar for the module in editing mode.
  */
-.directive('mbMiniActionAnchor', function ($actions) {
+angular.module('vwStudio').directive('mbMiniActionAnchor', function ($actions) {
 
 	return {
 		templateUrl: 'views/directives/amh-mini-action-anchor.html',
