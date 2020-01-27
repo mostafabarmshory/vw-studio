@@ -30,7 +30,7 @@ angular.module('vwStudio')
 	function Processor (editor, options) {
 		options = options || {};
 		AmhEditorProcessor.apply(this, [editor, options]);
-	};
+	}
 	Processor.prototype = new AmhEditorProcessor();
 
 
@@ -170,10 +170,10 @@ angular.module('vwStudio')
 		 * handle past
 		 */
 		this.keyEventListener = function(event){
-			if (event.code == 'Delete') {
+			if (event.code === 'Delete') {
 				ctrl.deleteWidgets();
 			}
-		}
+		};
 		/*
 		 * Check editor state
 		 */

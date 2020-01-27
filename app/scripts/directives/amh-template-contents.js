@@ -23,13 +23,13 @@
  */
 
 
-angular.module('vwStudio')
+
 /**
  * @ngdoc Directives
  * @name amh-contents
  * @description Shows the list of pages
  */
-.directive('amhTemplateContents', function () {
+angular.module('vwStudio').directive('amhTemplateContents', function() {
 
 	/*
 	 * Link widget view
@@ -37,12 +37,12 @@ angular.module('vwStudio')
 	function postLink($scope, $element, $attrs, $ctrls) {
 		var $ctrl = $ctrls[0];
 		var ngModelCtrl = $ctrls[1];
-		
-		$ctrl.applyTemplate = function(value){
-            ngModelCtrl.$setViewValue(value);
+
+		$ctrl.applyTemplate = function(value) {
+			ngModelCtrl.$setViewValue(value);
 		};
-		
-		ngModelCtrl.$render = function () {
+
+		ngModelCtrl.$render = function() {
 			$scope.template = ngModelCtrl.$viewValue;
 		};
 
@@ -54,7 +54,7 @@ angular.module('vwStudio')
 		replace: true,
 		scope: {},
 		link: postLink,
-		require: ['amhTemplateContents', 'ngModel'], 
+		require: ['amhTemplateContents', 'ngModel'],
 		controller: 'AmhContentTemplatesCtrl',
 		controllerAs: 'ctrl'
 	};

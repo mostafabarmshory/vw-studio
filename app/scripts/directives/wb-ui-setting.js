@@ -38,13 +38,13 @@ function wbUiSettingLinkFunction($scope, $element, $attrs, ctrls) {
 		setValue(undefined);
 	};
 
-	$scope.setValue = setValue;
 
 	function setValue(value){
 		$scope.value = value;
 		// TODO: validate and set
 		ngModel.$setViewValue(value);
 	}
+	$scope.setValue = setValue;
 }
 
 angular.module('vwStudio')

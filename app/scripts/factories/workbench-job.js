@@ -27,7 +27,7 @@ angular.module('vwStudio')
 	function Job(title, promise) {
 		this.title = title;
 		this.promise = promise;
-	};
+	}
 	
 	Job.prototype.then = function(fn1, fn2) {
 		var promise = this.promise.then(fn1, fn2);

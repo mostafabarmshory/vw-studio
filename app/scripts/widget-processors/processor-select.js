@@ -28,7 +28,9 @@ angular.module('vwStudio')//
  * @description Widget processor
  * 
  */
-.factory('WbProcessorSelect', function ($rootScope, $widget, WbProcessorAbstract) {
+.factory('WbProcessorSelect', function (
+	/* AngularJS */ $rootScope, $log,
+	/* WB Core   */ $widget, WbProcessorAbstract) {
 	var EVENT_TYPE_SELECTION_CHANGE = 'selectionChange';
 
 	function Processor(){
@@ -41,7 +43,7 @@ angular.module('vwStudio')//
 				$event.preventDefault();
 				$event.stopPropagation();
 			} catch(ex){
-				log.error({
+				$log.error({
 					source: 'WbProcessorSelect',
 					message: 'fail to stop event propagation (click)',
 					error: ex
@@ -61,7 +63,7 @@ angular.module('vwStudio')//
 
 				$rootScope.$digest();
 			} catch(ex){
-				log.error({
+				$log.error({
 					source: 'WbProcessorSelect',
 					message: 'fail to selec a widget type:' + widget.getType(),
 					error: ex
@@ -88,7 +90,7 @@ angular.module('vwStudio')//
 
 				$rootScope.$digest();
 			} catch(ex){
-				log.error({
+				$log.error({
 					source: 'WbProcessorSelect',
 					message: 'fail to open editor for a widget of type:' + widget.getType(),
 					error: ex

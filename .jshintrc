@@ -16,6 +16,9 @@
 		"alert": false,
 		"confirm": false,
 		"prompt": false,
-		"moment": false
+		"moment": false,
+		"_": false,
+		"jQuery": false,
+		"tinymce": false
 	}
 }

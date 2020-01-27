@@ -28,41 +28,40 @@
  * @description UI utilities management
  * 
  */
-angular.module('vwStudio')
-.factory('$WbProviderTimeout', function($timeout) {
+angular.module('vwStudio').factory('$WbProviderTimeout', function($timeout) {
 
-    var promisses = [];
+	var promisses = [];
 
-    /*
-     * remove promise from list
-     */
-    function remove(promise){
-        _.remove(promisses, function(prom){
-            return prom == promise;
-        });
-    }
+	/*
+	 * remove promise from list
+	 */
+	function remove(promise) {
+		_.remove(promisses, function(prom)  {
+			return (prom === promise);
+		});
+	}
 
-    /*
-     * Simulates $timeout for widgets
-     */
-    function $WbProviderTimeout(fn, delay, invokeApply, pass){
-        var promiss = $timeout(fn, delay, invokeApply, pass)
-        .finally(function(){
-            remove(promiss);
-        });
-        return promiss;
-    }    
-    /**
-     * Clean the provider
-     * 
-     * @memberof $WbProviderTimeout
-     */
-    $WbProviderTimeout.clean = function(){
-        _.forEach(promisses, function(promiss){
-            $timeout.cancel(promiss);
-        });
-        promisses = [];
-    };
-    
-    return $WbProviderTimeout;
+	/*
+	 * Simulates $timeout for widgets
+	 */
+	function $WbProviderTimeout(fn, delay, invokeApply, pass) {
+		var promiss = $timeout(fn, delay, invokeApply, pass)
+			.finally(function() {
+				remove(promiss);
+			});
+		return promiss;
+	}
+	/**
+	 * Clean the provider
+	 * 
+	 * @memberof $WbProviderTimeout
+	 */
+	$WbProviderTimeout.clean = function() {
+		_.forEach(promisses, function(promiss) {
+			$timeout.cancel(promiss);
+		});
+		promisses = [];
+	};
+
+	return $WbProviderTimeout;
 });

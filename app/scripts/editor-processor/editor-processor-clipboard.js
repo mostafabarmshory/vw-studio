@@ -31,10 +31,10 @@ angular.module('vwStudio')
 		AmhEditorProcessor, $widget, $actions) {
 	
 
-	var EditorProcessor = function (editor, options) {
+	function EditorProcessor(editor, options) {
 		options = options || {};
 		AmhEditorProcessor.apply(this, [editor, options]);
-	};
+	}
 
 	EditorProcessor.prototype = new AmhEditorProcessor();
 
@@ -112,14 +112,14 @@ angular.module('vwStudio')
 		 */
 		this.pastListener = function(event){
 			ctrl.past(event);
-		}
+		};
 		
 		/*
 		 * handle cut
 		 */
 		this.cutListener = function(event){
 			ctrl.cut(event);
-		}
+		};
 
 		/*
 		 * Check editor state
@@ -177,7 +177,7 @@ angular.module('vwStudio')
 		} else {
 			navigator.clipboard.writeText(JSON.stringify(data));
 		}
-	}
+	};
 
 	EditorProcessor.prototype.past = function(event){
 		var clipboardData = (event.clipboardData || window.clipboardData);

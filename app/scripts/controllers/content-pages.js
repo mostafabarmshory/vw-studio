@@ -24,7 +24,7 @@
 
 //Test controller
 angular.module('vwStudio')
-.controller('AmhContentPagesCtrl', function ($scope, $controller, $cms, $dispatcher) {
+.controller('AmhContentPagesCtrl', function ($scope, $controller, $cms) {
 	
 	// Extends Items controller
 	angular.extend(this, $controller('MbSeenCmsContentsCtrl',{

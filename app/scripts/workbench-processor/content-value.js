@@ -22,10 +22,10 @@
 angular.module('vwStudio')
 	.factory('AmhWorkbenchProcessorContentValue', function(
 		/* ??        */ FileSaver,
-		/* angular   */ $q, $rootScope, $window,
+		/* angular   */ $q, $rootScope, $window, $log,
 		/* amh       */ AmhWorkbenchProcessor, AmhWorkbenchJob,
 		/* mblowfish */ $navigator, $actions, $sidenav, $app,
-		/* am-wb     */ $wbUtil, $resource, $window) {
+		/* am-wb     */ $wbUtil, $resource) {
 
 		var MIME_WB = 'application/weburger+json';
 
@@ -305,7 +305,7 @@ angular.module('vwStudio')
 							var data = new Blob([dataString], {
 								type: MIME_WB
 							});
-							return FileSaver.saveAs(data, (options.fileName || meta.name) + '.wb');
+							return FileSaver.saveAs(data, (options.fileName || 'content') + '.wb');
 						});
 				});
 			var job = new AmhWorkbenchJob('Download content value', promise);
@@ -444,7 +444,7 @@ angular.module('vwStudio')
 			var newList = _.remove(workbench.getContentModules(), function(moduleSrc) {
 				return !_.isEqual(moduleSrc, module);
 			});
-			workbench.setContentModules(newList)
+			workbench.setContentModules(newList);
 			this.setModules(newList);
 		};
 
@@ -480,7 +480,7 @@ angular.module('vwStudio')
 			])
 				.catch(function(ex) {
 					// TODO: something wrong
-					log.error({
+					$log.error({
 						message: 'fail to load preprocess (template or moduel)',
 						srouce: ex
 					});
@@ -517,15 +517,16 @@ angular.module('vwStudio')
 				return;
 			}
 
-			var templatepath = new URL(templatepath, window.location.href);
+			templatepath = new URL(templatepath, window.location.href);
 			switch (templatepath.protocol) {
 				case 'http:':
 					break;
 				case 'mb:':
 					var key = templatepath.pathname.substring(2).replace(/\//gi, '.');
-					templatepath = new URL($app.getProperty(key))
+					templatepath = new URL($app.getProperty(key));
+					break;
 				default:
-					log.error('unsupported template protocule', templatepath);
+					$log.error('unsupported template protocule', templatepath);
 					return;
 			}
 
@@ -563,7 +564,7 @@ angular.module('vwStudio')
 				return [];
 			}
 			return model.modules || [];
-		}
+		};
 
 
 		/*

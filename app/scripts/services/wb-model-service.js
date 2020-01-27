@@ -27,10 +27,10 @@
  * 
  */
 function WbModelService($q, $http, $wbUtil) {
-    // init data
-    this.$q = $q;
-    this.$http = $http;
-    this.$wbUtil = $wbUtil;
+	// init data
+	this.$q = $q;
+	this.$http = $http;
+	this.$wbUtil = $wbUtil;
 }
 
 /**
@@ -38,19 +38,19 @@ function WbModelService($q, $http, $wbUtil) {
  * 
  * @memberof $wbmodel
  */
-WbModelService.prototype.embedImagesDeep = function (model) {
-    var jobs = [];
-    // embed images
-    jobs.push(this.embedImages(model));
+WbModelService.prototype.embedImagesDeep = function(model) {
+	var jobs = [];
+	// embed images
+	jobs.push(this.embedImages(model));
 
-    var service = this;
-    // go to child
-    if (model.type === 'Group') {
-	angular.forEach(model.children, function (subModel) {
-	    jobs.push(service.embedImages(subModel));
-	});
-    }
-    return this.$q.all(jobs);
+	var service = this;
+	// go to child
+	if (model.type === 'Group') {
+		angular.forEach(model.children, function(subModel) {
+			jobs.push(service.embedImages(subModel));
+		});
+	}
+	return this.$q.all(jobs);
 };
 
 /**
@@ -58,43 +58,43 @@ WbModelService.prototype.embedImagesDeep = function (model) {
  * 
  * @memberof $wbmodel
  */
-WbModelService.prototype.embedImages = function (model) {
-    var jobs = [];
-    var job;
-    var $http = this.$http;
+WbModelService.prototype.embedImages = function(model) {
+	var jobs = [];
+	var job;
+	//    var $http = this.$http;
 
-    // background image
-    var url = this.getBackgroundImage(model);
-    var service = this;
-    if (url) {
-	job = this.urlToDataImage(url)
-		.then(function (res) {
-		    service.setBackgroundImage(model, res.data);
+	// background image
+	var url = this.getBackgroundImage(model);
+	var service = this;
+	if (url) {
+		job = this.urlToDataImage(url)
+			.then(function(res) {
+				service.setBackgroundImage(model, res.data);
+			});
+		jobs.push(job);
+	}
+
+	// image
+	url = this.getImageUrl(model);
+	if (url) {
+		job = this.urlToDataImage(url)
+			.then(function(res) {
+				service.setImageUrl(model, res.data);
+			});
+		jobs.push(job);
+	}
+
+	// carousel
+	if (model.type === 'am-wb-carouselNavigator') {
+		angular.forEach(model.slides, function(slide) {
+			jobs.push(service.urlToDataImage(slide.image)
+				.then(function(url) {
+					slide.image = url;
+				}));
 		});
-	jobs.push(job);
-    }
+	}
 
-    // image
-    url = this.getImageUrl(model);
-    if (url) {
-	job = this.urlToDataImage(url)
-		.then(function (res) {
-		    service.setImageUrl(model, res.data);
-		});
-	jobs.push(job);
-    }
-
-    // carousel
-    if (model.type == 'am-wb-carouselNavigator') {
-	angular.forEach(model.slides, function (slide) {
-	    jobs.push(service.urlToDataImage(slide.image)
-		    .then(function (url) {
-			slide.image = url;
-		    }));
-	});
-    }
-
-    return this.$q.all(jobs);
+	return this.$q.all(jobs);
 };
 
 /**
@@ -102,19 +102,20 @@ WbModelService.prototype.embedImages = function (model) {
  * 
  * @memberof $wbmodel
  */
-WbModelService.prototype.urlToDataImage = function (url) {
-    if (url.startsWith('data:')) {
-	return $q.when(url);
-    }
-    return this.$http({
-	method: 'GET',
-	url: url,
-	responseType: "arraybuffer",
-	transformResponse: function (data) {
-	    var uint8View = new Uint8Array(data);
-	    return 'data:image/*;base64,' + btoa(uint8View.reduce((data, byte) => data + String.fromCharCode(byte), ''));
+WbModelService.prototype.urlToDataImage = function(url) {
+	var $q = this.$q;
+	if (url.startsWith('data:')) {
+		return $q.when(url);
 	}
-    });
+	return this.$http({
+		method: 'GET',
+		url: url,
+		responseType: "arraybuffer",
+		transformResponse: function(data) {
+			var uint8View = new Uint8Array(data);
+			return 'data:image/*;base64,' + btoa(uint8View.reduce((data, byte) => data + String.fromCharCode(byte), ''));
+		}
+	});
 };
 
 /**
@@ -122,14 +123,14 @@ WbModelService.prototype.urlToDataImage = function (url) {
  * 
  * @memberof $wbmodel
  */
-WbModelService.prototype.getBackgroundImage = function (model) {
-    if (!model.style) {
-	return;
-    }
-    if (!model.style.background) {
-	return;
-    }
-    return model.style.background.image;
+WbModelService.prototype.getBackgroundImage = function(model) {
+	if (!model.style) {
+		return;
+	}
+	if (!model.style.background) {
+		return;
+	}
+	return model.style.background.image;
 };
 
 /**
@@ -137,67 +138,67 @@ WbModelService.prototype.getBackgroundImage = function (model) {
  * 
  * @memberof $wbmodel
  */
-WbModelService.prototype.setBackgroundImage = function (model, url) {
-    if (!model.style) {
-	model.style = {};
-    }
-    if (!model.style.background) {
-	model.style.background = {};
-    }
-    model.style.background.image = url;
+WbModelService.prototype.setBackgroundImage = function(model, url) {
+	if (!model.style) {
+		model.style = {};
+	}
+	if (!model.style.background) {
+		model.style.background = {};
+	}
+	model.style.background.image = url;
 };
 
-WbModelService.prototype.getImageUrl = function (model) {
-    if (!model.type == 'Imgage') {
-	return;
-    }
-    return model.url;
+WbModelService.prototype.getImageUrl = function(model) {
+	if (model.type !== 'Imgage') {
+		return;
+	}
+	return model.url;
 };
 
-WbModelService.prototype.setImageUrl = function (model, url) {
-    if (!model.type == 'Imgage') {
-	return;
-    }
-    model.url = url;
+WbModelService.prototype.setImageUrl = function(model, url) {
+	if (model.type !== 'Imgage') {
+		return;
+	}
+	model.url = url;
 };
 
-WbModelService.prototype.copyToClipboard = function (model) {
+WbModelService.prototype.copyToClipboard = function(model) {
     /*
      * TODO: Masood, 2019: There is also another solution but now it doesn't work because of browsers problem
      * A detailed solution is presented in:
      * https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript 
-     */ 
-    var js = JSON.stringify(model);
-    var fakeElement = document.createElement('textarea');
-    fakeElement.value = js;
-    document.body.appendChild(fakeElement);
-    fakeElement.select();
-    document.execCommand('copy');
-    document.body.removeChild(fakeElement);
-    return;
+     */
+	var js = JSON.stringify(model);
+	var fakeElement = document.createElement('textarea');
+	fakeElement.value = js;
+	document.body.appendChild(fakeElement);
+	fakeElement.select();
+	document.execCommand('copy');
+	document.body.removeChild(fakeElement);
+	return;
 };
 
-WbModelService.prototype.pasteFromClipboard = function () {
-    var def = this.$q.defer();
-    var ctrl = this;
-    navigator.clipboard.readText()//
-	    .then(function (data) {
-		    try {
-			var model = JSON.parse(data);
-			model = ctrl.$wbUtil.clean(model);
-			def.resolve(model);
-		    } catch(error){
-			alert('Failed to paste.');
-		    }
-	    }, function (e) {
-		alert(e);
-	    });
-    return def.promise;
+WbModelService.prototype.pasteFromClipboard = function() {
+	var def = this.$q.defer();
+	var ctrl = this;
+	navigator.clipboard.readText()//
+		.then(function(data) {
+			try {
+				var model = JSON.parse(data);
+				model = ctrl.$wbUtil.clean(model);
+				def.resolve(model);
+			} catch (error) {
+				alert('Failed to paste.');
+			}
+		}, function(e) {
+			alert(e);
+		});
+	return def.promise;
 };
 
 
 //TODO: hadi: move it to new module angular-material-home-seo
-angular.module('vwStudio').service('$wbmodel', function ($q, $http, $wbUtil) {
-    var service = new WbModelService($q, $http, $wbUtil);
-    return service;
+angular.module('vwStudio').service('$wbmodel', function($q, $http, $wbUtil) {
+	var service = new WbModelService($q, $http, $wbUtil);
+	return service;
 });

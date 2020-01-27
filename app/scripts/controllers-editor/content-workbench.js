@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')
-
 /**
  * @ngdoc Controllers
  * @name AmhContentWorkbenchCtrl
@@ -36,16 +34,15 @@ angular.module('vwStudio')
  *  - Content value
  * 
  */
-.controller('AmhContentWorkbenchCtrl', function (
+angular.module('vwStudio').controller('AmhContentWorkbenchCtrl', function(
 		/* amh */ WbObservableObject, $amhEditorService, AmhWorkbenchContentType,
-		/* material */ $mdSidenav, $mdMedia, 
+		/* material */ $mdSidenav, $mdMedia,
 		/* weburger */ $wbUtil,
-		/* angular */ $q, $window, $routeParams, $rootScope,
-		/* mblowfish */ $actions, $app,
-		/* cms */ CmsContent, CmsContentMetadata, $cms,
+		/* angular */ $rootScope,
+		/* mblowfish */$app,
 		/* controller */ $scope, $element
 ) {
-	
+
 
 	/*
 	 * States are:
@@ -77,21 +74,21 @@ angular.module('vwStudio')
 	/***************************************************************************
 	 * Editors * *
 	 **************************************************************************/
-	this.addEditor = function(editor){
+	this.addEditor = function(editor) {
 		// put job
 		var editors = _.concat(this.editors, editor);
 		this.setEditors(editors);
 	};
-	
-	this.getEditors = function(){
+
+	this.getEditors = function() {
 		return this.editors;
 	};
-	
-	this.getActiveEditor = function(){
+
+	this.getActiveEditor = function() {
 		return this.activeEditor;
 	};
-	
-	this.setActiveEditor = function(editor){
+
+	this.setActiveEditor = function(editor) {
 		var oldEditor = this.activeEditor;
 		this.activeEditor = editor;
 		this.fire('activeEditorChanged', {
@@ -100,14 +97,14 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.setEditors = function(editors){
+	this.setEditors = function(editors) {
 		var oldEditors = this.editors;
 		this.editors = editors;
 		this.fire('editorsChanged', {
 			values: this.editors,
 			oldValues: oldEditors
 		});
-		if(!this.activeEditor) {
+		if (!this.activeEditor) {
 			this.setActiveEditor(editors[0]);
 		}
 	};
@@ -115,10 +112,10 @@ angular.module('vwStudio')
 	/***************************************************************************
 	 * jobs * *
 	 **************************************************************************/
-	this.addJob = function(job){
+	this.addJob = function(job) {
 		// listen to job
 		var ctrl = this;
-		job.finally(function(){
+		job.finally(function() {
 			ctrl.removeJob(job);
 		});
 		// put job
@@ -130,7 +127,7 @@ angular.module('vwStudio')
 	 * 
 	 * NOTE: do not use directly
 	 */
-	this.setJobs = function(jobs){
+	this.setJobs = function(jobs) {
 		var oldJobs = this.jobs;
 		this.jobs = jobs;
 		this.fire('jobsChanged', {
@@ -139,14 +136,14 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.getJobs = function(){
+	this.getJobs = function() {
 		return this.jobs;
 	};
 
-	this.removeJob = function(job){
+	this.removeJob = function(job) {
 		// TODO: maso, 2019: use set job to change list
 		var index = this.jobs.indexOf(job);
-		if(index >= 0){
+		if (index >= 0) {
 			this.jobs.splice(index, 1);
 		}
 	};
@@ -154,50 +151,50 @@ angular.module('vwStudio')
 	/***************************************************************************
 	 * environment * *
 	 **************************************************************************/
-	this.getElement = function(){
+	this.getElement = function() {
 		return $element;
 	};
 
-	this.getScope = function(){
+	this.getScope = function() {
 		return $scope;
-	}
+	};
 
 	/***************************************************************************
 	 * State * *
 	 **************************************************************************/
-	this.setState = function(state){
-		if(this.state === state){
+	this.setState = function(state) {
+		if (this.state === state) {
 			return;
 		}
 		var event = {
-				source: this,
-				value: state,
-				oldValue: this.state
+			source: this,
+			value: state,
+			oldValue: this.state
 		};
 		this.state = state;
-		if(state === 'edit'){
+		if (state === 'edit') {
 			this.setEditorLoaded(true);
 		}
 		this.fire('stateChanged', event);
 	};
 
-	this.getState = function(){
+	this.getState = function() {
 		return this.state;
 	};
 
-	this.isEditorLoaded = function(){
+	this.isEditorLoaded = function() {
 		return this.editorLoaded;
 	};
 
-	this.setEditorLoaded = function(editorLoaded){
+	this.setEditorLoaded = function(editorLoaded) {
 		$rootScope.workbenchEditorLoaded = editorLoaded;
 		this.editorLoaded = editorLoaded;
 	};
 
-	this.toggleEditMode = function(){
+	this.toggleEditMode = function() {
 		var newState = this.getState() === 'edit' ? 'ready' : 'edit';
 		this.setState(newState);
-		_.forEach(this.editors, function(editor){
+		_.forEach(this.editors, function(editor) {
 			editor.setState(newState);
 		});
 		// support old sidenave model
@@ -215,7 +212,7 @@ angular.module('vwStudio')
 	 * @memberof AmhContentCtrl
 	 * @params {string} id of the sidenav
 	 */
-	this.isSidenavOpen = function (id) {
+	this.isSidenavOpen = function(id) {
 		return $mdSidenav(id).isOpen();
 	};
 
@@ -226,10 +223,10 @@ angular.module('vwStudio')
 	 * @memberof AmhContentCtrl
 	 * @params {string} componentId of the sidenav
 	 */
-	this.toggleSidenav = function (componentId) {
+	this.toggleSidenav = function(componentId) {
 		if (angular.isDefined(this.oldComponentId) && $mdSidenav(this.oldComponentId).isOpen()) {
 			$mdSidenav(this.oldComponentId).toggle();
-			if (this.oldComponentId == componentId) {
+			if (this.oldComponentId === componentId) {
 				return;
 			}
 		}
@@ -238,12 +235,12 @@ angular.module('vwStudio')
 	};
 
 	// Open general help in right sidenav.
-	this.openHelp = function () {
+	this.openHelp = function() {
 		// TODO: maso, 2018: replace with help service
 		$rootScope.showHelp = !$rootScope.showHelp;
 	};
 
-	this.clean = function(){
+	this.clean = function() {
 		this.setContent(undefined);
 		this.setContentValue(undefined);
 		this.setContentMetadata(undefined);
@@ -258,7 +255,7 @@ angular.module('vwStudio')
 	 * 
 	 * The model ID will be fetch from the model.
 	 */
-	this.getContentId = function () {
+	this.getContentId = function() {
 		var meta = this.getContent();
 		if (!angular.isDefined(meta)) {
 			return;
@@ -266,17 +263,17 @@ angular.module('vwStudio')
 		return meta.id;
 	};
 
-	this.setContentType = function (contentType) {
+	this.setContentType = function(contentType) {
 		this.contentType = contentType;
 	};
 
-	this.getContentType = function () {
+	this.getContentType = function() {
 		return this.contentType;
 	};
 
-	this.setContent = function(content){
+	this.setContent = function(content) {
 		// set content
-		if(this.content === content) {
+		if (this.content === content) {
 			return;
 		}
 		var oldContent = this.content;
@@ -284,11 +281,11 @@ angular.module('vwStudio')
 
 		// find content type
 		var contentType = 'weburger';
-		_.forEach(this.supportedTypes, function(type){
-			if(type.match(content.mime_type)){
+		_.forEach(this.supportedTypes, function(type) {
+			if (type.match(content.mime_type)) {
 				contentType = type.key;
 			}
-		})
+		});
 		this.setContentType(contentType);
 
 		// fire change
@@ -298,29 +295,29 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.getContent = function(){
+	this.getContent = function() {
 		return this.content;
 	};
 
-	this.isContentDeletable = function () {
+	this.isContentDeletable = function() {
 		var permissions = $app.getProperty('account.permissions');
 		return (permissions.tenant_owner || permissions.cms_author || permissions.cma_editor);
 	};
 
-	this.isContentEditable = function () {
+	this.isContentEditable = function() {
 		var permissions = $app.getProperty('account.permissions');
 		var accountId = $app.getProperty('account.id');
 		var content = this.getContent();
-		if(!content){
+		if (!content) {
 			return false;
 		}
 		// TODO: maso, 2019: check if the content is wb
 		return permissions.tenant_owner || permissions.cms_editor ||
-		(permissions.cms_author && (angular.equals(Number(content.author_id), Number(accountId)))) ||
-		false;
+			(permissions.cms_author && (angular.equals(Number(content.author_id), Number(accountId)))) ||
+			false;
 	};
 
-	this.canCreateContent = function(){
+	this.canCreateContent = function() {
 		var permissions = $app.getProperty('account.permissions');
 		return permissions.tenant_owner || permissions.cms_author || permissions.cma_editor;
 	};
@@ -328,12 +325,12 @@ angular.module('vwStudio')
 	/***************************************************************************
 	 * Content Value *
 	 **************************************************************************/
-	this.setContentValue = function (contentValue) {
+	this.setContentValue = function(contentValue) {
 		if (!contentValue) {
 			this.contentValue = contentValue;
 			return;
 		}
-		if(!angular.isObject(contentValue)){
+		if (!angular.isObject(contentValue)) {
 			throw {
 				message: 'content must be an object'
 			};
@@ -346,18 +343,18 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.getContentValue = function () {
+	this.getContentValue = function() {
 		return this.contentValue;
 	};
 
-	this.isContentValueLoaded = function(){ 
+	this.isContentValueLoaded = function() {
 		return this.getContentValue();
 	};
 
 	/***************************************************************************
 	 * Content Metadata *
 	 **************************************************************************/
-	this.setContentMetadata = function (list) {
+	this.setContentMetadata = function(list) {
 		var oldList = this.contentMetadata;
 		this.contentMetadata = list;
 		this.fire('contentMetadataChanged', {
@@ -366,7 +363,7 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.getContentMetadata = function () {
+	this.getContentMetadata = function() {
 		return this.contentMetadata;
 	};
 
@@ -375,7 +372,7 @@ angular.module('vwStudio')
 	/***************************************************************************
 	 * term taxonomies *
 	 **************************************************************************/
-	this.setTermTaxonomies = function (termTaxonomies) {
+	this.setTermTaxonomies = function(termTaxonomies) {
 		var oldList = this.termTaxonomies;
 		this.termTaxonomies = termTaxonomies;
 		this.fire('termTaxonomiesChanged', {
@@ -384,14 +381,14 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.getTermTaxonomies = function () {
+	this.getTermTaxonomies = function() {
 		return this.termTaxonomies;
 	};
 
 	/***************************************************************************
 	 * modules
 	 **************************************************************************/
-	this.setContentModules = function (contentModules) {
+	this.setContentModules = function(contentModules) {
 		var oldList = this.contentModules;
 		this.contentModules = contentModules;
 		this.fire('contentModulesChanged', {
@@ -400,7 +397,7 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.getContentModules = function () {
+	this.getContentModules = function() {
 		return this.contentModules;
 	};
 
@@ -410,17 +407,17 @@ angular.module('vwStudio')
 	/**
 	 * Load and initializ the workbench
 	 */
-	this.init = function(){
+	this.init = function() {
 		// load observable
 		angular.extend(this, WbObservableObject.prototype);
 		WbObservableObject.apply(this);
 
-		this.jobs = [];	
+		this.jobs = [];
 		this.supportedTypes = [];
 		this.editors = [];
 
 		var ctrl = this;
-		$scope.$on('$destroy', function () {
+		$scope.$on('$destroy', function() {
 			$amhEditorService.disconnectWorkbench(ctrl);
 		});
 		$amhEditorService.connectWorkbench(ctrl);

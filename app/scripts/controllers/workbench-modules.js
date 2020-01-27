@@ -25,6 +25,7 @@ angular.module('vwStudio')
 	var ctrl = this;
 	var COTNTENT_MODUEL_CHANGE_EVENT = 'contentModulesChanged';
 	var WORKBENCH_CHANGE_EVENT = 'workbenchChanged';
+	var COTNTENT_CHANGE_EVENT = 'contentChanged';
 
 	function modulesChanged(){
 		ctrl.modules = ctrl.workbench.getContentModules();
@@ -43,6 +44,10 @@ angular.module('vwStudio')
 
 	function handleWorkbench(event){
 		setWorkbench(event.value);
+	}
+	
+	function contentChanged(){
+		// XXX: maso, 2020: check content handling
 	}
 
 	this.addModule = function($event){

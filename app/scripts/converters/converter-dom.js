@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Converter
  * @name WbConverterDom
@@ -30,7 +28,7 @@ angular.module('vwStudio')//
  * A converter are responsible to encode and decode a widget.
  * 
  */
-.factory('WbConverterDom', function (WbConverterAbstract, $widget) {
+angular.module('vwStudio').factory('WbConverterDom', function (WbConverterAbstract, $widget) {
 	function cssNameToJsName(name)
 	{
 		var split = name.split('-');
@@ -61,10 +59,10 @@ angular.module('vwStudio')//
 		model.type = name;
 		// attributes
 		_.forEach(element.attributes, function(attr){
-			if(attr.name == 'style'){
+			if(attr.name === 'style'){
 				return;
 			}
-			if(attr.name == 'type'){
+			if(attr.name === 'type'){
 				model[model.type+'Type'] = attr.value;
 				return;
 			}

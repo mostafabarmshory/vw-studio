@@ -30,7 +30,7 @@ angular.module('vwStudio')
 		options = options || {};
 		AmhWorkbenchProcessor.apply(this, [editor, options]);
 		this.info = {};
-	};
+	}
 	Processor.prototype = new AmhWorkbenchProcessor();
 
 
@@ -85,8 +85,8 @@ angular.module('vwStudio')
 	Processor.prototype.loadPageDescription = function () {
 		// Load SEO and page
 		$page //
-			.setTitle(this.info['title']) //
-			.setLanguage(this.info['language'])//
+			.setTitle(this.info.title) //
+			.setLanguage(this.info.language)//
 			.setDescription(this.info['meta.description'])//
 			.setKeywords(this.info['meta.keywords']) //
 			.setFavicon(this.info['link.favicon']) //

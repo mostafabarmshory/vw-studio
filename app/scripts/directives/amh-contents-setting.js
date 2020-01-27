@@ -22,15 +22,12 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
-
 /**
  * @ngdoc Directives
  * @name amh-cms-content-setting
  * @description Show and manage content meta datas.
  */
-.directive('amhCmsContentSetting', function ($parse) {
+angular.module('vwStudio').directive('amhCmsContentSetting', function() {
 
 	/*
 	 * Link widget view
@@ -40,8 +37,8 @@ angular.module('vwStudio')
 		var ngModelCtrl = $ctrls[1];
 
 		// Load ngModel
-		ngModelCtrl.$render = function () {
-			if(!ngModelCtrl.$viewValue){
+		ngModelCtrl.$render = function() {
+			if (!ngModelCtrl.$viewValue) {
 				// TODO: maso, 2019: clean and lock settings
 				return;
 			}

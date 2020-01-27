@@ -32,7 +32,7 @@ angular.module('vwStudio')
  * 
  * It is used to design the page with pre designed items
  */
-.directive('amhUserWidgets', function(QueryParameter) {
+.directive('amhUserWidgets', function(/*QueryParameter*/) {
 	return {
 		restrict : 'E',
 		replace: true,

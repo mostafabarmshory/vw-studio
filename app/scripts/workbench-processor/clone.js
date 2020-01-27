@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 angular.module('vwStudio')
-.factory('AmhWorkbenchProcessorClone', function(AmhWorkbenchProcessor, $actions, $app, $sidenav) {
+.factory('AmhWorkbenchProcessorClone', function(AmhWorkbenchProcessor, $actions, $app, $window) {
 	
 
 	var Processor = function (editor, options) {
@@ -32,7 +32,7 @@ angular.module('vwStudio')
 	
 	Processor.prototype.connect = function(){
 		var ctrl = this;
-		var workbench = this.editor;
+//		var workbench = this.editor;
 		this.actions = [{// clone new menu
 			id: 'amh.scope.clone',
 			priority: 15,

@@ -93,7 +93,7 @@ angular.module('vwStudio')
 	 */
 	this.disconnectEditor = function(editor){
 		return disconnect(editor);
-	}
+	};
 
 	/**
 	 * Adds a processor to workbench
@@ -126,13 +126,13 @@ angular.module('vwStudio')
 	 */
 	this.disconnectWorkbench = function(editor){
 		return disconnect(editor);
-	}
+	};
 	
 	this.getWorkbench = function(){
 		return this.currentWorkbench;
-	}
+	};
 
 	this.getEditors = function(){
 		return this.currentWorkbench.editors;
-	}
+	};
 });

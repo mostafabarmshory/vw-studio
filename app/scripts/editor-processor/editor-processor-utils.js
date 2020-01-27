@@ -28,8 +28,8 @@ angular.module('vwStudio')
 .factory('AmhEditorProcessorUtils', function(
 		/* amh       */ AmhEditorProcessor, 
 		/* weburger  */ $widget, WbProcessorLocator, WbProcessorSelect, WbProcessorDnd,
-		/* mblowfish */ $actions,
-		/* angularjs */ $rootScope) {
+		/* mblowfish */ $actions
+		/* angularjs */) {
 	
 
 	var COMMON_ACTION_GROUPS = ['amh.workbench.editor.weburger.toolbar#common'];
@@ -37,7 +37,6 @@ angular.module('vwStudio')
 	function Processor(editor, options) {
 		options = options || {};
 		AmhEditorProcessor.apply(this, [editor, options]);
-
 
 		this.locatorProcessor = new WbProcessorLocator();
 		this.selectProcessor = new WbProcessorSelect();
@@ -50,7 +49,7 @@ angular.module('vwStudio')
 			ctrl.editor.setSelectedWidgets(selectedWidgets || []);
 			ctrl.editor.getScope().$digest();
 		});
-	};
+	}
 	Processor.prototype = new AmhEditorProcessor();
 
 

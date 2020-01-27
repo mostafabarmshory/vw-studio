@@ -23,33 +23,33 @@
  */
 
 
-angular.module('vwStudio')
+
 /**
  * @ngdoc Directives
  * @name amh-widget-path
  * @description Shows the path of a widget from its first parent to the widget itself.
  */
-.directive('amhWidgetPath', function ($actions, $help) {
+angular.module('vwStudio').directive('amhWidgetPath', function($actions, $help) {
 
 	/*
 	 * Link widget view
 	 */
 	function postLink($scope, $element, $attrs, $ctrls) {
-		$scope.widgets = [{id:1}];
+		$scope.widgets = [{ id: 1 }];
 		var workbench;
 		// Load ngModel
 		var ngModelCtrl = $ctrls[0];
-		ngModelCtrl.$render = function () {
-			if(workbench){
+		ngModelCtrl.$render = function() {
+			if (workbench) {
 				workbench.off('selecteWidgetsChanged', eventHandler);
 			}
 			workbench = ngModelCtrl.$viewValue;
-			if(workbench){
+			if (workbench) {
 				workbench.on('selecteWidgetsChanged', eventHandler);
 			}
 		};
 
-		function eventHandler($event){
+		function eventHandler($event) {
 			loadPath($event.value || []);
 		}
 
@@ -107,21 +107,21 @@ angular.module('vwStudio')
 		 * There are many things which are controlled by the widget path controller
 		 * such as opening help. 
 		 */
-		controller: function(){
+		controller: function() {
 			/**
 			 * Opens help for a widget
 			 * 
 			 * @memberof amhWidgetPathCtrl
 			 * @param widget {Widget} to display help for
 			 */
-			this.openHelp = function(widget){
+			this.openHelp = function(widget) {
 				return $help.openHelp(widget);
 			};
-			
-			this.selectChildren = function(widget, $event){
+
+			this.selectChildren = function(widget, $event) {
 				$event.items = [widget];
 				$actions.exec('amh.workbench.widget.selectChildren', $event);
-			}
+			};
 		},
 		controllerAs: 'ctrl'
 	};

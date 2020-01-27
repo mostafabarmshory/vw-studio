@@ -71,7 +71,7 @@ angular.module('vwStudio')//
 		// remove all tinymce editor
 		for (var i = tinymce.editors.length - 1 ; i > -1 ; i--) {
 			var ed_id = tinymce.editors[i].id;
-			tinyMCE.execCommand('mceRemoveEditor', true, ed_id);
+			tinymce.execCommand('mceRemoveEditor', true, ed_id);
 		}
 
 		// check current editor

@@ -26,11 +26,11 @@ angular.module('vwStudio')
  * دریچه‌های محاوره‌ای
  */
 .run(function(
-		/* mblowfish */ $app, $actions, $sidenav, $toolbar,
-		/* angularjs */ $rootScope, $window,
+		/* mblowfish */ $app, $actions, $sidenav, $toolbar, $help,
+		/* angularjs */ $rootScope,
 		/* mateiral  */ $mdSidenav,
 		/* weburger  */ $resource, $widget,
-		/* amh       */ $amhEditorService) {
+		/* amh       */ $amhEditorService, AmhWorkbenchJob) {
 
 	$actions.newAction({
 		id: 'amh.cms.pages',
@@ -186,7 +186,7 @@ angular.module('vwStudio')
 			$scope.selectChildren = function(widget, $event){
 				$event.items = [widget];
 				$actions.exec('amh.workbench.widget.selectChildren', $event);
-			}
+			};
 
 			function setRootWidget(widget){
 				ctrl.widgets = [widget];
@@ -216,6 +216,10 @@ angular.module('vwStudio')
 
 			function handleWorkbench(event){
 				setWorkbench(event.value);
+			}
+			
+			function contentChanged(){
+				// XXX: maso, 2020: Check the usage of content change event.
 			}
 
 			setWorkbench($amhEditorService.getWorkbench());
@@ -254,7 +258,7 @@ angular.module('vwStudio')
 
 			this.isVisible = function(){
 				return $rootScope.showWorkbenchSettingPanel;
-			}
+			};
 		},
 		controllerAs: 'ctrl'
 	});
@@ -276,7 +280,7 @@ angular.module('vwStudio')
 		 */
 		controller: function(){
 			this.loadModelTemplate = function(template, $event){
-				var $event = $event || jQuery.Event( "upload", { 
+				$event = $event || jQuery.Event( "upload", { 
 					target: this
 				});
 				$event.template = [template];

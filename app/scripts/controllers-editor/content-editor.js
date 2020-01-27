@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')
-
 /**
  * @ngdoc Controllers
  * @name AmhContentEditorCtrl
@@ -43,23 +41,22 @@ angular.module('vwStudio')
  * @property {string} getModelMeta meta data of the content
  * @property {string} $scope.model data model and page design if is WB page.
  */
-.controller('AmhContentEditorCtrl', function (
+angular.module('vwStudio').controller('AmhContentEditorCtrl', function(
 		/* AMH      */ WbObservableObject, $amhEditorService,
-		/* angular  */ $scope, $element, $rootScope,
-		/* wb       */ $widget
+		/* angular  */ $scope, $element, $rootScope
 ) {
-	
+
 
 	/**
 	 * Sets root widget
 	 * 
 	 * @param rootWidget {Widget} to set as root
 	 */
-	this.setRootWidget = function (rootWidget) {
+	this.setRootWidget = function(rootWidget) {
 		this.rootWidget = rootWidget;
 		this.fire('rootWidgetChanged', {
 			value: this.rootWidget
-		})
+		});
 	};
 
 	/**
@@ -67,7 +64,7 @@ angular.module('vwStudio')
 	 * 
 	 * @return the root widget of the editor
 	 */
-	this.getRootWidget = function () {
+	this.getRootWidget = function() {
 		return this.rootWidget;
 	};
 
@@ -76,11 +73,11 @@ angular.module('vwStudio')
 	 * 
 	 * @param widgets {Array} of widgets
 	 */
-	this.setSelectedWidgets = function (widgets) {
+	this.setSelectedWidgets = function(widgets) {
 		var oldValue = this.SelectedWidgets;
 		this.selectedWidgets = widgets || [];
 		$rootScope.workbenchSelectedWidgets = widgets;
-		if($scope.workbench){
+		if ($scope.workbench) {
 			$scope.workbench.fire('selecteWidgetsChanged', {
 				oldValue: oldValue,
 				value: this.selectedWidgets
@@ -93,15 +90,15 @@ angular.module('vwStudio')
 	 * 
 	 * @return selected widgets
 	 */
-	this.getSelectedWidgets = function () {
+	this.getSelectedWidgets = function() {
 		return this.selectedWidgets || [];
 	};
 
-	this.getState = function () {
+	this.getState = function() {
 		return this.state;
 	};
 
-	this.setState = function (state) {
+	this.setState = function(state) {
 		var oldValue = this.state;
 		this.state = state;
 		this.fire('stateChanged', {
@@ -110,19 +107,19 @@ angular.module('vwStudio')
 		});
 	};
 
-	this.isEditable = function(){
+	this.isEditable = function() {
 		return this.state === 'edit';
 	};
 
-	this.getElement = function(){
+	this.getElement = function() {
 		return $element;
 	};
 
-	this.getScope = function(){
+	this.getScope = function() {
 		return $scope;
 	};
 
-	this.init = function(){
+	this.init = function() {
 		// load observable
 		angular.extend(this, WbObservableObject.prototype);
 		WbObservableObject.apply(this);
@@ -131,8 +128,8 @@ angular.module('vwStudio')
 		$amhEditorService.connectEditor(this);
 		// add edtor to 
 		var ctrl = this;
-		$scope.$watch('workbench', function(workbench){
-			if(workbench){
+		$scope.$watch('workbench', function(workbench) {
+			if (workbench) {
 				workbench.addEditor(ctrl);
 			}
 		});

@@ -27,7 +27,7 @@ angular.module('vwStudio')
 	function Type(key /* types */) {
 		this.key = key;
 		this.types = arguments;
-	};
+	}
 
 	Type.prototype.match = function(mimeType) {
 		// TODO: maso, 2019: update

@@ -43,7 +43,7 @@ angular.module('vwStudio')
 	/*
 	 * ID of the stepper
 	 */
-	var parameterQuery = new QueryParameter;
+	var parameterQuery = new QueryParameter();
 	var _stepper_id = 'page-stepper';
 	this.steps = [];
 

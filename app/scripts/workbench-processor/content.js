@@ -34,8 +34,8 @@ angular.module('vwStudio')
 	/* metas */ ',metas{id,content_id,key,value}'+
 	/* terms */ ',term_taxonomies{id, taxonomy, term{id, name, metas{key,value}}}' +
 	'}';
-	var categoryGraphql = "{items{id,description,term{id,name, metas{key,value}}}}";
-	var tagGraphql = "{items{id,description,term{id,name, metas{key,value}}}}";
+//	var categoryGraphql = "{items{id,description,term{id,name, metas{key,value}}}}";
+//	var tagGraphql = "{items{id,description,term{id,name, metas{key,value}}}}";
 
 	/*
 	 * Fetch model id from the environment
@@ -58,14 +58,14 @@ angular.module('vwStudio')
 		$app.getProperty('tenat.config.localLanguage') ||
 		'en';
 		return key + '-' + lang;
-	};
+	}
 
 	function isSameContent (currentContent, content){
 		if(_.isUndefined(currentContent)){
 			var id = calculateContentId();
-			return content.id == id || content.name == id;
+			return _.isEqual(content.id, id)|| _.isEqual(content.name, id);
 		}
-		return currentContent.id == content.id;
+		return _.isEqual(currentContent.id, content.id);
 	}
 
 	function Processor(editor, options) {
@@ -113,7 +113,7 @@ angular.module('vwStudio')
 		if(state.startsWith('ready')){
 			ctrl.readContent();
 		}
-	};
+	}
 	Processor.prototype = new AmhWorkbenchProcessor();
 
 	Processor.prototype.connect = function(){
@@ -402,7 +402,7 @@ angular.module('vwStudio')
 		}
 		var workbench = this.editor;
 		var contentName = calculateContentId();
-		var promise =  $cms.getContent(contentName, {
+		$cms.getContent(contentName, {
 			'graphql': graphql
 		}) //
 		.then(function (data) {
@@ -440,7 +440,7 @@ angular.module('vwStudio')
 			return process;
 		}
 		var workbench = this.editor;
-		var state = workbench.getState();
+//		var state = workbench.getState();
 		var meta = workbench.getContent();
 		meta.media_type = workbench.getContentType();
 		return meta.update()
@@ -482,7 +482,7 @@ angular.module('vwStudio')
 		var workbench = this.editor;
 		if(workbench.getJobs().length){
 			return workbench.getJobs()[0];
-		};
+		}
 	};
 
 
