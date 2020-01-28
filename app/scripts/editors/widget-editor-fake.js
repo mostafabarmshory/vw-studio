@@ -22,40 +22,35 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Factories
  * @name WidgetEditorFake
  * @description Editor of a widget
  * 
  */
-
-
-
-.factory('WidgetEditorFake', function () {
+angular.module('vwStudio').factory('WidgetEditorFake', function() {
 
     /**
      * TODO: maso, 2019: extends WidgetEditorFake
      * 
      * Creates new instace of an editor
      */
-    function editor() {}
-    
-    editor.prototype.destroy = function(){};
-    editor.prototype.fire = function(){}; // internal
-    editor.prototype.setActive = function(){}; // focus|skipFocuse
-    editor.prototype.isActive = function(){};
-    editor.prototype.getWidget = function(){};
-    editor.prototype.setDirty = function(){};
-    editor.prototype.isDirty = function(){};
-    editor.prototype.save = function(){};
-    editor.prototype.hide = function(){};
-    editor.prototype.show = function(){};
-    editor.prototype.isHidden = function(){};
-    editor.prototype.Off = function(){};
-    editor.prototype.On = function(){};
+	function editor() { }
 
-    // the editor type
-    return editor;
+	editor.prototype.destroy = function() { };
+	editor.prototype.fire = function() { }; // internal
+	editor.prototype.setActive = function() { }; // focus|skipFocuse
+	editor.prototype.isActive = function() { };
+	editor.prototype.getWidget = function() { };
+	editor.prototype.setDirty = function() { };
+	editor.prototype.isDirty = function() { };
+	editor.prototype.save = function() { };
+	editor.prototype.hide = function() { };
+	editor.prototype.show = function() { };
+	editor.prototype.isHidden = function() { };
+	editor.prototype.Off = function() { };
+	editor.prototype.On = function() { };
+
+	// the editor type
+	return editor;
 });

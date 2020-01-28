@@ -19,60 +19,64 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio').controller('AmhContentWorkbenchTermTaxonomiesCtrl', function (
+angular.module('vwStudio').controller('AmhContentWorkbenchTermTaxonomiesCtrl', function(
     /* angularjs             */ $scope,
     /* angualr-material-home */ $amhEditorService, $actions) {
 	/*
 	 * Allow user to change current content settings such as title, description
 	 * and ..
 	 */
-    var ctrl = this;
-    this.termTaxonomiesMap = {};
+	var ctrl = this;
+	this.termTaxonomiesMap = {};
 
-    function termTaxonomiesChanged() {
-        ctrl.termTaxonomies = ctrl.workbench ? ctrl.workbench.getTermTaxonomies() : [];
-        ctrl.termTaxonomiesMap = {};
-        _.forEach(ctrl.termTaxonomies, function (termTaxonomies) {
-            var list = ctrl.termTaxonomiesMap[termTaxonomies.taxonomy];
-            if (!_.isArray(list)) {
-                list = [];
-                ctrl.termTaxonomiesMap[termTaxonomies.taxonomy] = list;
-            }
-            list.push(termTaxonomies);
-        });
-    }
+	function termTaxonomiesChanged() {
+		ctrl.termTaxonomies = ctrl.workbench ? ctrl.workbench.getTermTaxonomies() : [];
+		ctrl.termTaxonomiesMap = {};
+		_.forEach(ctrl.termTaxonomies, function(termTaxonomies) {
+			var list = ctrl.termTaxonomiesMap[termTaxonomies.taxonomy];
+			if (!_.isArray(list)) {
+				list = [];
+				ctrl.termTaxonomiesMap[termTaxonomies.taxonomy] = list;
+			}
+			list.push(termTaxonomies);
+		});
+	}
 
-    function setWorkbench(workbenc) {
-        if (ctrl.workbench) {
-            ctrl.workbench.off('termTaxonomiesChanged', termTaxonomiesChanged);
-        }
-        ctrl.workbench = workbenc;
-        if (ctrl.workbench) {
-            ctrl.workbench.on('termTaxonomiesChanged', termTaxonomiesChanged);
-        }
-        termTaxonomiesChanged();
-    }
+	function setWorkbench(workbenc) {
+		if (ctrl.workbench) {
+			ctrl.workbench.off('termTaxonomiesChanged', termTaxonomiesChanged);
+		}
+		ctrl.workbench = workbenc;
+		if (ctrl.workbench) {
+			ctrl.workbench.on('termTaxonomiesChanged', termTaxonomiesChanged);
+		}
+		termTaxonomiesChanged();
+	}
 
-    function handleWorkbench(event) {
-        setWorkbench(event.value);
-    }
+	function handleWorkbench(event) {
+		setWorkbench(event.value);
+	}
 
-    this.addTermTaxonomies = function ($event) {
-        $actions.exec('amh.workbench.content.termTaxonomies.create', $event);
-    };
+	function contentChanged() {
+		// XXX: maso, 2020: check content chaged event
+	}
 
-    this.deleteTermTaxonomy = function (item, $event) {
-        $event.items = [item];
-        $actions.exec('amh.workbench.content.termTaxonomies.delete', $event);
-    };
+	this.addTermTaxonomies = function($event) {
+		$actions.exec('amh.workbench.content.termTaxonomies.create', $event);
+	};
+
+	this.deleteTermTaxonomy = function(item, $event) {
+		$event.items = [item];
+		$actions.exec('amh.workbench.content.termTaxonomies.delete', $event);
+	};
 
 
-    setWorkbench($amhEditorService.getWorkbench());
-    $amhEditorService.on('workbenchChanged', handleWorkbench);
-    $scope.$on('destory', function () {
-        $amhEditorService.off('workbenchChanged', handleWorkbench);
-        if (ctrl.workbench) {
-            ctrl.workbench.on('contentChanged', contentChanged);
-        }
-    });
+	setWorkbench($amhEditorService.getWorkbench());
+	$amhEditorService.on('workbenchChanged', handleWorkbench);
+	$scope.$on('destory', function() {
+		$amhEditorService.off('workbenchChanged', handleWorkbench);
+		if (ctrl.workbench) {
+			ctrl.workbench.on('contentChanged', contentChanged);
+		}
+	});
 });

@@ -19,23 +19,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
-.factory('AmhEditorProcessorCommon', function(
+angular.module('vwStudio').factory('AmhEditorProcessorCommon', function(
 		/* MBlowFish */ $help, $actions,
-		AmhEditorProcessor) {
-	
+	AmhEditorProcessor) {
+
 
 	var COMMON_ACTION_GROUPS = ['amh.workbench.editor.weburger.toolbar#common'];
 
-	function Processor (editor, options) {
+	function Processor(editor, options) {
 		options = options || {};
 		AmhEditorProcessor.apply(this, [editor, options]);
-	};
+	}
 	Processor.prototype = new AmhEditorProcessor();
 
 
-	Processor.prototype.connect = function(){
-		if(angular.isFunction(this.editModeListener)){
+	Processor.prototype.connect = function() {
+		if (angular.isFunction(this.editModeListener)) {
 			this.disconnect();
 		}
 		var ctrl = this;
@@ -60,7 +59,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.deleteWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -76,7 +75,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.cloneWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -92,7 +91,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.openHelpOfWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -109,7 +108,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.moveFirstWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -125,7 +124,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.moveBeforeWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -141,7 +140,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.moveNextWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -157,7 +156,7 @@ angular.module('vwStudio')
 			/*
 			 * @ngInject
 			 */
-			action: function ($event) {
+			action: function($event) {
 				return ctrl.moveLastWidgets($event);
 			},
 			groups: COMMON_ACTION_GROUPS,
@@ -169,17 +168,17 @@ angular.module('vwStudio')
 		/*
 		 * handle past
 		 */
-		this.keyEventListener = function(event){
-			if (event.code == 'Delete') {
+		this.keyEventListener = function(event) {
+			if (event.code === 'Delete') {
 				ctrl.deleteWidgets();
 			}
-		}
+		};
 		/*
 		 * Check editor state
 		 */
 		this.editModeListener = function() {
 			var element = ctrl.editor.getElement();
-			if(ctrl.editor.isEditable()){
+			if (ctrl.editor.isEditable()) {
 				element[0].addEventListener('keyup', ctrl.keyEventListener);
 			} else {
 				element[0].removeEventListener('keyup', ctrl.keyEventListener);
@@ -192,7 +191,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.disconnect = function(){
+	Processor.prototype.disconnect = function() {
 		var element = this.editor.getElement();
 		this.editor.off('stateChanged', this.editModeListener);
 		element[0].removeEventListener('keyup', this.keyEventListener);
@@ -204,15 +203,15 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.deleteWidgets = function(){
+	Processor.prototype.deleteWidgets = function() {
 		//NOTE: The list may be changed after the first delete. Therefore I clone the original
 		//selected widgets and do the delete action over it.
 		var widgets = _.clone(this.editor.getSelectedWidgets());
 		var newSelection = [];
-		widgets.forEach(function (widget) {
+		widgets.forEach(function(widget) {
 			var parent = widget.getParent();
 			widget.delete();
-			if(parent){
+			if (parent) {
 				parent.setSelected(true);
 				newSelection.push(parent);
 			}
@@ -225,9 +224,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.cloneWidgets = function(){
+	Processor.prototype.cloneWidgets = function() {
 		var widgets = this.editor.getSelectedWidgets();
-		widgets.forEach(function (widget) {
+		widgets.forEach(function(widget) {
 			widget.clone();
 		});
 	};
@@ -237,9 +236,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.moveFirstWidgets = function(){
+	Processor.prototype.moveFirstWidgets = function() {
 		var widgets = this.editor.getSelectedWidgets();
-		widgets.forEach(function (widget) {
+		widgets.forEach(function(widget) {
 			widget.moveFirst();
 		});
 	};
@@ -249,9 +248,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.moveBeforeWidgets = function(){
+	Processor.prototype.moveBeforeWidgets = function() {
 		var widgets = this.editor.getSelectedWidgets();
-		widgets.forEach(function (widget) {
+		widgets.forEach(function(widget) {
 			widget.moveBefore();
 		});
 	};
@@ -261,9 +260,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.moveNextWidgets = function(){
+	Processor.prototype.moveNextWidgets = function() {
 		var widgets = this.editor.getSelectedWidgets();
-		widgets.forEach(function (widget) {
+		widgets.forEach(function(widget) {
 			widget.moveNext();
 		});
 	};
@@ -273,9 +272,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.moveLastWidgets = function(){
+	Processor.prototype.moveLastWidgets = function() {
 		var widgets = this.editor.getSelectedWidgets();
-		widgets.forEach(function (widget) {
+		widgets.forEach(function(widget) {
 			widget.moveLast();
 		});
 	};
@@ -285,7 +284,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhEditorProcessorCommon
 	 */
-	Processor.prototype.openHelpOfWidgets = function(){
+	Processor.prototype.openHelpOfWidgets = function() {
 		var widgets = this.editor.getSelectedWidgets();
 		return $help.openHelp(widgets[0]);
 	};

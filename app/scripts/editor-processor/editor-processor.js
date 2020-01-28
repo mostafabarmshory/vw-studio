@@ -19,25 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
-.factory('AmhEditorProcessor', function() {
-	
+angular.module('vwStudio').factory('AmhEditorProcessor', function() {
 
-	var Processor = function (editor) {
+
+	function Processor(editor) {
 		this.editor = editor;
 		this.connect();
-	};
-	
-	Processor.prototype.destroy = function(){
+	}
+
+	Processor.prototype.destroy = function() {
 		this.disconnect();
 		delete this.editor;
 	};
-	
-	
-	Processor.prototype.connect = function(){};
-	Processor.prototype.disconnect = function(){};
-	
-	
+
+
+	Processor.prototype.connect = function() { };
+	Processor.prototype.disconnect = function() { };
+
+
 	return Processor;
 });
 

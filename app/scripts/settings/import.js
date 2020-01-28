@@ -21,14 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
+
 /**
  * @ngdoc Widgets
  * @name WbSeenImportSettingCtrl
  * @description Collection setting controller
  * 
  */
-.controller('WbSeenImportSettingCtrl', function () {
+angular.module('vwStudio').controller('WbSeenImportSettingCtrl', function () {
     'use strict';
     /*
      * Initial the setting editor

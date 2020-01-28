@@ -19,20 +19,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
+angular.module('vwStudio').factory('AmhWorkbenchContentType', function() {
 
-.factory('AmhWorkbenchContentType', function() {
-	
 
 	function Type(key /* types */) {
 		this.key = key;
 		this.types = arguments;
-	};
+	}
 
 	Type.prototype.match = function(mimeType) {
 		// TODO: maso, 2019: update
-		for(var i = 0; i < this.types.length; i++){
-			if(mimeType === this.types[i]){
+		for (var i = 0; i < this.types.length; i++) {
+			if (mimeType === this.types[i]) {
 				return true;
 			}
 		}

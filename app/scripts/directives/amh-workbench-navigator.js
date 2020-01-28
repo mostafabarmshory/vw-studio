@@ -23,13 +23,12 @@
  */
 
 
-angular.module('vwStudio')
 /**
  * @ngdoc Directives
  * @name amh-workbench-navigator
  * @description Show basic tools of work bench
  */
-.directive('amhWorkbenchNavigator', function (/*$actions*/) {
+angular.module('vwStudio').directive('amhWorkbenchNavigator', function (/*$actions*/) {
 
 	return {
 		templateUrl: 'views/directives/amh-workbench-navigator.html',

@@ -23,9 +23,6 @@
  */
 
 
-//Test controller
-angular.module('vwStudio')
-
 /**
  * @ngdoc Controllers
  * @name AmhPageNewDialogCtrl
@@ -33,8 +30,8 @@ angular.module('vwStudio')
  * 
  * This controller is used to manage an steper to create a page.
  */
-.controller('AmhPageNewDialogCtrl', function ($scope, $controller, $mdStepper, $cms, $q, $wbUtil,
-		$dispatcher, $navigator, $http, $translate, uuid4, config, QueryParameter, $resource, $window, $mdDialog) {
+angular.module('vwStudio').controller('AmhPageNewDialogCtrl', function($scope, $controller, $mdStepper, $cms, $q, $wbUtil,
+	$dispatcher, $navigator, $http, $translate, uuid4, config, QueryParameter, $resource, $window, $mdDialog) {
 	// Extends Items controller
 	angular.extend(this, $controller('AmdNavigatorDialogCtrl', {
 		$scope: $scope,
@@ -43,19 +40,19 @@ angular.module('vwStudio')
 	/*
 	 * ID of the stepper
 	 */
-	var parameterQuery = new QueryParameter;
+	var parameterQuery = new QueryParameter();
 	var _stepper_id = 'page-stepper';
 	this.steps = [];
 
 	//Content base structure
 	this.contentModel = {
-			info: {
-				media_type: 'page',
-				mime_type: 'application/weburger+json',
-			},
-			template: {},
-			termTaxonomies: [],
-			metas: []
+		info: {
+			media_type: 'page',
+			mime_type: 'application/weburger+json',
+		},
+		template: {},
+		termTaxonomies: [],
+		metas: []
 	};
 
 	/**
@@ -90,7 +87,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhPageNewDialogCtrl
 	 */
-	this.setPageType = function (type) {
+	this.setPageType = function(type) {
 		this.contentModel.info.mime_type = type.mime_type;
 		this.nextStep();
 	};
@@ -103,7 +100,7 @@ angular.module('vwStudio')
 	 * @description get the name of page and the current route of browser (full url) and 
 	 * constract a relative canonical link
 	 */
-	this.fetchRoute = function (key, href) {
+	this.fetchRoute = function(key, href) {
 		var baseUrl;
 		var url = new URL(href);
 		if (url.port) {
@@ -127,29 +124,29 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhPageNewDialogCtrl
 	 */
-	this.setPageInfo = function (key, value) {
+	this.setPageInfo = function(key, value) {
 		// update info
 		this.contentModel.info[key] = value;
 
 		// update meta
 		var metaKey;
 		switch (key) {
-		case 'name':
-			metaKey = 'link.canonical';
-			var href = $window.location.href;
-			value = this.fetchRoute(value, href);
-			break;
-		case 'title':
-			metaKey = 'title';
-			break;
-		case 'description':
-			metaKey = 'meta.description';
-			break;
-		case 'cover':
-			metaKey = 'link.cover';
-			break;
-		default:
-			metaKey = key;
+			case 'name':
+				metaKey = 'link.canonical';
+				var href = $window.location.href;
+				value = this.fetchRoute(value, href);
+				break;
+			case 'title':
+				metaKey = 'title';
+				break;
+			case 'description':
+				metaKey = 'meta.description';
+				break;
+			case 'cover':
+				metaKey = 'link.cover';
+				break;
+			default:
+				metaKey = key;
 		}
 		this.setPageMeta(metaKey, value);
 	};
@@ -159,11 +156,11 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhPageNewDialogCtrl
 	 */
-	this.setPageMeta = function (key, value) {
+	this.setPageMeta = function(key, value) {
 		var meta = this.getPageMeta(key);
 		if (!meta) {
 			meta = {
-					key: key
+				key: key
 			};
 			this.contentModel.metas.push(meta);
 		}
@@ -175,7 +172,7 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhPageNewDialogCtrl
 	 */
-	this.getPageMeta = function (key) {
+	this.getPageMeta = function(key) {
 		var metas = this.contentModel.metas;
 		for (var i = 0; i < metas.length; i++) {
 			var item = metas[i];
@@ -190,14 +187,14 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhPageNewDialogCtrl
 	 */
-	this.selectCoverFromResources = function () {
+	this.selectCoverFromResources = function() {
 		var ctrl = this;
 		return $resource.get('image', {
 			config: {
 				title: 'Page cover'
 			},
 			name: 'Page cover'
-		}).then(function (cover) {
+		}).then(function(cover) {
 			ctrl.setPageInfo('cover', cover);
 		});
 	};
@@ -207,14 +204,14 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof AmhPageNewDialogCtrl
 	 */
-	this.generateRandomName = function () {
+	this.generateRandomName = function() {
 		this.setPageInfo('name', uuid4.generate());
 	};
 
 	/**
 	 * Sets template 
 	 */
-	this.setTemplate = function (template) {
+	this.setTemplate = function(template) {
 		this.contentModel.template = template || {};
 		this.nextStep();
 	};
@@ -226,7 +223,7 @@ angular.module('vwStudio')
 	 * @param {type} template
 	 * @return {promiss} to load preview
 	 */
-	this.showPreviewOf = function (template) {
+	this.showPreviewOf = function(template) {
 		// load content
 		if (this.loadingTemplatePreview) {
 			return;
@@ -234,19 +231,19 @@ angular.module('vwStudio')
 		this.loadingTemplatePreview = true;
 		var ctrl = this;
 		return $http.get('/api/v2/cms/contents/' + template.id + '/content') //
-		.then(function (response) {
-			var responseData = $wbUtil.clean(response.data);
-			return $navigator.openDialog({
-				templateUrl: 'views/dialogs/amh-template-preview.html',
-				config: {
-					model: responseData,
-					page: template
-				}
+			.then(function(response) {
+				var responseData = $wbUtil.clean(response.data);
+				return $navigator.openDialog({
+					templateUrl: 'views/dialogs/amh-template-preview.html',
+					config: {
+						model: responseData,
+						page: template
+					}
+				});
+			})//
+			.finally(function() {
+				ctrl.loadingTemplatePreview = false;
 			});
-		})//
-		.finally(function () {
-			ctrl.loadingTemplatePreview = false;
-		});
 	};
 
 	/**
@@ -256,9 +253,9 @@ angular.module('vwStudio')
 	 * @param {integer}
 	 *            index of the setting
 	 */
-	this.goToStep = function (index) {
+	this.goToStep = function(index) {
 		$mdStepper(_stepper_id)//
-		.goto(index);
+			.goto(index);
 	};
 
 	/**
@@ -266,9 +263,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof MbInitialCtrl
 	 */
-	this.nextStep = function () {
+	this.nextStep = function() {
 		$mdStepper(_stepper_id)//
-		.next();
+			.next();
 	};
 
 	/**
@@ -276,9 +273,9 @@ angular.module('vwStudio')
 	 * 
 	 * @memberof MbInitialCtrl
 	 */
-	this.prevStep = function () {
+	this.prevStep = function() {
 		$mdStepper(_stepper_id)//
-		.back();
+			.back();
 	};
 
 	/**
@@ -287,7 +284,7 @@ angular.module('vwStudio')
 	 * The editor can create a page if you add createModel function.
 	 * By default, the function dose not implemented.
 	 */
-	this.createModel = function (newContentModel) {
+	this.createModel = function(newContentModel) {
 		var ctrl = this;
 		var contentOrg;
 		if (this.creatingContent) {
@@ -295,64 +292,64 @@ angular.module('vwStudio')
 		}
 		this.creatingContent = true;
 		return $cms.putContent(newContentModel.info)
-		.then(function (content) {
-			contentOrg = content;
-			var list = [];
-			//load template to content
-			list.push($http.get('/api/v2/cms/contents/' + newContentModel.template.id + '/content') //
-					.then(function (response) {
+			.then(function(content) {
+				contentOrg = content;
+				var list = [];
+				//load template to content
+				list.push($http.get('/api/v2/cms/contents/' + newContentModel.template.id + '/content') //
+					.then(function(response) {
 						content.uploadValue(response.data);
 					}));
-			// metas
-			angular.forEach(newContentModel.metas, function (meta) {
-				list.push(content.putMetadatum(meta));
-			});
-			return $q.all(list);
-		})//
-		.finally(function () {
-			$dispatcher.dispatch('/cms/contents', {
-				key: 'created',
-				values: [contentOrg]
-			});
-			ctrl.creatingContent = false;
-			ctrl.contentCreated = true;
+				// metas
+				angular.forEach(newContentModel.metas, function(meta) {
+					list.push(content.putMetadatum(meta));
+				});
+				return $q.all(list);
+			})//
+			.finally(function() {
+				$dispatcher.dispatch('/cms/contents', {
+					key: 'created',
+					values: [contentOrg]
+				});
+				ctrl.creatingContent = false;
+				ctrl.contentCreated = true;
 
-			for (var i = 0; i < newContentModel.metas.length; i++) {
-				if (newContentModel.metas[i].key === 'link.canonical') {
-					ctrl.canonicalLink = newContentModel.metas[i].value;
-					break;
+				for (var i = 0; i < newContentModel.metas.length; i++) {
+					if (newContentModel.metas[i].key === 'link.canonical') {
+						ctrl.canonicalLink = newContentModel.metas[i].value;
+						break;
+					}
 				}
-			}
-		});
+			});
 	};
 
-	this.goTo = function () {
+	this.goTo = function() {
 		$mdDialog.hide();
 	};
 
 	/*
 	 * Load templates for view
 	 */
-	this._getTemplates = function () {
+	this._getTemplates = function() {
 		parameterQuery.setFilter('taxonomy', 'template');
 		parameterQuery.put('graphql', '{current_page,page_number,items{term{id,name},contents{id, name, title, description, media_type}}}');
 		var ctrl = this;
 		$cms.getTermTaxonomies(parameterQuery)
-		.then(function (response) {
-			ctrl.items = response.items;
-		}, function () {
-			alert($translate.instant('Fail to load template'));
-		});
+			.then(function(response) {
+				ctrl.items = response.items;
+			}, function() {
+				alert($translate.instant('Fail to load template'));
+			});
 	};
 
 	// add watch on setting stepper current step.
-	$scope.$watch(function () {
+	$scope.$watch(function() {
 		var current = $mdStepper(_stepper_id);
 		if (current) {
 			return current.currentStep;
 		}
 		return -1;
-	}, function (index) {
+	}, function(index) {
 		if (index >= 0 && $scope.steps && $scope.steps.length) {
 			$scope.currentStep = $scope.steps[index];
 		}
@@ -361,5 +358,5 @@ angular.module('vwStudio')
 	// TODO: mao, 2019: check a content with the same name exist
 	this._getTemplates();
 	this.setPageInfo('name', config.name || uuid4.generate());
-//	this.loadCategories();
+	//	this.loadCategories();
 });

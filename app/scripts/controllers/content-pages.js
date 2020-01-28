@@ -23,11 +23,10 @@
  */
 
 //Test controller
-angular.module('vwStudio')
-.controller('AmhContentPagesCtrl', function ($scope, $controller, $cms, $dispatcher) {
-	
+angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $controller, $cms) {
+
 	// Extends Items controller
-	angular.extend(this, $controller('MbSeenCmsContentsCtrl',{
+	angular.extend(this, $controller('MbSeenCmsContentsCtrl', {
 		$scope: $scope
 	}));
 
@@ -35,19 +34,19 @@ angular.module('vwStudio')
 	this.getModels = function(queryParams) {
 		queryParams.setFilter('media_type', 'page');
 		return $cms.getContents(queryParams)
-		.then(function(list){
-			for(var i = 0; i < list.items.length; i++){
-				var item  = list.items[i];
-			    var map = {};
-			    var metas = item.metas || [];
-			    for(var j = 0; j < metas.length; j++){
-			        var key = metas[j].key.replace('.', '_');
-			        map[key] = metas[j].value;
-			    }
-			    item.metasMap = map;
-			}
-			return list;
-		});
+			.then(function(list) {
+				for (var i = 0; i < list.items.length; i++) {
+					var item = list.items[i];
+					var map = {};
+					var metas = item.metas || [];
+					for (var j = 0; j < metas.length; j++) {
+						var key = metas[j].key.replace('.', '_');
+						map[key] = metas[j].value;
+					}
+					item.metasMap = map;
+				}
+				return list;
+			});
 	};
 
 	this.title = 'Pages';

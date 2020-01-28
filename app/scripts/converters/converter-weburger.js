@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Converter
@@ -30,42 +29,42 @@ angular.module('vwStudio')//
  * A converter are responsible to encode and decode a widget.
  * 
  */
-.factory('WbConverterWeburger', function (WbConverterAbstract) {
+angular.module('vwStudio').factory('WbConverterWeburger', function(WbConverterAbstract) {
 
-    function Converter(){
-        WbConverterAbstract.apply(this, ['application/json']);
-    }
-    Converter.prototype = new WbConverterAbstract();
+	function Converter() {
+		WbConverterAbstract.apply(this, ['application/json']);
+	}
+	Converter.prototype = new WbConverterAbstract();
 
-    Converter.prototype.encode = function(){
-        var widgets = Array.prototype.slice.call(arguments) || [];
-        if(widgets.length === 1){
-            return JSON.stringify(widgets[0].getModel());
-        }
-        var models = [];
-        _.forEach(widgets, function(widget){
-            models.push(widget.getModel());
-        });
-        return JSON.stringify(models);
-    };
+	Converter.prototype.encode = function() {
+		var widgets = Array.prototype.slice.call(arguments) || [];
+		if (widgets.length === 1) {
+			return JSON.stringify(widgets[0].getModel());
+		}
+		var models = [];
+		_.forEach(widgets, function(widget) {
+			models.push(widget.getModel());
+		});
+		return JSON.stringify(models);
+	};
 
-    Converter.prototype.decode = function(data){
-        var widgets = [];
-        try{
-            var model = JSON.parse(data);
-            if(angular.isArray(model)){
-                widgets = model;
-            } else {
-                widgets = [];
-                widgets.push(model);
-            }
-            // TODO: clean each item
-        } catch(ex){
-            // TODO:
-        }
-        return widgets;
-    };
+	Converter.prototype.decode = function(data) {
+		var widgets = [];
+		try {
+			var model = JSON.parse(data);
+			if (angular.isArray(model)) {
+				widgets = model;
+			} else {
+				widgets = [];
+				widgets.push(model);
+			}
+			// TODO: clean each item
+		} catch (ex) {
+			// TODO:
+		}
+		return widgets;
+	};
 
 
-    return Converter;
+	return Converter;
 });

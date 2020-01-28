@@ -3,7 +3,7 @@
 	md-theme="{{app.test.theme || app.setting.theme || app.config.theme || 'default'}}"
 	md-theme-watch
 	dir="{{app.dir}}"
-	ng-app="vwStudio" 
+	ng-app="app" 
 	ng-controller="MainCtrl"
 	manifest="<!-- injector:base-path --><!-- endinjector -->manifest.appcache">
 <head>
@@ -124,6 +124,7 @@
 	<script src="scripts/controllers/owner-toolbar.js"></script>
 	<script src="scripts/controllers/page-new-dialog.js"></script>
 	<script src="scripts/controllers/select-pages.js"></script>
+	<script src="scripts/controllers/spas.js"></script>
 	<script src="scripts/controllers/user-defind-widgts.js"></script>
 	<script src="scripts/controllers/workbench-content-metas.js"></script>
 	<script src="scripts/controllers/workbench-content-termTaxonomies.js"></script>
@@ -171,6 +172,7 @@
 	<script src="scripts/providers/timeout.js"></script>
 	<script src="scripts/runs/app.js"></script>
 	<script src="scripts/runs/editor-processors.js"></script>
+	<script src="scripts/runs/menus.js"></script>
 	<script src="scripts/runs/preferences.js"></script>
 	<script src="scripts/runs/settings.js"></script>
 	<script src="scripts/runs/tinymc.js"></script>

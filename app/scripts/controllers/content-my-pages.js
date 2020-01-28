@@ -24,8 +24,7 @@
 
 
 //Test controller
-angular.module('vwStudio')
-.controller('AmhContentMyPagesCtrl', function ($scope, $rootScope, $controller, $cms, $dispatcher, $q) {
+angular.module('vwStudio').controller('AmhContentMyPagesCtrl', function ($scope, $rootScope, $controller, $cms, $q) {
 	// Extends Items controller
 	angular.extend(this, $controller('MbSeenCmsContentsCtrl',{
 		$scope: $scope
@@ -93,5 +92,5 @@ angular.module('vwStudio')
 		return this._eventHandlerCallBack;
 	};
 
-	this.init
+	this.init();
 });

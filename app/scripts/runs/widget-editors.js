@@ -21,13 +21,10 @@
  */
 
 
-angular.module('vwStudio')
-
-
 /***********************************************************************
  * Editors
  ***********************************************************************/
-.run(function ($widget, $resource) {
+angular.module('vwStudio').run(function ($widget, $resource) {
 
 	/*
 	 * 
@@ -35,7 +32,7 @@ angular.module('vwStudio')
 	 */
 	function filePickerCallback(callback, value, meta) {
 		// Provide file and text for the link dialog
-		if (meta.filetype == 'file') {
+		if (_.isEqual(meta.filetype, 'file')) {
 			return $resource.get('url', {
 				value: value
 			})
@@ -47,7 +44,7 @@ angular.module('vwStudio')
 		}
 
 		// Provide image and alt text for the image dialog
-		if (meta.filetype == 'image') {
+		if (_.isEqual(meta.filetype, 'image')) {
 			return $resource.get('image-url', {
 				value: value
 			})
@@ -59,7 +56,7 @@ angular.module('vwStudio')
 		}
 
 		// Provide alternative source and posted for the media dialog
-		if (meta.filetype == 'media') {
+		if (_._isEqual(meta.filetype, 'media')) {
 			return $resource.get('media', {
 				value: value
 			})

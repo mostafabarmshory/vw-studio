@@ -26,10 +26,9 @@
 
 
 //Test controller
-angular.module('vwStudio')
-.controller('AmhSeenSelectPagesCtrl', function ($scope, $controller, $cms) {
+angular.module('vwStudio').controller('AmhSeenSelectPagesCtrl', function($scope) {
 	// Extends Items controller
-	$scope.setValue = function (value) {
+	$scope.setValue = function(value) {
 		$scope.value = value;
 		$scope.$parent.setValue('content/' + value.id);
 		$scope.$parent.answer();

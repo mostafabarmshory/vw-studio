@@ -21,69 +21,64 @@
  */
 
 
-angular.module('vwStudio')
-	/*
-	 * State machine of the system
-	 * 
-	 */
-	.config(function ($routeProvider) {
-		var defaultSidenavs = ['amh.cms.pages.sidenav',
-			'amh.workbench.weburger.widgets',
-			'amh.workbench.weburger.settings',
-			'amh.workbench.weburger.templates',
-			'amh.workbench.weburger.navigator',
-			'amh.workbench.content',
-			// 'amh.workbench.contentMetadata',
-			// 'amh.workbench.termTaxonomies'
-		];
+angular.module('vwStudio').config(function($routeProvider) {
+	var defaultSidenavs = ['amh.cms.pages.sidenav',
+		'amh.workbench.weburger.widgets',
+		'amh.workbench.weburger.settings',
+		'amh.workbench.weburger.templates',
+		'amh.workbench.weburger.navigator',
+		'amh.workbench.content',
+		// 'amh.workbench.contentMetadata',
+		// 'amh.workbench.termTaxonomies'
+	];
 
-		$routeProvider //
-			.otherwise({
-				redirectTo: '/'
-			})
-			/**
-			 * @ngdoc ngRoute
-			 * @name /
-			 * @description Main page of the site
-			 */
-			.when('/', {
-				templateUrl: 'views/amh-content-editor.html',
-				helpId: 'amh-content',
-				groups: ['workbench'],
-				sidenavs: defaultSidenavs,
-			})
-			/**
-			 * @ngdoc ngRoute
-			 * @name /home/:language
-			 * @description Main page of the site
-			 */
-			.when('/home/:language', {
-				templateUrl: 'views/amh-content-editor.html',
-				helpId: 'amh-content',
-				groups: ['workbench'],
-				sidenavs: defaultSidenavs,
-			})
-			/**
-			 * @ngdoc ngRoute
-			 * @name /home/:language
-			 * @description Main page of the site
-			 */
-			.when('/home', {
-				templateUrl: 'views/amh-content-editor.html',
-				helpId: 'amh-content',
-				groups: ['workbench'],
-				sidenavs: defaultSidenavs,
-			})
+	$routeProvider //
+		.otherwise({
+			redirectTo: '/'
+		})
+		/**
+		 * @ngdoc ngRoute
+		 * @name /
+		 * @description Main page of the site
+		 */
+		.when('/', {
+			templateUrl: 'views/amh-content-editor.html',
+			helpId: 'amh-content',
+			groups: ['workbench'],
+			sidenavs: defaultSidenavs,
+		})
+		/**
+		 * @ngdoc ngRoute
+		 * @name /home/:language
+		 * @description Main page of the site
+		 */
+		.when('/home/:language', {
+			templateUrl: 'views/amh-content-editor.html',
+			helpId: 'amh-content',
+			groups: ['workbench'],
+			sidenavs: defaultSidenavs,
+		})
+		/**
+		 * @ngdoc ngRoute
+		 * @name /home/:language
+		 * @description Main page of the site
+		 */
+		.when('/home', {
+			templateUrl: 'views/amh-content-editor.html',
+			helpId: 'amh-content',
+			groups: ['workbench'],
+			sidenavs: defaultSidenavs,
+		})
 
-			/**
-			 * @ngdoc ngRoute
-			 * @name /content/:name
-			 * @description Display a content value
-			 */
-			.when('/content/:name', {
-				templateUrl: 'views/amh-content-editor.html',
-				helpId: 'amh-content',
-				groups: ['workbench'],
-				sidenavs: defaultSidenavs,
-			});
-	});
+		/**
+		 * @ngdoc ngRoute
+		 * @name /content/:name
+		 * @description Display a content value
+		 */
+		.when('/content/:name', {
+			templateUrl: 'views/amh-content-editor.html',
+			helpId: 'amh-content',
+			groups: ['workbench'],
+			sidenavs: defaultSidenavs,
+		});
+});

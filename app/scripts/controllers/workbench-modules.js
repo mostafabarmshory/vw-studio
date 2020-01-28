@@ -19,12 +19,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
-.controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window){
+angular.module('vwStudio').controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window){
 	
 	var ctrl = this;
-	var COTNTENT_CHANGE_EVENT = 'contentChanged';
+	var COTNTENT_MODUEL_CHANGE_EVENT = 'contentModulesChanged';
 	var WORKBENCH_CHANGE_EVENT = 'workbenchChanged';
+	var COTNTENT_CHANGE_EVENT = 'contentChanged';
 
 	function modulesChanged(){
 		ctrl.modules = ctrl.workbench.getContentModules();
@@ -32,17 +32,21 @@ angular.module('vwStudio')
 
 	function setWorkbench(workbenc){
 		if(ctrl.workbench){
-			ctrl.workbench.off(COTNTENT_CHANGE_EVENT, modulesChanged);
+			ctrl.workbench.off(COTNTENT_MODUEL_CHANGE_EVENT, modulesChanged);
 		}
 		ctrl.workbench = workbenc;
 		if(ctrl.workbench){
-			ctrl.workbench.on(COTNTENT_CHANGE_EVENT, modulesChanged);
+			ctrl.workbench.on(COTNTENT_MODUEL_CHANGE_EVENT, modulesChanged);
 		}
 		modulesChanged();
 	}
 
 	function handleWorkbench(event){
 		setWorkbench(event.value);
+	}
+	
+	function contentChanged(){
+		// XXX: maso, 2020: check content handling
 	}
 
 	this.addModule = function($event){

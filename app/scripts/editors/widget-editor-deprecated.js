@@ -22,38 +22,35 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Factories
  * @name WidgetEditorFake
  * @description Editor of a widget
- * 
  */
-
-.factory('WidgetEditorDeprecated', function ($window, WidgetEditor) {
+angular.module('vwStudio').factory('WidgetEditorDeprecated', function($window, WidgetEditor) {
 
     /**
      * TODO: maso, 2019: extends WidgetEditorFake
      * 
      * Creates new instace of an editor
      */
-    function Editor(widget, options) {
-        options = options || {};
-        WidgetEditor.apply(this, [widget, options]);
-    }
-    Editor.prototype = Object.create(WidgetEditor.prototype);
+	function Editor(widget, options) {
+		options = options || {};
+		WidgetEditor.apply(this, [widget, options]);
+	}
+	Editor.prototype = Object.create(WidgetEditor.prototype);
 
 
-    Editor.prototype.setActive = function(){}; 
-    Editor.prototype.isActive = function(){};
-    Editor.prototype.save = function(){};
-    Editor.prototype.hide = function(){};
-    Editor.prototype.show = function(){
-        $window.alert('This widget type is deprecated. This will be removed in the next major version.');
-    };
-    Editor.prototype.isHidden = function(){};
+	Editor.prototype.setActive = function() { };
+	Editor.prototype.isActive = function() { };
+	Editor.prototype.save = function() { };
+	Editor.prototype.hide = function() { };
+	Editor.prototype.show = function() {
+		$window.alert('This widget type is deprecated. This will be removed in the next major version.');
+	};
+	Editor.prototype.isHidden = function() { };
 
-//  the editor type
-    return Editor;
+	//  the editor type
+	return Editor;
 });

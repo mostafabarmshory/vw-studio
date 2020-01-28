@@ -20,8 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')
-
 /**
  * @ngdoc controller
  * @name AmhMainPageTmplCtrl
@@ -36,29 +34,29 @@ angular.module('vwStudio')
  * 	<li>savingContent: True if control is about save content</li>
  * </ul>
  */
-.controller('AmhUserWidgetCtrl', function($scope, $http) {
-	
+angular.module('vwStudio').controller('AmhUserWidgetCtrl', function($scope, $http) {
+
 	// Load from resources
-	function load(){
+	function load() {
 		$http.get('resources/widget-templates.json')
-		.then(function(result){
-			$scope.categories = result.data;
-		});
+			.then(function(result) {
+				$scope.categories = result.data;
+			});
 	}
-	
-	function loadWidgets(selectedCategory){
-		if(!selectedCategory.type || selectedCategory.type == 'embed'){
+
+	function loadWidgets(selectedCategory) {
+		if (!selectedCategory.type || selectedCategory.type === 'embed') {
 			$scope.widgets = selectedCategory.templates;
 		}
-		if(selectedCategory.type == 'url'){
+		if (selectedCategory.type === 'url') {
 			$http.get(selectedCategory.url)
-			.then(function(result){
-				$scope.widgets = result.data;
-			});
+				.then(function(result) {
+					$scope.widgets = result.data;
+				});
 		}
 	}
-	
-	
+
+
 	this.loadWidgets = loadWidgets;
 	load();
 });

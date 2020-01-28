@@ -22,13 +22,10 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
-
 /**
  * Load widgets
  */
-.run(function ($settings) {
+angular.module('vwStudio').run(function ($settings) {
 	/************************************************************************
 	 * Model and Widgets
 	 ************************************************************************/

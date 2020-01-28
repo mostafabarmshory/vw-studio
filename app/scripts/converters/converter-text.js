@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Converter
@@ -30,44 +29,44 @@ angular.module('vwStudio')//
  * A converter are responsible to encode and decode a widget.
  * 
  */
-.factory('WbConverterText', function (WbConverterAbstract) {
+angular.module('vwStudio').factory('WbConverterText', function(WbConverterAbstract) {
 
-    function Converter(){
-        WbConverterAbstract.apply(this, ['text/plain']);
-    }
-    Converter.prototype = new WbConverterAbstract();
+	function Converter() {
+		WbConverterAbstract.apply(this, ['text/plain']);
+	}
+	Converter.prototype = new WbConverterAbstract();
 
-    Converter.prototype.encode = function(){
-        var widgets = Array.prototype.slice.call(arguments) || [];
-        var data = '';
-        while(widgets.length){
-            var widget = widgets.pop();
-            if(widget.isLeaf()){
-                if(widget.html){
-                    data += widget.html() + '\n';
-                }
-            } else {
-                widgets.push.apply(widgets, widget.getChildren());
-            }
-        }
-        return data;
-    };
+	Converter.prototype.encode = function() {
+		var widgets = Array.prototype.slice.call(arguments) || [];
+		var data = '';
+		while (widgets.length) {
+			var widget = widgets.pop();
+			if (widget.isLeaf()) {
+				if (widget.html) {
+					data += widget.html() + '\n';
+				}
+			} else {
+				widgets.push.apply(widgets, widget.getChildren());
+			}
+		}
+		return data;
+	};
 
-    Converter.prototype.decode = function(data){
-        var widgets = [];
-        data = data.split('\n');
-        _.forEach(data, function(item){
-            item = _.trim(item);
-            if(item.length){ 
-                widgets.push({
-                    type: 'p',
-                    html: item
-                });
-            }
-        });
-        return widgets;
-    };
+	Converter.prototype.decode = function(data) {
+		var widgets = [];
+		data = data.split('\n');
+		_.forEach(data, function(item) {
+			item = _.trim(item);
+			if (item.length) {
+				widgets.push({
+					type: 'p',
+					html: item
+				});
+			}
+		});
+		return widgets;
+	};
 
 
-    return Converter;
+	return Converter;
 });

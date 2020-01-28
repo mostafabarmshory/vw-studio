@@ -20,13 +20,11 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
 /**
  * Adds basic system settings
  * 
  */
-.run(function ($preferences) {
+angular.module('vwStudio').run(function ($preferences) {
 	$preferences
 	
 	/**

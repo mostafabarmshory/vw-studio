@@ -37,7 +37,7 @@
 					8itemtype="http://schema.org/WebPage"
 					class="md-2-line" 
 					ng-repeat="page in ctrl.items" 
-					ng-href="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
+					ng-href="content/{{page.name}}">
 					<meta itemprop="url" content="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
 					<img 
 						itemprop="image"
@@ -83,7 +83,7 @@
 					itemtype="http://schema.org/WebPage"
 					class="md-2-line" 
 					ng-repeat="page in ctrl.items" 
-					ng-href="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
+					ng-href="content/{{page.name}}">
 					<meta itemprop="url" content="{{ page.metasMap.link_canonical || 'content/' + page.name}}">
 					<img 
 						itemprop="image"

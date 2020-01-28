@@ -20,14 +20,15 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')
 /**
  * @ngdoc service
  * @name $wbModuleManager
  * @description Utility of a model
  * 
  */
-.service('$wbModuleManager', function ($dispatcher) {
+angular.module('vwStudio').service('$wbModuleManager', function (
+	/* AngularJS */ $q, $dispatcher,
+	/* MBlowfish */ $app) {
 	
 
 	this.setState = function(state){
@@ -40,19 +41,17 @@ angular.module('vwStudio')
 
 
 	this.removeModules = function(){
-
 		return $q.resolve(this);
-	}
+	};
 
 	this.loadModules = function(){
-
 		return $q.resolve(this);
-	}
+	};
 
 	this.getModules = function(){};
-	this.addModule = function(module){};
-	this.removeModule = function(module){};
-	this.hasModule = function(module){
+	this.addModule = function(/*module*/){};
+	this.removeModule = function(/*module*/){};
+	this.hasModule = function(/*module*/){
 		return false;
 	};
 

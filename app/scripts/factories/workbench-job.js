@@ -19,25 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
+angular.module('vwStudio').factory('AmhWorkbenchJob', function() {
 
-.factory('AmhWorkbenchJob', function() {
-	
 
 	function Job(title, promise) {
 		this.title = title;
 		this.promise = promise;
-	};
-	
+	}
+
 	Job.prototype.then = function(fn1, fn2) {
 		var promise = this.promise.then(fn1, fn2);
 		return new Job('', promise);
 	};
-	
+
 	Job.prototype.finally = function(fn) {
 		var promise = this.promise.finally(fn);
 		return new Job('', promise);
 	};
-	
+
 	return Job;
 });

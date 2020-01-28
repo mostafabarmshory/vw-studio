@@ -24,12 +24,12 @@
  */
 
 
-angular.module('vwStudio')
+
 
 /***********************************************************************
  * Convertors
  ***********************************************************************/
-.run(function ($widget, WbConverterWeburger, WbConverterDom, WbConverterText) {
+angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConverterDom, WbConverterText) {
 	$widget.addConverter(new WbConverterWeburger());
 	$widget.addConverter(new WbConverterDom());
 	$widget.addConverter(new WbConverterText());

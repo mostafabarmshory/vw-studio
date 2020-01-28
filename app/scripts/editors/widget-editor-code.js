@@ -22,16 +22,13 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Factories
  * @name WidgetEditorFake
  * @description Editor of a widget
- * 
  */
-
-.factory('WidgetEditorCode', function ($resource, WidgetEditor) {
+angular.module('vwStudio').factory('WidgetEditorCode', function ($resource, WidgetEditor) {
 
     /**
      * TODO: maso, 2019: extends WidgetEditorFake

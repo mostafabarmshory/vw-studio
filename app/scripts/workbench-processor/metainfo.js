@@ -19,22 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio')
-.factory('AmhWorkbenchProcessorMetainfo', function(
-		AmhWorkbenchProcessor, 
+angular.module('vwStudio').factory('AmhWorkbenchProcessorMetainfo', function(
+	AmhWorkbenchProcessor,
 		/* mblowfish */ $page,
 		/* vwStudio */ $window) {
-	
+
 
 	function Processor(editor, options) {
 		options = options || {};
 		AmhWorkbenchProcessor.apply(this, [editor, options]);
 		this.info = {};
-	};
+	}
 	Processor.prototype = new AmhWorkbenchProcessor();
 
 
-	Processor.prototype.connect = function(){
+	Processor.prototype.connect = function() {
 		var ctrl = this;
 		this.metadataListener = function() {
 			ctrl.updateFromMetadata();
@@ -46,7 +45,7 @@ angular.module('vwStudio')
 	/**
 	 * Disconnect form editor
 	 */
-	Processor.prototype.disconnect = function(){
+	Processor.prototype.disconnect = function() {
 		this.editor.off('contentMetadataChanged', this.metadataListener);
 		delete this.metadataListener;
 	};
@@ -56,7 +55,7 @@ angular.module('vwStudio')
 		var metadata = wrokbench.getContentMetadata() || [];
 		// clean old values
 		var ctlr = this;
-		_.forEach(this.info, function(value, key){
+		_.forEach(this.info, function(value, key) {
 			ctlr.info[key] = undefined;
 		});
 		// load new values
@@ -82,22 +81,22 @@ angular.module('vwStudio')
 	 * - link.cover
 	 * - link.canonical
 	 */
-	Processor.prototype.loadPageDescription = function () {
+	Processor.prototype.loadPageDescription = function() {
 		// Load SEO and page
 		$page //
-			.setTitle(this.info['title']) //
-			.setLanguage(this.info['language'])//
+			.setTitle(this.info.title) //
+			.setLanguage(this.info.language)//
 			.setDescription(this.info['meta.description'])//
 			.setKeywords(this.info['meta.keywords']) //
 			.setFavicon(this.info['link.favicon']) //
 			.setCover(this.info['link.cover']) //
 			.setCanonicalLink(this.info['link.canonical']);
-		
+
 		// Set meta datas
-		_.forEach(this.info, function(value, key){
-			try{
+		_.forEach(this.info, function(value, key) {
+			try {
 				$window.setMeta(key, value);
-			} catch(ex){}
+			} catch (ex) { }
 		});
 	};
 

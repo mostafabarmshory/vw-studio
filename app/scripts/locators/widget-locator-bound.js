@@ -23,70 +23,68 @@
  */
 
 
-angular.module('vwStudio')//
-
 /**
  * @ngdoc Factories
  * @name BoundWidgetLocator
  * @description Locates a widget bound
  * 
  */
-.factory('BoundWidgetLocator', function (AbstractWidgetLocator) {
+angular.module('vwStudio').factory('BoundWidgetLocator', function(AbstractWidgetLocator) {
 
-    var boundWidgetLocator = function (options) {
-        options = options || {};
-        AbstractWidgetLocator.apply(this, options);
+	var boundWidgetLocator = function(options) {
+		options = options || {};
+		AbstractWidgetLocator.apply(this, options);
 
-        // set anchor
-        this.setAnchor(options.anchor);
+		// set anchor
+		this.setAnchor(options.anchor);
 
-        // load templates
-        var template = options.template || '<div class="wb-widget-locator bound wb-layer-editor-locator"></div>';
+		// load templates
+		var template = options.template || '<div class="wb-widget-locator bound wb-layer-editor-locator"></div>';
 
-        // load elements
-        this.topElement = angular.element(template);
-        this.topElement.attr('id', 'top');
+		// load elements
+		this.topElement = angular.element(template);
+		this.topElement.attr('id', 'top');
 
-        this.rightElement = angular.element(template);
-        this.rightElement.attr('id', 'right');
+		this.rightElement = angular.element(template);
+		this.rightElement.attr('id', 'right');
 
-        this.buttomElement = angular.element(template);
-        this.buttomElement.attr('id', 'buttom');
+		this.buttomElement = angular.element(template);
+		this.buttomElement.attr('id', 'buttom');
 
-        this.leftElement = angular.element(template);
-        this.leftElement.attr('id', 'left');
+		this.leftElement = angular.element(template);
+		this.leftElement.attr('id', 'left');
 
-        // init controller
-        this.setElements([this.topElement, this.rightElement,
-            this.buttomElement, this.leftElement]);
-    };
-    boundWidgetLocator.prototype = new AbstractWidgetLocator();
+		// init controller
+		this.setElements([this.topElement, this.rightElement,
+		this.buttomElement, this.leftElement]);
+	};
+	boundWidgetLocator.prototype = new AbstractWidgetLocator();
 
-    boundWidgetLocator.prototype.updateView = function () {
-        var widget = this.getWidget();
-        var bound = widget.getBoundingClientRect();
-        var space = 2;
-        this.topElement.css({
-            top: bound.top + space,
-            left: bound.left + space,
-            width: bound.width - 2*space
-        });
-        this.rightElement.css({
-            top: bound.top + space,
-            left: bound.left + bound.width - 2*space,
-            height: bound.height - 2*space
-        });
-        this.buttomElement.css({
-            top: bound.top + bound.height - space,
-            left: bound.left + space,
-            width: bound.width - 2*space
-        });
-        this.leftElement.css({
-            top: bound.top + space,
-            left: bound.left + space,
-            height: bound.height - 2*space
-        });
+	boundWidgetLocator.prototype.updateView = function() {
+		var widget = this.getWidget();
+		var bound = widget.getBoundingClientRect();
+		var space = 2;
+		this.topElement.css({
+			top: bound.top + space,
+			left: bound.left + space,
+			width: bound.width - 2 * space
+		});
+		this.rightElement.css({
+			top: bound.top + space,
+			left: bound.left + bound.width - 2 * space,
+			height: bound.height - 2 * space
+		});
+		this.buttomElement.css({
+			top: bound.top + bound.height - space,
+			left: bound.left + space,
+			width: bound.width - 2 * space
+		});
+		this.leftElement.css({
+			top: bound.top + space,
+			left: bound.left + space,
+			height: bound.height - 2 * space
+		});
 
-    };
-    return boundWidgetLocator;
+	};
+	return boundWidgetLocator;
 });

@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 
-angular.module('vwStudio')//
 
 /**
  * @ngdoc Processor
@@ -28,48 +27,48 @@ angular.module('vwStudio')//
  * @description Widget processor
  * 
  */
-.factory('WbProcessorLocator', function ($wbUtil, WbProcessorAbstract, WidgetLocatorManager) {
-    function Processor(){
-        WbProcessorAbstract.apply(this);
-        this.widgetLocator = new WidgetLocatorManager();
-        this.autoVisible = true;
-    }
+angular.module('vwStudio').factory('WbProcessorLocator', function($wbUtil, WbProcessorAbstract, WidgetLocatorManager) {
+	function Processor() {
+		WbProcessorAbstract.apply(this);
+		this.widgetLocator = new WidgetLocatorManager();
+		this.autoVisible = true;
+	}
 
-    Processor.prototype = new WbProcessorAbstract();
-    
-    Processor.prototype.process = function(widget, event){
-        if(event.type !== 'stateChanged' || !widget.isRoot()){
-            return;
-        }
+	Processor.prototype = new WbProcessorAbstract();
+
+	Processor.prototype.process = function(widget, event) {
+		if (event.type !== 'stateChanged' || !widget.isRoot()) {
+			return;
+		}
         /*
          * NOTE: we just trak a single root 
          */
-        this.widgetLocator.setRootWidget(widget);
-        if(this.autoVisible){
-            this.widgetLocator.setEnable(widget.state === 'edit');
-        }
-    };
+		this.widgetLocator.setRootWidget(widget);
+		if (this.autoVisible) {
+			this.widgetLocator.setEnable(widget.state === 'edit');
+		}
+	};
 
     /**
      * Enable the processor
      */
-    Processor.prototype.setEnable = function(enable){
-        this.enable = enable;
-        var widgetLocator = this.widgetLocator;
-        widgetLocator.setEnable(enable);
-    };
+	Processor.prototype.setEnable = function(enable) {
+		this.enable = enable;
+		var widgetLocator = this.widgetLocator;
+		widgetLocator.setEnable(enable);
+	};
 
     /**
      * Follow widget if is root
      */
-    Processor.prototype.setTrackRoot = function(trackRoot){
-        this.trackRoot = trackRoot;
-    };
-    
-    Processor.prototype.setAutoVisible = function(autoVisible){
-        this.autoVisible = autoVisible;
-    };
-    
-    
-    return Processor;
+	Processor.prototype.setTrackRoot = function(trackRoot) {
+		this.trackRoot = trackRoot;
+	};
+
+	Processor.prototype.setAutoVisible = function(autoVisible) {
+		this.autoVisible = autoVisible;
+	};
+
+
+	return Processor;
 });

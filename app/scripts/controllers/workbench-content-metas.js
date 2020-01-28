@@ -19,59 +19,59 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio').controller('AmhContentWorkbenchMetasCtrl', function (
+angular.module('vwStudio').controller('AmhContentWorkbenchMetasCtrl', function(
     /* angularjs */ $scope, $window,
     /* angualr-material-home */ $amhEditorService, $actions) {
 
-    var ctrl = this;
-    var CONTENT_METADATA_CHANGE_EVENT = 'contentMetadataChanged';
-    var WORKBENCH_CHANGE_EVENT = 'workbenchChanged';
+	var ctrl = this;
+	var CONTENT_METADATA_CHANGE_EVENT = 'contentMetadataChanged';
+	var WORKBENCH_CHANGE_EVENT = 'workbenchChanged';
 
-    function contentMetadataChanged() {
-        if (ctrl.workbench) {
-            ctrl.contentMetadata = ctrl.workbench.getContentMetadata();
-        }
-    }
+	function contentMetadataChanged() {
+		if (ctrl.workbench) {
+			ctrl.contentMetadata = ctrl.workbench.getContentMetadata();
+		}
+	}
 
-    function setWorkbench(workbenc) {
-        if (ctrl.workbench) {
-            ctrl.workbench.off(CONTENT_METADATA_CHANGE_EVENT, contentMetadataChanged);
-        }
-        ctrl.workbench = workbenc;
-        if (ctrl.workbench) {
-            ctrl.workbench.on(CONTENT_METADATA_CHANGE_EVENT, contentMetadataChanged);
-        }
-        contentMetadataChanged();
-    }
+	function setWorkbench(workbenc) {
+		if (ctrl.workbench) {
+			ctrl.workbench.off(CONTENT_METADATA_CHANGE_EVENT, contentMetadataChanged);
+		}
+		ctrl.workbench = workbenc;
+		if (ctrl.workbench) {
+			ctrl.workbench.on(CONTENT_METADATA_CHANGE_EVENT, contentMetadataChanged);
+		}
+		contentMetadataChanged();
+	}
 
-    function handleWorkbench(event) {
-        setWorkbench(event.value);
-    }
+	function handleWorkbench(event) {
+		setWorkbench(event.value);
+	}
 
-    this.deleteMetadatum = function (meta, $event) {
-        $window.confirm('Delete metadata?')
-            .then(function () {
-                $event.metadata = [meta];
-                return $actions.exec('amh.workbench.content.metadata.delete', $event);
-            });
-    };
+	this.deleteMetadatum = function(meta, $event) {
+		$window.confirm('Delete metadata?')
+			.then(function() {
+				$event.metadata = [meta];
+				return $actions.exec('amh.workbench.content.metadata.delete', $event);
+			});
+	};
 
-    this.editMetadatum = function (meta, $event) {
-        $event.metadata = [meta];
-        return $actions.exec('amh.workbench.content.metadata.update', $event);
-    };
+	this.editMetadatum = function(meta, $event) {
+		$event.metadata = [meta];
+		return $actions.exec('amh.workbench.content.metadata.update', $event);
+	};
 
-    this.addMetadatum = function ($event) {
-        return $actions.exec('amh.workbench.content.metadata.create', $event);
-    };
+	this.addMetadatum = function($event) {
+		return $actions.exec('amh.workbench.content.metadata.create', $event);
+	};
 
-    setWorkbench($amhEditorService.getWorkbench());
-    $amhEditorService.on(WORKBENCH_CHANGE_EVENT, handleWorkbench);
-    $scope.$on('destory', function () {
-        $amhEditorService.off(WORKBENCH_CHANGE_EVENT, handleWorkbench);
-        if (ctrl.workbench) {
-            ctrl.workbench.on(CONTENT_METADATA_CHANGE_EVENT, contentMetadataChanged);
-        }
-    });
+	setWorkbench($amhEditorService.getWorkbench());
+	$amhEditorService.on(WORKBENCH_CHANGE_EVENT, handleWorkbench);
+	$scope.$on('destory', function() {
+		$amhEditorService.off(WORKBENCH_CHANGE_EVENT, handleWorkbench);
+		if (ctrl.workbench) {
+			ctrl.workbench.on(CONTENT_METADATA_CHANGE_EVENT, contentMetadataChanged);
+		}
+	});
 
 });

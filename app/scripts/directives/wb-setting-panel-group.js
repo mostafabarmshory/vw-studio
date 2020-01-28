@@ -22,9 +22,6 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio')
-
 /**
  * @ngdoc Directives
  * @name wb-setting-panel-group
@@ -33,7 +30,7 @@ angular.module('vwStudio')
  * Loads list of settings.
  * 
  */
-.directive('wbSettingPanelGroup', function($settings, $widget) {
+angular.module('vwStudio').directive('wbSettingPanelGroup', function($settings, $widget) {
 
 	/**
 	 * Init settings
