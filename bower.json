@@ -2,8 +2,8 @@
 	"name": "vw-studio",
 	"moduleName": "vwStudio",
 	"version": "0.1.1",
-	"title": "VW Studio",
-	"description": "General porpouse web page designer.",
+	"title": "ViraWeb Studio",
+	"description": "General purpose web page designer developed by ViraWeb team",
 	"license": "MIT",
 	"homepage": "https://studio.viraweb123.ir",
 	"dependencies": {
