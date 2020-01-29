@@ -63,7 +63,6 @@ module.exports = function(config) {
       'bower_components/loglevel/dist/loglevel.min.js',
       'bower_components/moment/moment.js',
       'bower_components/mblowfish-core/dist/mblowfish-core.js',
-      'bower_components/mblowfish-language/dist/mblowfish-language.js',
       'bower_components/angular-ui-tree/dist/angular-ui-tree.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
