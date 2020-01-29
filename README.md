@@ -1,2 +1,2 @@
 # vw-studio
-A profational web page designer.
+ViraWeb Studio is a professional web page designer.
