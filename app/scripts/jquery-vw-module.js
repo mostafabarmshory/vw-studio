@@ -21,30 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-/*
- * Main module of the application.
- */
-angular.module('vwStudio', [
-	'mblowfish-core',
-	'ui.tree'
-]);
-
-var app = angular.module('app', ['vwStudio']);
-//  Load application
-app.run(function($app, $window, $toolbar, $sidenav) {
-	$toolbar.setDefaultToolbars(['amh.owner-toolbar']);
-	$sidenav.setDefaultSidenavs(['amh.cms.pages.sidenav']);
-	$app.start('vm-studio');
-
-	// load crisp
-	$window.$crisp = [];
-	$window.CRISP_WEBSITE_ID = '55019c32-37d1-46ab-b97e-1b524309deb1';
-	$window.loadLibrary('https://client.crisp.chat/l.js');
+jQuery.fn.extend({
+	getPath: function() {
+		var path, node = this;
+		while (node.length) {
+			var realNode = node[0], name = realNode.localName;
+			if (!name) {
+				break;
+			}
+			name = name.toLowerCase();
+			var parent = node.parent();
+			var sameTagSiblings = parent.children(name);
+			if (sameTagSiblings.length > 1) {
+				var allSiblings = parent.children();
+				var index = allSiblings.index(realNode) + 1;
+				if (index > 1) {
+					name += ':nth-child(' + index + ')';
+				}
+			}
+			path = name + (path ? '>' + path : '');
+			node = parent;
+		}
+		return path;
+	}
 });
-//.config(function($routeProvider) {
-//    $routeProvider.otherwise('/dashboard');
-//})
-app.controller('MainCtrl', function() { });
-
-
