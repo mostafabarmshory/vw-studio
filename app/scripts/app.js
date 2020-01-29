@@ -53,7 +53,6 @@ jQuery.fn.extend({
  */
 angular.module('vwStudio', [
 	'mblowfish-core',
-	'mblowfish-language',
 	'ui.tree'
 ]);
 

@@ -7,8 +7,7 @@
 	"license": "MIT",
 	"homepage": "https://studio.viraweb123.ir",
 	"dependencies": {
-		"mblowfish-core": "https://gitlab.com/mblowfish/mblowfish-core.git#3.1.x",
-		"mblowfish-language": "https://gitlab.com/mblowfish/mblowfish-language.git#3.1.x",
+		"mblowfish-core": "https://gitlab.com/mblowfish/mblowfish-core.git#3.2.x",
 		"angular-ui-tree": "2.22.6"
 	},
 	"devDependencies": {
