@@ -48,7 +48,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 .run(function (
 		/* angularjs */ $location, $http, 
 		/* WB        */ $widget, $mdMedia, 
-		$window, $wbLocal, $WbProviderTimeout, 
+		$window, $mbLocal, $WbProviderTimeout, 
 		$dispatcher, $storage) {
 	$widget//
 	.setProvider('$http', $http)
@@ -57,7 +57,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 	.setProvider('$dispatcher', $dispatcher)
 	.setProvider('$storage', $storage)
 	.setProvider('$timeout', $WbProviderTimeout)
-	.setProvider('$local', $wbLocal)
+	.setProvider('$local', $mbLocal)
 	.setProvider('$media', $mdMedia);
 })
 

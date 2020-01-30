@@ -1,5 +1,7 @@
-/*
- * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
+/* 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2016 weburger
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,32 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-
-angular.module('vwStudio').config(function($routeProvider) {
-	var editorDefaultSidenavs = ['amh.cms.pages.sidenav',
-		'amh.workbench.weburger.widgets',
-		'amh.workbench.weburger.settings',
-		'amh.workbench.weburger.templates',
-		'amh.workbench.weburger.navigator',
-		'amh.workbench.content',
-		// 'amh.workbench.contentMetadata',
-		// 'amh.workbench.termTaxonomies'
-	];
-
-	$routeProvider.otherwise({
-		redirectTo: '/'
-	}).when('/', {
-			templateUrl: 'views/amh-content-editor.html',
-			helpId: 'amh-content',
-			groups: ['workbench'],
-			sidenavs: editorDefaultSidenavs,
-			protect: true,
-		}).when('/content/:name', {
-			templateUrl: 'views/amh-content-editor.html',
-			helpId: 'amh-content',
-			groups: ['workbench'],
-			sidenavs: editorDefaultSidenavs,
-			protect: true,
-		});
+jQuery.fn.extend({
+	getPath: function() {
+		var path, node = this;
+		while (node.length) {
+			var realNode = node[0], name = realNode.localName;
+			if (!name) {
+				break;
+			}
+			name = name.toLowerCase();
+			var parent = node.parent();
+			var sameTagSiblings = parent.children(name);
+			if (sameTagSiblings.length > 1) {
+				var allSiblings = parent.children();
+				var index = allSiblings.index(realNode) + 1;
+				if (index > 1) {
+					name += ':nth-child(' + index + ')';
+				}
+			}
+			path = name + (path ? '>' + path : '');
+			node = parent;
+		}
+		return path;
+	}
 });
