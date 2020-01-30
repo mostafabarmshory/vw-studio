@@ -22,7 +22,7 @@
 
 
 angular.module('vwStudio').config(function($routeProvider) {
-	var defaultSidenavs = ['amh.cms.pages.sidenav',
+	var editorDefaultSidenavs = ['amh.cms.pages.sidenav',
 		'amh.workbench.weburger.widgets',
 		'amh.workbench.weburger.settings',
 		'amh.workbench.weburger.templates',
@@ -32,53 +32,19 @@ angular.module('vwStudio').config(function($routeProvider) {
 		// 'amh.workbench.termTaxonomies'
 	];
 
-	$routeProvider //
-		.otherwise({
-			redirectTo: '/'
-		})
-		/**
-		 * @ngdoc ngRoute
-		 * @name /
-		 * @description Main page of the site
-		 */
-		.when('/', {
+	$routeProvider.otherwise({
+		redirectTo: '/'
+	}).when('/', {
 			templateUrl: 'views/amh-content-editor.html',
 			helpId: 'amh-content',
 			groups: ['workbench'],
-			sidenavs: defaultSidenavs,
-		})
-		/**
-		 * @ngdoc ngRoute
-		 * @name /home/:language
-		 * @description Main page of the site
-		 */
-		.when('/home/:language', {
+			sidenavs: editorDefaultSidenavs,
+			protect: true,
+		}).when('/content/:name', {
 			templateUrl: 'views/amh-content-editor.html',
 			helpId: 'amh-content',
 			groups: ['workbench'],
-			sidenavs: defaultSidenavs,
-		})
-		/**
-		 * @ngdoc ngRoute
-		 * @name /home/:language
-		 * @description Main page of the site
-		 */
-		.when('/home', {
-			templateUrl: 'views/amh-content-editor.html',
-			helpId: 'amh-content',
-			groups: ['workbench'],
-			sidenavs: defaultSidenavs,
-		})
-
-		/**
-		 * @ngdoc ngRoute
-		 * @name /content/:name
-		 * @description Display a content value
-		 */
-		.when('/content/:name', {
-			templateUrl: 'views/amh-content-editor.html',
-			helpId: 'amh-content',
-			groups: ['workbench'],
-			sidenavs: defaultSidenavs,
+			sidenavs: editorDefaultSidenavs,
+			protect: true,
 		});
 });
