@@ -44,7 +44,7 @@ module.exports = function(config) {
       'bower_components/seen-cms/dist/seen-cms.js',
       'bower_components/seen-monitor/dist/seen-monitor.js',
       'bower_components/flux/dist/Flux.js',
-      'bower_components/am-wb-core/dist/am-wb-core.js',
+      'bower_components/am-wb-core/dist/am-wb-core.min.js',
       'bower_components/ng-appcache/dist/appcache.js',
       'bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.js',
       'bower_components/angular-recaptcha/release/angular-recaptcha.js',
