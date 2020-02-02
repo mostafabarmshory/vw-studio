@@ -26,21 +26,6 @@
  */
 angular.module('vwStudio').run(function ($preferences) {
 	$preferences
-	
-	/**
-	 * @ngdoc preferences
-	 * @name crisp-chat
-	 * @description adds crisp chat into the page
-	 */
-	.newPage({
-		id : 'crisp-chat',
-		title : 'CRISP chat',
-		templateUrl : 'views/preferences/mb-crisp-chat.html',
-		description : 'Give your customer messaging experience a human touch with CRISP.',
-		icon : 'chat',
-		tags : [ 'chat' ]
-	})
-	
 	/**
 	 * @ngdoc preferences
 	 * @name main-page-template

@@ -928,9 +928,6 @@ angular.module('vwStudio').run(function($widget) {
 		isLeaf: false
 	});
 
-
-
-
 	$widget.newWidget({
 		// widget description
 		type: 'ObjectCollection',

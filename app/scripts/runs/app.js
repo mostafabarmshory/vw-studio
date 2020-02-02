@@ -105,7 +105,7 @@ angular.module('vwStudio').run(function(
 		id : 'amh.workbench.weburger.widgets',
 		title : 'Widgets',
 		description : 'Basic widgets of Weburger',
-		template : '<wb-widgets-explorer ng-model="widgets.items"></wb-widgets-explorer>',
+		template : '<wb-widgets-explorer ng-model="explorerWidgets.items"></wb-widgets-explorer>',
 		locked : true,
 		visible : function () {
 			return $rootScope.showWidgetsPanel;
@@ -117,7 +117,7 @@ angular.module('vwStudio').run(function(
 		controller: function($scope){
 			$widget.widgets()
 			.then(function(list){
-				$scope.widgets = list;
+				$scope.explorerWidgets = list;
 			});
 		},
 		controllerAs: 'ctrl'

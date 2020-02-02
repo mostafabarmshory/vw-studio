@@ -2,7 +2,7 @@
 	flex>
 	<md-list-item 
 		class="md-2-line" 
-		ng-repeat="widget in widgets"
+		ng-repeat="widget in widgets track by widget.type"
 		wb-on-dragstart="putDragdata($event, widget)"
 		draggable="true">
 		<wb-icon>{{widget.icon}}</wb-icon>
