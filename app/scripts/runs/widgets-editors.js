@@ -24,7 +24,7 @@
 /***********************************************************************
  * Editors
  ***********************************************************************/
-angular.module('vwStudio').run(function ($widget, $resource) {
+angular.module('vwStudio').run(function($widget, $resource) {
 
 	/*
 	 * 
@@ -36,11 +36,11 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 			return $resource.get('url', {
 				value: value
 			})
-			.then(function(url){
-				callback(url, {
-					text: 'My text'
+				.then(function(url) {
+					callback(url, {
+						text: 'My text'
+					});
 				});
-			});
 		}
 
 		// Provide image and alt text for the image dialog
@@ -48,11 +48,11 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 			return $resource.get('image-url', {
 				value: value
 			})
-			.then(function(url){
-				callback(url, {
-					alt: 'My text'
+				.then(function(url) {
+					callback(url, {
+						alt: 'My text'
+					});
 				});
-			});
 		}
 
 		// Provide alternative source and posted for the media dialog
@@ -60,12 +60,12 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 			return $resource.get('media', {
 				value: value
 			})
-			.then(function(url){
-				callback(url, {
-					source2: 'alt.ogg', 
-					poster: 'image.jpg'
+				.then(function(url) {
+					callback(url, {
+						source2: 'alt.ogg',
+						poster: 'image.jpg'
+					});
 				});
-			});
 		}
 	}
 
@@ -78,7 +78,7 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 	 ***************************************/
 	$widget.setEditor('section', {
 		type: 'WidgetEditorTinymceSection',
-		options:{
+		options: {
 			inline: true,
 			menubar: false,
 			inline_boundaries: false,
@@ -97,8 +97,8 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 			image_description: true,
 			image_dimensions: true,
 			image_uploadtab: true,
-//			image_list: imageList,
-//			images_upload_handler: imagesUploadHandler
+			//			image_list: imageList,
+			//			images_upload_handler: imagesUploadHandler
 		}
 	});
 
@@ -109,20 +109,20 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 	 * with html property.
 	 ***************************************/
 	var lineWidgetsTypes = [
-		'h1','h2','h3','h4','h5','h6', 
+		'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
 		'li',
 		'button',
 		'a',
 		'p',
 		'figcaption',
-		'i', 'em', 
-		's', 'samp', 'small', 'span', 'strong', 
+		'i', 'em',
+		's', 'samp', 'small', 'span', 'strong',
 		'mark', 'cite', 'dfn'
-		];
-	_.forEach(lineWidgetsTypes, function(type){
+	];
+	_.forEach(lineWidgetsTypes, function(type) {
 		$widget.setEditor(type, {
 			type: 'WidgetEditorTinymceSingleLine',
-			options:{
+			options: {
 				property: 'html',
 				inline: true,
 				menubar: false,
@@ -142,8 +142,8 @@ angular.module('vwStudio').run(function ($widget, $resource) {
 				image_description: true,
 				image_dimensions: true,
 				image_uploadtab: true,
-//				image_list: imageList,
-//				images_upload_handler: imagesUploadHandler
+				//				image_list: imageList,
+				//				images_upload_handler: imagesUploadHandler
 			}
 		});
 	});

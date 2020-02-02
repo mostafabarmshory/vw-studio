@@ -23,48 +23,10 @@
  * SOFTWARE.
  */
 
-
-
-
-/***********************************************************************
- * Convertors
- ***********************************************************************/
-angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConverterDom, WbConverterText) {
-	$widget.addConverter(new WbConverterWeburger());
-	$widget.addConverter(new WbConverterDom());
-	$widget.addConverter(new WbConverterText());
-})
-/***********************************************************************
- * Processors
- ***********************************************************************/
-.run(function ($widget, WbProcessorMicrodata, WbProcessorEvent, WbProcessorAttribute) {
-	$widget.setProcessor('microdata', new WbProcessorMicrodata());
-	$widget.setProcessor('event', new WbProcessorEvent());
-	$widget.setProcessor('attribut', new WbProcessorAttribute());
-})
-/***********************************************************************
- * Providers
- ***********************************************************************/
-.run(function (
-		/* angularjs */ $location, $http, 
-		/* WB        */ $widget, $mdMedia, 
-		$window, $mbLocal, $WbProviderTimeout, 
-		$dispatcher, $storage) {
-	$widget//
-	.setProvider('$http', $http)
-	.setProvider('$window', $window)
-	.setProvider('$location', $location)
-	.setProvider('$dispatcher', $dispatcher)
-	.setProvider('$storage', $storage)
-	.setProvider('$timeout', $WbProviderTimeout)
-	.setProvider('$local', $mbLocal)
-	.setProvider('$media', $mdMedia);
-})
-
 /***********************************************************************
  * Widgets
  ***********************************************************************/
-.run(function ($widget) {
+angular.module('vwStudio').run(function($widget) {
 	$widget.newWidget({
 		// widget description
 		type: 'a',
@@ -149,8 +111,8 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetAudio', 
-		isLeaf: false, 
+		controller: 'WbWidgetAudio',
+		isLeaf: false,
 	});
 	$widget.newWidget({
 		type: 'blockquote',
@@ -161,7 +123,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<blockquote></blockquote>',
 		controller: 'WbWidgetBlockquote',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'button',
@@ -172,7 +134,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<button></button>',
 		controller: 'WbWidgetButton',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'canvas',
@@ -183,7 +145,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<canvas></canvas>',
 		controller: 'WbWidgetCanvas',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'datalist',
@@ -193,7 +155,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<datalist></datalist>',
-		controller: 'WbWidgetDatalist', 
+		controller: 'WbWidgetDatalist',
 	});
 	$widget.newWidget({
 		type: 'dd',
@@ -203,7 +165,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<dd></dd>',
-		controller: 'WbWidgetDd', 
+		controller: 'WbWidgetDd',
 	});
 	$widget.newWidget({
 		type: 'details',
@@ -213,7 +175,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<details></details>',
-		controller: 'WbWidgetDetails', 
+		controller: 'WbWidgetDetails',
 	});
 	$widget.newWidget({
 		type: 'dialog',
@@ -223,7 +185,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<dialog></dialog>',
-		controller: 'WbWidgetDialog', 
+		controller: 'WbWidgetDialog',
 	});
 	$widget.newWidget({
 		type: 'div',
@@ -244,7 +206,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<dl></dl>',
-		controller: 'WbWidgetDl', 
+		controller: 'WbWidgetDl',
 	});
 	$widget.newWidget({
 		type: 'dt',
@@ -254,7 +216,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<dt></dt>',
-		controller: 'WbWidgetDt', 
+		controller: 'WbWidgetDt',
 	});
 	$widget.newWidget({
 		type: 'embed',
@@ -265,7 +227,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<embed></embed>',
 		help: 'http://dpq.co.ir/more-information-embed',
-		controller: 'WbWidgetEmbed', 
+		controller: 'WbWidgetEmbed',
 	});
 	$widget.newWidget({
 		type: 'fieldset',
@@ -276,7 +238,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<fieldset></fieldset>',
 		help: 'http://dpq.co.ir/more-information-fieldset',
-		controller: 'WbWidgetFieldset', 
+		controller: 'WbWidgetFieldset',
 	});
 	$widget.newWidget({
 		type: 'figcaption',
@@ -287,7 +249,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<figcaption></figcaption>',
 		help: 'http://dpq.co.ir/more-information-figcaption',
-		controller: 'WbWidgetFigcaption', 
+		controller: 'WbWidgetFigcaption',
 	});
 	$widget.newWidget({
 		type: 'figure',
@@ -298,7 +260,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<figure></figure>',
 		help: 'http://dpq.co.ir/more-information-figure',
-		controller: 'WbWidgetFigure', 
+		controller: 'WbWidgetFigure',
 	});
 	$widget.newWidget({
 		type: 'footer',
@@ -309,7 +271,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<footer></footer>',
 		help: 'http://dpq.co.ir/more-information-footer',
-		controller: 'WbWidgetFooter', 
+		controller: 'WbWidgetFooter',
 	});
 	$widget.newWidget({
 		type: 'form',
@@ -320,7 +282,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<form></form>',
 		help: 'http://dpq.co.ir/more-information-form',
-		controller: 'WbWidgetForm', 
+		controller: 'WbWidgetForm',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -332,7 +294,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<frame></frame>',
 		help: 'http://dpq.co.ir/more-information-frame',
-		controller: 'WbWidgetFrame', 
+		controller: 'WbWidgetFrame',
 	});
 	$widget.newWidget({
 		type: 'frameset',
@@ -343,27 +305,27 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<frameset></frameset>',
 		help: 'http://dpq.co.ir/more-information-frameset',
-		controller: 'WbWidgetFrameset', 
+		controller: 'WbWidgetFrameset',
 		isLeaf: false
 	});
-	for(var i = 1; i < 7; i++){
-		var type = 'h'+i;
+	for (var i = 1; i < 7; i++) {
+		var type = 'h' + i;
 		$widget.newWidget({
 			// widget description
 			type: type,
-			title: 'Header Level '+i,
+			title: 'Header Level ' + i,
 			description: 'A header widget',
-			icon: 'wb-widget-h'+i,
+			icon: 'wb-widget-h' + i,
 			groups: ['basic'],
 			model: {
-				name: 'Header-'+i,
+				name: 'Header-' + i,
 				style: {
 					padding: '8px'
 				}
 			},
 			// functional properties
-			template: '<h' +i +'></h' + i + '>',
-			controller:'WbWidgetH',
+			template: '<h' + i + '></h' + i + '>',
+			controller: 'WbWidgetH',
 			isLeaf: true
 		});
 	}
@@ -375,7 +337,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<header></header>',
-		controller: 'WbWidgetHeader', 
+		controller: 'WbWidgetHeader',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -387,7 +349,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<hr></hr>',
 		controller: 'WbWidgetHr',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		// widget description
@@ -451,7 +413,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		},
 		controllerAs: 'ctrl',
 		controller: 'WbWidgetImg',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		// widget description
@@ -485,7 +447,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<kbd></kbd>',
-		controller: 'WbWidgetKbd', 
+		controller: 'WbWidgetKbd',
 	});
 	$widget.newWidget({
 		type: 'label',
@@ -496,7 +458,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<label></label>',
 		controller: 'WbWidgetLabel',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'legend',
@@ -507,7 +469,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<legend></legend>',
 		controller: 'WbWidgetLegend',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'li',
@@ -518,7 +480,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<li></li>',
 		controller: 'WbWidgetLi',
-		isLeaf: false, 
+		isLeaf: false,
 	});
 	$widget.newWidget({
 		type: 'link',
@@ -534,7 +496,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		},
 		controllerAs: 'ctrl',
 		controller: 'WbWidgetLink',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'main',
@@ -544,7 +506,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'A widget to insert an link to page.',
 		groups: ['basic'],
 		template: '<main></main>',
-		controller: 'WbWidgetMain', 
+		controller: 'WbWidgetMain',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -555,7 +517,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<map></map>',
-		controller: 'WbWidgetMap', 
+		controller: 'WbWidgetMap',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -574,11 +536,11 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 					color: '#313131',
 				},
 				border: {
-					style:  'dotted',
-					color:  '#afafaf'
+					style: 'dotted',
+					color: '#afafaf'
 				},
-				color:  '#ffffff',
-				padding:  '8px'
+				color: '#ffffff',
+				padding: '8px'
 			}
 		},
 		// functional properties
@@ -594,7 +556,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<meter></meter>',
-		controller: 'WbWidgetMeter', 
+		controller: 'WbWidgetMeter',
 	});
 	$widget.newWidget({
 		type: 'nav',
@@ -604,7 +566,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<nav></nav>',
-		controller: 'WbWidgetNav', 
+		controller: 'WbWidgetNav',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -615,7 +577,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<noscript></noscript>',
-		controller: 'WbWidgetNoscript', 
+		controller: 'WbWidgetNoscript',
 	});
 	$widget.newWidget({
 		type: 'object',
@@ -625,7 +587,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<object></object>',
-		controller: 'WbWidgetObject', 
+		controller: 'WbWidgetObject',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -636,7 +598,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<ol></ol>',
-		controller: 'WbWidgetOl', 
+		controller: 'WbWidgetOl',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -647,7 +609,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<optgroup></optgroup>',
-		controller: 'WbWidgetOptgroup', 
+		controller: 'WbWidgetOptgroup',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -658,7 +620,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<option></option>',
-		controller: 'WbWidgetOption', 
+		controller: 'WbWidgetOption',
 	});
 	$widget.newWidget({
 		type: 'output',
@@ -668,7 +630,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<output></output>',
-		controller: 'WbWidgetOutput', 
+		controller: 'WbWidgetOutput',
 	});
 	$widget.newWidget({
 		// widget description
@@ -698,7 +660,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<param></param>',
 		controller: 'WbWidgetParam',
-		isLeaf: true, 
+		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'picture',
@@ -712,7 +674,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetPicture', 
+		controller: 'WbWidgetPicture',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -726,8 +688,8 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		model: {
 			html: 'class A {\n\tint a;\n}',
 		},
-		controller: 'WbWidgetPre', 
-		controllerAs: 'ctrl', 
+		controller: 'WbWidgetPre',
+		controllerAs: 'ctrl',
 		isLeaf: true
 	});
 	$widget.newWidget({
@@ -759,7 +721,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<q></q>',
-		controller: 'WbWidgetQ', 
+		controller: 'WbWidgetQ',
 	});
 	$widget.newWidget({
 		type: 's',
@@ -771,7 +733,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetS', 
+		controller: 'WbWidgetS',
 	});
 	$widget.newWidget({
 		type: 'samp',
@@ -783,7 +745,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetSamp', 
+		controller: 'WbWidgetSamp',
 	});
 	$widget.newWidget({
 		type: 'script',
@@ -793,7 +755,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<script></script>',
-		controller: 'WbWidgetScript', 
+		controller: 'WbWidgetScript',
 	});
 	$widget.newWidget({
 		type: 'section',
@@ -803,7 +765,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<section></section>',
-		controller: 'WbWidgetSection', 
+		controller: 'WbWidgetSection',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -814,7 +776,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<select></select>',
-		controller: 'WbWidgetSelect', 
+		controller: 'WbWidgetSelect',
 	});
 	$widget.newWidget({
 		type: 'small',
@@ -826,7 +788,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		model: {
 			html: 'Small text'
 		},
-		controller: 'WbWidgetSmall', 
+		controller: 'WbWidgetSmall',
 	});
 	$widget.newWidget({
 		type: 'source',
@@ -840,7 +802,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetSource', 
+		controller: 'WbWidgetSource',
 	});
 	$widget.newWidget({
 		type: 'span',
@@ -852,7 +814,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetSpan', 
+		controller: 'WbWidgetSpan',
 	});
 	$widget.newWidget({
 		type: 'strong',
@@ -864,7 +826,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetStrong', 
+		controller: 'WbWidgetStrong',
 	});
 	$widget.newWidget({
 		type: 'style',
@@ -874,7 +836,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<style></style>',
-		controller: 'WbWidgetStyle', 
+		controller: 'WbWidgetStyle',
 	});
 	$widget.newWidget({
 		type: 'summary',
@@ -884,7 +846,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<summary></summary>',
-		controller: 'WbWidgetSummary', 
+		controller: 'WbWidgetSummary',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -895,7 +857,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<svg></svg>',
-		controller: 'WbWidgetSvg', 
+		controller: 'WbWidgetSvg',
 	});
 	$widget.newWidget({
 		type: 'template',
@@ -905,7 +867,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<template></template>',
-		controller: 'WbWidgetTemplate', 
+		controller: 'WbWidgetTemplate',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -937,7 +899,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		groups: ['basic'],
 		template: '<track></track>',
 		help: 'http://dpq.co.ir/more-information-track',
-		controller: 'WbWidgetTrack', 
+		controller: 'WbWidgetTrack',
 	});
 	$widget.newWidget({
 		type: 'ul',
@@ -947,7 +909,7 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 		description: 'description',
 		groups: ['basic'],
 		template: '<ul></ul>',
-		controller: 'WbWidgetUl', 
+		controller: 'WbWidgetUl',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -962,7 +924,40 @@ angular.module('vwStudio').run(function ($widget, WbConverterWeburger, WbConvert
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetVideo', 
+		controller: 'WbWidgetVideo',
 		isLeaf: false
+	});
+
+
+
+
+	$widget.newWidget({
+		// widget description
+		type: 'ObjectCollection',
+		title: 'Object collection',
+		description: 'A widget to show a collection of items',
+		groups: ['seen'],
+		icon: 'pages',
+		model: '',
+		// functional properties
+		help: '',
+		helpId: 'wb-seen-widget-collection',
+		template: '<div></div>',
+		controller: 'AmWbSeenCollectionWidget'
+	});
+
+	$widget.newWidget({
+		type: 'import',
+		title: 'Import',
+		description: 'Import a part of other content',
+		groups: ['commons'],
+		icon: 'import_export',
+		setting: ['import'],
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		template: '<div></div>',
+		controller: 'WbWidgetSeenImport'
 	});
 });

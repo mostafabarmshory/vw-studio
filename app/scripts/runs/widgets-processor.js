@@ -1,4 +1,5 @@
 /* 
+
  * The MIT License (MIT)
  * 
  * Copyright (c) 2016 weburger
@@ -22,18 +23,11 @@
  * SOFTWARE.
  */
 
-/**
- * @ngdoc Widgets
- * @name WbSeenImportSettingCtrl
- * @description Collection setting controller
- * 
- */
-angular.module('vwStudio').controller('WbSeenImportSettingCtrl', function () {
-    'use strict';
-    /*
-     * Initial the setting editor
-     */
-    this.init = function () {
-        this.trackAttributes(['url']);
-    };
+/***********************************************************************
+ * Processors
+ ***********************************************************************/
+angular.module('vwStudio').run(function ($widget, WbProcessorMicrodata, WbProcessorEvent, WbProcessorAttribute) {
+	$widget.setProcessor('microdata', new WbProcessorMicrodata());
+	$widget.setProcessor('event', new WbProcessorEvent());
+	$widget.setProcessor('attribut', new WbProcessorAttribute());
 });
