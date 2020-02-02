@@ -957,4 +957,88 @@ angular.module('vwStudio').run(function($widget) {
 		template: '<div></div>',
 		controller: 'WbWidgetSeenImport'
 	});
+	
+	
+		
+	//-----------------------------------------------------------------
+	// Table
+	//-----------------------------------------------------------------
+	$widget.newWidget({
+		title: 'Table',
+		description: 'Table',
+		groups: ['table'],
+		icon: 'table',
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		type: 'table',
+		controller: 'WbWidgetGroup',
+		isLeaf: false
+	});
+	$widget.newWidget({
+		title: 'Table Header',
+		description: 'Table Header',
+		groups: ['table'],
+		icon: 'table',
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		type: 'thead',
+		controller: 'WbWidgetGroup',
+		isLeaf: false
+	});
+	$widget.newWidget({
+		title: 'Table Body',
+		description: 'Table Body',
+		groups: ['table'],
+		icon: 'table',
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		type: 'tbody',
+		controller: 'WbWidgetGroup',
+		isLeaf: false
+	});
+	$widget.newWidget({
+		title: 'Table Row',
+		description: 'Table Body Row',
+		groups: ['table'],
+		icon: 'table',
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		type: 'tr',
+		controller: 'WbWidgetGroup',
+		isLeaf: false
+	});
+	$widget.newWidget({
+		title: 'Table Header Cell',
+		description: 'Table Header Cell',
+		groups: ['table'],
+		icon: 'table',
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		type: 'th',
+		controller: 'WbWidgetGroup',
+		isLeaf: false
+	});
+	$widget.newWidget({
+		title: 'Table Body Cell',
+		description: 'Table Cell',
+		groups: ['table'],
+		icon: 'table',
+		// help
+		help: '',
+		helpId: '',
+		// functional (page)
+		type: 'td',
+		controller: 'WbWidgetGroup',
+		isLeaf: false
+	});
 });

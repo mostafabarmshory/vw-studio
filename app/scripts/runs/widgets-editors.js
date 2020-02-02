@@ -76,30 +76,35 @@ angular.module('vwStudio').run(function($widget, $resource) {
 	 * widgets such as h, p, and pre. This 
 	 * is an editor to edit the section.
 	 ***************************************/
-	$widget.setEditor('section', {
-		type: 'WidgetEditorTinymceSection',
-		options: {
-			inline: true,
-			menubar: false,
-			inline_boundaries: false,
-			plugins: ['link', 'lists', 'powerpaste', 'autolink', 'code', 'image', 'fonticon', 'fullpage'],
-			valid_elements: '*[*]',
-			// Toolbar
-			toolbar: ['close save code | image fonticon | undo redo | bold italic underline link | fontselect fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent | fullpage'],
-			fixed_toolbar_container: '#demo-widget-editor-toolbar',
-			toolbar_drawer: 'floating',
-			// multimedia and file
-			file_picker_callback: filePickerCallback,
-			file_picker_types: 'file image media',
-			// Image
-			image_caption: true,
-			image_advtab: true,
-			image_description: true,
-			image_dimensions: true,
-			image_uploadtab: true,
-			//			image_list: imageList,
-			//			images_upload_handler: imagesUploadHandler
-		}
+	var sectionidgetsTypes = [
+		'section', 'td', 'th'
+	];
+	_.forEach(sectionidgetsTypes, function(type) {
+		$widget.setEditor(type, {
+			type: 'WidgetEditorTinymceSection',
+			options: {
+				inline: true,
+				menubar: false,
+				inline_boundaries: false,
+				plugins: ['link', 'lists', 'powerpaste', 'autolink', 'code', 'image', 'fonticon', 'fullpage'],
+				valid_elements: '*[*]',
+				// Toolbar
+				toolbar: ['close save code | image fonticon | undo redo | bold italic underline link | fontselect fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent | fullpage'],
+				fixed_toolbar_container: '#demo-widget-editor-toolbar',
+				toolbar_drawer: 'floating',
+				// multimedia and file
+				file_picker_callback: filePickerCallback,
+				file_picker_types: 'file image media',
+				// Image
+				image_caption: true,
+				image_advtab: true,
+				image_description: true,
+				image_dimensions: true,
+				image_uploadtab: true,
+				//			image_list: imageList,
+				//			images_upload_handler: imagesUploadHandler
+			}
+		});
 	});
 
 	/***************************************
