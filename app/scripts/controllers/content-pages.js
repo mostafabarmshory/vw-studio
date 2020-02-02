@@ -49,6 +49,25 @@ angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $c
 			});
 	};
 
+	function findMeta(page, key) {
+		if (_.isUndefined(page.metas)) {
+			return;
+		}
+		for (var i = 0; i < page.metas.length; i++) {
+			if (page.metas[i].key === key) {
+				return page.metas[i];
+			}
+		}
+	}
+	
+	this.getPageCover = function(page) {
+		var meta = findMeta(page, 'link.cover');
+		if (meta) {
+			return meta.value;
+		}
+		return "not-found";
+	}
+
 	this.title = 'Pages';
 	this.init({
 		eventType: '/cms/contents'

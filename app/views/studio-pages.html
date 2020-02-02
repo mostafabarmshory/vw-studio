@@ -1,0 +1,47 @@
+<div
+	ng-controller="AmhContentPagesCtrl as ctrl"
+	ng-init="ctrl.addFilter('media_type', 'page'); ctrl.setDataQuery('{id,title,description,metas{key,value}}')"
+	mb-preloading="ctrl.state === 'busy'"
+	layout="column"
+	flex>
+	<mb-pagination-bar
+		style="border-top-right-radius: 10px; border-bottom-left-radius: 10px"
+		mb-model="ctrl.queryParameter"
+		mb-properties="ctrl.properties"
+		mb-reload="ctrl.reload()"
+		mb-more-actions="ctrl.getActions()">
+	</mb-pagination-bar>
+
+	<md-content
+		mb-infinate-scroll="ctrl.loadNextPage()"
+		layout="row"
+		layout-wrap
+		layout-align="start start"
+		flex>
+		<md-card
+			ng-repeat="page in ctrl.items track by page.id"
+			style="width: 256px;">
+			<img 
+				ng-src-error="https://www.gravatar.com/avatar/{{page.id|wbmd5}}?d=identicon&size=256"
+				ng-src="{{::(ctrl.getPageCover(page))}}" 
+				class="md-card-image" 
+				width="256px"
+				height="128px"
+				alt="{{::page.title}}">
+			<md-card-content>
+				<h3 md-truncate>{{::page.title}}</h3>
+				<p md-truncate>{{::page.description}}</p>
+			</md-card-content>
+			<md-card-actions 
+				layout="row" 
+				layout-align="end center">
+				<md-button 
+					ng-href="editor/{{::page.id}}"
+					class="md-icon-button" 
+					aria-label="Edit">
+					<wb-icon>edit</wb-icon>
+				</md-button>
+			</md-card-actions>
+		</md-card>
+	</md-content>
+</div>

@@ -22,29 +22,30 @@
 
 
 angular.module('vwStudio').config(function($routeProvider) {
-	var editorDefaultSidenavs = ['amh.cms.pages.sidenav',
-		'amh.workbench.weburger.widgets',
-		'amh.workbench.weburger.settings',
-		'amh.workbench.weburger.templates',
-		'amh.workbench.weburger.navigator',
-		'amh.workbench.content',
-		// 'amh.workbench.contentMetadata',
-		// 'amh.workbench.termTaxonomies'
-	];
 
 	$routeProvider.otherwise({
-		redirectTo: '/'
-	}).when('/', {
-			templateUrl: 'views/amh-content-editor.html',
-			helpId: 'amh-content',
-			groups: ['workbench'],
-			sidenavs: editorDefaultSidenavs,
-			protect: true,
-		}).when('/content/:name', {
-			templateUrl: 'views/amh-content-editor.html',
-			helpId: 'amh-content',
-			groups: ['workbench'],
-			sidenavs: editorDefaultSidenavs,
-			protect: true,
-		});
+		redirectTo: '/pages'
+	}).when('/pages', {
+		templateUrl: 'views/studio-pages.html',
+		helpId: 'amh-content',
+		groups: ['workbench'],
+		sidenavs: [
+			'amh.cms.pages.sidenav',
+			'amh.workbench.weburger.settings',
+		],
+		protect: true,
+	}).when('/editor/:name', {
+		templateUrl: 'views/studio-editor.html',
+		helpId: 'amh-content',
+		groups: ['workbench'],
+		sidenavs: [
+			'amh.cms.pages.sidenav',
+			'amh.workbench.weburger.widgets',
+			'amh.workbench.weburger.settings',
+			'amh.workbench.weburger.templates',
+			'amh.workbench.weburger.navigator',
+			'amh.workbench.content',
+		],
+		protect: true,
+	});
 });
