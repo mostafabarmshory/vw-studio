@@ -65,8 +65,8 @@ angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $c
 		if (meta) {
 			return meta.value;
 		}
-		return "not-found";
-	}
+		return 'no-image';
+	};
 
 	this.title = 'Pages';
 	this.init({
