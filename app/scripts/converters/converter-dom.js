@@ -75,9 +75,10 @@ angular.module('vwStudio').factory('WbConverterDom', function (WbConverterAbstra
 		}
 		if($widget.isWidgetLeaf(name)){
 			// html
-			model.html = element.innerHTML;
 			if(model.type === 'pre'){
 				model.text = element.innerText;
+			} else {
+				model.html = element.innerHTML;
 			}
 		} else {
 			model.children = [];
@@ -87,10 +88,10 @@ angular.module('vwStudio').factory('WbConverterDom', function (WbConverterAbstra
 					model.children.push(childWidget);
 				}
 			});
-			if(model.type === 'li' && model.children.length === 0){
+			if(element.innerHTML && element.children.length === 0){
 				model.children.push({
 					type: 'p',
-					html: element.innerText
+					html: element.innerHTML
 				});
 			}
 		}
