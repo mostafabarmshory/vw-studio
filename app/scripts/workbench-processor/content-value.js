@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
@@ -516,13 +517,14 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		templatepath = new URL(templatepath, window.location.href);
 		switch (templatepath.protocol) {
 			case 'http:':
+			case 'https:':
 				break;
 			case 'mb:':
 				var key = templatepath.pathname.substring(2).replace(/\//gi, '.');
 				templatepath = new URL($app.getProperty(key));
 				break;
 			default:
-				$log.error('unsupported template protocule', templatepath);
+				$log.error('unsupported template protocole', templatepath);
 				return;
 		}
 
