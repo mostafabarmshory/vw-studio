@@ -59,7 +59,9 @@ angular.module('vwStudio').factory('WbProcessorSelect', function(
 					ctrl.setSelectedWidgets(widget);
 				}
 
-				$rootScope.$digest();
+				try {
+					$rootScope.$digest();
+				} catch (e) { };
 			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',
@@ -86,7 +88,9 @@ angular.module('vwStudio').factory('WbProcessorSelect', function(
 				$event.preventDefault();
 				$event.stopPropagation();
 
-				$rootScope.$digest();
+				try {
+					$rootScope.$digest();
+				} catch (e) { };
 			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',
@@ -121,7 +125,7 @@ angular.module('vwStudio').factory('WbProcessorSelect', function(
 			widget.on('click', this.clickListener);
 			widget.on('dblclick', this.dblclickListener);
 			widget.on('select', this.selectionListener);
-		} else {
+		} else if(widget.state === 'ready'){
 			widget.off('click', this.clickListener);
 			widget.off('dblclick', this.dblclickListener);
 			widget.off('select', this.selectionListener);

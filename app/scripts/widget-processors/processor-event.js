@@ -27,7 +27,7 @@
  * @description Widget processor
  * 
  */
-angular.module('vwStudio').factory('StudioProcessorEvent', function (WbProcessorAbstract, $widget, $injector) {
+angular.module('vwStudio').factory('StudioProcessorEvent', function(WbProcessorAbstract, $widget, $injector) {
 
     /**
      * Loads events for the widget
@@ -36,7 +36,7 @@ angular.module('vwStudio').factory('StudioProcessorEvent', function (WbProcessor
      *            {object} part of the widget data model
      * @memberof WbAbstractWidget
      */
-    function evalWidgetEvent(widget, type, event) {
+	function evalWidgetEvent(widget, type, event) {
 		var eventFunction;
 		if (!widget.eventFunctions.hasOwnProperty(type)) {
 			try {
@@ -76,7 +76,7 @@ angular.module('vwStudio').factory('StudioProcessorEvent', function (WbProcessor
 		}
 	}
 
-    function loadWidgetEventsHandlers(widget) {
+	function loadWidgetEventsHandlers(widget) {
 		widget.__eventListeners = {
 			click: function($event) {
 				return evalWidgetEvent(widget, 'click', $event);
@@ -158,7 +158,7 @@ angular.module('vwStudio').factory('StudioProcessorEvent', function (WbProcessor
 		});
 	}
 
-    function removeWidgetEventsHandlers(widget) {
+	function removeWidgetEventsHandlers(widget) {
 		if (angular.isDefined(widget.__eventListeners)) {
 			angular.forEach(widget.__eventListeners, function(listener, key) {
 				widget.off(key, listener);
@@ -173,29 +173,29 @@ angular.module('vwStudio').factory('StudioProcessorEvent', function (WbProcessor
 		});
 	}
 
-    function Processor() {
+	function Processor() {
 		WbProcessorAbstract.apply(this);
 	}
 
-    // extend functionality
-    Processor.prototype = new WbProcessorAbstract();
+	// extend functionality
+	Processor.prototype = new WbProcessorAbstract();
 
-Processor.prototype.process = function(widget, event) {
-	if (event.type !== 'stateChanged') {
-		return;
-	}
-	if (widget.state === 'ready') {
-		loadWidgetEventsHandlers(widget);
-		evalWidgetEvent(widget, 'stateChanged', event);
-		// TODO: maso, 2019: remove in next major version
-		// support legecy
-		var newEvent = _.clone(event);
-		newEvent.type = 'init';
-		evalWidgetEvent(widget, newEvent.type, newEvent);
-	} else {
-		removeWidgetEventsHandlers(widget);
-	}
-};
+	Processor.prototype.process = function(widget, event) {
+		if (event.type !== 'stateChanged') {
+			return;
+		}
+		if (widget.state === 'ready') {
+			loadWidgetEventsHandlers(widget);
+			evalWidgetEvent(widget, 'stateChanged', event);
+			// TODO: maso, 2019: remove in next major version
+			// support legecy
+			var newEvent = _.clone(event);
+			newEvent.type = 'init';
+			evalWidgetEvent(widget, newEvent.type, newEvent);
+		} else {
+			removeWidgetEventsHandlers(widget);
+		}
+	};
 
-return Processor;
+	return Processor;
 });

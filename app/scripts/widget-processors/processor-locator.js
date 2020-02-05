@@ -27,10 +27,13 @@
  * @description Widget processor
  * 
  */
-angular.module('vwStudio').factory('WbProcessorLocator', function($wbUtil, WbProcessorAbstract, WidgetLocatorManager) {
+angular.module('vwStudio').factory('WbProcessorLocator', function(WbProcessorAbstract, WidgetLocatorManager) {
 	function Processor() {
 		WbProcessorAbstract.apply(this);
-		this.widgetLocator = new WidgetLocatorManager();
+		this.widgetLocator = new WidgetLocatorManager({
+//			boundEnable: true,
+//			selectionEnable: true,
+		});
 		this.autoVisible = true;
 	}
 

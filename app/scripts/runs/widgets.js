@@ -932,7 +932,7 @@ angular.module('vwStudio').run(function($widget) {
 		help: '',
 		helpId: 'wb-seen-widget-collection',
 		template: '<div></div>',
-		controller: 'StodioWidget'
+		controller: 'AmWbSeenCollectionWidget'
 	});
 
 	$widget.newWidget({
@@ -947,7 +947,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		template: '<div></div>',
-		controller: 'StodioWidget'
+		controller: 'StudioWidgetSeenImport'
 	});
 	
 	
