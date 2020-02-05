@@ -42,9 +42,6 @@ app.run(function($app, $window, $toolbar, $sidenav) {
 	$window.CRISP_WEBSITE_ID = '55019c32-37d1-46ab-b97e-1b524309deb1';
 	$window.loadLibrary('https://client.crisp.chat/l.js');
 });
-//.config(function($routeProvider) {
-//    $routeProvider.otherwise('/dashboard');
-//})
 app.controller('MainCtrl', function() { });
 
 

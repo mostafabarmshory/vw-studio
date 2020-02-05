@@ -1,9 +1,7 @@
 <md-toolbar
 	class="wb-layer-tool-top amh-mini-toolbar"
-	md-theme="{{app.setting.theme || app.config.theme || 'default'}}"
-	md-theme-watch
-	ng-show="_visible()"
-	layout="row">
+	layout="row"
+	ng-controller="AmhOwnerToolbarCtrl as ctrl">
 	<!-- location menu -->
 	<mb-mini-action-anchor
 		mb-action-group="mb.toolbar.menu"

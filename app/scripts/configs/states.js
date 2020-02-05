@@ -30,6 +30,7 @@ angular.module('vwStudio').config(function($routeProvider) {
 		helpId: 'amh-content',
 		groups: ['workbench'],
 		sidenavs: [
+			'amh.workbench.weburger.widgets'
 		],
 		protect: true,
 	}).when('/editor/:name', {

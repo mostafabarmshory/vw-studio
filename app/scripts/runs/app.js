@@ -80,8 +80,6 @@ angular.module('vwStudio').run(function(
 		id: 'amh.owner-toolbar',
 		title: 'Owner Toolbar',
 		description: 'Toolbar for owners',
-		controller: 'AmhOwnerToolbarCtrl',
-		controllerAs: 'ctrl',
 		templateUrl: 'views/toolbars/amh-owner-toolbar.html',
 		visible: function() {
 			return !$rootScope.__account.anonymous;
