@@ -1,5 +1,8 @@
-/*
- * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
+/* 
+
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2016 weburger
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,31 +23,11 @@
  * SOFTWARE.
  */
 
-
-angular.module('vwStudio').config(function($routeProvider) {
-
-	$routeProvider.otherwise({
-		redirectTo: '/pages'
-	}).when('/pages', {
-		templateUrl: 'views/studio-pages.html',
-		helpId: 'amh-content',
-		groups: ['workbench'],
-		sidenavs: [
-			'amh.workbench.weburger.widgets'
-		],
-		protect: true,
-	}).when('/editor/:name', {
-		templateUrl: 'views/studio-editor.html',
-		helpId: 'amh-content',
-		groups: ['workbench'],
-		sidenavs: [
-			'amh.cms.pages.sidenav',
-			'amh.workbench.weburger.widgets',
-			'amh.workbench.weburger.settings',
-			'amh.workbench.weburger.templates',
-			'amh.workbench.weburger.navigator',
-			'amh.workbench.content',
-		],
-		protect: true,
-	});
+/***********************************************************************
+ * Convertors
+ ***********************************************************************/
+angular.module('vwStudio').run(function($widget, WbConverterWeburger, WbConverterDom, WbConverterText) {
+	$widget.addConverter(new WbConverterWeburger());
+	$widget.addConverter(new WbConverterDom());
+	$widget.addConverter(new WbConverterText());
 });

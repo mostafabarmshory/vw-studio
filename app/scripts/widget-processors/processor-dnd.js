@@ -471,7 +471,7 @@ angular.module('vwStudio').factory('WbProcessorDnd', function(WbProcessorAbstrac
                  */
 				element.on('drop', drop);
 			}
-		} else {
+		} else if (widget.state === 'ready') {
 			element.removeAttr('draggable');
 			element.off('dragstart', dragstart);
 			element.off('dragend', dragend);

@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
@@ -476,32 +477,29 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		$q.all([
 			ctrl.loadBeforModules(),
 			ctrl.loadTemplate()
-		])
-			.catch(function(ex) {
-				// TODO: something wrong
-				$log.error({
-					message: 'fail to load preprocess (template or moduel)',
-					srouce: ex
-				});
-			})
-			// load value
-			.then(function() {
-				ctrl.loadLazyModules();
-				var value = ctrl.origenalValue;
-				if ((workbench.getState() !== 'edit') &&
-					(ctrl.template && ctrl.templateAnchor)) {
-					var newVal = _.cloneDeep(ctrl.template);
-					$wbUtil.replaceWidgetModelById(
-						newVal,
-						ctrl.templateAnchor,
-						value);
-					value = newVal;
-				}
-				return workbench.setContentValue(value);
-			})
-			.then(function() {
-				return ctrl.loadAfterModules();
+		]).catch(function(ex) {
+			// TODO: something wrong
+			$log.error({
+				message: 'fail to load preprocess (template or moduel)',
+				srouce: ex
 			});
+		}).then(function() {
+			ctrl.loadLazyModules();
+			var value = ctrl.origenalValue;
+			workbench.setOriginalContentValue(ctrl.origenalValue);
+			if ((workbench.getState() !== 'edit') &&
+				(ctrl.template && ctrl.templateAnchor)) {
+				var newVal = _.cloneDeep(ctrl.template);
+				$wbUtil.replaceWidgetModelById(
+					newVal,
+					ctrl.templateAnchor,
+					value);
+				value = newVal;
+			}
+			return workbench.setContentValue(value);
+		}).then(function() {
+			return ctrl.loadAfterModules();
+		});
 	};
 
 	Processor.prototype.loadTemplate = function() {
@@ -519,13 +517,14 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		templatepath = new URL(templatepath, window.location.href);
 		switch (templatepath.protocol) {
 			case 'http:':
+			case 'https:':
 				break;
 			case 'mb:':
 				var key = templatepath.pathname.substring(2).replace(/\//gi, '.');
 				templatepath = new URL($app.getProperty(key));
 				break;
 			default:
-				$log.error('unsupported template protocule', templatepath);
+				$log.error('unsupported template protocole', templatepath);
 				return;
 		}
 

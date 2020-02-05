@@ -1,4 +1,5 @@
 /* 
+
  * The MIT License (MIT)
  * 
  * Copyright (c) 2016 weburger
@@ -21,11 +22,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-'use strict';
 
-angular.module('vwStudio')
-/**
- * Icon configuration.
- */
-.config(function() {
+/***********************************************************************
+ * Processors
+ ***********************************************************************/
+angular.module('vwStudio').run(function ($widget, WbProcessorMicrodata, WbProcessorEvent, WbProcessorAttribute) {
+	$widget.setProcessor('microdata', new WbProcessorMicrodata());
+	$widget.setProcessor('event', new WbProcessorEvent());
+	$widget.setProcessor('attribut', new WbProcessorAttribute());
 });

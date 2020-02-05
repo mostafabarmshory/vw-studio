@@ -25,7 +25,7 @@
 /**
  * Load widgets
  */
-angular.module('vwStudio').run(function ($settings) {
+angular.module('vwStudio').run(function($settings) {
 	/************************************************************************
 	 * Model and Widgets
 	 ************************************************************************/
@@ -36,8 +36,8 @@ angular.module('vwStudio').run(function ($settings) {
 		templateUrl: 'views/settings/wb-widget-general.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingGeneralCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'a',
 		label: 'Link',
 		description: 'Manage link in the current widget.',
@@ -46,8 +46,8 @@ angular.module('vwStudio').run(function ($settings) {
 		controllerAs: 'ctrl',
 		controller: 'WbSettingACtrl',
 		targets: ['^a$']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'img',
 		label: 'Image',
 		description: 'Manage image widget settings.',
@@ -56,8 +56,8 @@ angular.module('vwStudio').run(function ($settings) {
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetImgCtrl',
 		targets: ['img']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'input',
 		label: 'Input',
 		description: 'Manage input widget settings.',
@@ -66,8 +66,8 @@ angular.module('vwStudio').run(function ($settings) {
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetInputCtrl',
 		targets: ['input']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'microdata',
 		label: 'Microdata',
 		description: 'Manage widget microdata.',
@@ -75,16 +75,16 @@ angular.module('vwStudio').run(function ($settings) {
 		templateUrl: 'views/settings/wb-widget-microdata.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetMicrodataCtrl'
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'meta',
 		label: 'Meta',
 		icon: 'label_important',
 		templateUrl: 'views/settings/wb-widget-meta.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetMetaCtrl'
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'iframe',
 		label: 'Frame',
 		description: 'Manges IFrame attributes',
@@ -93,8 +93,8 @@ angular.module('vwStudio').run(function ($settings) {
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetIFrameCtrl',
 		targets: ['iframe']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'form',
 		label: 'Form',
 		description: 'Manges form attributes',
@@ -103,38 +103,60 @@ angular.module('vwStudio').run(function ($settings) {
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetFormCtrl',
 		targets: ['form']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'source',
 		label: 'Source',
 		templateUrl: 'views/settings/wb-widget-source.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetSourceCtrl',
 		targets: ['source']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'picture',
 		label: 'Picture',
 		templateUrl: 'views/settings/wb-widget-picture.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetPictureCtrl',
 		targets: ['picture']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'video',
 		label: 'Video',
 		templateUrl: 'views/settings/wb-widget-video.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetVideoCtrl',
 		targets: ['video']
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'audio',
 		label: 'Audio',
 		templateUrl: 'views/settings/wb-widget-audio.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingWidgetAudioCtrl',
 		targets: ['audio']
+	});
+
+	$settings.addPage({
+		type: 'import',
+		label: 'Import',
+		description: 'Set down collection properties',
+		icon: 'settings',
+		templateUrl: 'views/settings/wb-widget-import.html',
+		controllerAs: 'ctrl',
+		controller: 'WbSeenImportSettingCtrl',
+		targets: ['import']
+	});
+
+	$settings.addPage({
+		type: 'ObjectCollection',
+		label: 'Collection',
+		description: 'Set down collection properties',
+		icon: 'settings',
+		templateUrl: 'views/settings/wb-widget-collection.html',
+		controllerAs: 'ctrl',
+		controller: 'WbSeenCollectionSettingCtrl',
+		targets: ['ObjectCollection']
 	});
 
 
@@ -148,56 +170,56 @@ angular.module('vwStudio').run(function ($settings) {
 		templateUrl: 'views/settings/wb-style-animation.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleAnimationCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.background',
 		label: 'Background',
 		icon: 'opacity',
 		templateUrl: 'views/settings/wb-style-background.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleBackgroundCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.border',
 		label: 'Border',
 		icon: 'opacity',
 		templateUrl: 'views/settings/wb-style-border.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleBorderCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.general',
 		label: 'General',
 		icon: 'opacity',
 		templateUrl: 'views/settings/wb-style-general.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleGeneralCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.layout',
 		label: 'Layout',
 		icon: 'opacity',
 		templateUrl: 'views/settings/wb-style-layout.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleLayoutCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.media',
 		label: 'Medai',
 		icon: 'opacity',
 		templateUrl: 'views/settings/wb-style-media.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleMediaCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.size',
 		label: 'Size',
 		icon: 'opacity',
 		templateUrl: 'views/settings/wb-style-size.html',
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleSizeCtrl',
-	})
-	.addPage({
+	});
+	$settings.addPage({
 		type: 'style.text',
 		label: 'Text',
 		icon: 'opacity',

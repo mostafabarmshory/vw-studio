@@ -1,7 +1,5 @@
-/* 
- * The MIT License (MIT)
- * 
- * Copyright (c) 2016 weburger
+/*
+ * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,18 +20,14 @@
  * SOFTWARE.
  */
 
-/**
- * @ngdoc Widgets
- * @name WbSeenImportSettingCtrl
- * @description Collection setting controller
- * 
+/*
+ * load processor of workbench and editor
  */
-angular.module('vwStudio').controller('WbSeenImportSettingCtrl', function () {
-    'use strict';
-    /*
-     * Initial the setting editor
-     */
-    this.init = function () {
-        this.trackAttributes(['url']);
-    };
+angular.module('vwStudio').run(function($widget) {
+	// editor
+
+	$widget.isWidgetLeaf = function(type) {
+		var wd = this.getWidget(type);
+		return wd && wd.isLeaf;
+	};
 });

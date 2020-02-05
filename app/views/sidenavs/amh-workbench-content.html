@@ -1,81 +1,65 @@
-<md-toolbar 
-	class="content-sidenavs-toolbar wb-layer-tool-bottom"
-	layout="row"
-    layout-align="space-around center"
-    ng-if="workbenchEditorLoaded"> 
+<md-toolbar class="content-sidenavs-toolbar wb-layer-tool-bottom" layout="row" layout-align="space-around center">
 	<span translate>Content settings</span>
 </md-toolbar>
-<md-content
-	ng-if="workbenchEditorLoaded">
-    <fieldset
-        layout="column">
-        <legend translate>Information</legend>
-        <md-input-container class="md-block">
-            <label translate>ID</label>
-            <input ng-model="ctrl.content.id" disabled>
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate>Downloads</label>
-            <input ng-model="ctrl.content.downloads" disabled>
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate>Creation date</label>
-            <input ng-model="ctrl.content.creation_dtime" disabled>
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate>Modification date</label>
-            <input ng-model="ctrl.content.modif_dtime" disabled>
-        </md-input-container>
-    </fieldset>
-    <fieldset
-        layout="column">
-        <legend translate="">General</legend>
-        <md-input-container class="md-block">
-            <label translate="">Name</label>
-            <input 
-                ng-model="ctrl.content.name"
-                ng-change="ctrl.contentDirty = true">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate="">File name</label>
-            <input 
-                ng-model="ctrl.content.file_name"
-                ng-change="ctrl.contentDirty = true">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate="">Media type</label>
-            <input 
-                ng-model="ctrl.content.media_type"
-                ng-change="ctrl.contentDirty = true">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate="">Mime type</label>
-            <input 
-                ng-model="ctrl.content.mime_type"
-                ng-change="ctrl.contentDirty = true">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate="">Title</label>
-            <input 
-                ng-model="ctrl.content.title"
-                ng-change="ctrl.contentDirty = true">
-        </md-input-container>
-        <md-input-container class="md-block">
-            <label translate="">Description</label>
-            <textarea 
-                ng-model="ctrl.content.description"
-                ng-change="ctrl.contentDirty = true"></textarea>
-        </md-input-container>
-	    <div 
-	        layout="column"
-	        layout-align="center center">
-	        <md-button
-	            style="width: 90%"
-	            class="md-raised md-primary"
-	            ng-disabled="!ctrl.contentDirty"
-	            ng-click="ctrl.saveChanges()">
-	            <span translate="">Save changes</span>
-	        </md-button>
-	    </div>
-    </fieldset>
+<md-content>
+	<fieldset layout="column">
+		<legend translate>Information</legend>
+		<md-input-container class="md-block">
+			<label translate>ID</label>
+			<input ng-model="ctrl.content.id" disabled>
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate>Downloads</label>
+			<input ng-model="ctrl.content.downloads" disabled>
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate>Creation date</label>
+			<input ng-model="ctrl.content.creation_dtime" disabled>
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate>Modification date</label>
+			<input ng-model="ctrl.content.modif_dtime" disabled>
+		</md-input-container>
+	</fieldset>
+	<fieldset layout="column">
+		<legend translate="">General</legend>
+		<md-input-container class="md-block">
+			<label translate="">Name</label>
+			<input ng-model="ctrl.content.name" ng-change="ctrl.contentDirty = true">
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate="">File name</label>
+			<input ng-model="ctrl.content.file_name" ng-change="ctrl.contentDirty = true">
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate="">Media type</label>
+			<input ng-model="ctrl.content.media_type" ng-change="ctrl.contentDirty = true">
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate="">Mime type</label>
+			<input ng-model="ctrl.content.mime_type" ng-change="ctrl.contentDirty = true">
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate="">Title</label>
+			<input ng-model="ctrl.content.title" ng-change="ctrl.contentDirty = true">
+		</md-input-container>
+		<md-input-container class="md-block">
+			<label translate="">Description</label>
+			<textarea ng-model="ctrl.content.description" ng-change="ctrl.contentDirty = true"></textarea>
+		</md-input-container>
+		<div layout="column" layout-align="center center">
+			<md-button style="width: 90%" class="md-raised md-primary" ng-disabled="!ctrl.contentDirty"
+				ng-click="ctrl.saveChanges()">
+				<span translate="">Save changes</span>
+			</md-button>
+		</div>
+	</fieldset>
+	<fieldset layout="column">
+		<legend translate="">Manual Template</legend>
+		<md-input-container class="md-block">
+			<label translate="">URL</label>
+			<input ng-model="templateUrl" ng-change="ctrl.setTemplateUrl(templateUrl)">
+		</md-input-container>
+	</fieldset>
+	
 </md-content>

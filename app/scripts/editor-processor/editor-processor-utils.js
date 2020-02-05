@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
@@ -47,7 +48,9 @@ angular.module('vwStudio').factory('AmhEditorProcessorUtils', function(
 			// XXX:
 			var selectedWidgets = ctrl.selectProcessor.getSelectedWidgets();
 			ctrl.editor.setSelectedWidgets(selectedWidgets || []);
-			ctrl.editor.getScope().$digest();
+			try{
+				ctrl.editor.getScope().$digest();
+			} catch(ex){};
 		});
 	}
 	Processor.prototype = new AmhEditorProcessor();
@@ -143,7 +146,7 @@ angular.module('vwStudio').factory('AmhEditorProcessorUtils', function(
 	};
 
 	Processor.prototype.connectUtilities = function() {
-		$widget.setProcessor('locator', this.locatorProcessor);
+//		$widget.setProcessor('locator', this.locatorProcessor);
 		$widget.setProcessor('select', this.selectProcessor);
 		$widget.setProcessor('dnd', this.dndProcessor);
 

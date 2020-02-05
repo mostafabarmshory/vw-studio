@@ -351,6 +351,14 @@ angular.module('vwStudio').controller('AmhContentWorkbenchCtrl', function(
 		return this.getContentValue();
 	};
 
+	this.setOriginalContentValue = function(originalContentValue) {
+		this.originalContentValue = originalContentValue;
+	};
+
+	this.getOriginalContentValue = function() {
+		return this.originalContentValue;
+	};
+
 	/***************************************************************************
 	 * Content Metadata *
 	 **************************************************************************/

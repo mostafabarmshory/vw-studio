@@ -23,55 +23,62 @@
 
 /**
  * @ngdoc Processor
- * @name WbProcessorLocator
+ * @name WbProcessorMicrodata
  * @description Widget processor
  * 
+ * @name microdata
+ * @description Handle widget microdata specification
+ * 
+ * Widget microdata is an specification which makes the widget readable by
+ * search engines. This processor just run in ready mode. 
+ * 
+ * @see document/widgets-microdata.md
  */
-angular.module('vwStudio').factory('WbProcessorLocator', function(WbProcessorAbstract, WidgetLocatorManager) {
-	function Processor() {
-		WbProcessorAbstract.apply(this);
-		this.widgetLocator = new WidgetLocatorManager({
-//			boundEnable: true,
-//			selectionEnable: true,
+angular.module('vwStudio').factory('StudioProcessorMicrodata', function(WbProcessorAbstract) {
+
+	var microdataAttributes = [
+		'itemscope', // groups list of item properties
+		'itemtype', // can use if it is item scope
+		'itemprop',
+		'itemref',
+		'itemid',
+		// extera properties
+		'content',
+		'value',
+	];
+
+	function loadWidgetAttributes(widget, attributes) {
+		var $element = widget.getElement();
+		angular.forEach(attributes, function(key) {
+			var value = widget.getProperty(key) || widget.getModelProperty(key);
+			if (value) {
+				$element.attr(key, value);
+			} else {
+				$element.removeAttr(key);
+			}
 		});
-		this.autoVisible = true;
 	}
 
+
+	function Processor() {
+		WbProcessorAbstract.apply(this);
+	}
+
+	// extend functionality
 	Processor.prototype = new WbProcessorAbstract();
 
 	Processor.prototype.process = function(widget, event) {
-		if (event.type !== 'stateChanged' || !widget.isRoot()) {
+		// 1- Handle model load
+		if (event.type === 'modelChanged' || event.type === 'stateChanged') {
+			loadWidgetAttributes(widget, microdataAttributes);
 			return;
 		}
-        /*
-         * NOTE: we just trak a single root 
-         */
-		this.widgetLocator.setRootWidget(widget);
-		if (this.autoVisible) {
-			this.widgetLocator.setEnable(widget.state === 'edit');
+
+		// 2- Handle model update
+		if (event.type === 'modelUpdated') {
+			loadWidgetAttributes(widget, _.intersection(microdataAttributes, event.keys || [event.key]));
+			return;
 		}
 	};
-
-    /**
-     * Enable the processor
-     */
-	Processor.prototype.setEnable = function(enable) {
-		this.enable = enable;
-		var widgetLocator = this.widgetLocator;
-		widgetLocator.setEnable(enable);
-	};
-
-    /**
-     * Follow widget if is root
-     */
-	Processor.prototype.setTrackRoot = function(trackRoot) {
-		this.trackRoot = trackRoot;
-	};
-
-	Processor.prototype.setAutoVisible = function(autoVisible) {
-		this.autoVisible = autoVisible;
-	};
-
-
 	return Processor;
 });
