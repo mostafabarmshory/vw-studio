@@ -27,7 +27,7 @@
  * @description Widget processor
  * 
  */
-angular.module('vwStudio).factory('StudioProcessorEvent', function (WbProcessorAbstract, $widget, $injector) {
+angular.module('vwStudio').factory('StudioProcessorEvent', function (WbProcessorAbstract, $widget, $injector) {
 
     /**
      * Loads events for the widget

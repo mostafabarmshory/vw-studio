@@ -33,47 +33,47 @@ angular.module('vwStudio').run(function(
 	$actions.newAction({
 		id: 'amh.cms.pages',
 		type: 'action',
-		priority : 11,
-		icon : 'list',
+		priority: 11,
+		icon: 'list',
 		title: 'Pages',
 		description: 'Pages',
-		action: function(){
+		action: function() {
 			$mdSidenav('amh.cms.pages.sidenav').toggle();
 		},
-		groups:['amh.owner-toolbar.public']
+		groups: ['amh.owner-toolbar.public']
 	});
 
 	// TODO: Hadi 1396-12-23: should get login action and add it to desired group
-	$actions.newAction({ 
+	$actions.newAction({
 		id: 'amh.login',
 		type: 'link',
-		priority : 10,
-		icon : 'login',
-		title : 'Login',
+		priority: 10,
+		icon: 'login',
+		title: 'Login',
 		url: 'users/login',
-		groups:['amh.sidenav']
+		groups: ['amh.sidenav']
 	});
 	// TODO: Hadi 1396-12-23: should get logout action and add it to desired group
-	$actions.newAction({ 
+	$actions.newAction({
 		id: 'amh.logout',
 		type: 'action',
-		priority : 10,
-		icon : 'exit',
-		title : 'Logout',
-		action : function(){
+		priority: 10,
+		icon: 'exit',
+		title: 'Logout',
+		action: function() {
 			$app.logout();
 		},
-		groups:['amh.sidenav']
+		groups: ['amh.sidenav']
 	});
 	// TODO: Hadi 1396-12-23: should get home action and add it to desired group
-	$actions.newAction({ 
+	$actions.newAction({
 		id: 'amh.home',
 		type: 'link',
-		priority : 100,
-		icon : 'home',
-		title : 'Home',
+		priority: 100,
+		icon: 'home',
+		title: 'Home',
 		url: '/',
-		groups:['amh.sidenav', 'mb.toolbar.menu']
+		groups: ['amh.sidenav', 'mb.toolbar.menu']
 	});
 
 	$toolbar.newToolbar({
@@ -83,7 +83,7 @@ angular.module('vwStudio').run(function(
 		controller: 'AmhOwnerToolbarCtrl',
 		controllerAs: 'ctrl',
 		templateUrl: 'views/toolbars/amh-owner-toolbar.html',
-		visible: function(){
+		visible: function() {
 			return !$rootScope.__account.anonymous;
 		},
 		raw: true
@@ -102,129 +102,129 @@ angular.module('vwStudio').run(function(
 	 * and editors.
 	 */
 	$sidenav.newSidenav({
-		id : 'amh.workbench.weburger.widgets',
-		title : 'Widgets',
-		description : 'Basic widgets of Weburger',
-		template : '<wb-widgets-explorer ng-model="explorerWidgets.items"></wb-widgets-explorer>',
-		locked : true,
-		visible : function () {
+		id: 'amh.workbench.weburger.widgets',
+		title: 'Widgets',
+		description: 'Basic widgets of Weburger',
+		template: '<wb-widgets-explorer ng-model="explorerWidgets.items"></wb-widgets-explorer>',
+		locked: true,
+		visible: function() {
 			return $rootScope.showWidgetsPanel;
 		},
-		position : 'start',
+		position: 'start',
 		/*
 		 * @ngInject
 		 */
-		controller: function($scope){
+		controller: function($scope) {
 			$widget.widgets()
-			.then(function(list){
-				$scope.explorerWidgets = list;
-			});
+				.then(function(list) {
+					$scope.explorerWidgets = list;
+				});
 		},
 		controllerAs: 'ctrl'
 	});
 	$sidenav.newSidenav({
-		id : 'amh.workbench.weburger.navigator',
-		title : 'Navigator',
-		description : 'Navigator widgets of Weburger',
-		templateUrl : 'views/sidenavs/amh-contents-navigator.html',
-		locked : true,
-		visible : function () {
+		id: 'amh.workbench.weburger.navigator',
+		title: 'Navigator',
+		description: 'Navigator widgets of Weburger',
+		templateUrl: 'views/sidenavs/amh-contents-navigator.html',
+		locked: true,
+		visible: function() {
 			return $rootScope.showWidgetsNavigator;
 		},
-		position : 'start',
+		position: 'start',
 		/*
 		 * @ngInject
 		 */
-		controller: function($scope){
+		controller: function($scope) {
 
 			var ctrl = this;
 
 			$scope.treeOptions = {
-//					accept: function(sourceNodeScope, destNodesScope, destIndex) {
-//						return true;
-//					},
-//					beforeDrag(sourceNodeScope)
-//					removed(node)
-//					dropped(event)
-//					dragStart(event)
-//					dragMove(event)
-//					dragStop(event)
-//					beforeDrop(event)
-//					toggle(collapsed, sourceNodeScope)
+				//					accept: function(sourceNodeScope, destNodesScope, destIndex) {
+				//						return true;
+				//					},
+				//					beforeDrag(sourceNodeScope)
+				//					removed(node)
+				//					dropped(event)
+				//					dragStart(event)
+				//					dragMove(event)
+				//					dragStop(event)
+				//					beforeDrop(event)
+				//					toggle(collapsed, sourceNodeScope)
 			};
 
-			$scope.collapseAll = function () {
+			$scope.collapseAll = function() {
 				$scope.$broadcast('angular-ui-tree:collapse-all');
 			};
 
-			$scope.expandAll = function () {
+			$scope.expandAll = function() {
 				$scope.$broadcast('angular-ui-tree:expand-all');
 			};
 
-			$scope.toggleItem = function (handler, $event) {
+			$scope.toggleItem = function(handler, $event) {
 				handler.toggle();
 				$event.stopPropagation();
 			};
 
-			$scope.dblclick = function(widget, handler, $event){
+			$scope.dblclick = function(widget, handler, $event) {
 				$event.items = [widget];
 				$actions.exec('amh.workbench.widget.dblclick', $event);
 			};
 
-			$scope.click = function(widget, handler, $event){
+			$scope.click = function(widget, handler, $event) {
 				$event.items = [widget];
 				$actions.exec('amh.workbench.widget.click', $event);
 			};
 
 
-			$scope.openHelp = function(widget){
+			$scope.openHelp = function(widget) {
 				return $help.openHelp(widget);
 			};
 
-			$scope.selectChildren = function(widget, $event){
+			$scope.selectChildren = function(widget, $event) {
 				$event.items = [widget];
 				$actions.exec('amh.workbench.widget.selectChildren', $event);
 			};
 
-			function setRootWidget(widget){
+			function setRootWidget(widget) {
 				ctrl.widgets = [widget];
 			}
 
-			function activeEditorChanged(/*event*/){
-				var activeEditor  = ctrl.workbench.getActiveEditor();
-				if(!activeEditor){
+			function activeEditorChanged(/*event*/) {
+				var activeEditor = ctrl.workbench.getActiveEditor();
+				if (!activeEditor) {
 					return;
 				}
-				activeEditor.on('rootWidgetChanged', function($event){
+				activeEditor.on('rootWidgetChanged', function($event) {
 					setRootWidget($event.value);
 				});
 				setRootWidget(activeEditor.getRootWidget());
 			}
 
-			function setWorkbench(workbench){
-				if(ctrl.workbench){
+			function setWorkbench(workbench) {
+				if (ctrl.workbench) {
 					ctrl.workbench.off('activeEditorChanged', activeEditorChanged);
 				}
 				ctrl.workbench = workbench;
-				if(ctrl.workbench){
+				if (ctrl.workbench) {
 					ctrl.workbench.on('activeEditorChanged', activeEditorChanged);
 					activeEditorChanged();
 				}
 			}
 
-			function handleWorkbench(event){
+			function handleWorkbench(event) {
 				setWorkbench(event.value);
 			}
-			
-			function contentChanged(){
+
+			function contentChanged() {
 				// XXX: maso, 2020: Check the usage of content change event.
 			}
 
 			setWorkbench($amhEditorService.getWorkbench());
 			$amhEditorService.on('workbenchChanged', handleWorkbench);
-			$scope.$on('destory', function(){
+			$scope.$on('destory', function() {
 				$amhEditorService.off('workbenchChanged', handleWorkbench);
-				if(ctrl.workbench){
+				if (ctrl.workbench) {
 					ctrl.workbench.on('contentChanged', contentChanged);
 				}
 			});
@@ -236,25 +236,25 @@ angular.module('vwStudio').run(function(
 	 * ecit attributes, style, and events of an widget.
 	 */
 	$sidenav.newSidenav({
-		id : 'amh.workbench.weburger.settings',
-		title : 'Settings',
-		description : 'Settings and configurations fo selected widgets',
-		templateUrl : 'views/sidenavs/amh-workbench-settings.html',
-		locked : true,
-		visible : function () {
+		id: 'amh.workbench.weburger.settings',
+		title: 'Settings',
+		description: 'Settings and configurations fo selected widgets',
+		templateUrl: 'views/sidenavs/amh-workbench-settings.html',
+		locked: true,
+		visible: function() {
 			return $rootScope.showWorkbenchSettingPanel;
 		},
-		position : 'end',
+		position: 'end',
 		/*
 		 * @ngInject
 		 */
-		controller: function(){
+		controller: function() {
 			$rootScope.showWorkbenchPanel = true;
-			this.setVisible = function(visible){
+			this.setVisible = function(visible) {
 				$rootScope.showWorkbenchSettingPanel = visible;
 			};
 
-			this.isVisible = function(){
+			this.isVisible = function() {
 				return $rootScope.showWorkbenchSettingPanel;
 			};
 		},
@@ -264,21 +264,21 @@ angular.module('vwStudio').run(function(
 	 * Allow user to search and apply a template from the backend.
 	 */
 	$sidenav.newSidenav({
-		id : 'amh.workbench.weburger.templates',
-		title : 'Templates',
-		description : 'Select and apply a templte to the current page',
-		templateUrl : 'views/sidenavs/amh-workbench-template.html',
-		locked : false,
-//		visible : function () {
-//		return true;
-//		},
-		position : 'start',
+		id: 'amh.workbench.weburger.templates',
+		title: 'Templates',
+		description: 'Select and apply a templte to the current page',
+		templateUrl: 'views/sidenavs/amh-workbench-template.html',
+		locked: false,
+		//		visible : function () {
+		//		return true;
+		//		},
+		position: 'start',
 		/*
 		 * @ngInject
 		 */
-		controller: function(){
-			this.loadModelTemplate = function(template, $event){
-				$event = $event || jQuery.Event( 'upload', { 
+		controller: function() {
+			this.loadModelTemplate = function(template, $event) {
+				$event = $event || jQuery.Event('upload', {
 					target: this
 				});
 				$event.template = [template];
@@ -292,16 +292,16 @@ angular.module('vwStudio').run(function(
 	 * Allow user to search and find pages from the backend.
 	 */
 	$sidenav.newSidenav({
-		id : 'amh.cms.pages.sidenav',
-		title : 'Pages',
-		description : 'Sidenav contain navigations about AMH',
-		templateUrl : 'views/sidenavs/amh-contents-list.html',
-		locked : false,
-		position : 'start',
+		id: 'amh.cms.pages.sidenav',
+		title: 'Pages',
+		description: 'Sidenav contain navigations about AMH',
+		templateUrl: 'views/sidenavs/amh-contents-list.html',
+		locked: false,
+		position: 'start',
 		/*
 		 * @ngInject
 		 */
-		controller: function($scope){
+		controller: function($scope) {
 			$scope.pageId = 'pages';
 			$scope.goto = function(pageId) {
 				$scope.pageId = pageId;
@@ -313,57 +313,75 @@ angular.module('vwStudio').run(function(
 	 * and ..
 	 */
 	$sidenav.newSidenav({
-		id : 'amh.workbench.content',
-		title : 'Page settings',
-		description : 'Manages current page settings',
-		templateUrl : 'views/sidenavs/amh-workbench-content.html',
-		locked : false,
-//		visible : function () {
-//		return true;
-//		},
-		position : 'start',
+		id: 'amh.workbench.content',
+		title: 'Page settings',
+		description: 'Manages current page settings',
+		templateUrl: 'views/sidenavs/amh-workbench-content.html',
+		locked: false,
+		//		visible : function () {
+		//		return true;
+		//		},
+		position: 'start',
 		/*
 		 * @ngInject
 		 */
-		controller: function($scope){
+		controller: function($scope) {
 			var ctrl = this;
 
-			function contentChanged(){
-				if(ctrl.workbench){
+			function contentChanged() {
+				if (ctrl.workbench) {
 					ctrl.content = ctrl.workbench.getContent();
 				}
 			}
 
-			function setWorkbench(workbenc){
-				if(ctrl.workbench){
+			function contentValueChanged() {
+				if (ctrl.workbench) {
+					var model = ctrl.workbench.getOriginalContentValue();
+					if (model) {
+						$scope.templateUrl = model.template;
+					}
+				}
+			}
+
+			function setWorkbench(workbenc) {
+				if (ctrl.workbench) {
 					ctrl.workbench.off('contentChanged', contentChanged);
+					ctrl.workbench.off('contentValueChanged', contentValueChanged);
 				}
 				ctrl.workbench = workbenc;
-				if(ctrl.workbench){
+				if (ctrl.workbench) {
 					ctrl.workbench.on('contentChanged', contentChanged);
+					ctrl.workbench.on('contentValueChanged', contentValueChanged);
 				}
 				contentChanged();
 			}
 
-			function handleWorkbench(event){
+			function handleWorkbench(event) {
 				setWorkbench(event.value);
 			}
 
-			this.saveChanges = function(){
+			this.saveChanges = function() {
 				var promise = this.content.update()
-				.then(function(){
-					ctrl.contentDirty = false;
-				});
+					.then(function() {
+						ctrl.contentDirty = false;
+					});
 				var job = new AmhWorkbenchJob('Save content', promise);
 				this.workbench.addJob(job);
 				return job;
 			};
 
+			this.setTemplateUrl = function(url) {
+				if (ctrl.workbench) {
+					var model = ctrl.workbench.getOriginalContentValue();
+					model.template = url;
+				}
+			};
+
 			setWorkbench($amhEditorService.getWorkbench());
 			$amhEditorService.on('workbenchChanged', handleWorkbench);
-			$scope.$on('destory', function(){
+			$scope.$on('destory', function() {
 				$amhEditorService.off('workbenchChanged', handleWorkbench);
-				if(ctrl.workbench){
+				if (ctrl.workbench) {
 					ctrl.workbench.on('contentChanged', contentChanged);
 				}
 			});
