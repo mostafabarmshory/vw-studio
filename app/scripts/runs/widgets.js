@@ -28,134 +28,126 @@
  ***********************************************************************/
 angular.module('vwStudio').run(function($widget) {
 	$widget.newWidget({
-		// widget description
+		// Functionall
 		type: 'a',
+		controller: 'StodioWidget',
+		
+		// stodio
 		title: 'A link',
 		description: 'A widget to add external link. It is used as block item.',
 		icon: 'wb-widget-a',
 		groups: ['basic'],
 		// functional properties
-		template: '<a></a>',
 		model: {
 			html: 'Link title'
 		},
-		controller: 'WbWidgetA',
 		isLeaf: true
 	});
 	$widget.newWidget({
-		// widget description
 		type: 'address',
+		controller: 'StodioWidget',
+
 		title: 'address',
 		description: 'description.',
 		icon: 'wb-widget-address',
 		groups: ['basic'],
-		// functional properties
-		template: '<address></address>',
-		controller: 'WbWidgetAddress',
 		isLeaf: false
 	});
 	$widget.newWidget({
-		// widget description
 		type: 'applet',
+		controller: 'StodioWidget',
+		
 		title: 'applet',
 		description: 'applet.',
 		icon: 'wb-widget-applet',
 		groups: ['basic'],
-		// functional properties
-		template: '<applet></applet>',
-		controller: 'WbWidgetApplet',
 		isLeaf: true
 	});
 	$widget.newWidget({
-		// widget description
 		type: 'area',
+		controller: 'StodioWidget',
+		
 		title: 'area',
 		description: 'area',
 		icon: 'wb-widget-area',
 		groups: ['basic'],
-		// functional properties
-		template: '<area></area>',
-		controller: 'WbWidgetArea'
 	});
 	$widget.newWidget({
-		// widget description
 		type: 'article',
+		controller: 'StodioWidget',
+		
 		title: 'article',
 		description: 'article',
 		icon: 'wb-widget-article',
 		groups: ['basic'],
-		// functional properties
-		template: '<article></article>',
-		controller: 'WbWidgetArticle'
 	});
 	$widget.newWidget({
-		// widget description
 		type: 'aside',
+		controller: 'StodioWidget',
+
 		title: 'aside',
 		description: 'aside',
 		icon: 'wb-widget-aside',
 		groups: ['basic'],
-		// functional properties
-		template: '<aside></aside>',
-		controller: 'WbWidgetAside'
 	});
 	$widget.newWidget({
 		type: 'audio',
+		controller: 'StodioWidget',
+
 		title: 'Audio',
 		label: 'audio',
 		icon: 'wb-widget-audio',
 		description: 'This widget is used to add audio in the document.',
 		groups: ['basic'],
-		template: '<audio></audio>',
 		model: {
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetAudio',
 		isLeaf: false,
 	});
 	$widget.newWidget({
 		type: 'blockquote',
+		controller: 'StodioWidget',
+
 		title: 'blockquote',
 		label: 'blockquote',
 		icon: 'wb-widget-blockquote',
 		description: 'description',
 		groups: ['basic'],
-		template: '<blockquote></blockquote>',
-		controller: 'WbWidgetBlockquote',
 		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'button',
+		controller: 'StodioWidget',
+
 		title: 'button',
 		label: 'button',
 		icon: 'wb-widget-button',
 		description: 'description',
 		groups: ['basic'],
 		template: '<button></button>',
-		controller: 'WbWidgetButton',
 		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'canvas',
+		controller: 'StodioWidget',
+
 		title: 'canvas',
 		label: 'canvas',
 		icon: 'wb-widget-canvas',
 		description: 'description',
 		groups: ['basic'],
-		template: '<canvas></canvas>',
-		controller: 'WbWidgetCanvas',
 		isLeaf: true,
 	});
 	$widget.newWidget({
 		type: 'datalist',
+		controller: 'StodioWidget',
+		
 		title: 'datalist',
 		label: 'datalist',
 		icon: 'wb-widget-datalist',
 		description: 'description',
 		groups: ['basic'],
-		template: '<datalist></datalist>',
-		controller: 'WbWidgetDatalist',
 	});
 	$widget.newWidget({
 		type: 'dd',
@@ -165,7 +157,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<dd></dd>',
-		controller: 'WbWidgetDd',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'details',
@@ -175,7 +167,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<details></details>',
-		controller: 'WbWidgetDetails',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'dialog',
@@ -185,7 +177,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<dialog></dialog>',
-		controller: 'WbWidgetDialog',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'div',
@@ -195,7 +187,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<div></div>',
-		controller: 'WbWidgetDiv',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -206,7 +198,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<dl></dl>',
-		controller: 'WbWidgetDl',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'dt',
@@ -216,7 +208,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<dt></dt>',
-		controller: 'WbWidgetDt',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'embed',
@@ -227,7 +219,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<embed></embed>',
 		help: 'http://dpq.co.ir/more-information-embed',
-		controller: 'WbWidgetEmbed',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'fieldset',
@@ -238,7 +230,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<fieldset></fieldset>',
 		help: 'http://dpq.co.ir/more-information-fieldset',
-		controller: 'WbWidgetFieldset',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'figcaption',
@@ -249,7 +241,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<figcaption></figcaption>',
 		help: 'http://dpq.co.ir/more-information-figcaption',
-		controller: 'WbWidgetFigcaption',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'figure',
@@ -260,7 +252,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<figure></figure>',
 		help: 'http://dpq.co.ir/more-information-figure',
-		controller: 'WbWidgetFigure',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'footer',
@@ -271,7 +263,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<footer></footer>',
 		help: 'http://dpq.co.ir/more-information-footer',
-		controller: 'WbWidgetFooter',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'form',
@@ -282,7 +274,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<form></form>',
 		help: 'http://dpq.co.ir/more-information-form',
-		controller: 'WbWidgetForm',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -294,7 +286,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<frame></frame>',
 		help: 'http://dpq.co.ir/more-information-frame',
-		controller: 'WbWidgetFrame',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'frameset',
@@ -305,7 +297,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<frameset></frameset>',
 		help: 'http://dpq.co.ir/more-information-frameset',
-		controller: 'WbWidgetFrameset',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	for (var i = 1; i < 7; i++) {
@@ -325,7 +317,7 @@ angular.module('vwStudio').run(function($widget) {
 			},
 			// functional properties
 			template: '<h' + i + '></h' + i + '>',
-			controller: 'WbWidgetH',
+			controller: 'StodioWidget',
 			isLeaf: true
 		});
 	}
@@ -337,7 +329,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<header></header>',
-		controller: 'WbWidgetHeader',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -348,7 +340,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<hr></hr>',
-		controller: 'WbWidgetHr',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -368,7 +360,7 @@ angular.module('vwStudio').run(function($widget) {
 		// functional properties
 		template: '<i></i>',
 		controllerAs: 'ctrl',
-		controller: 'WbWidgetI',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -392,7 +384,7 @@ angular.module('vwStudio').run(function($widget) {
 		// functional properties
 		template: '<iframe>Frame Not Supported?!</iframe>',
 		controllerAs: 'ctrl',
-		controller: 'WbWidgetIframe',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -412,7 +404,7 @@ angular.module('vwStudio').run(function($widget) {
 			}
 		},
 		controllerAs: 'ctrl',
-		controller: 'WbWidgetImg',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -435,7 +427,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: 'wb-widget-input',
 		// functional properties
 		template: '<input></input>',
-		controller: 'WbWidgetInput',
+		controller: 'StodioWidget',
 		controllerAs: 'ctrl',
 		isLeaf: true,
 	});
@@ -447,7 +439,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<kbd></kbd>',
-		controller: 'WbWidgetKbd',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'label',
@@ -457,7 +449,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<label></label>',
-		controller: 'WbWidgetLabel',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -468,7 +460,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<legend></legend>',
-		controller: 'WbWidgetLegend',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -479,7 +471,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<li></li>',
-		controller: 'WbWidgetLi',
+		controller: 'StodioWidget',
 		isLeaf: false,
 	});
 	$widget.newWidget({
@@ -495,7 +487,7 @@ angular.module('vwStudio').run(function($widget) {
 			url: 'http://www.gitlab.com/am-wb/am-wb-common'
 		},
 		controllerAs: 'ctrl',
-		controller: 'WbWidgetLink',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -506,7 +498,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'A widget to insert an link to page.',
 		groups: ['basic'],
 		template: '<main></main>',
-		controller: 'WbWidgetMain',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -517,7 +509,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<map></map>',
-		controller: 'WbWidgetMap',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -546,7 +538,7 @@ angular.module('vwStudio').run(function($widget) {
 		// functional properties
 		template: '<meta></meta>',
 		controllerAs: 'ctrl',
-		controller: 'WbWidgetMeta'
+		controller: 'StodioWidget'
 	});
 	$widget.newWidget({
 		type: 'meter',
@@ -556,7 +548,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<meter></meter>',
-		controller: 'WbWidgetMeter',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'nav',
@@ -566,7 +558,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<nav></nav>',
-		controller: 'WbWidgetNav',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -577,7 +569,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<noscript></noscript>',
-		controller: 'WbWidgetNoscript',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'object',
@@ -587,7 +579,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<object></object>',
-		controller: 'WbWidgetObject',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -598,7 +590,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<ol></ol>',
-		controller: 'WbWidgetOl',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -609,7 +601,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<optgroup></optgroup>',
-		controller: 'WbWidgetOptgroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -620,7 +612,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<option></option>',
-		controller: 'WbWidgetOption',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'output',
@@ -630,7 +622,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<output></output>',
-		controller: 'WbWidgetOutput',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		// widget description
@@ -648,7 +640,7 @@ angular.module('vwStudio').run(function($widget) {
 		// functional properties
 		template: '<p></p>',
 		controllerAs: 'ctrl',
-		controller: 'WbWidgetP',
+		controller: 'StodioWidget',
 		isLeaf: true
 	});
 	$widget.newWidget({
@@ -659,7 +651,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<param></param>',
-		controller: 'WbWidgetParam',
+		controller: 'StodioWidget',
 		isLeaf: true,
 	});
 	$widget.newWidget({
@@ -674,7 +666,7 @@ angular.module('vwStudio').run(function($widget) {
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetPicture',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -688,7 +680,7 @@ angular.module('vwStudio').run(function($widget) {
 		model: {
 			html: 'class A {\n\tint a;\n}',
 		},
-		controller: 'WbWidgetPre',
+		controller: 'StodioWidget',
 		controllerAs: 'ctrl',
 		isLeaf: true
 	});
@@ -711,7 +703,7 @@ angular.module('vwStudio').run(function($widget) {
 		},
 		// functional properties
 		template: '<progress value="22" max="100"></progress>',
-		controller: 'WbWidgetProgress'
+		controller: 'StodioWidget'
 	});
 	$widget.newWidget({
 		type: 'q',
@@ -721,7 +713,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<q></q>',
-		controller: 'WbWidgetQ',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 's',
@@ -733,7 +725,7 @@ angular.module('vwStudio').run(function($widget) {
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetS',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'samp',
@@ -745,7 +737,7 @@ angular.module('vwStudio').run(function($widget) {
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetSamp',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'script',
@@ -755,7 +747,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<script></script>',
-		controller: 'WbWidgetScript',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'section',
@@ -765,7 +757,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<section></section>',
-		controller: 'WbWidgetSection',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -776,7 +768,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<select></select>',
-		controller: 'WbWidgetSelect',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'small',
@@ -788,7 +780,7 @@ angular.module('vwStudio').run(function($widget) {
 		model: {
 			html: 'Small text'
 		},
-		controller: 'WbWidgetSmall',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'source',
@@ -802,7 +794,7 @@ angular.module('vwStudio').run(function($widget) {
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetSource',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'span',
@@ -814,7 +806,7 @@ angular.module('vwStudio').run(function($widget) {
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetSpan',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'strong',
@@ -826,7 +818,7 @@ angular.module('vwStudio').run(function($widget) {
 		model: {
 			html: 'Text'
 		},
-		controller: 'WbWidgetStrong',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'style',
@@ -836,7 +828,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<style></style>',
-		controller: 'WbWidgetStyle',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'summary',
@@ -846,7 +838,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<summary></summary>',
-		controller: 'WbWidgetSummary',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -857,7 +849,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<svg></svg>',
-		controller: 'WbWidgetSvg',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'template',
@@ -867,7 +859,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<template></template>',
-		controller: 'WbWidgetTemplate',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -888,7 +880,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: 'wb-widget-textarea',
 		// functional properties
 		template: '<textarea></textarea>',
-		controller: 'WbWidgetTextarea',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'track',
@@ -899,7 +891,7 @@ angular.module('vwStudio').run(function($widget) {
 		groups: ['basic'],
 		template: '<track></track>',
 		help: 'http://dpq.co.ir/more-information-track',
-		controller: 'WbWidgetTrack',
+		controller: 'StodioWidget',
 	});
 	$widget.newWidget({
 		type: 'ul',
@@ -909,7 +901,7 @@ angular.module('vwStudio').run(function($widget) {
 		description: 'description',
 		groups: ['basic'],
 		template: '<ul></ul>',
-		controller: 'WbWidgetUl',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -924,7 +916,7 @@ angular.module('vwStudio').run(function($widget) {
 			media: '(min-width: 650px)',
 			src: 'http://www.gitlab.com/am-wb/am-wb-commonhttps://unsplash.com/photos/8emNXIvrCL8/download?force=true'
 		},
-		controller: 'WbWidgetVideo',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 
@@ -940,7 +932,7 @@ angular.module('vwStudio').run(function($widget) {
 		help: '',
 		helpId: 'wb-seen-widget-collection',
 		template: '<div></div>',
-		controller: 'AmWbSeenCollectionWidget'
+		controller: 'StodioWidget'
 	});
 
 	$widget.newWidget({
@@ -955,7 +947,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		template: '<div></div>',
-		controller: 'WbWidgetSeenImport'
+		controller: 'StodioWidget'
 	});
 	
 	
@@ -973,7 +965,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		type: 'table',
-		controller: 'WbWidgetGroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -986,7 +978,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		type: 'thead',
-		controller: 'WbWidgetGroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -999,7 +991,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		type: 'tbody',
-		controller: 'WbWidgetGroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -1012,7 +1004,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		type: 'tr',
-		controller: 'WbWidgetGroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -1025,7 +1017,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		type: 'th',
-		controller: 'WbWidgetGroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 	$widget.newWidget({
@@ -1038,7 +1030,7 @@ angular.module('vwStudio').run(function($widget) {
 		helpId: '',
 		// functional (page)
 		type: 'td',
-		controller: 'WbWidgetGroup',
+		controller: 'StodioWidget',
 		isLeaf: false
 	});
 });
