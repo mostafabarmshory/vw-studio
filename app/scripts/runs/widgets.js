@@ -31,7 +31,7 @@ angular.module('vwStudio').run(function($widget) {
 		// Functionall
 		type: 'a',
 		controller: 'StodioWidget',
-		
+
 		// stodio
 		title: 'A link',
 		description: 'A widget to add external link. It is used as block item.',
@@ -56,7 +56,7 @@ angular.module('vwStudio').run(function($widget) {
 	$widget.newWidget({
 		type: 'applet',
 		controller: 'StodioWidget',
-		
+
 		title: 'applet',
 		description: 'applet.',
 		icon: 'wb-widget-applet',
@@ -66,7 +66,7 @@ angular.module('vwStudio').run(function($widget) {
 	$widget.newWidget({
 		type: 'area',
 		controller: 'StodioWidget',
-		
+
 		title: 'area',
 		description: 'area',
 		icon: 'wb-widget-area',
@@ -75,7 +75,7 @@ angular.module('vwStudio').run(function($widget) {
 	$widget.newWidget({
 		type: 'article',
 		controller: 'StodioWidget',
-		
+
 		title: 'article',
 		description: 'article',
 		icon: 'wb-widget-article',
@@ -142,7 +142,7 @@ angular.module('vwStudio').run(function($widget) {
 	$widget.newWidget({
 		type: 'datalist',
 		controller: 'StodioWidget',
-		
+
 		title: 'datalist',
 		label: 'datalist',
 		icon: 'wb-widget-datalist',
@@ -932,7 +932,7 @@ angular.module('vwStudio').run(function($widget) {
 		help: '',
 		helpId: 'wb-seen-widget-collection',
 		template: '<div></div>',
-		controller: 'AmWbSeenCollectionWidget'
+		controller: 'StudioSeenCollectionWidget'
 	});
 
 	$widget.newWidget({
@@ -949,9 +949,9 @@ angular.module('vwStudio').run(function($widget) {
 		template: '<div></div>',
 		controller: 'StudioWidgetSeenImport'
 	});
-	
-	
-		
+
+
+
 	//-----------------------------------------------------------------
 	// Table
 	//-----------------------------------------------------------------

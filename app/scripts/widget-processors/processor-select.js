@@ -61,7 +61,7 @@ angular.module('vwStudio').factory('WbProcessorSelect', function(
 
 				try {
 					$rootScope.$digest();
-				} catch (e) { };
+				} catch (e) { }
 			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',
@@ -90,7 +90,7 @@ angular.module('vwStudio').factory('WbProcessorSelect', function(
 
 				try {
 					$rootScope.$digest();
-				} catch (e) { };
+				} catch (e) { }
 			} catch (ex) {
 				$log.error({
 					source: 'WbProcessorSelect',

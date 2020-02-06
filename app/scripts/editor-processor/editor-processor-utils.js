@@ -50,7 +50,7 @@ angular.module('vwStudio').factory('AmhEditorProcessorUtils', function(
 			ctrl.editor.setSelectedWidgets(selectedWidgets || []);
 			try{
 				ctrl.editor.getScope().$digest();
-			} catch(ex){};
+			} catch(ex){}
 		});
 	}
 	Processor.prototype = new AmhEditorProcessor();
