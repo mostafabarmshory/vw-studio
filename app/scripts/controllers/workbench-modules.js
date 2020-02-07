@@ -19,51 +19,71 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-angular.module('vwStudio').controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window){
-	
+angular.module('vwStudio').controller('AmhContentWorkbenchModuleCtrl', function($scope, $amhEditorService, $actions, $window) {
+
 	var ctrl = this;
 	var COTNTENT_MODUEL_CHANGE_EVENT = 'contentModulesChanged';
 	var WORKBENCH_CHANGE_EVENT = 'workbenchChanged';
 	var COTNTENT_CHANGE_EVENT = 'contentChanged';
 
-	function modulesChanged(){
+	function modulesChanged() {
 		ctrl.modules = ctrl.workbench.getContentModules();
 	}
 
-	function setWorkbench(workbenc){
-		if(ctrl.workbench){
+	function setWorkbench(workbenc) {
+		if (ctrl.workbench) {
 			ctrl.workbench.off(COTNTENT_MODUEL_CHANGE_EVENT, modulesChanged);
 		}
 		ctrl.workbench = workbenc;
-		if(ctrl.workbench){
+		if (ctrl.workbench) {
 			ctrl.workbench.on(COTNTENT_MODUEL_CHANGE_EVENT, modulesChanged);
 		}
 		modulesChanged();
 	}
 
-	function handleWorkbench(event){
+	function handleWorkbench(event) {
 		setWorkbench(event.value);
 	}
-	
-	function contentChanged(){
+
+	function contentChanged() {
 		// XXX: maso, 2020: check content handling
 	}
 
-	this.addModule = function($event){
+	this.addModule = function($event) {
 		$actions.exec('amh.workbench.content.module.add', $event);
 	};
 
-	this.deleteModule = function(module, $event){
+	this.deleteModule = function(module, $event) {
 		$window.confirm('Delete modeule?')
-		.then(function(){
-			$event.modules = [module];
-			$actions.exec('amh.workbench.content.module.remove', $event);
-		});
+			.then(function() {
+				$event.modules = [module];
+				$actions.exec('amh.workbench.content.module.remove', $event);
+			});
 	};
 
-	this.editModule = function(module, $event){
+	this.editModule = function(module, $event) {
 		$event.modules = [module];
 		$actions.exec('amh.workbench.content.module.edit', $event);
+	};
+
+	this.moveUpModule = function(module, $event) {
+		$event.modules = [module];
+		$actions.exec('amh.workbench.content.module.moveUp', $event);
+	};
+
+	this.moveDownModule = function(module, $event) {
+		$event.modules = [module];
+		$actions.exec('amh.workbench.content.module.moveDown', $event);
+	};
+
+	this.moveFirstModule = function(module, $event) {
+		$event.modules = [module];
+		$actions.exec('amh.workbench.content.module.moveFirst', $event);
+	};
+
+	this.moveLastModule = function(module, $event) {
+		$event.modules = [module];
+		$actions.exec('amh.workbench.content.module.moveLast', $event);
 	};
 
 	/*
@@ -71,9 +91,9 @@ angular.module('vwStudio').controller('AmhContentWorkbenchModuleCtrl', function(
 	 */
 	setWorkbench($amhEditorService.getWorkbench());
 	$amhEditorService.on(WORKBENCH_CHANGE_EVENT, handleWorkbench);
-	$scope.$on('destory', function(){
+	$scope.$on('destory', function() {
 		$amhEditorService.off(WORKBENCH_CHANGE_EVENT, handleWorkbench);
-		if(ctrl.workbench){
+		if (ctrl.workbench) {
 			ctrl.workbench.on(COTNTENT_CHANGE_EVENT, contentChanged);
 		}
 	});

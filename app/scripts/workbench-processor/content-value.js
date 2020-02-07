@@ -239,6 +239,22 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 					ctrl.createModule();
 				},
 				scope: $scope
+			}, { // Content: new
+				id: 'amh.workbench.content.module.edit',
+				priority: 15,
+				icon: 'edit',
+				title: 'Edit',
+				description: 'Edit current module',
+				/*
+				 * @ngInject
+				 */
+				visible: function() {
+					return workbench.canCreateContent();
+				},
+				action: function($event) {
+					ctrl.editModule($event.modules, $event);
+				},
+				scope: $scope
 			}];
 
 		_.forEach(this.actions, function(action) {
@@ -369,7 +385,7 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		var jobs = [];
 		var modules = this.getModules();
 		_.forEach(modules, function(module) {
-			if (module.load !== filter && (module.load || filter !== 'lazy')) {
+			if (_.isUndefined(module) || module === null || (module.load !== filter && (module.load || filter !== 'lazy'))) {
 				return;
 			}
 			module.state = 'loading';
@@ -428,15 +444,13 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		var ctrl = this;
 		$resource.get('/app/modules', {
 			style: {},
-		})
-			.then(function(modules) {
-				var newList = _.concat(workbench.getContentModules(), modules);
-				ctrl.setModules(newList);
-				return workbench.setContentModules(newList);
-			})
-			.then(function() {
-				$window.toast('Modules are added. Reload the page to effect.');
-			});
+		}).then(function(modules) {
+			var newList = _.concat(workbench.getContentModules(), modules);
+			ctrl.setModules(newList);
+			return workbench.setContentModules(newList);
+		}).then(function() {
+			$window.toast('Modules are added. Reload the page to effect.');
+		});
 	};
 
 	Processor.prototype.deleteModule = function(module) {
@@ -446,6 +460,28 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		});
 		workbench.setContentModules(newList);
 		this.setModules(newList);
+	};
+
+	Processor.prototype.editModule = function(modules) {
+		var workbench = this.editor;
+		var ctrl = this;
+		$resource.get('/app/modules', {
+			style: {},
+			data: modules
+		}).then(function(newModules) {
+			var newList = workbench.getContentModules();
+			var i = 0;
+			_.forEach(modules, function(module){
+				var index = newList.indexOf(module);
+				if(index>=0){
+					newList[index] = newModules[i++];
+				}
+			});
+			ctrl.setModules(newList);
+			return workbench.setContentModules(newList);
+		}).then(function() {
+			$window.toast('Modules are added. Reload the page to effect.');
+		});
 	};
 
 
