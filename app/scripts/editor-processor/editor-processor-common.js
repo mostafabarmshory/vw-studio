@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 angular.module('vwStudio').factory('AmhEditorProcessorCommon', function(
-		/* MBlowFish */ $help, $actions,
+		/* MBlowFish */ $help, $actions, $window,
 	AmhEditorProcessor) {
 
 
@@ -163,6 +163,23 @@ angular.module('vwStudio').factory('AmhEditorProcessorCommon', function(
 			scope: this.editor.getScope()
 		});
 
+		$actions.newAction({
+			id: 'amh.workbench.editor.convert',
+			priority: 100,
+			icon: 'swap_horiz',
+			title: 'Convert',
+			description: 'Convert selected widgets type',
+			visible: commonActionVisible,
+			/*
+			 * @ngInject
+			 */
+			action: function($event) {
+				return ctrl.convertWidgets($event);
+			},
+			groups: COMMON_ACTION_GROUPS,
+			scope: this.editor.getScope()
+		});
+
 
 
 		/*
@@ -276,6 +293,27 @@ angular.module('vwStudio').factory('AmhEditorProcessorCommon', function(
 		var widgets = this.editor.getSelectedWidgets();
 		widgets.forEach(function(widget) {
 			widget.moveLast();
+		});
+	};
+
+	/**
+	 * Converts widgets
+	 * 
+	 * @memberof AmhEditorProcessorCommon
+	 */
+	Processor.prototype.convertWidgets = function() {
+		var widgets = this.editor.getSelectedWidgets();
+		$window.prompt("Please enter widget type", "div").then(function(newType) {
+			_.forEach(widgets, function(widget) {
+				var model = widget.getModel();
+				var newModel = _.cloneDeep(model);
+				newModel.type = newType;
+
+				var $parent = widget.getParent();
+				var index = $parent.indexOfChild(widget);
+				$parent.addChildModel(index, newModel);
+				widget.delete();
+			});
 		});
 	};
 
