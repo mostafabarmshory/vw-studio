@@ -332,7 +332,7 @@ angular.module('vwStudio').service('$wbUtil', function(
 	};
 
 	this.replaceWidgetModelById = function(model, id, newModel) {
-		if (!model || model.id == id) {
+		if (!model || model.id === id) {
 			return newModel;
 		}
 		if (_.isArray(model.children)) {
@@ -349,7 +349,6 @@ angular.module('vwStudio').service('$wbUtil', function(
 				}
 			}
 		}
-
 		return;
 	};
 
