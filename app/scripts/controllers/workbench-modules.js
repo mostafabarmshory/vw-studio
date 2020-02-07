@@ -86,6 +86,13 @@ angular.module('vwStudio').controller('AmhContentWorkbenchModuleCtrl', function(
 		$actions.exec('amh.workbench.content.module.moveLast', $event);
 	};
 
+	this.uploadModules = function($event) {
+		$actions.exec('amh.workbench.content.module.upload', $event);
+	};
+
+	this.downloadModules = function($event) {
+		$actions.exec('amh.workbench.content.module.download', $event);
+	};
 	/*
 	 * connect to environment
 	 */

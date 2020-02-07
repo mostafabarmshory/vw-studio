@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
@@ -255,6 +254,70 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 					ctrl.editModule($event.modules, $event);
 				},
 				scope: $scope
+			}, { // Content: new
+				id: 'amh.workbench.content.module.moveDown',
+				priority: 15,
+				icon: 'arrow_drop_down',
+				title: 'Move Down',
+				description: 'Move current module down',
+				/*
+				 * @ngInject
+				 */
+				visible: function() {
+					return workbench.canCreateContent();
+				},
+				action: function($event) {
+					ctrl.moveDownModule($event.modules, $event);
+				},
+				scope: $scope
+			}, { // Content: new
+				id: 'amh.workbench.content.module.moveUp',
+				priority: 15,
+				icon: 'arrow_drop_down',
+				title: 'Move Up',
+				description: 'Move current module up',
+				/*
+				 * @ngInject
+				 */
+				visible: function() {
+					return workbench.canCreateContent();
+				},
+				action: function($event) {
+					ctrl.moveUpModule($event.modules, $event);
+				},
+				scope: $scope
+			}, { // Content: new
+				id: 'amh.workbench.content.module.download',
+				priority: 15,
+				icon: 'cloud_download',
+				title: 'Download Modules',
+				description: 'Download all modules',
+				/*
+				 * @ngInject
+				 */
+				visible: function() {
+					return workbench.canCreateContent();
+				},
+				action: function($event) {
+					ctrl.downloadModules($event.modules, $event);
+				},
+				scope: $scope
+			}, { // Content: new
+				id: 'amh.workbench.content.module.upload',
+				priority: 15,
+				icon: 'cloud_upload',
+				title: 'Upload Modules',
+				description: 'Upload list of modules',
+				/*
+				 * @ngInject
+				 */
+				visible: function() {
+					return workbench.canCreateContent();
+				},
+				action: function($event) {
+					ctrl.uploadModules($event.modules, $event);
+				},
+				scope: $scope
 			}];
 
 		_.forEach(this.actions, function(action) {
@@ -306,24 +369,22 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 					fileName: content.name
 				}
 			}
-		})
-			.then(function(options) {
-				var preprocess = null;
-				//			if (options.embeddedImage) {
-				//			// TODO: convert image into the data url
-				//			model = _.cloneDeep(model);
-				//			preprocess = $wbmodel.embedImagesDeep(model);
-				//			}
-				return $q.when(preprocess)
-					.then(function() {
-						// save the model
-						var dataString = JSON.stringify(model);
-						var data = new Blob([dataString], {
-							type: MIME_WB
-						});
-						return FileSaver.saveAs(data, (options.fileName || 'content') + '.wb');
-					});
+		}).then(function(options) {
+			var preprocess = null;
+			//			if (options.embeddedImage) {
+			//			// TODO: convert image into the data url
+			//			model = _.cloneDeep(model);
+			//			preprocess = $wbmodel.embedImagesDeep(model);
+			//			}
+			return $q.when(preprocess).then(function() {
+				// save the model
+				var dataString = JSON.stringify(model);
+				var data = new Blob([dataString], {
+					type: MIME_WB
+				});
+				return FileSaver.saveAs(data, (options.fileName || 'content') + '.wb');
 			});
+		});
 		var job = new AmhWorkbenchJob('Download content value', promise);
 		workbench.addJob(job);
 		return job;
@@ -471,9 +532,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		}).then(function(newModules) {
 			var newList = workbench.getContentModules();
 			var i = 0;
-			_.forEach(modules, function(module){
+			_.forEach(modules, function(module) {
 				var index = newList.indexOf(module);
-				if(index>=0){
+				if (index >= 0) {
 					newList[index] = newModules[i++];
 				}
 			});
@@ -482,6 +543,99 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 		}).then(function() {
 			$window.toast('Modules are added. Reload the page to effect.');
 		});
+	};
+
+	function arraymove(arr, fromIndex, toIndex) {
+		if (fromIndex < 0 || fromIndex >= arr.length || toIndex < 0 || toIndex >= arr.length) {
+			return
+		}
+		var element = arr[fromIndex];
+		arr.splice(fromIndex, 1);
+		arr.splice(toIndex, 0, element);
+	}
+
+
+	Processor.prototype.moveUpModule = function(modules) {
+		var workbench = this.editor;
+		var newList = workbench.getContentModules();
+		_.forEach(modules, function(module) {
+			var index = newList.indexOf(module);
+			arraymove(newList, index, index - 1);
+		});
+		this.setModules(newList);
+		return workbench.setContentModules(newList);
+	};
+
+	Processor.prototype.moveDownModule = function(modules) {
+		var workbench = this.editor;
+		var newList = workbench.getContentModules();
+		_.forEach(modules, function(module) {
+			var index = newList.indexOf(module);
+			arraymove(newList, index, index + 1);
+		});
+		this.setModules(newList);
+		return workbench.setContentModules(newList);
+	};
+
+	Processor.prototype.moveFirstModule = function(modules) {
+		var workbench = this.editor;
+		var newList = workbench.getContentModules();
+		_.forEach(modules, function(module) {
+			var index = newList.indexOf(module);
+			arraymove(newList, index, 0);
+		});
+		this.setModules(newList);
+		return workbench.setContentModules(newList);
+	};
+
+	Processor.prototype.moveLastModule = function(modules) {
+		var workbench = this.editor;
+		var newList = workbench.getContentModules();
+		_.forEach(modules, function(module) {
+			var index = newList.indexOf(module);
+			arraymove(newList, index, newList.length - 1);
+		});
+		this.setModules(newList);
+		return workbench.setContentModules(newList);
+	};
+
+	Processor.prototype.uploadModules = function(modules) {
+		var workbench = this.editor;
+		var ctrl = this;
+		modules = modules || workbench.getContentModules();
+
+		// upload modules
+		var fileInput = document.createElement('input');
+		fileInput.type = 'file';
+		fileInput.style.display = 'none';
+		fileInput.onchange = function(event) {
+			var reader = new FileReader();
+			reader.onload = function(event) {
+				var newList = JSON.parse(event.target.result);
+				ctrl.setModules(newList);
+				workbench.setContentModules(newList);
+				var $scope = workbench.getScope();
+				$scope.$apply();
+			};
+			reader.readAsText(event.target.files[0]);
+		};
+		document.body.appendChild(fileInput);
+		// click element (fileInput)
+		var eventMouse = document.createEvent('MouseEvents');
+		eventMouse.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		fileInput.dispatchEvent(eventMouse);
+
+	};
+
+	Processor.prototype.downloadModules = function(modules) {
+		var workbench = this.editor;
+		modules = modules || workbench.getContentModules();
+		// save the model
+		var dataString = JSON.stringify(modules);
+		var data = new Blob([dataString], {
+			type: 'application/json'
+		});
+		return FileSaver.saveAs(data, 'modules.json');
 	};
 
 
