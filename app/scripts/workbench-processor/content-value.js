@@ -547,7 +547,7 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 
 	function arraymove(arr, fromIndex, toIndex) {
 		if (fromIndex < 0 || fromIndex >= arr.length || toIndex < 0 || toIndex >= arr.length) {
-			return
+			return;
 		}
 		var element = arr[fromIndex];
 		arr.splice(fromIndex, 1);

@@ -21,115 +21,48 @@
  */
 
 
-
-
 /**
  * @ngdoc Processor
  * @name WbProcessorAttribute
  * @description Widget processor
  * 
  */
-angular.module('vwStudio').factory('StudioProcessorAttribute', function(WbProcessorAbstract) {
-
-	function loadStyle(widget, keys) {
-		var element = widget.getElement();
-
-		var computedStyle = {};
-		var style = widget.getModelProperty('style') || {};
-		var runtimeModel = widget.getRuntimeModel() || {};
-		if (!keys) {
-			element.attr('style', '');
-			computedStyle = angular.merge({}, style, runtimeModel.style);
-		} else {
-			_.forEach(keys, function(key) {
-				computedStyle[key] = runtimeModel.style[key] || style[key] || '';
-			});
-		}
-		element.css(computedStyle);
-	}
-
-	function setWidgetElementAttribute(widget, key, value) {
-		if (widget.isEditable() && (key === 'draggable' || key === 'dropzone')) {
-			// are handled by processors in edit mode
-			return;
-		}
-		if (key === 'style') {
-			return;
-		}
-		var $element = widget.getElement();
-		if (value) {
-			$element.attr(key, value);
-		} else {
-			$element.removeAttr(key);
-		}
-		// NOTE: html is special value
-		if (key === 'html') {
-			$element.html(value);
-		}
-		if (key === 'text') {
-			$element.text(value);
-		}
-		if (key === 'inputType') {
-			widget.setElementAttribute('type', value);
-		}
-		if (key === 'value') {
-			$element.val(value);
-		}
-	}
-
-	function setWidgetElementAttributes(widget, elementAttributes) {
-		if (_.isUndefined(elementAttributes)) {
-			var model = widget.getModelProperty();
-			_.forEach(model, function(value, key) {
-				setWidgetElementAttribute(widget, key, value);
-			});
-			return;
-		}
-		for (var i = 0; i < elementAttributes.length; i++) {
-			var key = elementAttributes[i];
-			setWidgetElementAttribute(widget, key, widget.getProperty(key) || widget.getModelProperty(key));
-		}
-	}
+angular.module('vwStudio').factory('StudioProcessorAttribute', function(WbProcessorAbstract, $widget, $styleUtil, $rootScope) {
 
 	function Processor() {
 		WbProcessorAbstract.apply(this);
-		//        this.devToolsCallback = new MutationObserver(function(mutationsList, observer) {
-		//            // Use traditional 'for loops' for IE 11
-		//            for(let mutation of mutationsList) {
-		//                if(mutation.attributeName === 'style'){
-		//                    var elementStyle = ctrl.getElement()[0].style;
-		//                    for (prop in elementStyle) {
-		//                        if (elementStyle.hasOwnProperty(prop)) {
-		//                            ctrl.setModelProperty('style.'+prop, elementStyle[prop]);
-		//                        }
-		//                    }
-		//                }
-		//            }
-		//        });
+		this.devToolsCallback = new MutationObserver(function(mutationsList/*, observer*/) {
+			// Use traditional 'for loops' for IE 11
+			_.forEach(mutationsList, function(mutation) {
+				if (mutation.attributeName === 'style') {
+					var ctrl = $widget.widgetFromElement(mutation.target);
+					if (!ctrl) {
+						return;
+					}
+					if (ctrl.state !== 'edit') {
+						return;
+					}
+					var style = mutation.target.style;
+					for (var i = 0; i < style.length; i++) {
+						var propertyName = style.item(i);
+						var value = style.getPropertyValue(propertyName);
+						ctrl.setModelProperty('style.' + $styleUtil.cssNameToJsName(propertyName), value);
+						$rootScope.$digest();
+					}
+				}
+			});
+		});
 	}
 	Processor.prototype = new WbProcessorAbstract();
 
-	Processor.prototype.process = function(widget, event) {
-		if (event.type === 'modelChanged') {
-			setWidgetElementAttributes(widget/*, widget.getElementAttributes()*/);
-			loadStyle(widget);
-		} else if (event.type === 'modelUpdated') {
-			var evKeys = event.keys || [event.key];
-			var styleKeys = [];
-			var attributeKeys = [];
-			for (var i = 0; i < evKeys.length; i++) {
-				if (evKeys[i].startsWith('style.')) {
-					styleKeys.push(evKeys[i].substring(6));
-				} else {
-					attributeKeys.push(evKeys[i]);
-				}
-			}
-
-			// attributes
-			setWidgetElementAttributes(widget, attributeKeys/*_.intersection(attributeKeys, widget.getElementAttributes())*/);
-
-			// style
-			loadStyle(widget, styleKeys);
+	Processor.prototype.process = function(widget/*, event*/) {
+		if (!widget._devToolsConnected) {
+			this.devToolsCallback.observe(widget.getElement()[0], {
+				childList: false,
+				attributes: true,
+				subtree: false
+			});
+			widget._devToolsConnected = true;
 		}
 	};
 	return Processor;
