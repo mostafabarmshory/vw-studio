@@ -1,5 +1,7 @@
-/*
- * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
+/* 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2016 weburger
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,34 +23,28 @@
  */
 
 /**
- * @ngdoc Controllers
- * @name WbSettingStyleBackgroundCtrl
- * @description Manage general settings of a widget
+ * @ngdoc Services
+ * @name $settings
+ * @description Manage settings panel 
  * 
- *  This controller controls the background attribute. If the user choose an image for 
- * the background then sets a default values to the background property. These values are used to show 
- * the image in a suitable form; and if the user remove the background image then remove those values 
- * from the background.
  * 
  */
-angular.module('vwStudio').controller('WbSettingStyleBackgroundCtrl', function() {
+angular.module('vwStudio').service('$styleUtil', function() {
 
-	/*
-	 * Initial the setting editor
-	 */
-	this.init = function() {
-		this.trackStyles([
-			// id
-			'background',
-			'backgroundColor',
-			'backgroundImage',
-			'backgroundPosition',
-			'backgroundSize',
-			'backgroundRepeat',
-			'backgroundOrigin',
-			'backgroundClip',
-			'backgroundAttachment'
-		]);
+	this.cssNameToJsName = function(name) {
+		var split = name.split('-');
+		var output = '';
+		for (var i = 0; i < split.length; i++) {
+			if (i > 0 && split[i].length > 0 && !(i === 1 && split[i] === 'ms')) {
+				split[i] = split[i].substr(0, 1).toUpperCase() + split[i].substr(1);
+			}
+			output += split[i];
+		}
+		return output;
+	};
+
+	this.jsNameToCssName = function(name) {
+		return name.replace(/([A-Z])/g, '-$1').toLowerCase();
 	};
 
 });

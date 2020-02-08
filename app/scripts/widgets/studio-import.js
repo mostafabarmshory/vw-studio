@@ -36,10 +36,6 @@ angular.module('vwStudio').factory('StudioWidgetSeenImport', function(WbWidgetSe
 	}
 	StodioWidget.prototype = Object.create(WbWidgetSeenImport.prototype);
 
-
-
-
-
 	StodioWidget.prototype.isLeaf = function() {
 		var wd = $widget.getWidget(this.getType());
 		return wd.isLeaf;
@@ -71,5 +67,5 @@ angular.module('vwStudio').factory('StudioWidgetSeenImport', function(WbWidgetSe
 	};
 	
 	
-	return StodioWidget
+	return StodioWidget;
 });

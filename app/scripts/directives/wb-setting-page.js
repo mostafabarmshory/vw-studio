@@ -45,7 +45,7 @@ angular.module('vwStudio').directive('wbSettingPage', function($settings, $wbUti
 						$element: element
 					});
 					if (angular.isDefined(page.controller)) {
-						controller = angular.extend(controller, $controller(page.controller, {
+						angular.extend(controller, $controller(page.controller, {
 							$scope: scope,
 							$element: element
 						}));

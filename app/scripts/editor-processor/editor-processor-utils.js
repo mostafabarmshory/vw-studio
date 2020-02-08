@@ -50,7 +50,7 @@ angular.module('vwStudio').factory('AmhEditorProcessorUtils', function(
 			ctrl.editor.setSelectedWidgets(selectedWidgets || []);
 			try{
 				ctrl.editor.getScope().$digest();
-			} catch(ex){};
+			} catch(ex){}
 		});
 	}
 	Processor.prototype = new AmhEditorProcessor();
@@ -146,7 +146,7 @@ angular.module('vwStudio').factory('AmhEditorProcessorUtils', function(
 	};
 
 	Processor.prototype.connectUtilities = function() {
-//		$widget.setProcessor('locator', this.locatorProcessor);
+		$widget.setProcessor('locator', this.locatorProcessor);
 		$widget.setProcessor('select', this.selectProcessor);
 		$widget.setProcessor('dnd', this.dndProcessor);
 

@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2015-2025 Phoinex Scholars Co. http://dpq.co.ir
  * 
@@ -31,8 +32,8 @@ angular.module('vwStudio').factory('WbProcessorLocator', function(WbProcessorAbs
 	function Processor() {
 		WbProcessorAbstract.apply(this);
 		this.widgetLocator = new WidgetLocatorManager({
-//			boundEnable: true,
-//			selectionEnable: true,
+			boundEnable: false,
+			selectionEnable: true,
 		});
 		this.autoVisible = true;
 	}

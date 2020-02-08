@@ -8,6 +8,16 @@
 		<span translate flex>Modules</span>
 		<md-button
 			class="md-icon-button"
+			ng-click="ctrl.uploadModules($event)">
+			<wb-icon>cloud_upload</wb-icon>
+		</md-button>
+		<md-button
+			class="md-icon-button"
+			ng-click="ctrl.downloadModules($event)">
+			<wb-icon>cloud_download</wb-icon>
+		</md-button>
+		<md-button
+			class="md-icon-button"
 			ng-click="ctrl.addModule($event)">
 			<wb-icon>add</wb-icon>
 		</md-button>
@@ -27,7 +37,7 @@
 				<md-list-item 
 					class="md-3-line" 
 					ng-repeat="item in ctrl.modules" 
-					ng-click="ctrl.editModule(item, event)">
+					ng-click="ctrl.editModule(item, $event)">
 					<wb-icon ng-if="item.type == 'css'">style</wb-icon>
 					<wb-icon ng-if="item.type == 'js'">tune</wb-icon>
 					<div 
@@ -37,6 +47,14 @@
 						<h4>{{ item.url }}</h4>
 						<p> Load: {{ item.load }}</p>
 					</div>
+					<wb-icon
+						class="md-secondary md-icon-button" 
+						ng-click="ctrl.moveUpModule(item, $event)"
+						id="action-move-up">arrow_drop_up</wb-icon>
+					<wb-icon
+						class="md-secondary md-icon-button" 
+						ng-click="ctrl.moveDownModule(item, $event)"
+						id="action-move-down">arrow_drop_down</wb-icon>
 					<wb-icon
 						class="md-secondary md-icon-button" 
 						ng-click="ctrl.deleteModule(item, $event)"

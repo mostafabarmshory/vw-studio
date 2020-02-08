@@ -31,7 +31,7 @@
  * utilities.
  * 
  */
-angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservableObject) {
+angular.module('vwStudio').controller('WbSettingPageCtrl', function(WbObservableObject) {
 	// extend from observable object
 	angular.extend(this, WbObservableObject.prototype);
 	WbObservableObject.apply(this);
@@ -44,7 +44,7 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	this.styles = [];
 	this.stylesValue = {};
 	this.callbacks = {
-			widgetChanged: []
+		widgetChanged: []
 	};
 
 	/********************************************************
@@ -59,9 +59,9 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @memberof WbSettingPageCtrl
 	 * @param widget {Widget} to track
 	 */
-	this.setWidget = function (widgets) {
-		widgets =  widgets || [];
-		if(!_.isArray(widgets)){
+	this.setWidget = function(widgets) {
+		widgets = widgets || [];
+		if (!_.isArray(widgets)) {
 			widgets = [widgets];
 		}
 		var oldWidgets = this.widgets;
@@ -84,7 +84,7 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @memberof WbSettingPageCtrl
 	 * @return the current widget
 	 */
-	this.getWidgets = function () {
+	this.getWidgets = function() {
 		return this.widgets;
 	};
 
@@ -94,9 +94,9 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @memberof WbSettingPageCtrl
 	 * @return true if the widget is a container
 	 */
-	this.isContainerWidget = function(){
+	this.isContainerWidget = function() {
 		var widgets = this.getWidgets();
-		if(widgets.length === 0 || widgets.length > 1){
+		if (widgets.length === 0 || widgets.length > 1) {
 			return false;
 		}
 		var widget = widgets[0];
@@ -111,15 +111,16 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * 
 	 * @memberof WbSettingPageCtrl
 	 */
-	this.disconnect = function(){
+	this.disconnect = function() {
 		var widgets = this.getWidgets();
-		if(_.isEmpty(widgets) || !_.isFunction(this.widgetListener)){
+		if (_.isEmpty(widgets) || !_.isFunction(this.widgetListener)) {
 			return;
 		}
 		var ctrl = this;
-		_.forEach(widgets, function(widget){
+		_.forEach(widgets, function(widget) {
 			widget.off('modelUpdated', ctrl.widgetListener);
 		});
+		delete ctrl.widgetListener;
 	};
 
 	/**
@@ -127,34 +128,30 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * 
 	 * @memberof WbSettingPageCtrl
 	 */
-	this.connect= function(){
+	this.connect = function() {
 		var widgets = this.getWidgets();
-		if(_.isEmpty(widgets)){
+		if (_.isEmpty(widgets)) {
 			return;
 		}
-		if(_.isEmpty(this.widgetListeners)){
-			var ctrl = this;
-			this.widgetListener = function($event) {
-				if(ctrl.isSilent()){
-					return;
-				}
-				if($event.type === 'modelUpdated'){
-					ctrl.updateValues($event.key);
-				}
-			};
-		}
+		var ctrl = this;
+		this.widgetListener = function($event) {
+			if (ctrl.isSilent()) {
+				return;
+			}
+			ctrl.updateValues($event.key);
+		};
 		// Adding listeners
-		_.forEach(widgets, function(widget){
+		_.forEach(widgets, function(widget) {
 			widget.on('modelUpdated', ctrl.widgetListener);
 		});
 	};
 
 
-	this.updateValues = function(keys){
-		if(_.isUndefined(keys)){
+	this.updateValues = function(keys) {
+		if (_.isUndefined(keys)) {
 			return;
 		}
-		if(!_.isArray(keys)){
+		if (!_.isArray(keys)) {
 			keys = [keys];
 		}
 		var widgets = this.widgets;
@@ -162,23 +159,23 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 		var ctrl = this;
 		var attrs = this.attributesValue;
 		var styles = this.stylesValue;
-		_.forEach(keys, function(key){
-			_.forEach(widgets, function(widget){
+		_.forEach(keys, function(key) {
+			_.forEach(widgets, function(widget) {
 				// load attribute
-				if(_.includes(ctrl.attributes, key)){
-					if(!firstFit || _.isUndefined(attrs[key])){
+				if (_.includes(ctrl.attributes, key)) {
+					if (!firstFit || _.isUndefined(attrs[key])) {
 						attrs[key] = widget.getModelProperty(key);
 					}
 					return;
 				}
 				// load style
-				if(!key.startsWith('style.')){
+				if (!key.startsWith('style.')) {
 					return;
 				}
-				var stylekey =  key.substring(6);
-				if(_.includes(ctrl.styles, stylekey)){
-					if(!firstFit || _.isUndefined(styles[key])){
-						styles[stylekey] = widget.getModelProperty(key);
+				var stylekey = key.substring(6);
+				if (_.includes(ctrl.styles, stylekey)) {
+					if (!firstFit || _.isUndefined(styles[stylekey])) {
+						ctrl.stylesValue[stylekey] = widget.getModelProperty(key);
 					}
 				}
 			});
@@ -192,7 +189,7 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	/*
 	 * INTERNAL
 	 */
-	this.loadAttributes= function(){
+	this.loadAttributes = function() {
 		// 0- clean
 		this.attributesValue = {};
 		this.updateValues(this.attributes);
@@ -201,19 +198,19 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	/*
 	 * INTERNAL
 	 */
-	this.loadStyles= function(){
+	this.loadStyles = function() {
 		// 0- clean
 		this.stylesValue = {};
-		this.updateValues(_.map(this.styles, function(styleKey){
-			return 'style.'+styleKey;
+		this.updateValues(_.map(this.styles, function(styleKey) {
+			return 'style.' + styleKey;
 		}));
 	};
 
-	this.setSilent = function(silent){
+	this.setSilent = function(silent) {
 		this._silent = silent;
 	};
 
-	this.isSilent = function(){
+	this.isSilent = function() {
 		return this._silent;
 	};
 
@@ -226,7 +223,7 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @memberof WbSettingPageCtrl
 	 * @param {string[]} attributes to track
 	 */
-	this.trackAttributes = function(attributes){
+	this.trackAttributes = function(attributes) {
 		this.attributes = attributes || [];
 		this.loadAttributes();
 	};
@@ -238,14 +235,14 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @param {string} key to use
 	 * @param {string} value to set for the key
 	 */
-	this.setAttribute = function (key, value) {
+	this.setAttribute = function(key, value) {
 		if (_.isEmpty(this.widgets)) {
 			return;
 		}
 		this.setSilent(true);
-		try{
+		try {
 			this.attributesValue[key] = value;
-			_.forEach(this.widgets, function(widget){
+			_.forEach(this.widgets, function(widget) {
 				widget.setModelProperty(key, value);
 			});
 		} finally {
@@ -262,7 +259,7 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @memberof WbSettingPageCtrl
 	 * @param {string[]} styles to track
 	 */
-	this.trackStyles = function(styles){
+	this.trackStyles = function(styles) {
 		this.styles = styles || [];
 		this.loadStyles();
 	};
@@ -274,14 +271,14 @@ angular.module('vwStudio').controller('WbSettingPageCtrl', function (WbObservabl
 	 * @param {string} key to use
 	 * @param {string} value to set for the key
 	 */
-	this.setStyle = function (key, value) {
+	this.setStyle = function(key, value) {
 		if (_.isEmpty(this.widgets)) {
 			return;
 		}
 		this.stylesValue[key] = value;
 		this.setSilent(true);
-		try{
-			_.forEach(this.widgets, function(widget){
+		try {
+			_.forEach(this.widgets, function(widget) {
 				widget.setModelProperty('style.' + key, value);
 			});
 		} finally {
