@@ -31,39 +31,39 @@ angular.module('vwStudio').factory('StudioProcessorAttribute', function(WbProces
 
 	function Processor() {
 		WbProcessorAbstract.apply(this);
-		this.devToolsCallback = new MutationObserver(function(mutationsList/*, observer*/) {
-			// Use traditional 'for loops' for IE 11
-			_.forEach(mutationsList, function(mutation) {
-				if (mutation.attributeName === 'style') {
-					var ctrl = $widget.widgetFromElement(mutation.target);
-					if (!ctrl) {
-						return;
-					}
-					if (ctrl.state !== 'edit') {
-						return;
-					}
-					var style = mutation.target.style;
-					for (var i = 0; i < style.length; i++) {
-						var propertyName = style.item(i);
-						var value = style.getPropertyValue(propertyName);
-						ctrl.setModelProperty('style.' + $styleUtil.cssNameToJsName(propertyName), value);
-						$rootScope.$digest();
-					}
-				}
-			});
-		});
+//		this.devToolsCallback = new MutationObserver(function(mutationsList/*, observer*/) {
+//			// Use traditional 'for loops' for IE 11
+//			_.forEach(mutationsList, function(mutation) {
+//				if (mutation.attributeName === 'style') {
+//					var ctrl = $widget.widgetFromElement(mutation.target);
+//					if (!ctrl) {
+//						return;
+//					}
+//					if (ctrl.state !== 'edit') {
+//						return;
+//					}
+//					var style = mutation.target.style;
+//					for (var i = 0; i < style.length; i++) {
+//						var propertyName = style.item(i);
+//						var value = style.getPropertyValue(propertyName);
+//						ctrl.setModelProperty('style.' + $styleUtil.cssNameToJsName(propertyName), value);
+//						$rootScope.$digest();
+//					}
+//				}
+//			});
+//		});
 	}
 	Processor.prototype = new WbProcessorAbstract();
 
 	Processor.prototype.process = function(widget/*, event*/) {
-		if (!widget._devToolsConnected) {
-			this.devToolsCallback.observe(widget.getElement()[0], {
-				childList: false,
-				attributes: true,
-				subtree: false
-			});
-			widget._devToolsConnected = true;
-		}
+//		if (!widget._devToolsConnected) {
+//			this.devToolsCallback.observe(widget.getElement()[0], {
+//				childList: false,
+//				attributes: true,
+//				subtree: false
+//			});
+//			widget._devToolsConnected = true;
+//		}
 	};
 	return Processor;
 });
