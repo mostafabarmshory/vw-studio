@@ -27,7 +27,7 @@
  * @description Widget processor
  * 
  */
-angular.module('vwStudio').factory('StudioProcessorAttribute', function(WbProcessorAbstract, $widget, $styleUtil, $rootScope) {
+angular.module('vwStudio').factory('StudioProcessorAttribute', function(WbProcessorAbstract/*, $widget, $styleUtil, $rootScope*/) {
 
 	function Processor() {
 		WbProcessorAbstract.apply(this);
@@ -55,7 +55,7 @@ angular.module('vwStudio').factory('StudioProcessorAttribute', function(WbProces
 	}
 	Processor.prototype = new WbProcessorAbstract();
 
-	Processor.prototype.process = function(widget/*, event*/) {
+	Processor.prototype.process = function(/*widget, event*/) {
 //		if (!widget._devToolsConnected) {
 //			this.devToolsCallback.observe(widget.getElement()[0], {
 //				childList: false,

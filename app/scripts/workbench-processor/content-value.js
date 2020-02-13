@@ -110,6 +110,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				icon: 'cloud_download',
 				title: 'Download',
 				description: 'Download page',
+				/*
+				 * @ngInject
+				 */
 				visible: function() {
 					return workbench.isContentValueLoaded();
 				},
@@ -127,6 +130,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				icon: 'cloud_upload',
 				title: 'Upload',
 				description: 'Upload a pre desinged page',
+				/*
+				 * @ngInject
+				 */
 				visible: function() {
 					return workbench.isContentValueLoaded();
 				},
@@ -147,6 +153,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				icon: 'edit',
 				title: 'Edit',
 				description: 'Edit the page',
+				/*
+				 * @ngInject
+				 */
 				visible: function() {
 					return workbench.isContentValueLoaded();
 				},
@@ -164,6 +173,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				icon: 'save',
 				title: 'Save',
 				description: 'Save content value',
+				/*
+				 * @ngInject
+				 */
 				visible: function() {
 					return workbench.isContentValueLoaded() &&
 						workbench.isContentEditable();
@@ -212,6 +224,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				icon: 'delete',
 				title: 'Delete',
 				description: 'Delete module from content',
+				/*
+				 * @ngInject
+				 */
 				visible: function() {
 					return workbench.canCreateContent();
 				},
@@ -234,6 +249,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				visible: function() {
 					return workbench.canCreateContent();
 				},
+				/*
+				 * @ngInject
+				 */
 				action: function(/*$event*/) {
 					ctrl.createModule();
 				},
@@ -250,6 +268,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				visible: function() {
 					return workbench.canCreateContent();
 				},
+				/*
+				 * @ngInject
+				 */
 				action: function($event) {
 					ctrl.editModule($event.modules, $event);
 				},
@@ -266,6 +287,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				visible: function() {
 					return workbench.canCreateContent();
 				},
+				/*
+				 * @ngInject
+				 */
 				action: function($event) {
 					ctrl.moveDownModule($event.modules, $event);
 				},
@@ -282,6 +306,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				visible: function() {
 					return workbench.canCreateContent();
 				},
+				/*
+				 * @ngInject
+				 */
 				action: function($event) {
 					ctrl.moveUpModule($event.modules, $event);
 				},
@@ -298,6 +325,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				visible: function() {
 					return workbench.canCreateContent();
 				},
+				/*
+				 * @ngInject
+				 */
 				action: function($event) {
 					ctrl.downloadModules($event.modules, $event);
 				},
@@ -314,6 +344,9 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorContentValue', function
 				visible: function() {
 					return workbench.canCreateContent();
 				},
+				/*
+				 * @ngInject
+				 */
 				action: function($event) {
 					ctrl.uploadModules($event.modules, $event);
 				},
