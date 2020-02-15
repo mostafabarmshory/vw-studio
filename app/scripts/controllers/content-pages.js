@@ -23,7 +23,7 @@
  */
 
 //Test controller
-angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $controller, $cms) {
+angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $controller, $cms, $navigator) {
 
 	// Extends Items controller
 	angular.extend(this, $controller('MbSeenCmsContentsCtrl', {
@@ -66,6 +66,10 @@ angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $c
 			return meta.value;
 		}
 		return 'no-image';
+	};
+	
+	this.openEditor = function(page) {
+		$navigator.openPage('pages/'+ page.id);
 	};
 
 	this.title = 'Pages';
