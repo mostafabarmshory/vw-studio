@@ -31,7 +31,43 @@
 angular.module('vwStudio').directive('mbMiniActionAnchor', function ($actions) {
 
 	return {
-		templateUrl: 'views/directives/amh-mini-action-anchor.html',
+		templateUrl: 'views/directives/mb-mini-action-anchor.html',
+		restrict: 'E',
+		replace: true,
+		scope: {
+			mbActionGroup: '@?',
+			mbDivider: '<?',
+			mbSize: '<?'
+		},
+		/*
+		 * @ngInject
+		 */
+		controller: function($scope){
+			var ctrl = this;
+			
+			function updateItems(){
+				var value = $scope.mbActionGroup;
+				if(value){
+					ctrl.group = $actions.group($scope.mbActionGroup);
+				} else {
+					ctrl.group = {};
+				}
+			}
+			
+			$scope.$watch('mbActionGroup', updateItems);
+			$scope.$on('destroy', function(){
+				$actions.off('actionsChanged', updateItems);
+				$actions.off('groupsChanged', updateItems);
+			});
+		},
+		controllerAs: 'ctrl'
+	};
+});
+
+angular.module('vwStudio').directive('mbMenuItemActionAnchor', function ($actions) {
+
+	return {
+		templateUrl: 'views/directives/mb-menu-item-action-anchor.html',
 		restrict: 'E',
 		replace: true,
 		scope: {

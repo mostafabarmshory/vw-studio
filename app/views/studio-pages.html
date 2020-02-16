@@ -33,13 +33,20 @@
 							<wb-icon size="16">more_vert</wb-icon>
 						</md-button>
 						<md-menu-content>
-							<md-menu-item><md-button ng-click="ctrl.openEditor(page)" translate>Edit</md-button></md-menu-item>
-							<md-menu-item><md-button ng-click="ctrl.deleteItem(page)" translate>Delete</md-button></md-menu-item>
+							<md-menu-item><md-button ng-click="ctrl.openEditor(page, $event)" translate>Edit</md-button></md-menu-item>
+							<md-menu-item><md-button ng-click="ctrl.deleteItem(page, $event)" translate>Delete</md-button></md-menu-item>
 							<md-divider></md-divider>
 							<md-menu-item><md-button 
 								target="_blank"
 								download="{{::page.file_name}}"
 								ng-href="/api/v2/cms/contents/{{::page.id}}/content" translate>Download</md-button></md-menu-item>
+							<md-menu-item><md-button ng-click="ctrl.openPreveiw(page, $event)" translate>Preview</md-button></md-menu-item>
+							
+							
+							<mb-menu-item-action-anchor
+								mb-action-group="studio.pages"
+								mb-divider="true">
+							</mb-mini-action-anchor>
 						</md-menu-content>
 					</md-menu>
 				</div>
@@ -71,13 +78,13 @@
 				layout="row" 
 				layout-align="end center">
 				<md-button 
-					ng-click="ctrl.openEditor(page)"
+					ng-click="ctrl.openEditor(page, $event)"
 					class="md-icon-button" 
 					aria-label="Edit">
 					<wb-icon size="16">edit</wb-icon>
 				</md-button>
 				<md-button 
-					ng-click="ctrl.deleteItem(page)"
+					ng-click="ctrl.deleteItem(page, $event)"
 					class="md-icon-button" 
 					aria-label="Delete">
 					<wb-icon size="16">delete</wb-icon>
