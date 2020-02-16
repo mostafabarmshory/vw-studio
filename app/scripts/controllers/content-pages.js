@@ -81,6 +81,13 @@ angular.module('vwStudio').controller('AmhContentPagesCtrl', function(
 
 	this.title = 'Pages';
 	this.init({
-		eventType: '/cms/contents'
+		eventType: '/cms/contents',
+		actions: [{
+			title: 'New',
+			icon: 'add_box',
+			id: 'create',
+			alias: true,
+			actionId: 'studio.cms.contents.new'
+		}]
 	});
 });

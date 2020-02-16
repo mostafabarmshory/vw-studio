@@ -58,7 +58,7 @@
 					ng-src-error="https://www.gravatar.com/avatar/{{page.id|wbmd5}}?d=identicon&size=256"
 					ng-src="{{::(ctrl.getPageCover(page))}}" 
 					class="md-card-image" 
-					ng-click="ctrl.openEditor(page)"
+					ng-click="ctrl.openEditor(page, $event)"
 					style="width:100% !important; height: 100px !important; object-fit: cover; object-position: center; cursor: pointer;">
 			</div>
 			<md-card-content

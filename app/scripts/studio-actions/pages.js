@@ -26,6 +26,9 @@
  * Groups
  * - studio.pages: All actions about a lisf ot pages
  * - studio.pages.read: These actions read page content and display
+ * - studio.pages.export:
+ * - studio.pages.import:
+ * - studio.pages.analysis:
  */
 angular.module('vwStudio').run(function(
 		/* mblowfish */ $actions, $navigator,
@@ -33,6 +36,10 @@ angular.module('vwStudio').run(function(
 		/* mateiral  */ $mdSidenav,
 		/* weburger  */ $resource, $widget,
 		/* amh       */ $amhEditorService, AmhWorkbenchJob) {
+
+	function canCreateContent() {
+		return true;
+	}
 
 	$actions.newAction({
 		id: 'studio.cms.contents.preview',
@@ -62,7 +69,6 @@ angular.module('vwStudio').run(function(
 		groups: ['studio.pages', 'studio.pages.read']
 	});
 
-
 	$actions.newAction({
 		id: 'studio.cms.contents.edit',
 		type: 'action',
@@ -79,4 +85,25 @@ angular.module('vwStudio').run(function(
 		groups: ['studio.pages', 'studio.pages.read']
 	});
 
+	$actions.newAction({
+		id: 'studio.cms.contents.new',
+		priority: 10,
+		icon: 'add_box',
+		title: 'New',
+		description: 'Add a new page',
+		visible: canCreateContent,
+		// @ngInject
+		action: function($event) {
+			var config = {};
+			config.name = $event.name;
+			// open dialog to create the model
+			return $navigator.openDialog({
+				templateUrl: 'views/dialogs/amh-content-new.html',
+				controller: 'AmhPageNewDialogCtrl',
+				controllerAs: 'ctrl',
+				config: config
+			});
+		},
+		groups: ['studio.pages', 'studio.pages.create'],
+	});
 });
