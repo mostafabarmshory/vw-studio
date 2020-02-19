@@ -1,0 +1,11 @@
+<md-menu-item
+	ng-repeat="item in ctrl.group.items | orderBy:['-priority']">
+	<md-button 
+		ng-click="item.exec($event)"
+		aria-label="{{::item.title}}"
+		ng-if="item.visible()"
+		translate>
+		<wb-icon size="{{mbSize || 16}}">{{::item.icon}}</wb-icon>
+		<span translage>{{::item.title}}</span>
+	</md-button>
+</md-menu-item>

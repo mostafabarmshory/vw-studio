@@ -27,9 +27,9 @@
  */
 angular.module('vwStudio').service('$wbUtil', function(
         /* AngularJS */ $q, $templateRequest, $sce,
-        /* vw-studio */ WbConverterDom) {
+        /* vw-studio */ StudioWbConverterDom) {
 
-	var converterDom = new WbConverterDom();
+	var converterDom = new StudioWbConverterDom();
 
 	function getTemplateOf(page) {
 		var template = page.template;

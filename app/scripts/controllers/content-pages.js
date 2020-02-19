@@ -23,7 +23,8 @@
  */
 
 //Test controller
-angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $controller, $cms) {
+angular.module('vwStudio').controller('AmhContentPagesCtrl', function(
+	$scope, $controller, $cms, $actions) {
 
 	// Extends Items controller
 	angular.extend(this, $controller('MbSeenCmsContentsCtrl', {
@@ -59,7 +60,7 @@ angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $c
 			}
 		}
 	}
-	
+
 	this.getPageCover = function(page) {
 		var meta = findMeta(page, 'link.cover');
 		if (meta) {
@@ -68,8 +69,25 @@ angular.module('vwStudio').controller('AmhContentPagesCtrl', function($scope, $c
 		return 'no-image';
 	};
 
+	this.openEditor = function(page, $event) {
+		$event.pages = [page];
+		return $actions.exec('studio.cms.contents.edit', $event);
+	};
+
+	this.openPreveiw = function(page, $event) {
+		$event.pages = [page];
+		return $actions.exec('studio.cms.contents.preview', $event);
+	};
+
 	this.title = 'Pages';
 	this.init({
-		eventType: '/cms/contents'
+		eventType: '/cms/contents',
+		actions: [{
+			title: 'New',
+			icon: 'add_box',
+			id: 'create',
+			alias: true,
+			actionId: 'studio.cms.contents.new'
+		}]
 	});
 });

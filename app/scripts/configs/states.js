@@ -33,7 +33,7 @@ angular.module('vwStudio').config(function($routeProvider) {
 			'amh.workbench.weburger.widgets'
 		],
 		protect: true,
-	}).when('/editor/:name', {
+	}).when('/pages/:name', {
 		templateUrl: 'views/studio-editor.html',
 		helpId: 'amh-content',
 		groups: ['workbench'],

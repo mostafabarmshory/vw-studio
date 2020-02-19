@@ -209,14 +209,10 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorCrud', function(
 				icon: 'add_box',
 				title: 'New',
 				description: 'Add a new page',
+				alias: true,
+				actionId: 'studio.cms.contents.new',
 				visible: function() {
 					return workbench.canCreateContent();
-				},
-				/*
-				 * @ngInject
-				 */
-				action: function() {
-					ctrl.createContent();
 				},
 				groups: ['amh.owner-toolbar.scope'],
 				scope: $scope
@@ -358,32 +354,6 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorCrud', function(
 			$actions.removeAction(action);
 		});
 		delete this.actions;
-	};
-
-	/**
-	 * Creates new content
-	 */
-	Processor.prototype.createContent = function() {
-		var process = this.checkOtherProcess();
-		if (process) {
-			return process;
-		}
-
-		// initialize data
-		var workbench = this.editor;
-		var config = {};
-		var content = workbench.getContent();
-		// if model does not exist we set model id
-		if (!content) {
-			config.name = calculateContentId();
-		}
-		// open dialog to create the model
-		return $navigator.openDialog({
-			templateUrl: 'views/dialogs/amh-content-new.html',
-			controller: 'AmhPageNewDialogCtrl',
-			controllerAs: 'ctrl',
-			config: config
-		});
 	};
 
 	/**

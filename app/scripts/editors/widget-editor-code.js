@@ -51,7 +51,7 @@ angular.module('vwStudio').factory('WidgetEditorCode', function ($resource, Widg
         var ctrl = this;
         $resource.get('code', {
             data: {
-                code: ctrl.widget.text(),
+                code: ctrl.widget.getModelProperty('text'),
                 languages: [{
                     text: 'HTML/XML',
                     value: 'markup'

@@ -1,6 +1,6 @@
 <div
 	ng-controller="AmhContentPagesCtrl as ctrl"
-	ng-init="ctrl.addFilter('media_type', 'page'); ctrl.setDataQuery('{id,title,description,metas{key,value}}')"
+	ng-init="ctrl.addFilter('media_type', 'page'); ctrl.setDataQuery('{id,title,name,status,file_name,modif_dtime,creation_dtime,metas{key,value}}')"
 	mb-preloading="ctrl.state === 'busy'"
 	layout="column"
 	flex>
@@ -20,26 +20,74 @@
 		flex>
 		<md-card
 			ng-repeat="page in ctrl.items track by page.id"
-			style="width: 256px;">
-			<img 
-				ng-src-error="https://www.gravatar.com/avatar/{{page.id|wbmd5}}?d=identicon&size=256"
-				ng-src="{{::(ctrl.getPageCover(page))}}" 
-				class="md-card-image" 
-				width="256px"
-				height="128px"
-				alt="{{::page.title}}">
-			<md-card-content>
-				<h3 md-truncate>{{::page.title}}</h3>
-				<p md-truncate>{{::page.description}}</p>
+			style="width: 300px; font-size: 12px;">
+			<div
+				style="width: 100%; height: 100px; position: relative;margin: 0px; padding: 0px;">
+				<div id="top-right" style="position: absolute; top: 2px; right: 2px;"></div>
+				<div id="top-left" style="position: absolute; top: 2px;left: 2px;">
+					<md-menu>
+						<md-button 
+							ng-click="$mdMenu.open($event)"
+							class="md-icon-button md-raised" 
+							aria-label="MoreAction">
+							<wb-icon size="16">more_vert</wb-icon>
+						</md-button>
+						<md-menu-content>
+							<md-menu-item><md-button ng-click="ctrl.openEditor(page, $event)" translate>Edit</md-button></md-menu-item>
+							<md-menu-item><md-button ng-click="ctrl.deleteItem(page, $event)" translate>Delete</md-button></md-menu-item>
+							<md-divider></md-divider>
+							<md-menu-item><md-button 
+								target="_blank"
+								download="{{::page.file_name}}"
+								ng-href="/api/v2/cms/contents/{{::page.id}}/content" translate>Download</md-button></md-menu-item>
+							<md-menu-item><md-button ng-click="ctrl.openPreveiw(page, $event)" translate>Preview</md-button></md-menu-item>
+							
+							
+							<mb-menu-item-action-anchor
+								mb-action-group="studio.pages"
+								mb-divider="true">
+							</mb-mini-action-anchor>
+						</md-menu-content>
+					</md-menu>
+				</div>
+				<div id="bottom-right" style="position: absolute; bottom: 2px;right: 2px;">
+					<mb-badge>{{::page.status}}</mb-badge>
+				</div>
+				<div id="bottom-left" style="position: absolute; bottom: 2px;left: 2px;"></div>
+				<img 
+					ng-src-error="https://www.gravatar.com/avatar/{{page.id|wbmd5}}?d=identicon&size=256"
+					ng-src="{{::(ctrl.getPageCover(page))}}" 
+					class="md-card-image" 
+					ng-click="ctrl.openEditor(page, $event)"
+					style="width:100% !important; height: 100px !important; object-fit: cover; object-position: center; cursor: pointer;">
+			</div>
+			<md-card-content
+				style="padding: 2px;">
+				<table
+					style="display:block; width: 100%; overflow: hidden">
+					<tbody>
+						<tr><td translate>ID</td><td md-truncate>:{{::page.id}}</td></tr>
+						<tr><td translate>Title</td><td md-truncate>:{{::page.title}}</td></tr>
+						<tr><td translate>Name</td><td md-truncate>:{{::page.name}}</td></tr>
+						<tr><td translate>Created</td><td md-truncate>:{{::(page.creation_dtime | mbDateTime)}}</td></tr>
+						<tr><td translate>Modified</td><td md-truncate>:{{::(page.modif_dtime | mbDateTime)}}</td></tr>
+					</tbody>
+				</table>
 			</md-card-content>
 			<md-card-actions 
 				layout="row" 
 				layout-align="end center">
 				<md-button 
-					ng-href="editor/{{::page.id}}"
+					ng-click="ctrl.openEditor(page, $event)"
 					class="md-icon-button" 
 					aria-label="Edit">
-					<wb-icon>edit</wb-icon>
+					<wb-icon size="16">edit</wb-icon>
+				</md-button>
+				<md-button 
+					ng-click="ctrl.deleteItem(page, $event)"
+					class="md-icon-button" 
+					aria-label="Delete">
+					<wb-icon size="16">delete</wb-icon>
 				</md-button>
 			</md-card-actions>
 		</md-card>

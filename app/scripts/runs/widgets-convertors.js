@@ -26,8 +26,8 @@
 /***********************************************************************
  * Convertors
  ***********************************************************************/
-angular.module('vwStudio').run(function($widget, WbConverterWeburger, WbConverterDom, WbConverterText) {
-	$widget.addConverter(new WbConverterWeburger());
-	$widget.addConverter(new WbConverterDom());
+angular.module('vwStudio').run(function($widget, StudioWbConverterWeburger, StudioWbConverterDom, WbConverterText) {
+	$widget.addConverter(new StudioWbConverterWeburger());
+	$widget.addConverter(new StudioWbConverterDom());
 	$widget.addConverter(new WbConverterText());
 });
