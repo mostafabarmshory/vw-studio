@@ -77,6 +77,7 @@ angular.module('vwStudio').factory('StudioSeenCollectionWidget', function(
 	StodioWidget.prototype.isLocked = function() {
 		return this.locked;
 	};
+	
 	StodioWidget.prototype.setLock = function(flag) {
 		this.locked = flag;
 	};
@@ -85,7 +86,7 @@ angular.module('vwStudio').factory('StudioSeenCollectionWidget', function(
 		return this.templateLoadedAsContnet;
 	};
 	StodioWidget.prototype.setTemplateLoadedAsContnet = function(flag) {
-		this.templateLoadedAsContnet = flag
+		this.templateLoadedAsContnet = flag;
 	};
 
 	return StodioWidget;

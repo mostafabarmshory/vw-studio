@@ -49,15 +49,13 @@ angular.module('vwStudio').factory('StudioWidgetProcessorCollection', function(
 		if (event.type !== 'stateChanged' || widget.getType() !== 'ObjectCollection') {
 			return;
 		}
-		var template;
 		if (event.value === 'edit') {
 			widget.setLock(true);
 			// 1- remove content
 			widget.empty();
 
 			// 2- check template if can display
-			var template = widget.getModelProperty('template');
-			var templateModel = converter.decode(template);
+			var templateModel = converter.decode(widget.getModelProperty('template'));
 			if (_.size(templateModel) > 0) {
 				widget.addChildren(0, templateModel);
 				widget.setTemplateLoadedAsContnet(true);
@@ -69,7 +67,7 @@ angular.module('vwStudio').factory('StudioWidgetProcessorCollection', function(
 				if (_.size(children) > 0) {
 					widget.setModelProperty('template', converter.encode(children[0]));
 					if (_.size(children) > 1) {
-						$log.warn('There is more than a child in the collection desinge?!')
+						$log.warn('There is more than a child in the collection desinge?!');
 					}
 				} else {
 					$log.warn('collection template is removed!');
