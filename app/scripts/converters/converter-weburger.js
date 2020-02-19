@@ -23,13 +23,13 @@
 
 /**
  * @ngdoc Converter
- * @name WbConverterWeburger
+ * @name StudioWbConverterWeburger
  * @description Widget converter
  * 
  * A converter are responsible to encode and decode a widget.
  * 
  */
-angular.module('vwStudio').factory('WbConverterWeburger', function(WbConverterAbstract) {
+angular.module('vwStudio').factory('StudioWbConverterWeburger', function(WbConverterAbstract) {
 
 	function Converter() {
 		WbConverterAbstract.apply(this, ['application/json']);

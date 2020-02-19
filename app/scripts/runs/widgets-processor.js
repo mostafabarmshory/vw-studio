@@ -27,9 +27,10 @@
  * Processors
  ***********************************************************************/
 angular.module('vwStudio').run(function ($widget, WbProcessorMicrodata, WbProcessorEvent, WbProcessorAttribute,
-	StudioProcessorAttribute) {
+	StudioProcessorAttribute, StudioWidgetProcessorCollection) {
 	$widget.setProcessor('microdata', new WbProcessorMicrodata());
 	$widget.setProcessor('event', new WbProcessorEvent());
 	$widget.setProcessor('attribut', new WbProcessorAttribute());
 	$widget.setProcessor('studio-attribut', new StudioProcessorAttribute());
+	$widget.setProcessor('studio-attribut', new StudioWidgetProcessorCollection());
 });

@@ -72,6 +72,21 @@ angular.module('vwStudio').factory('StudioSeenCollectionWidget', function(
 		var direction = this.getModelProperty('style.flexDirection') || this.getProperty('style.flexDirection');
 		return direction === 'row';
 	};
+	
+	
+	StodioWidget.prototype.isLocked = function() {
+		return this.locked;
+	};
+	StodioWidget.prototype.setLock = function(flag) {
+		this.locked = flag;
+	};
+	
+	StodioWidget.prototype.isTemplateLoadedAsContnet = function() {
+		return this.templateLoadedAsContnet;
+	};
+	StodioWidget.prototype.setTemplateLoadedAsContnet = function(flag) {
+		this.templateLoadedAsContnet = flag
+	};
 
 	return StodioWidget;
 });

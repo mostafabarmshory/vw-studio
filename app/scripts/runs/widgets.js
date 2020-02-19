@@ -1,5 +1,4 @@
 /* 
-
  * The MIT License (MIT)
  * 
  * Copyright (c) 2016 weburger
@@ -932,7 +931,8 @@ angular.module('vwStudio').run(function($widget) {
 		help: '',
 		helpId: 'wb-seen-widget-collection',
 		template: '<div></div>',
-		controller: 'StudioSeenCollectionWidget'
+		controller: 'StudioSeenCollectionWidget',
+		isLeaf: false
 	});
 
 	$widget.newWidget({

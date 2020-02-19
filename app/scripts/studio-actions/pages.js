@@ -32,10 +32,8 @@
  */
 angular.module('vwStudio').run(function(
 		/* mblowfish */ $actions, $navigator,
-		/* angularjs */ $window,
-		/* mateiral  */ $mdSidenav,
-		/* weburger  */ $resource, $widget,
-		/* amh       */ $amhEditorService, AmhWorkbenchJob) {
+		/* angularjs */ $window
+) {
 
 	function canCreateContent() {
 		return true;
