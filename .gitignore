@@ -20,3 +20,5 @@
 /.settings/
 /*.zip
 /nbproject/private/
+
+/modules/

@@ -118,6 +118,9 @@ module.exports = function(grunt) {
 						middlewares.push(
 							connect()
 								.use('/app/styles', connect.static('./app/styles')));
+						middlewares.push(
+							connect()
+								.use('/modules', connect.static('./modules')));
 						middlewares.push(connect.static(appConfig.app));
 						middlewares.push(connect.static('dist'));
 						options.base.forEach(function(base) {

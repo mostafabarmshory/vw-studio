@@ -23,24 +23,24 @@
  */
 'use strict';
 
-describe('WbWidget converter WbConverterDom ', function() {
+describe('WbWidget converter StudioWbConverterDom ', function() {
 	// instantiate service
 	var $widget;
 	var $rootScope;
-	var WbConverterDom;
+	var StudioWbConverterDom;
 
 	// load the service's module
 	beforeEach(module('vwStudio'));
-	beforeEach(inject(function(_$widget_, _$rootScope_, _WbConverterDom_) {
+	beforeEach(inject(function(_$widget_, _$rootScope_, _StudioWbConverterDom_) {
 		$widget = _$widget_;
 		$rootScope = _$rootScope_;
-		WbConverterDom = _WbConverterDom_;
+		StudioWbConverterDom = _StudioWbConverterDom_;
 	}));
 
 	it('should converte multi dom text to data model', function() {
 		// Create new instance
 		var data = '<div style="color: red; background-color: blue;"><form><img src="test/path.svg"></img></form></div>';
-		var converter = new WbConverterDom();
+		var converter = new StudioWbConverterDom();
 		var result = converter.decode(data);
 		expect(result.length).toBe(1);
 		expect(result[0].type).toBe('div');
@@ -72,7 +72,7 @@ describe('WbWidget converter WbConverterDom ', function() {
 		};
 		$widget.compile(model)
 			.then(function(widget) {
-				var converter = new WbConverterDom();
+				var converter = new StudioWbConverterDom();
 				var result = converter.encode(widget);
 				expect(result.match(/<div/).length).toBe(1);
 				expect(result.match(/<img/).length).toBe(1);
@@ -84,7 +84,7 @@ describe('WbWidget converter WbConverterDom ', function() {
 	fit('should converte pre and its text', function() {
 		// Create new instance
 		var data = '<pre>hi</pre>';
-		var converter = new WbConverterDom();
+		var converter = new StudioWbConverterDom();
 		var result = converter.decode(data);
 		expect(result.length).toBe(1);
 		expect(result[0].type).toBe('pre');
@@ -93,7 +93,7 @@ describe('WbWidget converter WbConverterDom ', function() {
 	it('should converte li and its text', function() {
 		// Create new instance
 		var data = '<li>hi</li>';
-		var converter = new WbConverterDom();
+		var converter = new StudioWbConverterDom();
 		var result = converter.decode(data);
 		expect(result.length).toBe(1);
 		expect(result[0].type).toBe('li');
@@ -104,7 +104,7 @@ describe('WbWidget converter WbConverterDom ', function() {
 	it('should converte li and its child', function() {
 		// Create new instance
 		var data = '<li><p>hi</p></li>';
-		var converter = new WbConverterDom();
+		var converter = new StudioWbConverterDom();
 		var result = converter.decode(data);
 		expect(result.length).toBe(1);
 		expect(result[0].type).toBe('li');
