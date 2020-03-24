@@ -72,22 +72,37 @@ angular.module('vwStudio').factory('StudioSeenCollectionWidget', function(
 		var direction = this.getModelProperty('style.flexDirection') || this.getProperty('style.flexDirection');
 		return direction === 'row';
 	};
-	
-	
+
 	StodioWidget.prototype.isLocked = function() {
 		return this.locked;
 	};
-	
+
 	StodioWidget.prototype.setLock = function(flag) {
 		this.locked = flag;
 	};
-	
+
 	StodioWidget.prototype.isTemplateLoadedAsContnet = function() {
 		return this.templateLoadedAsContnet;
 	};
+
 	StodioWidget.prototype.setTemplateLoadedAsContnet = function(flag) {
 		this.templateLoadedAsContnet = flag;
 	};
+
+	StodioWidget.prototype.reloadPage = function() {
+		if (this.getState() === 'edit') {
+			return;
+		}
+		AmWbSeenCollectionWidget.prototype.reloadPage.apply(this, arguments);
+	};
+
+	StodioWidget.prototype.reloadView = function() {
+		if (this.getState() === 'edit') {
+			return;
+		}
+		AmWbSeenCollectionWidget.prototype.reloadView.apply(this, arguments);
+	};
+
 
 	return StodioWidget;
 });

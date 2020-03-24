@@ -78,7 +78,7 @@ angular.module('vwStudio').factory('StudioWidgetProcessorCollection', function(
 
 			// 2- init
 			widget.setLock(false);
-			widget.reload();
+			widget.reloadPage();
 		}
 	};
 
