@@ -140,7 +140,7 @@ angular.module('vwStudio').controller('AmhPageNewDialogCtrl', function($scope, $
 				metaKey = 'title';
 				break;
 			case 'description':
-				metaKey = 'meta.description';
+				metaKey = 'description';
 				break;
 			case 'cover':
 				metaKey = 'link.cover';
