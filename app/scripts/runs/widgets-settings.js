@@ -227,4 +227,24 @@ angular.module('vwStudio').run(function($settings) {
 		controllerAs: 'ctrl',
 		controller: 'WbSettingStyleTextCtrl',
 	});
+	
+	
+	
+
+	/************************************************************************
+	 * extra
+	 ************************************************************************/
+	$settings.addPage({
+		type: 'extra.html',
+		label: 'HTML',
+		description: 'Edit html directly',
+		icon: 'settings',
+		templateUrl: 'views/settings/wb-html.html',
+		controllerAs: 'ctrl',
+		controller: 'WbSettingWidgetHtmlCtrl',
+		targets: [
+			'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+			'p', 'strong', 'b', 'i', 'big', 'em',
+			'code', 'sub', 'sup', 'del', 'pre', 'samp', 'a']
+	});
 });
