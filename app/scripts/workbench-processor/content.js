@@ -29,7 +29,7 @@ angular.module('vwStudio').factory('AmhWorkbenchProcessorCrud', function(
 
 
 	var graphql = '{' +
-	/* content */ 'id,name,title,description,mime_type,media_type,file_name,file_size,downloads,status,creation_dtime,modif_dtime,author_id' +
+	/* content */ 'id,name,title,description,mime_type,media_type,file_name,file_size,downloads,state,creation_dtime,modif_dtime,author_id' +
 	/* metas */ ',metas{id,content_id,key,value}' +
 	/* terms */ ',term_taxonomies{id, taxonomy, term{id, name, metas{key,value}}}' +
 		'}';

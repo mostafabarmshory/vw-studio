@@ -1,6 +1,6 @@
 <div
 	ng-controller="AmhContentPagesCtrl as ctrl"
-	ng-init="ctrl.addFilter('media_type', 'page'); ctrl.setDataQuery('{id,title,name,status,file_name,modif_dtime,creation_dtime,metas{key,value}}')"
+	ng-init="ctrl.addFilter('media_type', 'page'); ctrl.setDataQuery('{id,title,name,state,file_name,modif_dtime,creation_dtime,metas{key,value}}')"
 	mb-preloading="ctrl.state === 'busy'"
 	layout="column"
 	flex>
@@ -51,7 +51,7 @@
 					</md-menu>
 				</div>
 				<div id="bottom-right" style="position: absolute; bottom: 2px;right: 2px;">
-					<mb-badge>{{::page.status}}</mb-badge>
+					<mb-badge>{{::page.state}}</mb-badge>
 				</div>
 				<div id="bottom-left" style="position: absolute; bottom: 2px;left: 2px;"></div>
 				<img 

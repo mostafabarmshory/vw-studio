@@ -32,8 +32,9 @@ angular.module('vwStudio').factory('WbProcessorLocator', function(WbProcessorAbs
 	function Processor() {
 		WbProcessorAbstract.apply(this);
 		this.widgetLocator = new WidgetLocatorManager({
-			boundEnable: false,
-			selectionEnable: true,
+			boundEnable: false,     // Enable bound of each widget
+			hoverEnable: false,     // Enable mouse hover for each widget
+			selectionEnable: true,  // Enable selection
 		});
 		this.autoVisible = true;
 	}

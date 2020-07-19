@@ -19,7 +19,7 @@
 	<div
 		ng-show="pageId === 'pages'"
 		ng-controller="AmhContentPagesCtrl as ctrl"
-		ng-init="ctrl.setDataQuery('{id, title, name, description, status, author{id, login}, metas{key, value}}')"
+		ng-init="ctrl.setDataQuery('{id, title, name, description, state, author{id, login}, metas{key, value}}')"
 		layout="column">
 		<mb-pagination-bar
 			mb-model="ctrl.queryParameter"
@@ -65,7 +65,7 @@
 	<div
 		ng-show="pageId === 'mypages'"
 		ng-controller="AmhContentMyPagesCtrl as ctrl"
-		ng-init="ctrl.setDataQuery('{id, name, title, description, status, metas{key, value}}')"
+		ng-init="ctrl.setDataQuery('{id, name, title, description, state, metas{key, value}}')"
 		layout="column">
 		<mb-pagination-bar
 			mb-model="ctrl.queryParameter"

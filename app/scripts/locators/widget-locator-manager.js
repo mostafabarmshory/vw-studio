@@ -121,7 +121,9 @@ angular.module('vwStudio').factory('WidgetLocatorManager', function($widget, Bou
 		if (widget.isRoot()) {
 			return;
 		}
-		this.createBoundLocator(widget);
+		if (this.boundEnable) {
+			this.createBoundLocator(widget);
+		}
 		if (widget.isSelected()) {
 			this.createSelectionLocator(widget);
 		}
@@ -233,7 +235,7 @@ angular.module('vwStudio').factory('WidgetLocatorManager', function($widget, Bou
 
 
     /**********************************************************
-     * Selection
+     * Bound
      */
 	WidgetLocatorManager.prototype.hasBoundLocator = function(widget) {
 		return this.boundLocatorMap.has(widget);
