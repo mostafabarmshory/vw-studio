@@ -43,7 +43,7 @@ angular.module('vwStudio').factory('StudioWidgetProcessorCollection', function(
 	/**
 	 * Processes the widget based on event
 	 * 
-	 * @memberof WbProcessorSelect
+	 * @memberof StudioWidgetProcessorCollection
 	 */
 	Processor.prototype.process = function(widget, event) {
 		if (event.type !== 'stateChanged' || widget.getType() !== 'ObjectCollection') {

@@ -171,7 +171,8 @@ angular.module('vwStudio').factory('WbProcessorSelect', function(
 		}
 
 		this.fire(EVENT_TYPE_SELECTION_CHANGE, {
-			widgets: this.selectedWidgets
+			widgets: this.selectedWidgets,
+			values: this.selectedWidgets,
 		});
 	};
 
